@@ -1,0 +1,42 @@
+\documentclass[parskip=full]{scrartcl}
+\usepackage[utf8]{inputenc} % use utf8 file encoding for TeX sources
+\usepackage[T1]{fontenc}    % avoid garbled Unicode text in pdf
+\usepackage[german]{babel}  % german hyphenation, quotes, etc
+\usepackage{hyperref}       % detailed hyperlink/pdf configuration
+\hypersetup{                % ‘texdoc hyperref‘ for options
+pdftitle={Pflichtenheft: PSE BlueJ Extension},
+}
+\usepackage{graphicx}       % provides commands for including figures
+\usepackage{csquotes}       % provides \enquote{} macro for "quotes"
+\usepackage[nonumberlist]{glossaries}     % provides glossary commands
+\usepackage{enumitem}
+
+\makenoidxglossaries
+
+\include{sections/Glossareintraege}
+
+\begin{document}
+
+\include{Deckblatt}
+
+\tableofcontents
+
+\include{sections/Produktuebersicht}
+\include{sections/Zielbestimmung}
+\include{sections/Produkteinsatz}
+\include{sections/Produktumgebung}
+\include{sections/FunktionaleAnforderungen}
+\include{sections/Produktdaten}
+\include{sections/Produktleistungen}
+\include{sections/NichtfunktionaleAnforderungen}
+\include{sections/Qualitaetsanforderungen}
+\include{sections/GlobaleTestfaelleUndTestszenarien}
+\include{sections/Systemmodelle}
+\include{sections/Benutzeroberflaeche}
+\include{sections/SpezielleAnforderungenAnDieEntwicklungsumgebung}
+\include{sections/Zeit-UndRessourcenplanung}
+\include{sections/Ergaenzungen}
+
+\include{sections/Glossar}
+
+\end{document}
