@@ -2,6 +2,11 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="project_lib" />
+      <option name="name" value="Repository in project's lib dir" />
+      <option name="url" value="file:///D:\PSE\BlueJ-Chicago/lib" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
