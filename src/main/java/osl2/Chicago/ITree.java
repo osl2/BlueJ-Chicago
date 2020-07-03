@@ -1,5 +1,9 @@
 package osl2.Chicago;
 
+/**
+ * The interface for a tree object.
+ * @param <T> the type of objects which can be added as nodes to the tree.
+ */
 public interface ITree<T> {
     /**
      * Adds an child to a parent.
@@ -7,28 +11,28 @@ public interface ITree<T> {
      * @param parent the parent
      * @return boolean true if the child as added successfully, else false
      */
-    public boolean addChild(VNode child, VNode parent);
+    public boolean addChild(VNode<T> child, VNode<T> parent);
 
     /**
      * Removes a node if it is a leave.
      * @param node the node which will be removed
      * @return boolean true if the node was removed successfully, else false
      */
-    public boolean removeLeave(VNode node);
+    public boolean removeLeave(VNode<T> node);
 
     /**
      * Returns the children of a parent.
      * @param parent the parent
      * @return Collection<Node> the children of a parent
      */
-    public Collection<VNode> getChilds(VNode parent);
+    public Collection<VNode<T>> getChilds(VNode<T> parent);
 
     /**
      * Returns the parent to a child.
      * @param child the child
      * @return VNode the parent to the child.
      */
-    public VNode getParent(VNode child);
+    public VNode<T> getParent(VNode<T> child);
 
     /**
      * Returns the height of the tree.
@@ -42,7 +46,7 @@ public interface ITree<T> {
      * @param parent the parent
      * @return boolean true if the swap was successfully, else false
      */
-    public boolean swap(VNode child, VNode parent);
+    public boolean swap(VNode<T> child, VNode<T> parent);
 
     /**
      * Adds an tree to this tree.
@@ -50,19 +54,19 @@ public interface ITree<T> {
      * @param child the tree wich will be added
      * @return boolean true if the tree was added successfully, else false
      */
-    public boolean addTree(VNode parent, ITree<T> child);
+    public boolean addTree(VNode<T> parent, ITree<T> child);
 
     /**
      * Indicates if a node is allready in the tree.
      * @param node the node
      * @return boolean true if the node is in the tree, else false
      */
-    public boolean contains(VNode node);
+    public boolean contains(VNode<T> node);
 
     /**
      * Indicates if a collection of nodes is allready in the tree.
      * @param nodes the nodes
      * @return boolean true if the nodes are in the tree, else false
      */
-    public boolean contains(Collcetion<VNode> nodes);
+    public boolean contains(Collcetion<VNode<T>> nodes);
 }

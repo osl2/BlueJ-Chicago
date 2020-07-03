@@ -1,5 +1,8 @@
 package osl2.Chicago;
 
+/**
+ * The interface for all chicago datastructures.
+ */
 public interface ChicagoDatastructure {
 
     /**

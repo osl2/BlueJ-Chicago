@@ -1,5 +1,8 @@
 package osl2.Chicago;
 
+/**
+ * The Intercaed for all datastructure objects.
+ */
 public interface IDatastructure {
     /**
      *Returns the size of an datastructure
