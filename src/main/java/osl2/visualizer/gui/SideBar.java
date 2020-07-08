@@ -7,6 +7,11 @@ import javafx.scene.layout.Pane;
 public class SideBar extends ListView {
     public SideBar(){
         super();
+        this.widthProperty().addListener(e -> {
+            for(MirrorButton b: this.getItems()){
+                b.setPrefWidth(this.getWidth());
+            }
+        });
     }
 
 
