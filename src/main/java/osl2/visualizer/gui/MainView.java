@@ -33,17 +33,13 @@ public class MainView extends Application {
     }
 
     public void addMirrorButton(MirrorButton mirrorButton){
-        sideBar.getChildren().add(mirrorButton);
+        sideBar.addMirrorButton(mirrorButton);
     }
 
     public void addMirror(Mirror mirror){
-        mainRegion.getChildren().add(mirror);
-
+        mainRegion.addMirror(mirror);
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
     private  void setUpLayout(){
         layout = new StackPane();
@@ -53,9 +49,6 @@ public class MainView extends Application {
         mainRegion = new MainRegion();
         verticalSplitter = new SplitPane( sidePlaySplitter, mainRegion);
         verticalSplitter.setOrientation(Orientation.HORIZONTAL);
-
-
-
     }
     private void setUpSidePlaySplitter(){
         setUpSidebar();
@@ -64,10 +57,8 @@ public class MainView extends Application {
         sidePlaySplitter.setOrientation(Orientation.VERTICAL);
     }
 
-
     private void setUpSidebar(){
         sideBar = new SideBar();
-        sideBar.setPadding(new Insets(50,50,50,50));
     }
     private void setUpPlaySpace(){
         playSpace = new PlaySpace();

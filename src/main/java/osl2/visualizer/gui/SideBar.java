@@ -4,19 +4,13 @@ import javafx.geometry.Orientation;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
 
-public class SideBar extends Pane {
-    ListView<MirrorButton> mirrorButtonList;
+public class SideBar extends ListView {
     public SideBar(){
-        mirrorButtonList = new ListView<MirrorButton>();
-        mirrorButtonList.setEditable(true);
-        mirrorButtonList.setOrientation(Orientation.VERTICAL);
-        this.getChildren().add(mirrorButtonList);
+        super();
     }
 
 
-    public void AddMirrorButton(MirrorButton mirrorButton){
-        mirrorButtonList.getItems().add(mirrorButton);
-    }
+    public void addMirrorButton(MirrorButton mirrorButton){getItems().add(mirrorButton);}
 
 }
 
