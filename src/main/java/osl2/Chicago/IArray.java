@@ -1,5 +1,7 @@
 package osl2.Chicago;
 
+import java.util.Collection;
+
 /**
  * The interface for a array object.
  * @param <T> the type of objects wich can be used as values in an array.
