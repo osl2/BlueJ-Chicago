@@ -1,6 +1,6 @@
-package osl2.visualizer.command.listCommand;
+package osl2.visualizer.model.command.listCommand;
 
-import osl2.visualizer.command.ICommand;
+import osl2.visualizer.model.command.ICommand;
 import osl2.visualizer.model.VisualList;
 
 public class ClearList implements ICommand {

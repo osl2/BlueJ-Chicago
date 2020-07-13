@@ -1,5 +1,5 @@
-package osl2.visualizer.command.arrayCommand;
-import osl2.visualizer.command.ICommand;
+package osl2.visualizer.model.command.arrayCommand;
+import osl2.visualizer.model.command.ICommand;
 import osl2.visualizer.model.VisualArray;
 
 public class SetArrayCommand<T> implements ICommand {

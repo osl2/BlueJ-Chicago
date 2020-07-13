@@ -1,4 +1,4 @@
-package osl2.visualizer.command;
+package osl2.visualizer.model.command;
 
 /**
  * The interface for a command on a datstructutre.

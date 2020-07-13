@@ -1,6 +1,6 @@
-package osl2.visualizer.command.arrayCommand;
+package osl2.visualizer.model.command.arrayCommand;
 
-import osl2.visualizer.command.ICommand;
+import osl2.visualizer.model.command.ICommand;
 import osl2.visualizer.model.VisualArray;
 
 public class ClearArrayCommand implements ICommand {
@@ -13,6 +13,6 @@ public class ClearArrayCommand implements ICommand {
 
     @Override
     public void execute() {
-        this.visualArray.clear();
+        //this.visualArray.clear();
     }
 }
