@@ -1,13 +1,13 @@
 package osl2.visualizer.model.command.listCommand;
 
-import osl2.visualizer.model.command.ICommand;
 import osl2.visualizer.model.VisualList;
+import osl2.visualizer.model.command.ICommand;
 
 public class ClearList implements ICommand {
 
     private VisualList visualList;
 
-    public ClearList(VisualList visualList){
+    public ClearList(VisualList visualList) {
         this.visualList = visualList;
     }
 
