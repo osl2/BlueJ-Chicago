@@ -7,5 +7,5 @@ public interface ICommand {
     /**
      * Executes the command on the datastructure.
      */
-    public void execute();
+    void execute();
 }

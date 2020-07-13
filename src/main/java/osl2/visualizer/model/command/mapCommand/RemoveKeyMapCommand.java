@@ -5,8 +5,8 @@ import osl2.visualizer.model.command.ICommand;
 
 public class RemoveKeyMapCommand<K> implements ICommand {
 
-    private VisualMap visualMap;
-    private K key;
+    private final VisualMap visualMap;
+    private final K key;
 
     public RemoveKeyMapCommand(VisualMap visualMap, K key) {
         this.visualMap = visualMap;

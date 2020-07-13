@@ -5,8 +5,8 @@ import osl2.visualizer.model.command.ICommand;
 
 public class RemoveListIndexCommand implements ICommand {
 
-    private VisualList visualList;
-    private int index;
+    private final VisualList visualList;
+    private final int index;
 
     private RemoveListIndexCommand(VisualList visualList, int index) {
         this.visualList = visualList;

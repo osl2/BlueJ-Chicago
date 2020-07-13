@@ -5,9 +5,9 @@ import osl2.visualizer.model.command.ICommand;
 
 public class SetKeyValueCommand<K, V> implements ICommand {
 
-    private VisualMap visualMap;
-    private K key;
-    private V value;
+    private final VisualMap visualMap;
+    private final K key;
+    private final V value;
 
     public SetKeyValueCommand(VisualMap visualMap, K key, V value) {
         this.visualMap = visualMap;

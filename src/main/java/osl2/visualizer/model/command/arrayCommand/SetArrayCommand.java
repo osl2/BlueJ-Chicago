@@ -5,9 +5,9 @@ import osl2.visualizer.model.command.ICommand;
 
 public class SetArrayCommand<T> implements ICommand {
 
-    private VisualArray<T> visualArray;
-    private int index;
-    private T value;
+    private final VisualArray<T> visualArray;
+    private final int index;
+    private final T value;
 
     public SetArrayCommand(VisualArray<T> visualArray, int index, T value) {
         this.visualArray = visualArray;

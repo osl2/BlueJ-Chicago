@@ -5,7 +5,7 @@ import osl2.visualizer.model.command.ICommand;
 
 public class ClearList implements ICommand {
 
-    private VisualList visualList;
+    private final VisualList visualList;
 
     public ClearList(VisualList visualList) {
         this.visualList = visualList;

@@ -5,7 +5,7 @@ import osl2.visualizer.model.command.ICommand;
 
 public class ClearArrayCommand implements ICommand {
 
-    private VisualArray visualArray;
+    private final VisualArray visualArray;
 
     public ClearArrayCommand(VisualArray visualArray) {
         this.visualArray = visualArray;
