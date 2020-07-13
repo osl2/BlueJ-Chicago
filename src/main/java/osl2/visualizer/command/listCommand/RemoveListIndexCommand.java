@@ -1,7 +1,7 @@
 package osl2.visualizer.command.listCommand;
 
 import osl2.visualizer.command.ICommand;
-import osl2.model.VisualList;
+import osl2.visualizer.model.VisualList;
 
 public class RemoveListIndexCommand implements ICommand {
 

@@ -1,4 +1,4 @@
-package osl2.model;
+package osl2.visualizer.model;
 
 public class VisualDoublyLinkedList<T> extends VisualList<T> {
 

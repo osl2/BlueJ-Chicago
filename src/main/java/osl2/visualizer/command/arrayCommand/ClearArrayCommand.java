@@ -1,7 +1,7 @@
 package osl2.visualizer.command.arrayCommand;
 
 import osl2.visualizer.command.ICommand;
-import osl2.model.VisualArray;
+import osl2.visualizer.model.VisualArray;
 
 public class ClearArrayCommand implements ICommand {
 

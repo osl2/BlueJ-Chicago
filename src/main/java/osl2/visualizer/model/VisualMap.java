@@ -1,4 +1,4 @@
-package osl2.model;
+package osl2.visualizer.model;
 
 import java.util.Collection;
 import java.util.HashMap;

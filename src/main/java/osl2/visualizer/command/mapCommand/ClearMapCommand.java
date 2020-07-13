@@ -1,7 +1,7 @@
 package osl2.visualizer.command.mapCommand;
 
 import osl2.visualizer.command.ICommand;
-import osl2.model.VisualMap;
+import osl2.visualizer.model.VisualMap;
 
 public class ClearMapCommand  implements ICommand {
 
