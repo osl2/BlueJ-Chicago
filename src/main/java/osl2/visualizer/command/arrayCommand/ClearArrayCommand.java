@@ -1,6 +1,6 @@
-package main.java.osl2.visualizer.command.arrayCommand;
+package osl2.visualizer.command.arrayCommand;
 
-import main.java.osl2.visualizer.command.ICommand;
+import osl2.visualizer.command.ICommand;
 import osl2.model.VisualArray;
 
 public class ClearArrayCommand implements ICommand {

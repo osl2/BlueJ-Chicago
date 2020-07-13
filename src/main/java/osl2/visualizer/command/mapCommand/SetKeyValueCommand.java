@@ -1,6 +1,6 @@
-package main.java.osl2.visualizer.command.mapCommand;
+package osl2.visualizer.command.mapCommand;
 
-import main.java.osl2.visualizer.command.ICommand;
+import osl2.visualizer.command.ICommand;
 import osl2.model.VisualMap;
 
 public class SetKeyValueCommand<K, V> implements ICommand {

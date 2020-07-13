@@ -1,6 +1,6 @@
-package main.java.osl2.visualizer.command.listCommand;
+package osl2.visualizer.command.listCommand;
 
-import main.java.osl2.visualizer.command.ICommand;
+import osl2.visualizer.command.ICommand;
 import osl2.model.VisualList;
 
 public class AddListIndexCommand<T> implements ICommand {
