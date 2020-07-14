@@ -14,6 +14,6 @@ public class RemoveTreeCommand implements ICommand {
 
     @Override
     public void execute() {
-        this.visualTree.clear();
+        this.visualTree.removeAll();
     }
 }

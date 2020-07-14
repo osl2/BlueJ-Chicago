@@ -2,7 +2,6 @@ package osl2.visualizer.model.command.graphCommand;
 
 import osl2.visualizer.model.command.ICommand;
 import osl2.visualizer.model.VisualGraph;
-import osl2.visualizer.model.VisualNode;
 
 public class ClearGraphCommand implements ICommand {
 
@@ -14,6 +13,6 @@ public class ClearGraphCommand implements ICommand {
 
     @Override
     public void execute() {
-        this.visualGraph.clear();
+        this.visualGraph.removeAll();
     }
 }

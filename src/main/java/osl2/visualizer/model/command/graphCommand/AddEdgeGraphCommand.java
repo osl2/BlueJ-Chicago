@@ -2,15 +2,15 @@ package osl2.visualizer.model.command.graphCommand;
 
 import osl2.visualizer.model.command.ICommand;
 import osl2.visualizer.model.VisualGraph;
-import osl2.visualizer.model.VisualNode;
+import osl2.Chicago.VNode;
 
 public class AddEdgeGraphCommand implements ICommand {
 
     private VisualGraph visualGraph;
-    private VisualNode start;
-    private VisualNode end;
+    private VNode start;
+    private VNode end;
 
-    public AddEdgeGraphCommand(VisualGraph visualGraph, VisualNode start, VisualNode end){
+    public AddEdgeGraphCommand(VisualGraph visualGraph, VNode start, VNode end){
         this.visualGraph = visualGraph;
         this.start = start;
         this.end = end;

@@ -2,15 +2,15 @@ package osl2.visualizer.model.command.treeCommand;
 
 import osl2.visualizer.model.command.ICommand;
 import osl2.visualizer.model.VisualTree;
-import osl2.visualizer.model.VisualNode;
+import osl2.Chicago.VNode;
 
 public class AddTreeTreeCommand implements ICommand {
 
     private VisualTree visualTree;
     private VisualTree child;
-    private VisualNode parent;
+    private VNode parent;
 
-    public AddTreeTreeCommand(VisualTree visualTree, VisualTree child, VisualNode parent){
+    public AddTreeTreeCommand(VisualTree visualTree, VisualTree child, VNode parent){
         this.visualTree = visualTree;
         this.child = child;
         this.parent = parent;

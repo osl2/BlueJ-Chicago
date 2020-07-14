@@ -13,6 +13,6 @@ public class ClearArrayCommand implements ICommand {
 
     @Override
     public void execute() {
-        //this.visualArray.clear();
+        this.visualArray.removeAll();
     }
 }
