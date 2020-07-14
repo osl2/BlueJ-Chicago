@@ -68,5 +68,5 @@ public interface ITree<T> {
      * @param nodes the nodes
      * @return boolean true if the nodes are in the tree, else false
      */
-    public boolean contains(Collcetion<VNode<T>> nodes);
+    public boolean contains(Collection<VNode<T>> nodes);
 }
