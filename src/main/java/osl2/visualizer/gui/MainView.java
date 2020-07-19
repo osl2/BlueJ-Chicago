@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import osl2.visualizer.gui.controller.IMainController;
+import osl2.visualizer.gui.mirror.MirrorButton;
+import osl2.visualizer.gui.mirror.MirrorView;
 
 public class MainView extends Application {
     private int vertical = 500;
@@ -19,6 +22,9 @@ public class MainView extends Application {
     PlaySpace playSpace;
     StackPane layout;
 
+    public MainView(IMainController mainController) {
+        // TODO
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -36,8 +42,8 @@ public class MainView extends Application {
         sideBar.addMirrorButton(mirrorButton);
     }
 
-    public void addMirror(Mirror mirror){
-        mainRegion.addMirror(mirror);
+    public void addMirrorView(MirrorView mirror){
+        //mainRegion.addMirror(mirror);
     }
 
 

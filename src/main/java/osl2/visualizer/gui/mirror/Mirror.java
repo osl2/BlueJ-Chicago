@@ -1,4 +1,4 @@
-package osl2.visualizer.gui;
+package osl2.visualizer.gui.mirror;
 
 import javafx.scene.Node;
 
