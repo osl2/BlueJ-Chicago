@@ -5,14 +5,14 @@ import osl2.visualizer.model.command.ICommand;
 
 public class ClearMapCommand implements ICommand {
 
-    private final VisualMap visualMap;
+	private final VisualMap visualMap;
 
-    public ClearMapCommand(VisualMap visualMap) {
-        this.visualMap = visualMap;
-    }
+	public ClearMapCommand(VisualMap visualMap) {
+		this.visualMap = visualMap;
+	}
 
-    @Override
-    public void execute() {
-        this.visualMap.clear();
-    }
+	@Override
+	public void execute() {
+		this.visualMap.clear();
+	}
 }

@@ -5,14 +5,14 @@ import osl2.visualizer.model.command.ICommand;
 
 public class ClearListCommand implements ICommand {
 
-    private final VisualList visualList;
+	private final VisualList visualList;
 
-    public ClearListCommand(VisualList visualList) {
-        this.visualList = visualList;
-    }
+	public ClearListCommand(VisualList visualList) {
+		this.visualList = visualList;
+	}
 
-    @Override
-    public void execute() {
-        this.visualList.clear();
-    }
+	@Override
+	public void execute() {
+		this.visualList.clear();
+	}
 }

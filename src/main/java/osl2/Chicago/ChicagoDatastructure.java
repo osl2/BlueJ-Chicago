@@ -1,5 +1,6 @@
 package osl2.Chicago;
 
+import osl2.visualizer.model.VisualDatastructure;
 import osl2.visualizer.model.command.ICommandManager;
 
 /**
@@ -7,9 +8,17 @@ import osl2.visualizer.model.command.ICommandManager;
  */
 public interface ChicagoDatastructure {
 
-    /**
-     *Setting the CommandManager for an ChicagoDatastrucutre.
-     *@param commandManager the Commandmanger for the Datastructure
-     */
-    public void  setCommandManager(ICommandManager commandManager);
+	/**
+	 * Setting the CommandManager for an ChicagoDatastrucutre.
+	 *
+	 * @param commandManager the Commandmanger for the Datastructure
+	 */
+	void setCommandManager(ICommandManager commandManager);
+
+	/**
+	 * Return the {@link VisualDatastructure}.
+	 *
+	 * @return - the VisualDatastructure
+	 */
+	VisualDatastructure getVisualDatastructure();
 }

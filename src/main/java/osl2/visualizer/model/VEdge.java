@@ -1,10 +1,10 @@
 public class VEdge {
-    private VNode start;
-    private VNode end;
+	private final VNode start;
+	private final VNode end;
 
-    public VEdge(VNode start, VNode end) {
-        this.start = start;
-        this.end = end;
-    }
+	public VEdge(VNode start, VNode end) {
+		this.start = start;
+		this.end = end;
+	}
 }
 

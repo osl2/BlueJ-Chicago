@@ -5,6 +5,7 @@ import osl2.Chicago.ChicagoDatastructure;
 import osl2.visualizer.gui.MainView;
 import osl2.visualizer.gui.mirror.IMirrorController;
 import osl2.visualizer.gui.mirror.MirrorController;
+import osl2.visualizer.model.VisualDatastructure;
 import osl2.visualizer.model.command.ICommandManager;
 
 /**
@@ -59,7 +60,10 @@ public class MainController implements IMainController {
 
 	@Override
 	public void registerDatastructure(ChicagoDatastructure chicagoDatastructure) {
-		IMirrorController mirrorController = new MirrorController();
+		chicagoDatastructure.setCommandManager(commandManager);
+		VisualDatastructure visualDatastructure = chicagoDatastructure.getVisualDatastructure();
+
+		IMirrorController mirrorController = new MirrorController(visualDatastructure);
 		mainView.addMirrorButton(mirrorController.getMirrorButton());
 		mainView.addMirrorView(mirrorController.getMirrorView());
 	}

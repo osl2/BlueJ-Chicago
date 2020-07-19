@@ -1,16 +1,12 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-
 public class VNode<T> {
-    private T value;
+	private final T value;
 
-    public VNode(T value) {
-        this.value = value;
-    }
+	public VNode(T value) {
+		this.value = value;
+	}
 
-    public T getValue() {
-        return value;
-    }
+	public T getValue() {
+		return value;
+	}
 }
 

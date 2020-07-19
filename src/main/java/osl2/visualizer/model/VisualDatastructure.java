@@ -3,15 +3,16 @@ package osl2.visualizer.model;
 import java.beans.PropertyChangeListener;
 
 public abstract class VisualDatastructure implements IModel {
-    private PropertyChangeListener listener;
+	private PropertyChangeListener listener;
 
 
-    protected VisualDatastructure() {}
+	protected VisualDatastructure() {
+	}
 
-    abstract Datastructure getDatastructureType();
+	abstract Datastructure getDatastructureType();
 
-    @Override
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        this.listener = listener;
-    }
+	@Override
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		this.listener = listener;
+	}
 }

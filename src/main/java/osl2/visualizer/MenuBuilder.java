@@ -11,22 +11,22 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class MenuBuilder extends MenuGenerator {
-    public JMenuItem getToolsMenuItem(BPackage aPackage) {
-        return new JMenuItem(new ToolsAction("BlueJ Visualizer"));
-    }
+	public JMenuItem getToolsMenuItem(BPackage aPackage) {
+		return new JMenuItem(new ToolsAction("BlueJ Visualizer"));
+	}
 
-    private void show() {
-        ICommandManager commandManager = new CommandManager();
-        IMainController mainController = new MainController(commandManager);
-    }
+	private void show() {
+		ICommandManager commandManager = new CommandManager();
+		IMainController mainController = new MainController(commandManager);
+	}
 
-    class ToolsAction extends AbstractAction {
-        ToolsAction(String menuName) {
-            putValue(AbstractAction.NAME, menuName);
-        }
+	class ToolsAction extends AbstractAction {
+		ToolsAction(String menuName) {
+			putValue(AbstractAction.NAME, menuName);
+		}
 
-        public void actionPerformed(ActionEvent anEvent) {
-            show();
-        }
-    }
+		public void actionPerformed(ActionEvent anEvent) {
+			show();
+		}
+	}
 }

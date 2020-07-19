@@ -5,14 +5,14 @@ import osl2.visualizer.model.command.ICommand;
 
 public class ClearArrayCommand implements ICommand {
 
-    private final VisualArray visualArray;
+	private final VisualArray visualArray;
 
-    public ClearArrayCommand(VisualArray visualArray) {
-        this.visualArray = visualArray;
-    }
+	public ClearArrayCommand(VisualArray visualArray) {
+		this.visualArray = visualArray;
+	}
 
-    @Override
-    public void execute() {
-        this.visualArray.removeAll();
-    }
+	@Override
+	public void execute() {
+		this.visualArray.removeAll();
+	}
 }

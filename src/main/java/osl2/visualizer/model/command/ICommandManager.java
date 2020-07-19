@@ -2,19 +2,20 @@ package osl2.visualizer.model.command;
 
 public interface ICommandManager {
 
-    void addCommand(ICommand command);
+	void addCommand(ICommand command);
 
-    void playStep();
+	void playStep();
 
-    void startAutoPlay();
+	void startAutoPlay();
 
-    void stopAutoPlay();
+	void stopAutoPlay();
 
-    /**
-     * Set the playspeed.
-     *
-     * @param playspeed - the playspeed to be set
-     */
-    void setPlayspeed(int playspeed);
+	/**
+	 * Set the playspeed.
+	 * // TODO explain playspeed
+	 *
+	 * @param playspeed - the playspeed to be set
+	 */
+	void setPlayspeed(int playspeed);
 
 }

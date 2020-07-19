@@ -11,20 +11,17 @@ public interface IMirrorController {
 	 */
 	void hideMirror();
 
+	// TODO New method
+	// It replaces minimizeMirror() and maximizeMirror().
 	/**
-	 * Maximize the {@link MirrorView}.
+	 * Minimize or maximize {@link MirrorView} depending on the previous state.
 	 */
-	void maximizeMirror();
-
-	/**
-	 * Minimize the {@link MirrorView}.
-	 */
-	void minimizeMirror();
+	void minOrMaxMirror();
 
 	/**
 	 * Show the {@link MirrorView}
 	 */
-	void mirrorBtnKlicked();
+	void mirrorBtnClicked();
 
 	/**
 	 * Return the {@link MirrorButton} of the mirror.

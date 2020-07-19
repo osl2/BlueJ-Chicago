@@ -1,19 +1,18 @@
 package osl2.visualizer.model.command.treeCommand;
 
-import osl2.visualizer.model.command.ICommand;
 import osl2.visualizer.model.VisualTree;
-import osl2.visualizer.model.VisualNode;
+import osl2.visualizer.model.command.ICommand;
 
 public class RemoveTreeCommand implements ICommand {
 
-    private VisualTree visualTree;
+	private final VisualTree visualTree;
 
-    public RemoveTreeCommand(VisualTree visualTree){
-        this.visualTree = visualTree;
-    }
+	public RemoveTreeCommand(VisualTree visualTree) {
+		this.visualTree = visualTree;
+	}
 
-    @Override
-    public void execute() {
-        this.visualTree.removeAll();
-    }
+	@Override
+	public void execute() {
+		this.visualTree.removeAll();
+	}
 }
