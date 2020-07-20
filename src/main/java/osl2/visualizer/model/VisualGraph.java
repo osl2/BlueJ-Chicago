@@ -1,10 +1,11 @@
+import osl2.Chicago.IDatastructure;
 import osl2.Chicago.IGraph;
 import osl2.Chicago.VNode;
 
 import java.security.InvalidParameterException;
 import java.util.*;
 
-public class VisualGraph<T> implements IGraph {
+public class VisualGraph<T> implements IGraph, IDatastructure {
 	private VisualGraph fassadeGraph;
 	private VisualGraph currentGraph;
 

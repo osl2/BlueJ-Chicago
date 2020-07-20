@@ -1,9 +1,12 @@
+import osl2.Chicago.IDatastructure;
+import osl2.Chicago.ITree;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class VisualTree implements ITree {
+public class VisualTree implements ITree, IDatastructure {
 
 	private Map<VisualNode, LinkedList> map;
 
