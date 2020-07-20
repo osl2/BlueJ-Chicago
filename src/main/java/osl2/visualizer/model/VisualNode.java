@@ -1,7 +1,7 @@
-public class VNode<T> {
+public class VisualNode<T> {
 	private final T value;
 
-	public VNode(T value) {
+	public VisualNode(T value) {
 		this.value = value;
 	}
 

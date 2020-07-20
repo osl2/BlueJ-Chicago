@@ -1,4 +1,10 @@
-public class VGraph<T> implements IGraph {
+import osl2.Chicago.IGraph;
+import osl2.Chicago.VNode;
+
+import java.security.InvalidParameterException;
+import java.util.*;
+
+public class VisualGraph<T> implements IGraph {
 	private VisualGraph fassadeGraph;
 	private VisualGraph currentGraph;
 
@@ -6,7 +12,7 @@ public class VGraph<T> implements IGraph {
 
 	private int size;
 
-	public VGraph() {
+	public VisualGraph() {
 		nodeSet = new HashMap<>();
 		// TODO init global variables
 	}
@@ -85,12 +91,12 @@ public class VGraph<T> implements IGraph {
 	}
 
 	@Override
-	public boolean containsNodes(Collection<VNode> nodes) {
-		for (VNode node : nodes) {
-			if (!containsNode(node))
-				return false;
-		}
-		return true;
+	public boolean containsNodes(Collection nodes) {
+			for (VNode node : nodes) {
+				if (!containsNode(node))
+					return false;
+			}
+			return true;
 	}
 
 	@Override
@@ -108,7 +114,7 @@ public class VGraph<T> implements IGraph {
 		return size == 0;
 	}
 
-	@Override
+	// TODO add this to the other IGraph interface!
 	public boolean removeAll() {
 		nodeSet = new HashMap<>();
 		return true;

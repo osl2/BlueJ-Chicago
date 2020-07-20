@@ -1,22 +1,22 @@
 import java.util.Collection;
 
 public interface ITree {
-	boolean addChild(VNode child, VNode parent);
+	boolean addChild(VisualNode child, VisualNode parent);
 
-	boolean removeLeave(VNode node);
+	boolean removeLeave(VisualNode node);
 
-	Collection<VNode> getChilds(VNode parent);
+	Collection<VisualNode> getChilds(VisualNode parent);
 
-	VNode getParent(VNode child);
+	VisualNode getParent(VisualNode child);
 
 	int getHeight();
 
-	boolean swap(VNode child, VNode parent);
+	boolean swap(VisualNode child, VisualNode parent);
 
 	// public boolean addTree(VNode parent, ITree<VNode> child);
-	boolean contains(VNode node);
+	boolean contains(VisualNode node);
 
-	boolean contains(Collection<VNode> nodes);
+	boolean contains(Collection<VisualNode> nodes);
 
 	int size();
 

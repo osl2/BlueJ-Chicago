@@ -3,34 +3,34 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class VTree implements ITree {
+public class VisualTree implements ITree {
 
-	private Map<VNode, LinkedList> map;
+	private Map<VisualNode, LinkedList> map;
 
 	private int height;
 
 	@Override
-	public boolean addChild(VNode child, VNode parent) {
+	public boolean addChild(VisualNode child, VisualNode parent) {
 		map.get(parent).add(child);
 		height++;
 		return true;
 	}
 
 	@Override
-	public boolean removeLeave(VNode node) {
+	public boolean removeLeave(VisualNode node) {
 		map.remove(node);
 		height--;
 		return true;
 	}
 
 	@Override
-	public Collection<VNode> getChilds(VNode parent) {
+	public Collection<VisualNode> getChilds(VisualNode parent) {
 		return map.get(parent);
 	}
 
 	@Override
-	public VNode getParent(VNode child) {
-		for (VNode node : map.keySet()) {
+	public VisualNode getParent(VisualNode child) {
+		for (VisualNode node : map.keySet()) {
 			if (map.get(node).contains(child)) {
 				return node;
 			}
@@ -43,18 +43,18 @@ public class VTree implements ITree {
 	}
 
 	@Override
-	public boolean swap(VNode child, VNode parent) {
+	public boolean swap(VisualNode child, VisualNode parent) {
 		return false;
 	}
 
 	@Override
-	public boolean contains(VNode node) {
+	public boolean contains(VisualNode node) {
 		return map.containsKey(node);
 	}
 
 	@Override
-	public boolean contains(Collection<VNode> nodes) {
-		for (VNode node : nodes) {
+	public boolean contains(Collection<VisualNode> nodes) {
+		for (VisualNode node : nodes) {
 			if (!contains(node))
 				return false;
 		}
@@ -68,7 +68,7 @@ public class VTree implements ITree {
 
 	@Override
 	public boolean removeAll() {
-		map = new HashMap<VNode, LinkedList>();
+		map = new HashMap<VisualNode, LinkedList>();
 		return true;
 	}
 
@@ -80,32 +80,32 @@ import java.util .*
 
 	public class VTree implements ITree {
 
-		private Map<VNode, LinkedList> map;
+		private Map<VisualNode, LinkedList> map;
 
 		private int height;
 
 		@Override
-		public boolean addChild(VNode child, VNode parent) {
+		public boolean addChild(VisualNode child, VisualNode parent) {
 			map.get(parent).add(child);
 			height++;
 			return true;
 		}
 
 		@Override
-		public boolean removeLeave(VNode node) {
+		public boolean removeLeave(VisualNode node) {
 			map.remove(node);
 			height--;
 			return true;
 		}
 
 		@Override
-		public Collection<VNode> getChilds(VNode parent) {
+		public Collection<VisualNode> getChilds(VisualNode parent) {
 			return map.get(parent);
 		}
 
 		@Override
-		public VNode getParent(VNode child) {
-			for (VNode node : map.keySet()) {
+		public VisualNode getParent(VisualNode child) {
+			for (VisualNode node : map.keySet()) {
 				if (map.get(node).contains(child)) {
 					return node;
 				}
@@ -118,18 +118,18 @@ import java.util .*
 		}
 
 		@Override
-		public boolean swap(VNode child, VNode parent) {
+		public boolean swap(VisualNode child, VisualNode parent) {
 			return false;
 		}
 
 		@Override
-		public boolean contains(VNode node) {
+		public boolean contains(VisualNode node) {
 			return map.containsKey(node);
 		}
 
 		@Override
-		public boolean contains(Collection<VNode> nodes) {
-			for (VNode node : nodes) {
+		public boolean contains(Collection<VisualNode> nodes) {
+			for (VisualNode node : nodes) {
 				if (!contains(node))
 					return false;
 			}
@@ -143,7 +143,7 @@ import java.util .*
 
 		@Override
 		public boolean removeAll() {
-			map = new HashMap<VNode, LinkedList>();
+			map = new HashMap<VisualNode, LinkedList>();
 			return true;
 		}
 
