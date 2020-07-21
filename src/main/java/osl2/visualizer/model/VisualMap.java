@@ -1,12 +1,14 @@
 package osl2.visualizer.model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 public class VisualMap<K, V> extends VisualDatastructure implements Map<K, V> {
-
+	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	private final Map<K, V> wrapped = new HashMap<>();
 
 	@Override
@@ -72,5 +74,10 @@ public class VisualMap<K, V> extends VisualDatastructure implements Map<K, V> {
 	@Override
 	public Set<Entry<K, V>> entrySet() {
 		return wrapped.entrySet();
+	}
+
+	@Override
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
 	}
 }
