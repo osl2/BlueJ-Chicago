@@ -10,7 +10,7 @@ public class VisualMap<K, V> extends VisualDatastructure implements Map<K, V> {
 	private final Map<K, V> wrapped = new HashMap<>();
 
 	@Override
-	Datastructure getDatastructureType() {
+	public Datastructure getDatastructureType() {
 		return Datastructure.DS_MAP;
 	}
 
