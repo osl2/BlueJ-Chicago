@@ -9,7 +9,7 @@ public abstract class VisualDatastructure implements IModel {
 	protected VisualDatastructure() {
 	}
 
-	abstract Datastructure getDatastructureType();
+	public abstract Datastructure getDatastructureType();
 
 	@Override
 	public void addPropertyChangeListener(PropertyChangeListener listener) {

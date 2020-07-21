@@ -23,7 +23,7 @@ public class MirrorView extends Pane {
 
 		mirrorHead = new MirrorHead(name);
 		mirrorHead.linkControllerToBtns(mirrorController);
-		mirrorDetailed = new MirrorDetailed();
+		mirrorDetailed = new MirrorDetailed(visualDatastructure);
 
 		setUpMirrorView(mirrorController, visualDatastructure);
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);

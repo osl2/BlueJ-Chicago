@@ -1,5 +1,7 @@
 package osl2.Chicago;
 
+import java.util.Collection;
+
 /**
  * The interface for a tree object.
  *
