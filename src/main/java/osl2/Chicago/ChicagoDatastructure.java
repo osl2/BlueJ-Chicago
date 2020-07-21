@@ -11,14 +11,14 @@ public interface ChicagoDatastructure {
 	/**
 	 * Setting the CommandManager for an ChicagoDatastrucutre.
 	 *
-	 * @param commandManager the Commandmanger for the Datastructure
+	 * @param commandManager - the CommandManager for the Datastructure
 	 */
 	void setCommandManager(ICommandManager commandManager);
 
 	/**
 	 * Return the {@link VisualDatastructure}.
 	 *
-	 * @return - the VisualDatastructure
+	 * @return the VisualDatastructure
 	 */
 	VisualDatastructure getVisualDatastructure();
 }
