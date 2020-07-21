@@ -1,23 +1,32 @@
 package osl2.Chicago;
 
+import osl2.visualizer.gui.controller.DatastructureManager;
 import osl2.visualizer.model.VisualArray;
+import osl2.visualizer.model.VisualDatastructure;
 import osl2.visualizer.model.command.CommandManager;
 import osl2.visualizer.model.command.ICommandManager;
+import osl2.visualizer.model.command.arrayCommand.ClearArrayCommand;
 import osl2.visualizer.model.command.arrayCommand.GetArrayAtIndexCommand;
 import osl2.visualizer.model.command.arrayCommand.SetArrayCommand;
 
 import java.util.Collection;
 
-public class VArray<T> implements IArray<T>, IDatastructure {
+/**
+ * Implementation of the {@link IArray} interface.
+ * Functions as a facade for {@link VisualArray}.
+ *
+ * @param <T> - the datatype which is used by the array
+ */
+public class VArray<T> implements IArray<T>, ChicagoDatastructure {
 
 	private final VisualArray<T> wrapperArray;
 	private final VisualArray<T> commandArray;
-	private final ICommandManager commandManager;
+	private ICommandManager commandManager;
 
 	public VArray(int size) {
 		wrapperArray = new VisualArray<T>(size);
 		commandArray = new VisualArray<T>(size);
-		commandManager = new CommandManager();
+		DatastructureManager.registerDatastructure(this);
 	}
 
 	@Override
@@ -47,17 +56,24 @@ public class VArray<T> implements IArray<T>, IDatastructure {
 		return wrapperArray.size();
 	}
 
-	// TODO Fix
 	@Override
 	public boolean removeAll() {
-//		return wrapperArray.removeAll();
-		return true;
+		commandManager.addCommand(new ClearArrayCommand(commandArray));
+		return wrapperArray.removeAll();
 	}
 
-	// TODO Fix
 	@Override
 	public boolean isEmpty() {
-//		return wrapperArray.isEmpty();
-		return true;
+		return wrapperArray.isEmpty();
+	}
+
+	@Override
+	public void setCommandManager(ICommandManager commandManager) {
+		this.commandManager = commandManager;
+	}
+
+	@Override
+	public VisualDatastructure getVisualDatastructure() {
+		return commandArray;
 	}
 }
