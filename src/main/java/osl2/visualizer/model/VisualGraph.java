@@ -1,3 +1,5 @@
+package osl2.visualizer.model;
+
 import osl2.Chicago.IDatastructure;
 import osl2.Chicago.IGraph;
 import osl2.Chicago.VNode;
