@@ -2,7 +2,7 @@ package osl2.visualizer.gui.gui_datastructure;
 
 import osl2.visualizer.model.VisualDatastructure;
 
-public class GuiDoublyLinkedList {
+public class GuiDoublyLinkedList implements GuiDatastructure{
 
 
     public GuiDoublyLinkedList(VisualDatastructure visualDatastructure){

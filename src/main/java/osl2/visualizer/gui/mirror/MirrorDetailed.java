@@ -2,7 +2,9 @@ package osl2.visualizer.gui.mirror;
 
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import org.example.*;
+//import org.example.*;
+import osl2.visualizer.gui.gui_datastructure.*;
+import osl2.visualizer.model.VisualDatastructure;
 
 public class MirrorDetailed extends Pane {
 
@@ -32,10 +34,8 @@ public class MirrorDetailed extends Pane {
 	  This Methods purpose is to identify the Type of VisualDatastructure we have and select the right GuiDatastructure
 	   */
 	private GuiDatastructure selectGuiDatastructure(VisualDatastructure visualDatastructure) {
-//		if (visualDatastructure.getType() == null) {
-//			System.out.println("Waaaaa!");
-//		}
-		switch (visualDatastructure.getType()) {
+
+		switch (visualDatastructure.getDatastructureType()) {
 			case DS_ARRAY:
 				return new GuiArray(visualDatastructure);
 			case DS_DIRECTED_GRAPH:
