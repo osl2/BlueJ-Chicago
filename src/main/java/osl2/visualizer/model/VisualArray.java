@@ -13,7 +13,7 @@ public class VisualArray<T> extends VisualDatastructure implements IArray<T> {
 	}
 
 	@Override
-	Datastructure getDatastructureType() {
+	public Datastructure getDatastructureType() {
 		return Datastructure.DS_ARRAY;
 	}
 
