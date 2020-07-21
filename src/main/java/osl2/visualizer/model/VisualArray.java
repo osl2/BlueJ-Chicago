@@ -2,10 +2,13 @@ package osl2.visualizer.model;
 
 import osl2.Chicago.IArray;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Collection;
 
 
 public class VisualArray<T> extends VisualDatastructure implements IArray<T> {
+	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	private final T[] elements;
 
 	public VisualArray(int size) {
@@ -23,6 +26,8 @@ public class VisualArray<T> extends VisualDatastructure implements IArray<T> {
 			return false;
 		} else {
 			elements[index] = value;
+			// TODO Maybe use firePropertyChange(PropertyChangeEvent event)
+			pcs.firePropertyChange("update", null, null);
 			return true;
 		}
 	}
@@ -69,5 +74,10 @@ public class VisualArray<T> extends VisualDatastructure implements IArray<T> {
 	public boolean isEmpty() {
 		//TODO implement
 		return true;
+	}
+
+	@Override
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
 	}
 }
