@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class VisualTree implements ITree, IDatastructure {
 
-	private Map<VNode, LinkedList> map;
+	private Map<VisualNode, LinkedList> map;
 
 	private int height;
 
@@ -36,9 +36,9 @@ public class VisualTree implements ITree, IDatastructure {
 
 	@Override
 	public VNode getParent(VNode child) {
-		for (VNode node : map.keySet()) {
+		for (VisualNode node : map.keySet()) {
 			if (map.get(node).contains(child)) {
-				return node;
+				return new VNode(node.getValue());
 			}
 		}
 		return null; // TODO Evaluate usage of an exception here.
@@ -80,7 +80,7 @@ public class VisualTree implements ITree, IDatastructure {
 
 	@Override
 	public boolean removeAll() {
-		map = new HashMap<VNode, LinkedList>();
+		map = new HashMap<VisualNode, LinkedList>();
 		return true;
 	}
 

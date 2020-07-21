@@ -1,3 +1,5 @@
+package osl2.visualizer.model;
+
 public class VisualNode<T> {
 	private final T value;
 
