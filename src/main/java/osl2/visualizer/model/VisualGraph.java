@@ -1,3 +1,5 @@
+package osl2.visualizer.model;
+
 import osl2.Chicago.IDatastructure;
 import osl2.Chicago.IGraph;
 import osl2.Chicago.VNode;
@@ -93,8 +95,8 @@ public class VisualGraph<T> implements IGraph, IDatastructure {
 
 	@Override
 	public boolean containsNodes(Collection nodes) {
-			for (VNode node : nodes) {
-				if (!containsNode(node))
+			for (Object node : nodes) {
+				if (!containsNode((VNode) node))
 					return false;
 			}
 			return true;
