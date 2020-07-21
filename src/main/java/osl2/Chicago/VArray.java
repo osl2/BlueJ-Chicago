@@ -1,6 +1,8 @@
 package osl2.Chicago;
 
+import osl2.visualizer.gui.controller.DatastructureManager;
 import osl2.visualizer.model.VisualArray;
+import osl2.visualizer.model.VisualDatastructure;
 import osl2.visualizer.model.command.CommandManager;
 import osl2.visualizer.model.command.ICommandManager;
 import osl2.visualizer.model.command.arrayCommand.ClearArrayCommand;
@@ -15,16 +17,16 @@ import java.util.Collection;
  *
  * @param <T> - the datatype which is used by the array
  */
-public class VArray<T> implements IArray<T> {
+public class VArray<T> implements IArray<T>, ChicagoDatastructure {
 
 	private final VisualArray<T> wrapperArray;
 	private final VisualArray<T> commandArray;
-	private final ICommandManager commandManager;
+	private ICommandManager commandManager;
 
 	public VArray(int size) {
 		wrapperArray = new VisualArray<T>(size);
 		commandArray = new VisualArray<T>(size);
-		commandManager = new CommandManager();
+		DatastructureManager.registerDatastructure(this);
 	}
 
 	@Override
@@ -63,5 +65,15 @@ public class VArray<T> implements IArray<T> {
 	@Override
 	public boolean isEmpty() {
 		return wrapperArray.isEmpty();
+	}
+
+	@Override
+	public void setCommandManager(ICommandManager commandManager) {
+		this.commandManager = commandManager;
+	}
+
+	@Override
+	public VisualDatastructure getVisualDatastructure() {
+		return commandArray;
 	}
 }
