@@ -63,6 +63,20 @@ public class VisualArray<T> extends VisualDatastructure implements IArray<T> {
 	}
 
 	@Override
+	public boolean removeAll() {
+		for(int i = 0; i < elements.length; i++){
+			elements[i] = null;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		//TODO implement
+		return true;
+	}
+
+	@Override
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		pcs.addPropertyChangeListener(listener);
 	}

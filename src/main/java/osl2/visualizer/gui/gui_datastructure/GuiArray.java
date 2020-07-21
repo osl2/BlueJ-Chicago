@@ -14,8 +14,7 @@ public class GuiArray<T> extends HBox implements GuiDatastructure {
     }
 
     public GuiArray(VisualDatastructure visualDatastructure){
-        //TODO
-        this.array = null;
+        this.array = (VisualArray<T>) visualDatastructure;
     }
 
     public void update() {
