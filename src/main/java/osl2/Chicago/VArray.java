@@ -16,11 +16,10 @@ import java.util.Collection;
  *
  * @param <T> - the datatype which is used by the array
  */
-public class VArray<T> implements IArray<T>, ChicagoDatastructure {
+public class VArray<T> extends ChicagoDatastructure implements IArray<T> {
 
 	private final VisualArray<T> wrapperArray;
 	private final VisualArray<T> commandArray;
-	private ICommandManager commandManager;
 
 	public VArray(int size) {
 		wrapperArray = new VisualArray<T>(size);
@@ -30,13 +29,13 @@ public class VArray<T> implements IArray<T>, ChicagoDatastructure {
 
 	@Override
 	public boolean setValue(int index, T value) {
-		commandManager.addCommand(new SetArrayCommand<T>(commandArray, index, value));
+		getCommandManager().addCommand(new SetArrayCommand<T>(commandArray, index, value));
 		return wrapperArray.setValue(index, value);
 	}
 
 	@Override
 	public T getValue(int index) {
-		commandManager.addCommand(new GetArrayAtIndexCommand(commandArray, index));
+		getCommandManager().addCommand(new GetArrayAtIndexCommand(commandArray, index));
 		return wrapperArray.getValue(index);
 	}
 
@@ -57,18 +56,13 @@ public class VArray<T> implements IArray<T>, ChicagoDatastructure {
 
 	@Override
 	public boolean removeAll() {
-		commandManager.addCommand(new ClearArrayCommand(commandArray));
+		getCommandManager().addCommand(new ClearArrayCommand(commandArray));
 		return wrapperArray.removeAll();
 	}
 
 	@Override
 	public boolean isEmpty() {
 		return wrapperArray.isEmpty();
-	}
-
-	@Override
-	public void setCommandManager(ICommandManager commandManager) {
-		this.commandManager = commandManager;
 	}
 
 	@Override

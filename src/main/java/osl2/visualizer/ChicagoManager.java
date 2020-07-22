@@ -1,6 +1,5 @@
 package osl2.visualizer;
 
-import javafx.application.Application;
 import osl2.Chicago.ChicagoDatastructure;
 import osl2.visualizer.gui.MainView;
 import osl2.visualizer.gui.controller.IMainController;
@@ -10,10 +9,6 @@ import osl2.visualizer.gui.controller.IMainController;
  */
 public class ChicagoManager {
 	private static IMainController mainController;
-
-	static {
-		main(null);
-	}
 
 	public static void main(String[] args) {
 		MainView.open();
@@ -34,6 +29,7 @@ public class ChicagoManager {
 	 * @param chicagoDatastructure - the ChicagoDatastructure to be registered
 	 */
 	public static void registerDatastructure(ChicagoDatastructure chicagoDatastructure) {
+		MainView.open();
 		mainController.registerDatastructure(chicagoDatastructure);
 	}
 }

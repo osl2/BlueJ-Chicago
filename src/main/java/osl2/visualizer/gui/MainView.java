@@ -25,8 +25,12 @@ public class MainView extends Application {
 	PlaySpace playSpace;
 	StackPane layout;
 
+	private static boolean wasOpened = false;
 	public static void open() {
-		launch();
+		if (!wasOpened) {
+			wasOpened = true;
+			Application.launch(new String[]{});
+		}
 	}
 
 	public MainView() {
