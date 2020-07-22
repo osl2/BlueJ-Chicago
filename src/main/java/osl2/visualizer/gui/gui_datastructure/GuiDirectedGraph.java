@@ -17,6 +17,11 @@ public class GuiDirectedGraph implements GuiDatastructure {
     }
 
     @Override
+    public boolean visualize() {
+        return false;
+    }
+
+    @Override
     public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
         // TODO
     }

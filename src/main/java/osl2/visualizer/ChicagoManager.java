@@ -1,6 +1,7 @@
 package osl2.visualizer;
 
 import osl2.Chicago.ChicagoDatastructure;
+import osl2.Chicago.VArray;
 import osl2.visualizer.gui.MainView;
 import osl2.visualizer.gui.controller.IMainController;
 
@@ -14,6 +15,7 @@ public class ChicagoManager {
 
 	public static void main(String[] args) {
 		MainView.open();
+		VArray<Integer> array= new VArray<Integer>(5);
 	}
 
 

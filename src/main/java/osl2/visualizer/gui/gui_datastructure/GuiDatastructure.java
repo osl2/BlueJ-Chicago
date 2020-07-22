@@ -6,4 +6,6 @@ import java.beans.PropertyChangeListener;
 
 public interface GuiDatastructure extends PropertyChangeListener {
     Node asNode();
+
+    public boolean visualize();
 }
