@@ -4,7 +4,9 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 //import org.example.*;
 import osl2.visualizer.gui.gui_datastructure.*;
+import osl2.visualizer.model.VisualArray;
 import osl2.visualizer.model.VisualDatastructure;
+import osl2.visualizer.model.VisualList;
 
 public class MirrorDetailed extends Pane {
 
@@ -19,6 +21,7 @@ public class MirrorDetailed extends Pane {
 		guiDatastructure = selectGuiDatastructure(visualDatastructure);
 
 		setBorderDetailed();
+		getChildren().add(guiDatastructure.asNode());
 	}
 
 	/**

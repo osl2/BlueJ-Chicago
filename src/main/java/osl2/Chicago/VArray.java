@@ -1,9 +1,7 @@
 package osl2.Chicago;
 
-import osl2.visualizer.ChicagoManager;
 import osl2.visualizer.model.VisualArray;
 import osl2.visualizer.model.VisualDatastructure;
-import osl2.visualizer.model.command.ICommandManager;
 import osl2.visualizer.model.command.arrayCommand.ClearArrayCommand;
 import osl2.visualizer.model.command.arrayCommand.GetArrayAtIndexCommand;
 import osl2.visualizer.model.command.arrayCommand.SetArrayCommand;

@@ -4,15 +4,12 @@ import osl2.Chicago.ChicagoDatastructure;
 import osl2.visualizer.gui.MainView;
 import osl2.visualizer.gui.controller.IMainController;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  * Registers chicago datastructures created by the user.
  */
 public class ChicagoManager {
 	private static IMainController mainController;
-	private static Queue<Runnable> pendingRegistrations = new LinkedList<>();
+	private static final Object MC_WAIT = new Object();
 
 
 	public static void main(String[] args) {
@@ -26,11 +23,9 @@ public class ChicagoManager {
 	 * @param regMainController - the IMainController to be registered
 	 */
 	public static void registerController(IMainController regMainController) {
-		synchronized (pendingRegistrations) {
+		synchronized (MC_WAIT) {
 			mainController = regMainController;
-			while (!pendingRegistrations.isEmpty()) {
-				pendingRegistrations.poll().run();
-			}
+			MC_WAIT.notifyAll();
 		}
 	}
 
@@ -41,12 +36,15 @@ public class ChicagoManager {
 	 */
 	public static void registerDatastructure(ChicagoDatastructure chicagoDatastructure) {
 		MainView.open();
-		synchronized (pendingRegistrations) {
+		synchronized (MC_WAIT) {
 			if (mainController == null) {
-				pendingRegistrations.add(() -> { mainController.registerDatastructure(chicagoDatastructure); });
-			} else {
-				mainController.registerDatastructure(chicagoDatastructure);
+				try {
+					MC_WAIT.wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
+		mainController.registerDatastructure(chicagoDatastructure);
 	}
 }
