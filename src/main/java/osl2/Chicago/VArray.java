@@ -1,9 +1,8 @@
 package osl2.Chicago;
 
-import osl2.visualizer.gui.controller.DatastructureManager;
+import osl2.visualizer.ChicagoManager;
 import osl2.visualizer.model.VisualArray;
 import osl2.visualizer.model.VisualDatastructure;
-import osl2.visualizer.model.command.CommandManager;
 import osl2.visualizer.model.command.ICommandManager;
 import osl2.visualizer.model.command.arrayCommand.ClearArrayCommand;
 import osl2.visualizer.model.command.arrayCommand.GetArrayAtIndexCommand;
@@ -26,7 +25,7 @@ public class VArray<T> implements IArray<T>, ChicagoDatastructure {
 	public VArray(int size) {
 		wrapperArray = new VisualArray<T>(size);
 		commandArray = new VisualArray<T>(size);
-		DatastructureManager.registerDatastructure(this);
+		ChicagoManager.registerDatastructure(this);
 	}
 
 	@Override

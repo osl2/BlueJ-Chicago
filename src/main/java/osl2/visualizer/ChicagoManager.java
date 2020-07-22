@@ -1,12 +1,23 @@
-package osl2.visualizer.gui.controller;
+package osl2.visualizer;
 
+import javafx.application.Application;
 import osl2.Chicago.ChicagoDatastructure;
+import osl2.visualizer.gui.MainView;
+import osl2.visualizer.gui.controller.IMainController;
 
 /**
  * Registers chicago datastructures created by the user.
  */
-public class DatastructureManager {
+public class ChicagoManager {
 	private static IMainController mainController;
+
+	static {
+		main(null);
+	}
+
+	public static void main(String[] args) {
+		MainView.open();
+	}
 
 	/**
 	 * Register the {@link IMainController}.

@@ -6,9 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import osl2.visualizer.ChicagoManager;
 import osl2.visualizer.gui.controller.IMainController;
+import osl2.visualizer.gui.controller.MainController;
 import osl2.visualizer.gui.mirror.MirrorButton;
 import osl2.visualizer.gui.mirror.MirrorView;
+import osl2.visualizer.model.command.CommandManager;
 
 public class MainView extends Application {
 	private final IMainController mainController;
@@ -22,12 +25,12 @@ public class MainView extends Application {
 	PlaySpace playSpace;
 	StackPane layout;
 
-	public MainView(IMainController mainController) {
-		this.mainController = mainController;
+	public static void open() {
+		launch();
 	}
 
-	public static void main(String[] args) {
-		launch(args);
+	public MainView() {
+		this.mainController = new MainController(this);
 	}
 
 	@Override

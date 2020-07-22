@@ -2,10 +2,12 @@ package osl2.visualizer.gui.controller;
 
 import javafx.stage.Stage;
 import osl2.Chicago.ChicagoDatastructure;
+import osl2.visualizer.ChicagoManager;
 import osl2.visualizer.gui.MainView;
 import osl2.visualizer.gui.mirror.IMirrorController;
 import osl2.visualizer.gui.mirror.MirrorController;
 import osl2.visualizer.model.VisualDatastructure;
+import osl2.visualizer.model.command.CommandManager;
 import osl2.visualizer.model.command.ICommandManager;
 
 /**
@@ -20,21 +22,12 @@ public class MainController implements IMainController {
 	/**
 	 * Create a new MainController.
 	 *
-	 * @param commandManager - the {@link ICommandManager} to be used
+	 * @param view - a reference to the {@link MainView} instance
 	 */
-	public MainController(ICommandManager commandManager) {
-		this.commandManager = commandManager;
-		DatastructureManager.registerController(this);
-		mainView = new MainView(this);
-		startView();
-	}
-
-	private void startView() {
-		try {
-			mainView.start(new Stage());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public MainController(MainView view) {
+		this.mainView = view;
+		this.commandManager = new CommandManager();
+		ChicagoManager.registerController(this);
 	}
 
 	@Override

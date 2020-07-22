@@ -48,7 +48,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>osl2.visualizer.BlueJVisualizer</mainClass>
+                            <mainClass>osl2.visualizer.ChicagoManager</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
