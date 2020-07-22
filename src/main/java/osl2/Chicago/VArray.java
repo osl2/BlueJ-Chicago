@@ -24,7 +24,6 @@ public class VArray<T> extends ChicagoDatastructure implements IArray<T> {
 	public VArray(int size) {
 		wrapperArray = new VisualArray<T>(size);
 		commandArray = new VisualArray<T>(size);
-		ChicagoManager.registerDatastructure(this);
 	}
 
 	@Override
