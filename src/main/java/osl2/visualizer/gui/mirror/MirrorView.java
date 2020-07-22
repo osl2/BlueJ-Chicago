@@ -3,7 +3,8 @@ package osl2.visualizer.gui.mirror;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import osl2.visualizer.model.VisualDatastructure;
-
+//TODO add drag and drop functionality
+//TODO add rezisability functionality
 public class MirrorView extends Pane {
 
 	private final double DEFAULT_WIDTH = 200;
@@ -14,7 +15,11 @@ public class MirrorView extends Pane {
 	private MirrorDetailed mirrorDetailed;
 	private VBox vBox;
 
-
+	/**
+	 * Constructor of the MirrorView, creates all the necessary fields and sets up the visual of the mirrorView
+	 * @param mirrorController
+	 * @param visualDatastructure
+	 */
 	public MirrorView(IMirrorController mirrorController, VisualDatastructure visualDatastructure) {
 		this.visualDatastructure = visualDatastructure;
 		this.mirrorController = mirrorController;
@@ -25,28 +30,46 @@ public class MirrorView extends Pane {
 		mirrorHead.linkControllerToBtns(mirrorController);
 		mirrorDetailed = new MirrorDetailed(visualDatastructure);
 
-		setUpMirrorView(mirrorController, visualDatastructure);
+		setUpMirrorView(mirrorController);
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		setColor();
 	}
 
+	/**
+	 * reveals the MirrorView
+	 */
 	public void show() {
 		this.setVisible(true);
 	}
 
+	/**
+	 * hides the MirrorView
+	 */
 	public void hide() {
 		this.setVisible(false);
 	}
 
+	/**
+	 * simple getter for the mirrorhead
+	 * @return the mirrorHead
+	 */
 	public MirrorHead getMirrorHead() {
 		return this.mirrorHead;
 	}
 
+	/**
+	 * simple getter for the mirrorDetailed
+	 * @return the mirrorDetailed
+	 */
 	public MirrorDetailed getMirrorDetailed() {
 		return this.mirrorDetailed;
 	}
 
-	private void setUpMirrorView(IMirrorController mirrorController, VisualDatastructure visualDatastructure) {
+	/**
+	 * sets up the VBox, links the buttons and adds all buttons to the VBox
+	 * @param mirrorController, all Buttons get linked to that
+	 */
+	private void setUpMirrorView(IMirrorController mirrorController) {
 		mirrorHead.linkControllerToBtns(mirrorController);
 		vBox = new VBox();
 		vBox.getChildren().add(mirrorHead);
@@ -54,6 +77,11 @@ public class MirrorView extends Pane {
 		this.getChildren().add(vBox);
 	}
 
+	/**
+	 * sets the size of the MirrorView
+	 * @param width
+	 * @param height
+	 */
 	private void setSize(double width, double height) {
 		vBox.setPrefSize(width, height);
 		this.setPrefSize(width, height);
@@ -64,6 +92,9 @@ public class MirrorView extends Pane {
 		this.mirrorDetailed.setPrefSize(width, height * 0.9);
 	}
 
+	/**
+	 * sets the Style
+	 */
 	private void setColor() {
 		this.getStyleClass().add("mirror-view");
 	}

@@ -10,8 +10,9 @@ public class MirrorDetailed extends Pane {
 
 	private GuiDatastructure guiDatastructure;
 
-	/*
-	The Constructor of the MirrorDetailed,
+	/**
+	 * the Constructor of the mirrorDetailed, it sets the guiDatastructure and gives the MirrorDetailed a Border
+	 * @param visualDatastructure, is used to create the needed guiDatastructure
 	 */
 	public MirrorDetailed(VisualDatastructure visualDatastructure) {
 
@@ -20,8 +21,8 @@ public class MirrorDetailed extends Pane {
 		setBorderDetailed();
 	}
 
-	/*
-	Gives the MirrorDetailed Border to make it more visual appealing
+	/**
+	 * creates a neat border for the mirrorDetailed
 	 */
 	private void setBorderDetailed() {
 		this.setBorder(new Border(new BorderStroke(Color.BLACK,
@@ -29,10 +30,12 @@ public class MirrorDetailed extends Pane {
 
 	}
 
-	/*
-	  This is a "fancy" version of InstanceOf.
-	  This Methods purpose is to identify the Type of VisualDatastructure we have and select the right GuiDatastructure
-	   */
+	/**
+	 * This is a "fancy" version of InstanceOf.
+	 * 	  This Methods purpose is to identify the Type of VisualDatastructure we have and select the right GuiDatastructure
+	 * @param visualDatastructure, the type of this visualDatastructure is known through the getDatastructureType() method
+	 * @return depending on the type of the visualDatastructure a proper GuiDatastructure will be returned
+	 */
 	private GuiDatastructure selectGuiDatastructure(VisualDatastructure visualDatastructure) {
 
 		switch (visualDatastructure.getDatastructureType()) {

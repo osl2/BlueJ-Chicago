@@ -7,28 +7,44 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+/**
+ * The MirrorHead, this class is the topline of the MirrorView. It keeps several buttons to minimize/maximize or close the mirror.
+ * And keeps the name of the Datastructure that will be visualized through the Mirror containing this MirrorHead
+ */
 public class MirrorHead extends Pane {
 	private final Label title;
 	private HBox layout;
 	private Button hideButton;
 	private Button minMaxButton;
 	private HBox rightButtons;
+	private final int minHeight = 30;
 
+	/**
+	 * creates all the necessary buttons and sets the minHeight of this pane
+	 * @param name, will be set as the title of the mirrorhead
+	 */
 	public MirrorHead(String name) {
 		this.title = new Label(name);
 		createLayout();
 		this.getChildren().add(layout);
-		this.setMinHeight(30);
+		this.setMinHeight(minHeight);
 
 		setColor();
 		setBorderHead();
 	}
 
+	/**
+	 * links all buttons contained in this pane to the mirrorController, that on every action on a button a responsible method
+	 * @param mirrorController
+	 */
 	public void linkControllerToBtns(IMirrorController mirrorController) {
 		hideButton.setOnAction(e -> mirrorController.hideMirror());
 		minMaxButton.setOnAction(e -> mirrorController.minOrMaxMirror());
 	}
 
+	/**
+	 *sets the layout for the Panel
+	 */
 	private void createLayout() {
 		createRightBox();
 
@@ -37,6 +53,9 @@ public class MirrorHead extends Pane {
 		layout.setPadding(new Insets(2));
 	}
 
+	/**
+	 * creates the HBox on the right side, which contains all buttons
+	 */
 	private void createRightBox() {
 		createButtons();
 		rightButtons = new HBox(hideButton, minMaxButton);
@@ -45,11 +64,17 @@ public class MirrorHead extends Pane {
 		HBox.setHgrow(rightButtons, Priority.ALWAYS);
 	}
 
+	/**
+	 * creates the buttons of the mirrorhead
+	 */
 	private void createButtons() {
 		hideButton = new Button("x");
 		minMaxButton = new Button("^");
 	}
 
+	/**
+	 * sets the style of the head
+	 */
 	private void setColor() {
 		this.getStyleClass().add("mirror-head");
 	}
