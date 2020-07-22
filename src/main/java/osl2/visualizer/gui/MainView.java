@@ -6,15 +6,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import osl2.visualizer.ChicagoManager;
 import osl2.visualizer.gui.controller.IMainController;
 import osl2.visualizer.gui.controller.MainController;
 import osl2.visualizer.gui.mirror.MirrorButton;
 import osl2.visualizer.gui.mirror.MirrorView;
-import osl2.visualizer.model.command.CommandManager;
 
 public class MainView extends Application {
-	private final IMainController mainController;
+	private IMainController mainController;	// Technically final, but initialized later
 	private final int vertical = 500;
 	private final int horizontal = 800;
 	Scene scene;
@@ -25,17 +23,20 @@ public class MainView extends Application {
 	PlaySpace playSpace;
 	StackPane layout;
 
-	private static boolean wasOpened = false;
+	private static Thread APP_THREAD = null;
 	public static void open() {
-		if (!wasOpened) {
-			wasOpened = true;
-			Application.launch(new String[]{});
+		if (APP_THREAD == null) {
+			APP_THREAD = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					Application.launch(MainView.class);
+				}
+			});
+			APP_THREAD.start();
 		}
 	}
 
-	public MainView() {
-		this.mainController = new MainController(this);
-	}
+	public MainView() {}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -48,6 +49,8 @@ public class MainView extends Application {
 		scene.getStylesheets().add("style.css");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+
+		this.mainController = new MainController(this);
 	}
 
 	public void addMirrorButton(MirrorButton mirrorButton) {

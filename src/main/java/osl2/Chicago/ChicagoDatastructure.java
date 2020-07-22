@@ -1,7 +1,6 @@
 package osl2.Chicago;
 
 import osl2.visualizer.ChicagoManager;
-import osl2.visualizer.gui.MainView;
 import osl2.visualizer.model.VisualDatastructure;
 import osl2.visualizer.model.command.ICommandManager;
 
