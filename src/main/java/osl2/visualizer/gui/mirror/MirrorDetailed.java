@@ -40,7 +40,8 @@ public class MirrorDetailed extends Pane {
 	 * @return depending on the type of the visualDatastructure a proper GuiDatastructure will be returned
 	 */
 	private GuiDatastructure selectGuiDatastructure(VisualDatastructure visualDatastructure) {
-
+		return new GuiArray(visualDatastructure);
+		/*
 		switch (visualDatastructure.getDatastructureType()) {
 			case DS_ARRAY:
 				return new GuiArray(visualDatastructure);
@@ -59,5 +60,6 @@ public class MirrorDetailed extends Pane {
 			default:
 				return null;
 		}
+		 */
 	}
 }

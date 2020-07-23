@@ -14,20 +14,25 @@ import osl2.visualizer.model.command.ICommandManager;
  * Implementation of the {@link IMainController} of MVC.
  */
 public class MainController implements IMainController {
-	private final MainView mainView;
+	private MainView mainView;
 	private final ICommandManager commandManager;
 
 	private boolean isPlaying = false;
 
-	/**
-	 * Create a new MainController.
-	 *
-	 * @param view - a reference to the {@link MainView} instance
-	 */
-	public MainController(MainView view) {
-		this.mainView = view;
-		this.commandManager = new CommandManager();
+	public MainController() {
+		commandManager = new CommandManager();
 		ChicagoManager.registerController(this);
+		startView();
+	}
+
+	private void startView() {
+		new Thread() {
+			@Override
+			public void run() {
+				javafx.application.Application.launch(MainView.class);
+			}
+		}.start();
+		mainView = MainView.waitForStartUpTest();
 	}
 
 	@Override

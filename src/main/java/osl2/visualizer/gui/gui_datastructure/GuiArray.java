@@ -10,9 +10,10 @@ import osl2.visualizer.model.VisualDatastructure;
 
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 public class GuiArray<T> extends ScrollPane implements GuiDatastructure {
-    private final VisualArray<T> array;
+    private VisualArray<T> array;
     private HBox rowOne;
     private HBox rowTwo;
     private VBox vBox;
@@ -22,9 +23,10 @@ public class GuiArray<T> extends ScrollPane implements GuiDatastructure {
     }
 
     public GuiArray(VisualDatastructure visualDatastructure){
-        this.array = (VisualArray<T>) visualDatastructure;
-        setUpBoxes();
-        visualize();
+        this.array = new VisualArray<>(5);
+
+        //setUpBoxes();
+        //visualize();
     }
 
     private void setUpBoxes(){
@@ -76,6 +78,8 @@ public class GuiArray<T> extends ScrollPane implements GuiDatastructure {
 
     @Override
     public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
-        visualize();
+        this.array = (VisualArray<T>) propertyChangeEvent.getNewValue();
+        update();
+        //visualize();
     }
 }

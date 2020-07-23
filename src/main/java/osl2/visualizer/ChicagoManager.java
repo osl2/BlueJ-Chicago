@@ -4,6 +4,7 @@ import osl2.Chicago.ChicagoDatastructure;
 import osl2.Chicago.VArray;
 import osl2.visualizer.gui.MainView;
 import osl2.visualizer.gui.controller.IMainController;
+import osl2.visualizer.gui.controller.MainController;
 
 /**
  * Registers chicago datastructures created by the user.
@@ -14,7 +15,8 @@ public class ChicagoManager {
 
 
 	public static void main(String[] args) {
-		MainView.open();
+		//MainView.open();
+		IMainController mainController = new MainController();
 		VArray<Integer> array= new VArray<Integer>(5);
 	}
 
@@ -37,7 +39,7 @@ public class ChicagoManager {
 	 * @param chicagoDatastructure - the ChicagoDatastructure to be registered
 	 */
 	public static void registerDatastructure(ChicagoDatastructure chicagoDatastructure) {
-		MainView.open();
+
 		synchronized (MC_WAIT) {
 			if (mainController == null) {
 				try {

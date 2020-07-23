@@ -27,7 +27,7 @@ public class VisualArray<T> extends VisualDatastructure implements IArray<T> {
 		} else {
 			elements[index] = value;
 			// TODO Maybe use firePropertyChange(PropertyChangeEvent event)
-			pcs.firePropertyChange("update", null, null);
+			pcs.firePropertyChange("update", null, this);
 			return true;
 		}
 	}

@@ -11,6 +11,8 @@ import osl2.visualizer.gui.controller.MainController;
 import osl2.visualizer.gui.mirror.MirrorButton;
 import osl2.visualizer.gui.mirror.MirrorView;
 
+import java.util.concurrent.CountDownLatch;
+
 public class MainView extends Application {
 	private IMainController mainController;	// Technically final, but initialized later
 	private final int vertical = 500;
@@ -22,6 +24,31 @@ public class MainView extends Application {
 	SideBar sideBar;
 	PlaySpace playSpace;
 	StackPane layout;
+
+	public static final CountDownLatch latch = new CountDownLatch(1);
+	public static MainView mainView = null;
+
+	public static MainView waitForStartUpTest() {
+		try {
+			latch.await();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return mainView;
+	}
+
+	public static void setMainView(MainView mainViewNew) {
+		mainView = mainViewNew;
+		latch.countDown();
+	}
+
+	public MainView() {
+		setMainView(this);
+	}
+
+	public static void main(String[] args) {
+		Application.launch(args);
+	}
 
 	private static Thread APP_THREAD = null;
 	public static void open() {
@@ -36,8 +63,6 @@ public class MainView extends Application {
 		}
 	}
 
-	public MainView() {}
-
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Visualizer");
@@ -49,8 +74,10 @@ public class MainView extends Application {
 		scene.getStylesheets().add("style.css");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
 
-		this.mainController = new MainController(this);
+	public void setMainController(IMainController mainController) {
+		this.mainController = mainController;
 	}
 
 	public void addMirrorButton(MirrorButton mirrorButton) {
