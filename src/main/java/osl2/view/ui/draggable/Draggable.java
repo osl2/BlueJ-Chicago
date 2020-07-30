@@ -35,8 +35,25 @@ public class Draggable extends Group {
         });
 
         setOnMouseDragged((event) -> {
-            setLayoutX(xOffset + event.getScreenX());
-            setLayoutY(yOffset + event.getScreenY());
+
+
+            if(xOffset + event.getScreenX() < 0){
+                setLayoutX(0);
+            } else if(xOffset + event.getScreenX() > floormat.getWidth()){
+                setLayoutX(floormat.getWidth() - 50);
+            } else {
+                setLayoutX(xOffset + event.getScreenX());
+            }
+
+            if(yOffset + event.getScreenY() < 0){
+                setLayoutY(0);
+
+            } else if(yOffset + event.getScreenY() > floormat.getHeight()){
+                setLayoutY(floormat.getHeight() + event.getScreenY());
+
+            } else {
+                setLayoutY(yOffset + event.getScreenY());
+            }
         });
     }
 }
