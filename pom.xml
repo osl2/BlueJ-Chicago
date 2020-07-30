@@ -31,6 +31,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
+                    <mainClass>osl2.Evanston</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -42,7 +43,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>osl2.evanston.Evanston</mainClass>
+                            <mainClass>osl2.Evanston</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
