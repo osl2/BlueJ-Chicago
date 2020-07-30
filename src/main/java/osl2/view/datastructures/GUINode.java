@@ -1,9 +1,9 @@
-package osl2.evanston.view.datastructures;
+package osl2.view.datastructures;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import osl2.evanston.view.ui.draggable.Draggable;
-import osl2.evanston.view.ui.draggable.Floormat;
+import osl2.view.ui.draggable.Draggable;
+import osl2.view.ui.draggable.Floormat;
 
 public class GUINode extends Draggable {
 

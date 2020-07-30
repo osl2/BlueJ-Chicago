@@ -42,7 +42,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>osl2.visualizer.ChicagoManager</mainClass>
+                            <mainClass>osl2.evanston.Evanston</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -1,4 +1,4 @@
-package osl2.evanston.view.ui.draggable;
+package osl2.view.ui.draggable;
 
 import javafx.scene.Group;
 
@@ -8,6 +8,12 @@ public class Draggable extends Group {
     private int xOffset;
     private int yOffset;
 
+
+    public Draggable(Floormat floormat) {
+        this.floormat = floormat;
+        floormat.addDraggable(this);
+        setBehavior();
+    }
 
     public Floormat getFloormat() {
         return floormat;
@@ -32,11 +38,5 @@ public class Draggable extends Group {
             setLayoutX(xOffset + event.getScreenX());
             setLayoutY(yOffset + event.getScreenY());
         });
-    }
-
-    public Draggable(Floormat floormat) {
-        this.floormat = floormat;
-        floormat.addDraggable(this);
-        setBehavior();
     }
 }

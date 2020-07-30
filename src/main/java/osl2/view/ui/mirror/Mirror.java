@@ -1,9 +1,9 @@
-package osl2.evanston.view.ui.mirror;
+package osl2.view.ui.mirror;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import osl2.evanston.view.ui.draggable.Floormat;
-import osl2.evanston.view.ui.window.MovableWindow;
+import osl2.view.ui.draggable.Floormat;
+import osl2.view.ui.window.MovableWindow;
 
 public class Mirror extends MovableWindow {
 
