@@ -2,7 +2,9 @@ package osl2.view.ui;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUINode;
@@ -17,6 +19,11 @@ public class EvanstonWindow extends Application {
     private static EvanstonWindow singletonInstance = null;
     private static Thread APP_THREAD = null;
     private Floormat mirrors;
+
+    private PlaySpace playSpace;
+    private SideBar sideBar;
+    private SplitPane verticalSplitter;
+    private SplitPane sidePlaySplitter;
 
     public EvanstonWindow() {
         if (singletonInstance == null) {
@@ -63,7 +70,9 @@ public class EvanstonWindow extends Application {
 
         new GUINode(mirrors);
 
-        Scene scene = new Scene(mirrors, WIDTH, HEIGHT);
+        setUpSpaces();
+
+        Scene scene = new Scene(verticalSplitter, WIDTH, HEIGHT);
         stage.setScene(scene);
         stage.show();
 
@@ -76,5 +85,24 @@ public class EvanstonWindow extends Application {
                 WAITER = null;
             }
         }
+    }
+
+    private void setUpSpaces(){
+        sideBar = new SideBar();
+        playSpace = new PlaySpace();
+
+        setUpSidePlaySplitter();
+        setUpVerticalSplitter();
+    }
+
+    private void setUpVerticalSplitter() {
+        verticalSplitter = new SplitPane(sidePlaySplitter, mirrors);
+        verticalSplitter.setOrientation(Orientation.HORIZONTAL);
+    }
+
+    private void setUpSidePlaySplitter() {
+        playSpace = new PlaySpace();
+        sidePlaySplitter = new SplitPane(sideBar, playSpace);
+        sidePlaySplitter.setOrientation(Orientation.VERTICAL);
     }
 }
