@@ -17,7 +17,7 @@ public class VisualGraph<T> implements IGraph, IDatastructure {
 
 	public VisualGraph() {
 		nodeSet = new HashMap<>();
-		// TODO init global variables
+        getBroadcaster().send((b) -> b.setSize(size));
 	}
 
 	@Override
@@ -26,7 +26,8 @@ public class VisualGraph<T> implements IGraph, IDatastructure {
 			throw new InvalidParameterException("The node already exists in the graph.");
 		}
 
-		nodeSet.put((T) node.getValue(), new LinkedList<T>()); // that is not so elegant
+		nodeSet.put((T) node.getValue(), new LinkedList<T>());
+        getBroadcaster().send((b) -> b.addNode(node));
 		size++;
 		return true;
 	}
@@ -40,6 +41,7 @@ public class VisualGraph<T> implements IGraph, IDatastructure {
 			addNode(end);
 
 		nodeSet.get(start).add((T) end.getValue());
+        getBroadcaster().send((b) -> b.addEdge(start, end));
 		return true;
 	}
 
@@ -51,6 +53,7 @@ public class VisualGraph<T> implements IGraph, IDatastructure {
 
 		nodeSet.remove(node);
 		size--;
+        getBroadcaster().send((b) -> b.removeNode(node));
 		return true;
 	}
 
@@ -59,24 +62,23 @@ public class VisualGraph<T> implements IGraph, IDatastructure {
 		if (nodeSet.containsKey(start)) {
 			if (nodeSet.get(start).contains(end)) {
 				nodeSet.get(start).remove(end);
+                getBroadcaster().send((b) -> b.removeEdge(start, end));
 				return true;
 			}
 		}
 		return false;
 	}
 
-	// TODO Fix
-//	@Override
-//	public Collection<VEdge> getEdges(VNode node) {
-//		Collection<VEdge> edges = new ArrayList<VEdge>();
-//
-//		for (T end : nodeSet.get(node.getValue())) {
-//			VEdge edge = new VEdge(node, new VNode(end));
-//			edges.add(edge);
-//		}
-//
-//		return edges;
-//	}
+	public Collection<VEdge> getEdges(VNode node) {
+		Collection<VEdge> edges = new ArrayList<VEdge>();
+
+		for (T end : nodeSet.get(node.getValue())) {
+			VEdge edge = new VEdge(node, new VNode(end));
+			edges.add(edge);
+		}
+
+		return edges;
+	}
 
 	@Override
 	public Collection<VNode> getAdjacents(VNode node) {
@@ -117,7 +119,7 @@ public class VisualGraph<T> implements IGraph, IDatastructure {
 		return size == 0;
 	}
 
-	// TODO add this to the other IGraph interface!
+    @Override
 	public boolean removeAll() {
 		nodeSet = new HashMap<>();
 		return true;
