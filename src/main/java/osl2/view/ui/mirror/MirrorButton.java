@@ -11,8 +11,9 @@ public class MirrorButton extends Button {
     private String name;
 
     /**
-     *The Constructor of the MirrorButton. Here the name and mirrorController field will be set to its values.
-     * @param name, this String will be the text of MirrorButton
+     * The Constructor of the MirrorButton. Here the name and mirrorController field will be set to its values.
+     *
+     * @param name,             this String will be the text of MirrorButton
      * @param mirrorController, The MirrorController will be linked to the actions of this MirrorButton
      */
     public MirrorButton(String name, IMirrorController mirrorController) {

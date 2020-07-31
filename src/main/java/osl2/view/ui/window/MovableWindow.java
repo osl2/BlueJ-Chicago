@@ -26,4 +26,12 @@ public class MovableWindow extends Draggable {
     public void toggle() {
         body.toggle();
     }
+
+    public double getWindowWidth() {
+        return body.getWidth();
+    }
+
+    public double getWindowHeight() {
+        return body.getHeight();
+    }
 }

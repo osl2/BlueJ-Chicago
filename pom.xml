@@ -84,7 +84,9 @@
             <name>Repository in project's lib dir</name>
             <layout>default</layout>
             <url>file:///${project.basedir}/lib</url>
-            <releases><enabled>true</enabled></releases>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
         </repository>
     </repositories>
 </project>

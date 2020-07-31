@@ -11,7 +11,7 @@ public class MirrorController implements IMirrorController {
     private Floormat mainRegion;
     private boolean mirrorOpen;
 
-    public MirrorController(DatastructureVisualization visualization, Floormat mainRegion, SideBar sideBar){
+    public MirrorController(DatastructureVisualization visualization, Floormat mainRegion, SideBar sideBar) {
         this.mirrorOpen = false;
         this.mainRegion = mainRegion;
         this.button = new MirrorButton(visualization.getName(), this);
@@ -32,7 +32,7 @@ public class MirrorController implements IMirrorController {
 
     @Override
     public void mirrorBtnClicked() {
-        if(!mirrorOpen) {
+        if (!mirrorOpen) {
             mirrorOpen = true;
             mainRegion.addDraggable(mirror);
         }

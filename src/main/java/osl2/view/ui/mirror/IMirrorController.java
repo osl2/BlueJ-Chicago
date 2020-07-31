@@ -13,6 +13,7 @@ public interface IMirrorController {
 
     // TODO New method
     // It replaces minimizeMirror() and maximizeMirror().
+
     /**
      * Minimize or maximize  depending on the previous state.
      */

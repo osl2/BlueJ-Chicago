@@ -28,7 +28,7 @@ public class MovableWindowBody extends VBox {
         showContents();
     }
 
-    public MovableWindowHead getHead(){
+    public MovableWindowHead getHead() {
         return this.head;
     }
 

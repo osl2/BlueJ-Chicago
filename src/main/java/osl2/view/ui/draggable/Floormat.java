@@ -1,6 +1,7 @@
 package osl2.view.ui.draggable;
 
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
@@ -20,9 +21,6 @@ public class Floormat extends ScrollPane {
     }
 
     public void raise(Draggable draggable) {
-        if (getChildren().contains(draggable)) {
-            removeDraggable(draggable);
-        }
-        addDraggable(draggable);
+        draggable.toFront();
     }
 }

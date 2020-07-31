@@ -33,7 +33,7 @@ public class MovableWindowHead extends HBox {
         setStyle("-fx-background-color: gray");
     }
 
-    public void linkBtnToController(IMirrorController controller){
+    public void linkBtnToController(IMirrorController controller) {
         minMaxButton = new ActionButton("...", () -> controller.minOrMaxMirror());
         hideButton = new ActionButton("X", () -> controller.hideMirror());
         buttons.getChildren().add(minMaxButton);

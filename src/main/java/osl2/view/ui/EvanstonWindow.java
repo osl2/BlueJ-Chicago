@@ -8,8 +8,6 @@ import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUINode;
-import osl2.view.ui.draggable.Floormat;
-import osl2.view.ui.mirror.Mirror;
 import osl2.view.ui.mirror.MirrorController;
 
 public class EvanstonWindow extends Application {
@@ -19,7 +17,7 @@ public class EvanstonWindow extends Application {
 
     private static EvanstonWindow singletonInstance = null;
     private static Thread APP_THREAD = null;
-    private Floormat mirrors;
+    private MainRegion mainRegion;
 
     private PlaySpace playSpace;
     private SideBar sideBar;
@@ -59,7 +57,7 @@ public class EvanstonWindow extends Application {
 
     public void openVisualization(DatastructureVisualization visualization) {
         Platform.runLater(() -> {
-            new MirrorController(visualization, mirrors, sideBar);
+            new MirrorController(visualization, mainRegion, sideBar);
             //new Mirror(mirrors, visualization.getName(), visualization.asNode());
         });
     }
@@ -68,9 +66,9 @@ public class EvanstonWindow extends Application {
     public void start(Stage stage) {
         stage.setTitle("Evanston Live Data Visualizer");
 
-        this.mirrors = new Floormat();
+        this.mainRegion = new MainRegion();
 
-        new GUINode(mirrors);
+        new GUINode(mainRegion);
 
         setUpSpaces();
 
@@ -89,7 +87,7 @@ public class EvanstonWindow extends Application {
         }
     }
 
-    private void setUpSpaces(){
+    private void setUpSpaces() {
         sideBar = new SideBar();
         playSpace = new PlaySpace();
 
@@ -98,7 +96,7 @@ public class EvanstonWindow extends Application {
     }
 
     private void setUpVerticalSplitter() {
-        verticalSplitter = new SplitPane(sidePlaySplitter, mirrors);
+        verticalSplitter = new SplitPane(sidePlaySplitter, mainRegion);
         verticalSplitter.setOrientation(Orientation.HORIZONTAL);
     }
 

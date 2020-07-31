@@ -1,17 +1,18 @@
 package osl2.view.ui.draggable;
 
 import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 
-public class Draggable extends Group {
+public class Draggable extends Pane {
     private final Floormat floormat;
 
-    private int xOffset;
-    private int yOffset;
+    private double xOffset;
+    private double yOffset;
 
 
     public Draggable(Floormat floormat) {
         this.floormat = floormat;
-        //TODO Add Mirrir/Draggable to Mirror?
+        //TODO Add Mirror/Draggable to Mirror?
         //floormat.addDraggable(this);
         setBehavior();
     }
@@ -28,6 +29,22 @@ public class Draggable extends Group {
         floormat.removeDraggable(this);
     }
 
+    public double getXOffset() {
+        return this.xOffset;
+    }
+
+    public double getYOffset() {
+        return this.yOffset;
+    }
+
+    public void setXOffset(double xOffset) {
+        this.xOffset = xOffset;
+    }
+
+    public void setYOffset(double yOffset) {
+        this.yOffset = yOffset;
+    }
+
     private void setBehavior() {
         setOnMousePressed((event) -> {
             raise();
@@ -38,18 +55,18 @@ public class Draggable extends Group {
         setOnMouseDragged((event) -> {
 
 
-            if(xOffset + event.getScreenX() < 0){
+            if (xOffset + event.getScreenX() < 0) {
                 setLayoutX(0);
-            } else if(xOffset + event.getScreenX() > floormat.getWidth()){
+            } else if (xOffset + event.getScreenX() > floormat.getWidth()) {
                 setLayoutX(floormat.getWidth() - 50);
             } else {
                 setLayoutX(xOffset + event.getScreenX());
             }
 
-            if(yOffset + event.getScreenY() < 0){
+            if (yOffset + event.getScreenY() < 0) {
                 setLayoutY(0);
 
-            } else if(yOffset + event.getScreenY() > floormat.getHeight()){
+            } else if (yOffset + event.getScreenY() > floormat.getHeight()) {
                 setLayoutY(floormat.getHeight() + event.getScreenY());
 
             } else {
