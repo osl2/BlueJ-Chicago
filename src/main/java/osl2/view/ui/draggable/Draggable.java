@@ -11,7 +11,8 @@ public class Draggable extends Group {
 
     public Draggable(Floormat floormat) {
         this.floormat = floormat;
-        floormat.addDraggable(this);
+        //TODO Add Mirrir/Draggable to Mirror?
+        //floormat.addDraggable(this);
         setBehavior();
     }
 

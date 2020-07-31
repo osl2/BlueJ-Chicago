@@ -5,11 +5,15 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import osl2.view.ui.mirror.IMirrorController;
+import osl2.view.ui.mirror.MirrorController;
 
 public class MovableWindowHead extends HBox {
 
+    private IMirrorController mirrorController;
 
-    public MovableWindowHead(MovableWindow window, Node title) {
+    public MovableWindowHead(MovableWindow window, Node title, IMirrorController controller) {
+        mirrorController = controller;
         setStyle();
 
         Pane spacer = new Pane();
@@ -18,8 +22,8 @@ public class MovableWindowHead extends HBox {
 
         HBox buttons = new HBox();
         buttons.setSpacing(2);
-        buttons.getChildren().add(new ActionButton("...", () -> window.toggle()));
-        buttons.getChildren().add(new ActionButton("X", () -> window.disappear()));
+        buttons.getChildren().add(new ActionButton("...", () -> mirrorController.minOrMaxMirror()));
+        buttons.getChildren().add(new ActionButton("X", () -> mirrorController.hideMirror()));
 
         getChildren().addAll(title, spacer, buttons);
     }
@@ -28,6 +32,7 @@ public class MovableWindowHead extends HBox {
         setPadding(new javafx.geometry.Insets(2, 2, 2, 2));
         setStyle("-fx-background-color: gray");
     }
+
 
     class ActionButton extends Button {
 

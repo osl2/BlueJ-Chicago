@@ -2,6 +2,7 @@ package osl2.view.ui.window;
 
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import osl2.view.ui.mirror.IMirrorController;
 
 public class MovableWindowBody extends VBox {
 
@@ -10,8 +11,8 @@ public class MovableWindowBody extends VBox {
     private boolean contentsShown = false;
 
 
-    public MovableWindowBody(MovableWindow window, Node title, Node contents) {
-        this.head = new MovableWindowHead(window, title);
+    public MovableWindowBody(MovableWindow window, Node title, Node contents, IMirrorController controller) {
+        this.head = new MovableWindowHead(window, title, controller);
         /*ScrollPane scroll = new ScrollPane(contents);
         scroll.setOnMouseEntered((event) -> {
             scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);

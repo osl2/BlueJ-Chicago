@@ -10,6 +10,7 @@ import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUINode;
 import osl2.view.ui.draggable.Floormat;
 import osl2.view.ui.mirror.Mirror;
+import osl2.view.ui.mirror.MirrorController;
 
 public class EvanstonWindow extends Application {
     private static final int WIDTH = 800;
@@ -58,7 +59,8 @@ public class EvanstonWindow extends Application {
 
     public void openVisualization(DatastructureVisualization visualization) {
         Platform.runLater(() -> {
-            new Mirror(mirrors, visualization.getName(), visualization.asNode());
+            new MirrorController(visualization, mirrors, sideBar);
+            //new Mirror(mirrors, visualization.getName(), visualization.asNode());
         });
     }
 

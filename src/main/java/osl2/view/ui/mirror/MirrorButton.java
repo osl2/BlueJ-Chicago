@@ -28,4 +28,5 @@ public class MirrorButton extends Button {
     private void linkButtonToController() {
         this.setOnAction(e -> mirrorController.mirrorBtnClicked());
     }
+
 }
