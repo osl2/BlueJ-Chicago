@@ -10,20 +10,20 @@ import osl2.view.ui.mirror.MirrorController;
 
 public class MovableWindowHead extends HBox {
 
-    private IMirrorController mirrorController;
+    private ActionButton minMaxButton;
+    private ActionButton hideButton;
+    private HBox buttons;
+    private Pane spacer;
 
-    public MovableWindowHead(MovableWindow window, Node title, IMirrorController controller) {
-        mirrorController = controller;
+    public MovableWindowHead(MovableWindow window, Node title) {
         setStyle();
 
-        Pane spacer = new Pane();
+        spacer = new Pane();
         spacer.setMinWidth(20);
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        HBox buttons = new HBox();
+        buttons = new HBox();
         buttons.setSpacing(2);
-        buttons.getChildren().add(new ActionButton("...", () -> mirrorController.minOrMaxMirror()));
-        buttons.getChildren().add(new ActionButton("X", () -> mirrorController.hideMirror()));
 
         getChildren().addAll(title, spacer, buttons);
     }
@@ -33,6 +33,12 @@ public class MovableWindowHead extends HBox {
         setStyle("-fx-background-color: gray");
     }
 
+    public void linkBtnToController(IMirrorController controller){
+        minMaxButton = new ActionButton("...", () -> controller.minOrMaxMirror());
+        hideButton = new ActionButton("X", () -> controller.hideMirror());
+        buttons.getChildren().add(minMaxButton);
+        buttons.getChildren().add(hideButton);
+    }
 
     class ActionButton extends Button {
 

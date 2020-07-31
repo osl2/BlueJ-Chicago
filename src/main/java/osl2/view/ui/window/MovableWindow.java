@@ -10,7 +10,8 @@ public class MovableWindow extends Draggable {
 
     public MovableWindow(Floormat floormat, Node title, Node contents, IMirrorController controller) {
         super(floormat);
-        body = new MovableWindowBody(this, title, contents, controller);
+        body = new MovableWindowBody(this, title, contents);
+        body.getHead().linkBtnToController(controller);
         getChildren().add(body);
     }
 

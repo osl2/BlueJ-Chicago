@@ -11,8 +11,8 @@ public class MovableWindowBody extends VBox {
     private boolean contentsShown = false;
 
 
-    public MovableWindowBody(MovableWindow window, Node title, Node contents, IMirrorController controller) {
-        this.head = new MovableWindowHead(window, title, controller);
+    public MovableWindowBody(MovableWindow window, Node title, Node contents) {
+        this.head = new MovableWindowHead(window, title);
         /*ScrollPane scroll = new ScrollPane(contents);
         scroll.setOnMouseEntered((event) -> {
             scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
@@ -26,6 +26,10 @@ public class MovableWindowBody extends VBox {
         setStyle();
         getChildren().add(this.head);
         showContents();
+    }
+
+    public MovableWindowHead getHead(){
+        return this.head;
     }
 
     public void showContents() {
