@@ -15,9 +15,21 @@ public class VisualTree implements ITree, IDatastructure {
 
 	private int height;
 
+	private VisualNode root;
+
+	public VisualTree(VisualNode root) {
+		this.root = root;
+		map.put(root, new LinkedList());
+	}
+
+	public VisualNode getRootNode() {
+		return root;
+	}
+
 	@Override
 	public boolean addChild(VNode child, VNode parent) {
 		map.get(parent).add(child);
+		getBroadcaster().send((b) -> b.addChild(child, parent));
 		height++;
 		return true;
 	}
@@ -25,6 +37,7 @@ public class VisualTree implements ITree, IDatastructure {
 	@Override
 	public boolean removeLeave(VNode node) {
 		map.remove(node);
+		getBroadcaster().send((b) -> b.removeLeave(node));
 		height--;
 		return true;
 	}
@@ -51,11 +64,22 @@ public class VisualTree implements ITree, IDatastructure {
 
 	@Override
 	public boolean swap(VNode child, VNode parent) {
+		LinkedList childData = map.get(child);
+		LinkedList parentData = map.get(parent);
+		parentData.remove(child);
+		parentData.add(parent);
+		map.put(child, parentData); // TODO add conversion
+		map.put(parent, childData);
+
+		getBroadcaster().send((b) -> b.swap(child, parent));
 		return false;
 	}
 
     @Override
     public boolean addTree(VNode parent, ITree child) {
+		addChild(child.getRootNode(), parent);
+		height += child.getHeight();
+		getBroadcaster().send((b) -> b.addTree(parent, child));
         return false;
     }
 
@@ -75,12 +99,13 @@ public class VisualTree implements ITree, IDatastructure {
 
 	@Override
 	public int size() {
-		return 0; // TODO difference to height?
+		return map.size();
 	}
 
 	@Override
 	public boolean removeAll() {
 		map = new HashMap<VisualNode, LinkedList>();
+		getBroadcaster().send((b) -> b.removeAll());
 		return true;
 	}
 
