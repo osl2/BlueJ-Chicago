@@ -36,11 +36,13 @@ public abstract class VisualList<T> extends VisualDatastructure implements List<
 	@Override
 	public boolean add(T t) {
 		return wrapped.add(t);
+		getBroadcaster().send((b) -> b.add(value));
 	}
 
 	@Override
 	public boolean remove(Object o) {
 		return wrapped.remove(o);
+		getBroadcaster().send((b) -> b.remove(value));
 	}
 
 	@Override
@@ -50,26 +52,31 @@ public abstract class VisualList<T> extends VisualDatastructure implements List<
 
 	@Override
 	public boolean addAll(Collection<? extends T> collection) {
+		getBroadcaster().send((b) -> b.addAll(collection));
 		return wrapped.addAll(collection);
 	}
 
 	@Override
 	public boolean addAll(int i, Collection<? extends T> collection) {
+		getBroadcaster().send((b) -> b.addAll(i, collection));
 		return wrapped.addAll(i, collection);
 	}
 
 	@Override
 	public boolean removeAll(Collection<?> collection) {
+		getBroadcaster().send((b) -> b.removeAll(collection));
 		return wrapped.removeAll(collection);
 	}
 
 	@Override
 	public boolean retainAll(Collection<?> collection) {
+		getBroadcaster().send((b) -> b.retainAll(collection));
 		return wrapped.retainAll(collection);
 	}
 
 	@Override
 	public void clear() {
+		getBroadcaster().send((b) -> b.clear(collection));
 		wrapped.clear();
 	}
 
@@ -80,16 +87,19 @@ public abstract class VisualList<T> extends VisualDatastructure implements List<
 
 	@Override
 	public T set(int i, T t) {
+		getBroadcaster().send((b) -> b.set(i, t));
 		return wrapped.set(i, t);
 	}
 
 	@Override
 	public void add(int i, T t) {
+		getBroadcaster().send((b) -> b.add(i, t));
 		wrapped.add(i, t);
 	}
 
 	@Override
 	public T remove(int i) {
+		getBroadcaster().send((b) -> b.remove(i));
 		return wrapped.remove(i);
 	}
 
