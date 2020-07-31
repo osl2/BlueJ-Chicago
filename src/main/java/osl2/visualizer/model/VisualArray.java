@@ -7,17 +7,12 @@ import java.beans.PropertyChangeSupport;
 import java.util.Collection;
 
 
-public class VisualArray<T> extends VisualDatastructure implements IArray<T> {
-	private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+public class VisualArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> implements IArray<T> {
 	private final T[] elements;
 
 	public VisualArray(int size) {
 		elements = (T[]) new Object[size];
-	}
-
-	@Override
-	public Datastructure getDatastructureType() {
-		return Datastructure.DS_ARRAY;
+		getBroadcaster().send((b) -> b.setSize(size));
 	}
 
 	@Override
@@ -26,9 +21,7 @@ public class VisualArray<T> extends VisualDatastructure implements IArray<T> {
 			return false;
 		} else {
 			elements[index] = value;
-			// TODO Maybe use firePropertyChange(PropertyChangeEvent event)
-			pcs.firePropertyChange("update", null, this);
-			return true;
+			getBroadcaster().send((b) -> b.setValue(index, value));
 		}
 	}
 
@@ -67,6 +60,7 @@ public class VisualArray<T> extends VisualDatastructure implements IArray<T> {
 		for(int i = 0; i < elements.length; i++){
 			elements[i] = null;
 		}
+		getBroadcaster().send((b) -> b.removeAll());
 		return true;
 	}
 
@@ -74,10 +68,5 @@ public class VisualArray<T> extends VisualDatastructure implements IArray<T> {
 	public boolean isEmpty() {
 		//TODO implement
 		return true;
-	}
-
-	@Override
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
-		pcs.addPropertyChangeListener(listener);
 	}
 }
