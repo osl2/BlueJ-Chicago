@@ -78,13 +78,15 @@ public class PlaySpace extends Pane {
     }
 
     private void setSlider() {
+        final int MAX = 1000;
+
         playSpeedSlider = new Slider();
-        playSpeedSlider.setMin(1);
-        playSpeedSlider.setMax(Math.sqrt(1000));
-        playSpeedSlider.setValue(1);
+        playSpeedSlider.setMin(0);
+        playSpeedSlider.setMax(1);
+        playSpeedSlider.setValue(0);
         playSpeedSlider.setShowTickLabels(false);
         playSpeedSlider.setPrefWidth(this.getWidth());
-        playSpeedSlider.valueProperty().addListener((ov, oldVal, newVal) -> Evanston.getPlayController().setProgramDelay((long) Math.pow((double) newVal, 2)));
+        playSpeedSlider.valueProperty().addListener((ov, oldVal, newVal) -> Evanston.getPlayController().setProgramDelay((long) (MAX - Math.pow((double) oldVal, 1d/8) * (MAX - 1))));
         sliderBox.getChildren().add(playSpeedSlider);
     }
 

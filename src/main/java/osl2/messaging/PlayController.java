@@ -2,7 +2,7 @@ package osl2.messaging;
 
 public class PlayController {
     private boolean isProgramRunning = false;
-    private long delay = 1;
+    private long delay = 1000;
 
     public synchronized void play() {
         isProgramRunning = true;
