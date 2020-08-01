@@ -6,6 +6,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import osl2.Evanston;
 
 
 public class PlaySpace extends Pane {
@@ -64,23 +65,26 @@ public class PlaySpace extends Pane {
 
     private void setPlayButton() {
         playAutoButton = new Button("Play");
+        playAutoButton.setOnAction((event) -> Evanston.getPlayController().toggle());
         playAutoButton.setAlignment(Pos.CENTER_RIGHT);
         buttonBox.getChildren().add(playAutoButton);
     }
 
     private void setStepbystepButton() {
         playStepButton = new Button("Step");
+        playStepButton.setOnAction((event) -> Evanston.getPlayController().step());
         playStepButton.setAlignment(Pos.CENTER_LEFT);
         buttonBox.getChildren().add(playStepButton);
     }
 
     private void setSlider() {
         playSpeedSlider = new Slider();
-        playSpeedSlider.setMin(0);
-        playSpeedSlider.setMax(100);
-        playSpeedSlider.setValue(50);
-        playSpeedSlider.setShowTickLabels(true);
+        playSpeedSlider.setMin(1);
+        playSpeedSlider.setMax(Math.sqrt(1000));
+        playSpeedSlider.setValue(1);
+        playSpeedSlider.setShowTickLabels(false);
         playSpeedSlider.setPrefWidth(this.getWidth());
+        playSpeedSlider.valueProperty().addListener((ov, oldVal, newVal) -> Evanston.getPlayController().setProgramDelay((long) Math.pow((double) newVal, 2)));
         sliderBox.getChildren().add(playSpeedSlider);
     }
 

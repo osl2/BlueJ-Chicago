@@ -6,6 +6,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
+import osl2.messaging.PlayController;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUINode;
 import osl2.view.ui.mirror.MirrorController;
@@ -17,6 +18,9 @@ public class EvanstonWindow extends Application {
 
     private static EvanstonWindow singletonInstance = null;
     private static Thread APP_THREAD = null;
+
+    private final PlayController playController;
+
     private MainRegion mainRegion;
 
     private PlaySpace playSpace;
@@ -30,6 +34,7 @@ public class EvanstonWindow extends Application {
         } else {
             System.out.println("Warning: More than one EvanstonWindow instance loaded!");  // ERROR
         }
+        this.playController = new PlayController();
     }
 
     public static EvanstonWindow getInstance() {
@@ -60,6 +65,10 @@ public class EvanstonWindow extends Application {
             new MirrorController(visualization, mainRegion, sideBar);
             //new Mirror(mirrors, visualization.getName(), visualization.asNode());
         });
+    }
+
+    public PlayController getPlayController() {
+        return playController;
     }
 
     @Override
