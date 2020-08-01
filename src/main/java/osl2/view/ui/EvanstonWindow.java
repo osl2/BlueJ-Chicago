@@ -63,7 +63,6 @@ public class EvanstonWindow extends Application {
     public void openVisualization(DatastructureVisualization visualization) {
         Platform.runLater(() -> {
             new MirrorController(visualization, mainRegion, sideBar);
-            //new Mirror(mirrors, visualization.getName(), visualization.asNode());
         });
     }
 
@@ -107,6 +106,7 @@ public class EvanstonWindow extends Application {
     private void setUpVerticalSplitter() {
         verticalSplitter = new SplitPane(sidePlaySplitter, mainRegion);
         verticalSplitter.setOrientation(Orientation.HORIZONTAL);
+        verticalSplitter.setDividerPosition(0, 0.25);
     }
 
     private void setUpSidePlaySplitter() {

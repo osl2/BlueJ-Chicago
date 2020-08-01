@@ -1,6 +1,5 @@
 package osl2.view.ui.mirror;
 
-import javafx.geometry.Point2D;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.ui.SideBar;
 import osl2.view.ui.draggable.Floormat;
