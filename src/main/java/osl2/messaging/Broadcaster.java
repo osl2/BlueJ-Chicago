@@ -15,7 +15,7 @@ public class Broadcaster<B> {
     }
 
     public void sendWithDelay(BroadcasterMessage<B> message) {
-        Evanston.getPlayController().block();
         send(message);
+        Evanston.getPlayController().block();
     }
 }
