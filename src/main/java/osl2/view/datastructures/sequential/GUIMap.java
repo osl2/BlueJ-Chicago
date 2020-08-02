@@ -11,6 +11,10 @@ public class GUIMap<K, V> extends GUISequential implements DatastructureVisualiz
 
     private final List<Object> keys = new ArrayList<>();
 
+    public GUIMap() {
+        super("Key", "Value");
+    }
+
     @Override
     public String getName() {
         return "Map";
