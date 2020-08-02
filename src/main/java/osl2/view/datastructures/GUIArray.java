@@ -1,8 +1,10 @@
 package osl2.view.datastructures;
 
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import osl2.messaging.datastructures.VArrayCommunication;
 import osl2.view.inlinerepresentation.InlineRepresentation;
@@ -41,7 +43,10 @@ public class GUIArray<T> extends HBox implements DatastructureVisualization, VAr
         public ArrayEntry(int index, Node value) {
             setSpacing(5);
             getChildren().add(value);
-            getChildren().add(new Label("" + index));
+            Label label = new Label("" + index);
+            label.setMaxWidth(Double.MAX_VALUE);
+            label.setAlignment(Pos.CENTER);
+            getChildren().add(label);
         }
     }
 }
