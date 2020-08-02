@@ -2,10 +2,18 @@
 	-fx-background-color: rgb(0, 170, 0);
 }
 
-.mirror-view {
-	-fx-background-color: rgb(255, 0, 0);
+.movable-window {
+    -fx-background-color: gray;
 }
 
-.mirror-head {
-	-fx-background-color: rgb(0, 255, 0);
+.movable-window-head {
+    -fx-padding: 2;
+}
+
+.movable-window-body {
+    -fx-background-color: lightblue;
+}
+
+.button {
+    -fx-background-color: lightgrey;
 }

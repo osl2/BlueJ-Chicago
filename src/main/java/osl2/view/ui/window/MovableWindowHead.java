@@ -29,8 +29,8 @@ public class MovableWindowHead extends HBox {
     }
 
     private void setStyle() {
-        setPadding(new javafx.geometry.Insets(2, 2, 2, 2));
-        setStyle("-fx-background-color: gray");
+        this.getStyleClass().add("movable-window");
+        this.getStyleClass().add("movable-window-head");
     }
 
     public void linkBtnToController(IMirrorController controller) {
@@ -44,7 +44,6 @@ public class MovableWindowHead extends HBox {
 
         public ActionButton(String text, Runnable runnable) {
             this.setText(text);
-            this.setStyle("-fx-background-color: none;");
             setOnMousePressed((event) -> runnable.run());
         }
     }

@@ -57,6 +57,7 @@ public class MovableWindowBody extends VBox {
     }
 
     private void setStyle() {
-        setStyle("-fx-border-color: gray;");
+        this.getStyleClass().add("movable-window");
+        this.getStyleClass().add("movable-window-body");
     }
 }

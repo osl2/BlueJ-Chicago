@@ -81,6 +81,7 @@ public class EvanstonWindow extends Application {
         setUpSpaces();
 
         Scene scene = new Scene(verticalSplitter, WIDTH, HEIGHT);
+        scene.getStylesheets().add("style.css");
         stage.setScene(scene);
         stage.show();
 
