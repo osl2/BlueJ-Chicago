@@ -1,6 +1,7 @@
 package osl2.view.ui.mirror;
 
 import osl2.view.datastructures.DatastructureVisualization;
+import osl2.view.ui.MainRegion;
 import osl2.view.ui.SideBar;
 import osl2.view.ui.draggable.Floormat;
 
@@ -9,6 +10,7 @@ public class MirrorController implements IMirrorController {
     private Mirror mirror;
     private Floormat mainRegion;
     private boolean mirrorOpen;
+    private boolean mirrorHide;
 
     public MirrorController(DatastructureVisualization visualization, Floormat mainRegion, SideBar sideBar) {
         this.mirrorOpen = false;
@@ -16,6 +18,9 @@ public class MirrorController implements IMirrorController {
         this.button = new MirrorButton(visualization.getName(), this);
         this.mirror = new Mirror(mainRegion, visualization.getName(), visualization.asNode(), this);
         sideBar.addMirrorButton(button);
+        mirror.setVisible(false);
+        mirrorHide = true;
+        this.mainRegion.addDraggable(mirror);
     }
 
     @Override
@@ -31,8 +36,15 @@ public class MirrorController implements IMirrorController {
 
     @Override
     public void mirrorBtnClicked() {
+        if(mirrorHide){
+            mirror.setVisible(true);
+            mirrorHide = false;
+            mainRegion.removeDraggable(mirror);
+        }
         if (!mirrorOpen) {
             mirrorOpen = true;
+            MainRegion region = (MainRegion) mainRegion;
+            region.getFreeSpace(mirror);
             mainRegion.addDraggable(mirror);
         }
         //TODO Mirror.higlight

@@ -13,7 +13,6 @@ public class Draggable extends Pane {
     public Draggable(Floormat floormat) {
         this.floormat = floormat;
         //TODO Add Mirror/Draggable to Mirror?
-        //floormat.addDraggable(this);
         setBehavior();
     }
 
@@ -22,7 +21,7 @@ public class Draggable extends Pane {
     }
 
     public void raise() {
-        getFloormat().raise(this);
+        floormat.raise(this);
     }
 
     public void disappear() {
@@ -48,8 +47,8 @@ public class Draggable extends Pane {
     private void setBehavior() {
         setOnMousePressed((event) -> {
             raise();
-            xOffset = (int) (getLayoutX() - event.getScreenX());
-            yOffset = (int) (getLayoutY() - event.getScreenY());
+            xOffset =  (getLayoutX() - event.getScreenX());
+            yOffset =  (getLayoutY() - event.getScreenY());
         });
 
         setOnMouseDragged((event) -> {

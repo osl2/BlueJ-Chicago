@@ -9,6 +9,7 @@ import javafx.stage.Screen;
 public class Floormat extends ScrollPane {
 
     public Floormat() {
+        super();
     }
 
 

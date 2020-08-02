@@ -1,5 +1,7 @@
 package osl2.view.ui;
 
+import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import osl2.view.ui.draggable.Draggable;
 import osl2.view.ui.draggable.Floormat;
@@ -17,22 +19,31 @@ public class MainRegion extends Floormat {
 
     @Override
     public void addDraggable(Draggable draggable) {
-        getFreeSpace(draggable);
         super.addDraggable(draggable);
-        draggableLinkedList.add(draggable);
     }
 
-    private void getFreeSpace(Draggable draggable) {
-        for (Draggable mirrors : draggableLinkedList) {
-            MovableWindow mirror = (MovableWindow) mirrors;
-            if (draggable.getXOffset() >= mirror.getXOffset() && draggable.getXOffset() <= mirror.getXOffset() + mirror.getWindowWidth()) {
-                draggable.setXOffset(mirror.getXOffset() + mirror.getWindowWidth());
-                draggable.setLayoutX(draggable.getXOffset());
+    public void getFreeSpace(Draggable draggable) {
+        if(!draggableLinkedList.contains(draggable)) {
+            for (Draggable mirrors : draggableLinkedList) {
+                MovableWindow mirror = (MovableWindow) mirrors;
+                MovableWindow draggableMirror = (MovableWindow) draggable;
+                Bounds draggableBounds = draggable.getBoundsInParent();
+                Bounds mirrorBounds = mirror.getBoundsInParent();
+                System.out.println(mirrorBounds.getMinX());
+                for(int i = 0; i < draggableBounds.getWidth(); i++){
+                    for(int j = 0; j < draggableBounds.getHeight(); j++){
+                        Point2D pointInDraggable = new Point2D(draggableBounds.getMinX() + i, draggableBounds.getMinY() +j);
+                        if(mirrorBounds.contains(pointInDraggable)){
+                            draggable.setXOffset(mirrorBounds.getMinX() + mirrorBounds.getWidth());
+                            draggable.setLayoutX(draggable.getXOffset());
+                            break;
+                        }
+                    }
+                }
             }
-            if (draggable.getYOffset() >= mirror.getYOffset() && draggable.getYOffset() <= mirror.getYOffset() + mirror.getWindowHeight()) {
-                draggable.setYOffset(mirror.getYOffset() + mirror.getWindowHeight());
-                draggable.setLayoutY(draggable.getYOffset());
-            }
+            draggableLinkedList.add(draggable);
         }
     }
+
+
 }
