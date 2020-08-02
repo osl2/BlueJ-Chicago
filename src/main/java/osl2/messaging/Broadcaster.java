@@ -1,6 +1,7 @@
 package osl2.messaging;
 
 import javafx.application.Platform;
+import osl2.Evanston;
 
 public class Broadcaster<B> {
     private final B client;
@@ -11,5 +12,10 @@ public class Broadcaster<B> {
 
     public void send(BroadcasterMessage<B> message) {
         Platform.runLater(() -> message.send(client));  // Run in other thread
+    }
+
+    public void sendWithDelay(BroadcasterMessage<B> message) {
+        Evanston.getPlayController().block();
+        send(message);
     }
 }

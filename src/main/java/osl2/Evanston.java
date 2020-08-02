@@ -1,9 +1,12 @@
 package osl2;
 
 import osl2.datastructures.VArray;
+import osl2.datastructures.VMap;
 import osl2.messaging.PlayController;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.ui.EvanstonWindow;
+
+import java.util.Map;
 
 public class Evanston {
 
@@ -20,7 +23,11 @@ public class Evanston {
         EvanstonWindow.open();
 
         VArray<Integer> array = new VArray<Integer>(8);
-        new VArray<VArray>(4).setValue(0, array);
+        Map<Integer, Character> amap = new VMap<>();
+
+        for (int x = 64; x < 69; x++) amap.put(x, (char) x);
+        for (int x = 64; x < 70; x++) amap.put(x, (char) (x + 5));
+        amap.remove(66);
 
         int i = 0;
 

@@ -4,7 +4,7 @@ import osl2.Evanston;
 import osl2.datastructures.interfaces.IArray;
 import osl2.messaging.datastructures.VArrayCommunication;
 import osl2.view.datastructures.DatastructureVisualization;
-import osl2.view.datastructures.GUIArray;
+import osl2.view.datastructures.sequential.GUIArray;
 
 public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> implements IArray<T> {
     private final T[] values;
@@ -24,8 +24,7 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
 
     public void setValue(int index, T value) {
         values[index] = value;
-        getBroadcaster().send((b) -> b.setValue(index, value));
-        Evanston.getPlayController().block();
+        getBroadcaster().sendWithDelay((b) -> b.setValue(index, value));
     }
 
     @Override
