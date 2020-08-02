@@ -24,12 +24,9 @@ public class MainRegion extends Floormat {
 
     public void getFreeSpace(Draggable draggable) {
         if(!draggableLinkedList.contains(draggable)) {
-            for (Draggable mirrors : draggableLinkedList) {
-                MovableWindow mirror = (MovableWindow) mirrors;
-                MovableWindow draggableMirror = (MovableWindow) draggable;
+            for (Draggable mirrors : draggableLinkedList) { ;
                 Bounds draggableBounds = draggable.getBoundsInParent();
-                Bounds mirrorBounds = mirror.getBoundsInParent();
-                System.out.println(mirrorBounds.getMinX());
+                Bounds mirrorBounds = mirrors.getBoundsInParent();
                 for(int i = 0; i < draggableBounds.getWidth(); i++){
                     for(int j = 0; j < draggableBounds.getHeight(); j++){
                         Point2D pointInDraggable = new Point2D(draggableBounds.getMinX() + i, draggableBounds.getMinY() +j);
