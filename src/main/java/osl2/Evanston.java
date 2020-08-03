@@ -22,6 +22,13 @@ public class Evanston {
     public static void main(String[] args) {
         EvanstonWindow.open();
 
+        VArray<Integer> errorArray = new VArray<>(5);
+        for (int i = 0; i < 6; i++) {
+            errorArray.setValue(i % 5, i);
+        }
+        // IndexOutOfBounds error
+        errorArray.setValue(10, 1);
+
         VArray<Integer> array = new VArray<Integer>(8);
         Map<Integer, Character> amap = new VMap<>();
 

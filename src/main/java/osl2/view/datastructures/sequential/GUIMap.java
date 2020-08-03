@@ -1,13 +1,12 @@
 package osl2.view.datastructures.sequential;
 
 import osl2.messaging.datastructures.VMapCommunication;
-import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.inlinerepresentation.InlineRepresentation;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GUIMap<K, V> extends GUISequential implements DatastructureVisualization, VMapCommunication<K, V> {
+public class GUIMap<K, V> extends GUISequential implements VMapCommunication<K, V> {
 
     private final List<Object> keys = new ArrayList<>();
 
