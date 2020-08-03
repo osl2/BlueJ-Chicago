@@ -10,7 +10,6 @@ import osl2.datastructures.EvanstonDatastructure;
 import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
 import osl2.view.datastructures.DatastructureVisualization;
-import osl2.view.datastructures.GUINode;
 import osl2.view.inlinerepresentation.InlineRepresentation;
 import osl2.view.ui.mirror.MirrorController;
 
@@ -81,8 +80,6 @@ public class EvanstonWindow extends Application {
         stage.setTitle("Evanston Live Data Visualizer");
 
         this.mainRegion = new MainRegion();
-
-        new GUINode(mainRegion);
 
         setUpSpaces();
 

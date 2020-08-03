@@ -1,11 +1,17 @@
-package osl2.view.datastructures;
+package osl2.view.datastructures.nodey;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import osl2.messaging.datastructures.nodey.VNodeCommunication;
 import osl2.view.ui.draggable.Draggable;
 import osl2.view.ui.draggable.Floormat;
 
-public class GUINode extends Draggable {
+public abstract class GUINode extends Draggable implements VNodeCommunication {
+
+    @Override
+    public GUINode asGUINode() {
+        return this;
+    }
 
     public GUINode(Floormat floormat) {
         super(floormat);
