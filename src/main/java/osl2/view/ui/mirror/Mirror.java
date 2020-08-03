@@ -5,11 +5,13 @@ import javafx.scene.control.Label;
 import osl2.view.ui.draggable.Floormat;
 import osl2.view.ui.window.MovableWindow;
 
+/**
+ * This is the Mirror Class, which is a MovableWindow.
+ */
 public class Mirror extends MovableWindow {
 
     public Mirror(Floormat floormat, String title, Node contents, IMirrorController controller) {
         super(floormat, new Label(title), contents, controller);
     }
 
-    //TODO Mirror.higlight
 }
