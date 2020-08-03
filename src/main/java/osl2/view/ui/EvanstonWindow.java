@@ -6,9 +6,12 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
+import osl2.datastructures.EvanstonDatastructure;
+import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUINode;
+import osl2.view.inlinerepresentation.InlineRepresentation;
 import osl2.view.ui.mirror.MirrorController;
 
 public class EvanstonWindow extends Application {
@@ -60,10 +63,13 @@ public class EvanstonWindow extends Application {
         }
     }
 
-    public void openVisualization(DatastructureVisualization visualization) {
+    public Broadcaster openVisualization(EvanstonDatastructure datastructure) {
+        DatastructureVisualization visualization = datastructure.createVisualization();
         Platform.runLater(() -> {
-            new MirrorController(visualization, mainRegion, sideBar);
+            MirrorController mc = new MirrorController(visualization, mainRegion, sideBar);
+            InlineRepresentation.registerInlineAction(datastructure, () -> mc.mirrorBtnClicked());
         });
+        return new Broadcaster(visualization);
     }
 
     public PlayController getPlayController() {

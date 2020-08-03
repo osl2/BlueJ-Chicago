@@ -1,30 +1,29 @@
 package osl2.view.inlinerepresentation;
 
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import osl2.datastructures.EvanstonDatastructure;
 
 import java.util.Map;
 import java.util.WeakHashMap;
 
-public class InlineRepresentation extends Label {    // TODO: Make this a clickable pane
-    private static final Map<EvanstonDatastructure, InlineRepresentation> inlineRepresentations = new WeakHashMap<>();
+public class InlineRepresentation extends Button {    // TODO: Make this a clickable pane
+    private static final Map<Object, Runnable> inlineRepresentationFunctions = new WeakHashMap<>();
 
-    public InlineRepresentation(EvanstonDatastructure datastructure) {
-        super(datastructure.toString());
+    public InlineRepresentation(String text, Runnable action) {
+        super(text);
+        setOnAction(event -> action.run());
+    }
+
+    public static void registerInlineAction(Object value, Runnable action) {
+        inlineRepresentationFunctions.put(value, action);
     }
 
     public static Node get(Object value) {
-        if (value instanceof EvanstonDatastructure) {
-            EvanstonDatastructure key = (EvanstonDatastructure) value;
-            if (inlineRepresentations.containsKey(key)) {
-                return inlineRepresentations.get(key);
-            } else {
-                InlineRepresentation repr = new InlineRepresentation(key);
-                inlineRepresentations.put(key, repr);
-                return repr;
-            }
-        }
-        return new Label(((value == null) ? "null" : value.toString()));
+        String text = ((value == null) ? "null" : value.toString());
+        Runnable action = inlineRepresentationFunctions.get(value);
+        if (action != null) return new InlineRepresentation(text, action);
+        else return new Label(text);
     }
 }
