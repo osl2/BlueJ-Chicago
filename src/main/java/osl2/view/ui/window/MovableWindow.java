@@ -21,6 +21,7 @@ public class MovableWindow extends Draggable {
     public void highlight(){
         this.isHighlight = true;
         this.body.getHead().highlight();
+        this.raise();
     }
 
     private void unHighlight(){
