@@ -4,6 +4,9 @@ import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import osl2.view.ui.mirror.IMirrorController;
 
+/**
+ * This class is the body of a MovableWindow where the content of it will be shown.
+ */
 public class MovableWindowBody extends VBox {
 
     private final MovableWindowHead head;
@@ -11,6 +14,12 @@ public class MovableWindowBody extends VBox {
     private boolean contentsShown = false;
 
 
+    /**
+     * Creates a new body.
+     * @param window Window to which it belongs.
+     * @param title The title of the head.
+     * @param contents The contents of its body.
+     */
     public MovableWindowBody(MovableWindow window, Node title, Node contents) {
         this.head = new MovableWindowHead(window, title);
         /*ScrollPane scroll = new ScrollPane(contents);
@@ -28,10 +37,17 @@ public class MovableWindowBody extends VBox {
         showContents();
     }
 
+    /**
+     * Returns the head to this body.
+     * @return The head.
+     */
     public MovableWindowHead getHead() {
         return this.head;
     }
 
+    /**
+     * Shows the content of the body.
+     */
     public void showContents() {
         if (!contentsShown) {
             getChildren().add(contents);
@@ -40,6 +56,9 @@ public class MovableWindowBody extends VBox {
         }
     }
 
+    /**
+     * Hides the content of the body.
+     */
     public void hideContents() {
         if (contentsShown) {
             getChildren().remove(1);
@@ -48,6 +67,10 @@ public class MovableWindowBody extends VBox {
         }
     }
 
+    /**
+     * Toggles the window, which means hiding the contents if they are shown.
+     * And else showing the contents.
+     */
     public void toggle() {
         if (contentsShown) {
             hideContents();
@@ -56,6 +79,9 @@ public class MovableWindowBody extends VBox {
         }
     }
 
+    /**
+     * Sets the style of the window.
+     */
     private void setStyle() {
         this.getStyleClass().add("movable-window");
         this.getStyleClass().add("movable-window-body");

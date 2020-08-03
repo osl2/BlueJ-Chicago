@@ -49,7 +49,6 @@ public class MirrorController implements IMirrorController {
         } else {
             mirror.highlight();
         }
-        //TODO Mirror.higlight
     }
 
     @Override
