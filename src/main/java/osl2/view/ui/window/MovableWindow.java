@@ -7,12 +7,24 @@ import osl2.view.ui.mirror.IMirrorController;
 
 public class MovableWindow extends Draggable {
     private final MovableWindowBody body;
+    private boolean isHighlight;
 
     public MovableWindow(Floormat floormat, Node title, Node contents, IMirrorController controller) {
         super(floormat);
         body = new MovableWindowBody(this, title, contents);
         body.getHead().linkBtnToController(controller);
         getChildren().add(body);
+        setBehaviourHighlight();
+        isHighlight = false;
+    }
+
+    public void highlight(){
+        this.isHighlight = true;
+        this.body.getHead().highlight();
+    }
+
+    private void unHighlight(){
+        this.body.getHead().unHighlight();
     }
 
     public void showContents() {
@@ -27,11 +39,14 @@ public class MovableWindow extends Draggable {
         body.toggle();
     }
 
-    public double getWindowWidth() {
-        return body.getWidth();
-    }
+    private void setBehaviourHighlight(){
 
-    public double getWindowHeight() {
-        return body.getHeight();
+        setOnMouseClicked((event) ->{
+            if(isHighlight) {
+                this.unHighlight();
+                this.isHighlight = false;
+            }
+        });
+
     }
 }

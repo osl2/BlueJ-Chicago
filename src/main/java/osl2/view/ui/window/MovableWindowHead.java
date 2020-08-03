@@ -33,6 +33,16 @@ public class MovableWindowHead extends HBox {
         this.getStyleClass().add("movable-window-head");
     }
 
+    public void highlight(){
+        this.getStyleClass().remove("movable-window-head");
+        this.getStyleClass().add("movable-window-head-highlight");
+    }
+
+    public void unHighlight(){
+        this.getStyleClass().remove("movable-window-head-highlight");
+        this.getStyleClass().add("movable-window-head");
+    }
+
     public void linkBtnToController(IMirrorController controller) {
         minMaxButton = new ActionButton("...", () -> controller.minOrMaxMirror());
         hideButton = new ActionButton("X", () -> controller.hideMirror());

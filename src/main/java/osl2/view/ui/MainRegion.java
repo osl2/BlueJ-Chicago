@@ -17,11 +17,6 @@ public class MainRegion extends Floormat {
         this.draggableLinkedList = new LinkedList<Draggable>();
     }
 
-    @Override
-    public void addDraggable(Draggable draggable) {
-        super.addDraggable(draggable);
-    }
-
     public void getFreeSpace(Draggable draggable) {
         if(!draggableLinkedList.contains(draggable)) {
             for (Draggable mirrors : draggableLinkedList) { ;

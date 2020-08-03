@@ -14,6 +14,11 @@
     -fx-background-color: lightblue;
 }
 
+.movable-window-head-highlight{
+    -fx-padding: 2;
+    -fx-background-color: orange;
+}
+
 .button {
     -fx-background-color: lightgrey;
 }
