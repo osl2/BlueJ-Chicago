@@ -18,8 +18,8 @@ import osl2.view.ui.mirror.MirrorController;
  * The MainWindow in which the MainRegion, PlaySpace and Sidebar will be in.
  */
 public class EvanstonWindow extends Application {
-    private static final int WIDTH = 800;
-    private static final int HEIGHT = 600;
+    private static final int WIDTH = 1200;
+    private static final int HEIGHT = 900;
     private static Object WAITER = new Object();
 
     private static EvanstonWindow singletonInstance = null;
@@ -33,6 +33,7 @@ public class EvanstonWindow extends Application {
     private SideBar sideBar;
     private SplitPane verticalSplitter;
     private SplitPane sidePlaySplitter;
+    private boolean isPlaying = false;
 
     public EvanstonWindow() {
         if (singletonInstance == null) {
@@ -102,7 +103,7 @@ public class EvanstonWindow extends Application {
         setUpSpaces();
 
         Scene scene = new Scene(verticalSplitter, WIDTH, HEIGHT);
-        scene.getStylesheets().add("style.css");
+        scene.getStylesheets().add("dark_style.css");
         stage.setScene(scene);
         stage.show();
 
@@ -151,5 +152,13 @@ public class EvanstonWindow extends Application {
 
     public void playAutoButtonClicked() {
         Evanston.getPlayController().toggle();
+        if(isPlaying) {
+            playSpace.setPlayAutoButtonSymbolToPlay();
+            isPlaying = false;
+        } else {
+            playSpace.setPlayAutoButtonSymbolToPause();
+            isPlaying = true;
+        }
+
     }
 }
