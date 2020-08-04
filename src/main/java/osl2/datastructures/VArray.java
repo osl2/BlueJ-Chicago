@@ -28,15 +28,16 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
         return values[index];
     }
 
-    public void setValue(int index, T value) {
+    public boolean setValue(int index, T value) {
         if (index < 0 || index > this.size) {
             UserError userError = new ArrayIndexOutOfBoundsError(index, size);
             getBroadcaster().sendWithDelay((b) -> b.handleError(userError));
-            return;
+            return false;
         }
 
         values[index] = value;
         getBroadcaster().sendWithDelay((b) -> b.setValue(index, value));
+        return true;
     }
 
     public boolean contains(T value) {
