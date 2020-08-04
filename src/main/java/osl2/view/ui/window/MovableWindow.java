@@ -10,7 +10,7 @@ import osl2.view.ui.mirror.IMirrorController;
  */
 public class MovableWindow extends Draggable {
     private final MovableWindowBody body;
-    private boolean isHighlight;
+    private boolean isHighlighted;
 
     public MovableWindow(Floormat floormat, Node title, Node contents, IMirrorController controller) {
         super(floormat);
@@ -18,14 +18,14 @@ public class MovableWindow extends Draggable {
         body.getHead().linkBtnToController(controller);
         getChildren().add(body);
         setBehaviourHighlight();
-        isHighlight = false;
+        isHighlighted = false;
     }
 
     /**
      * This method toggles the highlighting of the window.
      */
     public void toggleHighlight() {
-        if (isHighlight) {
+        if (isHighlighted) {
             unHighlight();
         } else {
             highlight();
@@ -35,18 +35,18 @@ public class MovableWindow extends Draggable {
     /**
      * This method highlights the window.
      */
-    public void highlight(){
-        this.isHighlight = true;
+    public void highlight() {
         this.body.getHead().highlight();
+        this.isHighlighted = true;
         this.raise();
     }
 
     /**
      * This method unhighlights the window.
      */
-    private void unHighlight(){
+    private void unHighlight() {
         this.body.getHead().unHighlight();
-        this.isHighlight = false;
+        this.isHighlighted = false;
     }
 
     /**
@@ -73,13 +73,11 @@ public class MovableWindow extends Draggable {
     /**
      * This method sets the behaviour, so when its highlighted and clicked, it will be unhighlighted.
      */
-    private void setBehaviourHighlight(){
-
-        setOnMouseClicked((event) ->{
-            if(isHighlight) {
+    private void setBehaviourHighlight() {
+        setOnMouseClicked((event) -> {
+            if (isHighlighted) {
                 this.unHighlight();
             }
         });
-
     }
 }
