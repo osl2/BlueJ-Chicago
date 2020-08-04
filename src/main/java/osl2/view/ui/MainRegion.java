@@ -22,6 +22,11 @@ public class MainRegion extends Floormat {
 
     public MainRegion() {
         this.draggableLinkedList = new LinkedList<Draggable>();
+        this.setStyle();
+    }
+
+    private void setStyle() {
+        this.getStyleClass().add("main-region");
     }
 
     /**

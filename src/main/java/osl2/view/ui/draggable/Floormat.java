@@ -10,7 +10,7 @@ import javafx.stage.Screen;
 /**
  * The Floormat is a place which contains Draggables.
  */
-public class Floormat extends Region {
+public class Floormat extends Pane {
 
     /**
      * Creates a new Floormat.

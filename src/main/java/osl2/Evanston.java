@@ -27,20 +27,28 @@ public class Evanston {
         EvanstonWindow.open();
 
         VGraph<Integer> graph = new VGraph();
-        VGraphNode<Integer> node = graph.addNode();
+        VGraphNode<Integer> node = null;
+        VGraphNode<Integer> oldNode = null;
+        for (int x = 0; x < 10; x++) {
+            node = graph.addNode();
+            node.setValue(x + 1);
+            if (oldNode != null) oldNode.connect(node);
+            oldNode = node;
+        }
 
         VArray<Integer> errorArray = new VArray<>(5);
-
-        for (int i = 0; i < 6; i++) {
-            errorArray.setValue(i % 5, i);
-        }errorArray.setName("blub");
-        // IndexOutOfBounds error
-        errorArray.setValue(10, 1);
 
         VArray<Integer> array = new VArray<Integer>(8);
         Map<Integer, Character> amap = new VMap<>();
         VArray<VArray> arrays = new VArray<>(1);
         arrays.setValue(0, array);
+
+        for (int i = 0; i < 6; i++) {
+            errorArray.setValue(i % 5, i);
+        }
+        errorArray.setName("blub");
+        // IndexOutOfBounds error
+         errorArray.setValue(10, 1);
 
         for (int x = 64; x < 69; x++) amap.put(x, (char) x);
         for (int x = 64; x < 70; x++) amap.put(x, (char) (x + 5));

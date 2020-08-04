@@ -18,6 +18,12 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
         getBroadcaster().sendWithDelay(b -> b.valueChange(newValue));
     }
 
+    public abstract void disconnectAll();
+
+    public Comm getCorrespondent() {
+        return getBroadcaster().getClient();
+    }
+
     protected abstract Comm createVisualization();
 
     Comm getCommunication() { return broadcaster.getClient(); }

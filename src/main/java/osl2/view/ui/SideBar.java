@@ -12,6 +12,7 @@ public class SideBar extends ListView<MirrorButton> {
      * Creates a new Sidebar
      */
     public SideBar() {
+        this.getStyleClass().add("sidebar");
     }
 
     /**

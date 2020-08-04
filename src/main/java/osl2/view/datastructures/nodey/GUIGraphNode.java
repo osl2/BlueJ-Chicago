@@ -1,20 +1,37 @@
 package osl2.view.datastructures.nodey;
 
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+import javafx.scene.layout.VBox;
 import osl2.messaging.datastructures.VGraphNodeCommunication;
 import osl2.messaging.errorHandling.UserError;
+import osl2.view.inlinerepresentation.InlineRepresentation;
 
-public class GUIGraphNode<T> extends GUINode<T, Circle> implements VGraphNodeCommunication<T> {
+public class GUIGraphNode<T> extends GUINode<T, RoundedNodeContainer<VBox>> implements VGraphNodeCommunication<T> {
 
     public GUIGraphNode() {
-        super(new Circle(25, Color.RED));
-        // TODO: getContent().getChildren().add(InlineRepresentation.get(null));
+        super(new RoundedNodeContainer<>(new VBox()));
+        getContent().setStyle("-fx-background-color: red");
+        getContent().getContents().getChildren().add(InlineRepresentation.get(null));
     }
 
     @Override
     public void valueChange(T newValue) {
-        // TODO: getContent().getChildren().set(0, InlineRepresentation.get(newValue));
+        getContent().getContents().getChildren().set(0, InlineRepresentation.get(newValue));
+    }
+
+    @Override
+    public void connect(VGraphNodeCommunication<T> node) {
+        // TODO: Make arrow to node.asGUINode()
+        getChildren().add(new Arrow(this, node.asGUINode(), null));    // TODO: Store all arrows
+    }
+
+    @Override
+    public void disconnect(VGraphNodeCommunication<T> node) {
+        // TODO: Remove arrow to node.asGUINode()
+    }
+
+    @Override
+    public void disconnectAll() {
+        // TODO
     }
 
     @Override

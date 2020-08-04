@@ -22,6 +22,8 @@ public class MirrorButton extends Button {
         this.name = name;
         this.setText(this.name);
         linkButtonToController();
+
+        this.getStyleClass().add("button-hidden");
     }
 
     /**
@@ -31,4 +33,13 @@ public class MirrorButton extends Button {
         this.setOnAction(e -> mirrorController.mirrorBtnClicked());
     }
 
+    public void setMirrorShowStyle() {
+        this.getStyleClass().remove("button-hidden");
+        this.getStyleClass().add("button-shown");
+    }
+
+    public void setMirrorHiddenStyle() {
+        this.getStyleClass().remove("button-shown");
+        this.getStyleClass().add("button-hidden");
+    }
 }

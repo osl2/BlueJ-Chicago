@@ -3,6 +3,7 @@ package osl2.view.ui;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -91,17 +92,19 @@ public class PlaySpace extends Pane {
      * This method sets the Play Button, adds it to the Buttonspace and sets his action, when clicked.
      */
     private void setPlayButton() {
-        playAutoButton = new Button("Play");
+        playAutoButton = new Button();
         playAutoButton.setAlignment(Pos.CENTER_RIGHT);
         buttonBox.getChildren().add(playAutoButton);
+        setPlayAutoButtonSymbolToPlay();
     }
 
     /**
      * This method sets the Step-by-Step Button, adds it to the Buttonspace and sets his action, when clicked.
      */
     private void setStepbystepButton() {
-        playStepButton = new Button("Step");
+        playStepButton = new Button();
         playStepButton.setAlignment(Pos.CENTER_LEFT);
+        playStepButton.setGraphic(new ImageView("step.jpg"));
         buttonBox.getChildren().add(playStepButton);
     }
 
@@ -126,10 +129,18 @@ public class PlaySpace extends Pane {
         sliderBox.getChildren().add(playSpeedSlider);
     }
 
+    public void setPlayAutoButtonSymbolToPlay() {
+        this.playAutoButton.setGraphic(new ImageView("play.jpg"));
+    }
+
     /**
      * This method sets the style of the playspace.
      */
     private void setColour() {
         this.getStyleClass().add("playspace");
+    }
+
+    public void setPlayAutoButtonSymbolToPause() {
+        this.playAutoButton.setGraphic(new ImageView("pause.jpg"));
     }
 }
