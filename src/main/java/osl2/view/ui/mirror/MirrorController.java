@@ -27,6 +27,7 @@ public class MirrorController implements IMirrorController {
     public void hideMirror() {
         isMirrorOpen = false;
         mirror.disappear();
+        this.getMirrorButton().setMirrorHiddenStyle();
     }
 
     @Override
@@ -50,6 +51,7 @@ public class MirrorController implements IMirrorController {
         isMirrorOpen = true;
         mainRegion.getFreeSpace(mirror);
         mainRegion.addDraggable(mirror);
+        this.getMirrorButton().setMirrorShowStyle();
     }
 
     private void showMirror() {
