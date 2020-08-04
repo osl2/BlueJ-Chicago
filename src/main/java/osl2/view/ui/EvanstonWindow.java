@@ -12,6 +12,8 @@ import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.inlinerepresentation.InlineRepresentation;
+import osl2.view.ui.localisation.LANGUAGES;
+import osl2.view.ui.localisation.LanguageController;
 import osl2.view.ui.mirror.MirrorController;
 
 /**
@@ -27,6 +29,8 @@ public class EvanstonWindow extends Application {
 
     private final PlayController playController;
 
+    private LanguageController languageController;
+
     private MainRegion mainRegion;
 
     private PlaySpace playSpace;
@@ -36,6 +40,8 @@ public class EvanstonWindow extends Application {
     private boolean isPlaying = false;
 
     public EvanstonWindow() {
+        this.languageController = LanguageController.getLanguageController();
+        this.languageController.setMessages(LANGUAGES.GERMAN);
         if (singletonInstance == null) {
             singletonInstance = this;
         } else {

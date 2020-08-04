@@ -41,7 +41,7 @@ public class Evanston {
         }
         errorArray.setName("blub");
         // IndexOutOfBounds error
-        // errorArray.setValue(10, 1);
+         errorArray.setValue(10, 1);
 
         for (int x = 64; x < 69; x++) amap.put(x, (char) x);
         for (int x = 64; x < 70; x++) amap.put(x, (char) (x + 5));
