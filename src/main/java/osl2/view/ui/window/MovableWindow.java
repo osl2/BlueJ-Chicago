@@ -22,6 +22,17 @@ public class MovableWindow extends Draggable {
     }
 
     /**
+     * This method toggles the highlighting of the window.
+     */
+    public void toggleHighlight() {
+        if (isHighlight) {
+            unHighlight();
+        } else {
+            highlight();
+        }
+    }
+
+    /**
      * This method highlights the window.
      */
     public void highlight(){
@@ -35,6 +46,7 @@ public class MovableWindow extends Draggable {
      */
     private void unHighlight(){
         this.body.getHead().unHighlight();
+        this.isHighlight = false;
     }
 
     /**
@@ -66,7 +78,6 @@ public class MovableWindow extends Draggable {
         setOnMouseClicked((event) ->{
             if(isHighlight) {
                 this.unHighlight();
-                this.isHighlight = false;
             }
         });
 

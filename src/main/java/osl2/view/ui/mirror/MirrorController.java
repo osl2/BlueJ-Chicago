@@ -47,7 +47,7 @@ public class MirrorController implements IMirrorController {
             region.getFreeSpace(mirror);
             mainRegion.addDraggable(mirror);
         } else {
-            mirror.highlight();
+            mirror.toggleHighlight();
         }
     }
 
