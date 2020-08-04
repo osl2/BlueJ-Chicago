@@ -7,6 +7,8 @@ import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.sequential.GUIArray;
 
+import java.util.Collection;
+
 public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> implements IArray<T> {
     private final T[] values;
     private final int size;
@@ -17,23 +19,46 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
         getBroadcaster().send((b) -> b.setSize(size));
     }
 
+    @Override
     public int size() {
         return values.length;
+    }
+
+    @Override
+    public boolean removeAll() {
+        return false;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
     }
 
     public T getValue(int index) {
         return values[index];
     }
 
-    public void setValue(int index, T value) {
+    @Override
+    public boolean contains(T value) {
+        return false;
+    }
+
+    @Override
+    public boolean contains(Collection<T> values) {
+        return false;
+    }
+
+    @Override
+    public boolean setValue(int index, T value) {
         if (index < 0 || index > this.size) {
             UserError userError = new ArrayIndexOutOfBoundsError(index, size);
             getBroadcaster().sendWithDelay((b) -> b.handleError(userError));
-            return;
+            return false;
         }
 
         values[index] = value;
         getBroadcaster().sendWithDelay((b) -> b.setValue(index, value));
+        return true;
     }
 
     @Override
