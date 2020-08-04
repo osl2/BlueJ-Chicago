@@ -18,8 +18,8 @@ import osl2.view.ui.mirror.MirrorController;
  * The MainWindow in which the MainRegion, PlaySpace and Sidebar will be in.
  */
 public class EvanstonWindow extends Application {
-    private static final int WIDTH = 800;
-    private static final int HEIGHT = 600;
+    private static final int WIDTH = 1200;
+    private static final int HEIGHT = 900;
     private static Object WAITER = new Object();
 
     private static EvanstonWindow singletonInstance = null;
