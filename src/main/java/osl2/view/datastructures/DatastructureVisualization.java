@@ -8,6 +8,7 @@ import osl2.messaging.datastructures.DatastructureCommunication;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.mirror.IMirrorController;
 
+
 public abstract class DatastructureVisualization<T extends Node> implements DatastructureCommunication {
     private String name;
     private final T contents;
