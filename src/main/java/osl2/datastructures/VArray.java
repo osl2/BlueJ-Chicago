@@ -70,4 +70,9 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
     public DatastructureVisualization createVisualization() {
         return new GUIArray<T>();
     }
+
+    @Override
+    public String getDatastructureType() {
+        return "Array";
+    }
 }

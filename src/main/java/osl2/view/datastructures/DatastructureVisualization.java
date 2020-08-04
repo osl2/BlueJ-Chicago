@@ -6,11 +6,34 @@ import javafx.scene.layout.HBox;
 import osl2.Evanston;
 import osl2.messaging.datastructures.DatastructureCommunication;
 import osl2.messaging.errorHandling.UserError;
+import osl2.view.ui.mirror.IMirrorController;
 
-public abstract class DatastructureVisualization extends HBox implements DatastructureCommunication {
-    public abstract String getName();
+public abstract class DatastructureVisualization<T extends Node> implements DatastructureCommunication {
+    private String name;
+    private final T contents;
+    private IMirrorController mirrorController;
 
-    public abstract Node asNode();
+    public DatastructureVisualization(T contents) {
+        this.name = "???";
+        this.contents = contents;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public final Node asNode() { return contents; }
+    protected final T getContents() { return contents; }
+
+    public void setMirrorController(IMirrorController mirrorController){
+        this.mirrorController = mirrorController;
+    }
+    public void setName(String name){
+        this.name = name;
+        if(mirrorController != null){
+            mirrorController.setName(name);
+        }
+    }
 
     @Override
     public void handleError(UserError userError) {

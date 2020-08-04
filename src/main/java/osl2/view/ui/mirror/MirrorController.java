@@ -6,26 +6,26 @@ import osl2.view.ui.SideBar;
 import osl2.view.ui.draggable.Floormat;
 
 public class MirrorController implements IMirrorController {
-    private MirrorButton button;
-    private Mirror mirror;
-    private Floormat mainRegion;
-    private boolean mirrorOpen;
-    private boolean mirrorHide;
+    private final MirrorButton button;
+    private final Mirror mirror;
+    private final MainRegion mainRegion;
+    private boolean isMirrorOpen;
+    private boolean isMirrorHidden;
 
     public MirrorController(DatastructureVisualization visualization, Floormat mainRegion, SideBar sideBar) {
-        this.mirrorOpen = false;
-        this.mainRegion = mainRegion;
+        this.isMirrorOpen = false;
+        this.mainRegion = (MainRegion) mainRegion;
         this.button = new MirrorButton(visualization.getName(), this);
-        this.mirror = new Mirror(mainRegion, visualization.getName(), visualization.asNode(), this);
+        this.mirror = new Mirror(visualization.getName(), visualization.asNode(), this);
         sideBar.addMirrorButton(button);
         mirror.setVisible(false);
-        mirrorHide = true;
+        isMirrorHidden = true;
         this.mainRegion.addDraggable(mirror);
     }
 
     @Override
     public void hideMirror() {
-        mirrorOpen = false;
+        isMirrorOpen = false;
         mirror.disappear();
     }
 
@@ -36,24 +36,36 @@ public class MirrorController implements IMirrorController {
 
     @Override
     public void mirrorBtnClicked() {
-        if(mirrorHide){
-            mirror.setVisible(true);
-            mirrorHide = false;
-            mainRegion.removeDraggable(mirror);
+        if (isMirrorHidden) {
+            showMirror();
         }
-        if (!mirrorOpen) {
-            mirrorOpen = true;
-            MainRegion region = (MainRegion) mainRegion;
-            region.getFreeSpace(mirror);
-            mainRegion.addDraggable(mirror);
+        if (!isMirrorOpen) {
+            openMirror();
         } else {
-            mirror.highlight();
+            mirror.toggleHighlight();
         }
-        //TODO Mirror.higlight
+    }
+
+    private void openMirror() {
+        isMirrorOpen = true;
+        mainRegion.getFreeSpace(mirror);
+        mainRegion.addDraggable(mirror);
+    }
+
+    private void showMirror() {
+        mirror.setVisible(true);
+        isMirrorHidden = false;
+        mainRegion.removeDraggable(mirror);
     }
 
     @Override
     public MirrorButton getMirrorButton() {
         return this.button;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.button.setText(name);
+        this.mirror.changeHeadName(name);
     }
 }

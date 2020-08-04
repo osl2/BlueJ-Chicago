@@ -1,63 +1,90 @@
 package osl2.view.ui.draggable;
 
 import javafx.scene.Group;
-import javafx.scene.layout.Pane;
 
-public class Draggable extends Pane {
-    private final Floormat floormat;
-
+/**
+ * The draggable class is a object which can be moved.
+ */
+public class Draggable extends Group {
     private double xOffset;
     private double yOffset;
 
 
-    public Draggable(Floormat floormat) {
-        this.floormat = floormat;
+    /**
+     * Creates a new draggable.
+     */
+    public Draggable() {
         //TODO Add Mirror/Draggable to Mirror?
         setBehavior();
     }
 
-    public Floormat getFloormat() {
-        return floormat;
+    private Floormat getFloormat() {
+        return (Floormat) getParent();  // FIXME: This is a bit hacky
     }
 
+    /**
+     * Raises the draggable.
+     */
     public void raise() {
-        floormat.raise(this);
+        toFront();
     }
 
+    /**
+     * Let's the draggable be removed from its floormat.
+     */
     public void disappear() {
-        floormat.removeDraggable(this);
+        getFloormat().removeDraggable(this);
     }
 
+    /**
+     * Returns the XOffset of this draggable.
+     * @return The XOffset.
+     */
     public double getXOffset() {
         return this.xOffset;
     }
 
+    /**
+     * Returns the YOffset of this draggable.
+     * @return The YOffset.
+     */
     public double getYOffset() {
         return this.yOffset;
     }
 
+    /**
+     * Sets the XOffset of this draggable.
+     * @param xOffset The value which will be the XOffset.
+     */
     public void setXOffset(double xOffset) {
         this.xOffset = xOffset;
     }
 
+    /**
+     * Sets the YOffset of this draggable.
+     * @param yOffset The value which will be the YOffset.
+     */
     public void setYOffset(double yOffset) {
         this.yOffset = yOffset;
     }
 
+    /**
+     * Sets the behaviour off the draggable, so that it can be moved inside its parent.
+     */
     private void setBehavior() {
         setOnMousePressed((event) -> {
+            event.consume();
             raise();
             xOffset =  (getLayoutX() - event.getScreenX());
             yOffset =  (getLayoutY() - event.getScreenY());
         });
 
         setOnMouseDragged((event) -> {
-
-
+            event.consume();
             if (xOffset + event.getScreenX() < 0) {
                 setLayoutX(0);
-            } else if (xOffset + event.getScreenX() > floormat.getWidth()) {
-                setLayoutX(floormat.getWidth() - 50);
+            } else if (xOffset + event.getScreenX() > getFloormat().getWidth()) {
+                setLayoutX(getFloormat().getWidth() - 50);
             } else {
                 setLayoutX(xOffset + event.getScreenX());
             }
@@ -65,8 +92,8 @@ public class Draggable extends Pane {
             if (yOffset + event.getScreenY() < 0) {
                 setLayoutY(0);
 
-            } else if (yOffset + event.getScreenY() > floormat.getHeight()) {
-                setLayoutY(floormat.getHeight() + event.getScreenY());
+            } else if (yOffset + event.getScreenY() > getFloormat().getHeight()) {
+                setLayoutY(getFloormat().getHeight() + event.getScreenY());
 
             } else {
                 setLayoutY(yOffset + event.getScreenY());

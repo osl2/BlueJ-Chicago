@@ -10,6 +10,10 @@ public class Broadcaster<B> {
         this.client = client;
     }
 
+    public B getClient() {
+        return client;
+    }
+
     public void send(BroadcasterMessage<B> message) {
         Platform.runLater(() -> message.send(client));  // Run in other thread
     }

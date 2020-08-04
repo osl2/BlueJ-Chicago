@@ -7,11 +7,7 @@ public class GUIArray<T> extends GUISequential implements VArrayCommunication<T>
 
     public GUIArray() {
         super("Value", "Index");
-    }
-
-    @Override
-    public String getName() {
-        return "Array";
+        setName("Array");
     }
 
     @Override

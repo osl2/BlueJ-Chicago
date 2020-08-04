@@ -2,7 +2,9 @@ package osl2;
 
 import osl2.datastructures.EvanstonDatastructure;
 import osl2.datastructures.VArray;
+import osl2.datastructures.VGraph;
 import osl2.datastructures.VMap;
+import osl2.datastructures.nodey.VGraphNode;
 import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
 import osl2.view.datastructures.DatastructureVisualization;
@@ -24,10 +26,14 @@ public class Evanston {
     public static void main(String[] args) {
         EvanstonWindow.open();
 
+        VGraph<Integer> graph = new VGraph();
+        VGraphNode<Integer> node = graph.addNode();
+
         VArray<Integer> errorArray = new VArray<>(5);
+
         for (int i = 0; i < 6; i++) {
             errorArray.setValue(i % 5, i);
-        }
+        }errorArray.setName("blub");
         // IndexOutOfBounds error
         errorArray.setValue(10, 1);
 
