@@ -17,6 +17,7 @@ public abstract class NodeyDatastructure<T, NodeyComm extends VNodeyDatastructur
     }
 
     final public void removeNode(NodeType node) {
+        node.disconnectAll();
         getBroadcaster().sendWithDelay(b -> b.removeGUINode(node.getCommunication()));
     }
 }

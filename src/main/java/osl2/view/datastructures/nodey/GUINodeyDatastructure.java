@@ -17,6 +17,8 @@ public abstract class GUINodeyDatastructure<T, CommType extends VNodeCommunicati
     @Override
     public void addGUINode(CommType node) {
         getContents().addDraggable(node.asGUINode());
+        node.asGUINode().setLayoutX((int) (Math.random() * getContents().getMinWidth()));
+        node.asGUINode().setLayoutY((int) (Math.random() * getContents().getMinHeight()));
     }
 
     @Override

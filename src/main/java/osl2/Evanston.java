@@ -27,7 +27,14 @@ public class Evanston {
         EvanstonWindow.open();
 
         VGraph<Integer> graph = new VGraph();
-        VGraphNode<Integer> node = graph.addNode();
+        VGraphNode<Integer> node = null;
+        VGraphNode<Integer> oldNode = null;
+        for (int x = 0; x < 10; x++) {
+            node = graph.addNode();
+            node.setValue(x + 1);
+            if (oldNode != null) oldNode.connect(node);
+            oldNode = node;
+        }
 
         VArray<Integer> errorArray = new VArray<>(5);
 
