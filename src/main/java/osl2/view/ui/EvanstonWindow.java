@@ -6,6 +6,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
+import osl2.Evanston;
 import osl2.datastructures.EvanstonDatastructure;
 import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
@@ -121,7 +122,7 @@ public class EvanstonWindow extends Application {
      */
     private void setUpSpaces() {
         sideBar = new SideBar();
-        playSpace = new PlaySpace();
+        playSpace = new PlaySpace(this);
 
         setUpSidePlaySplitter();
         setUpVerticalSplitter();
@@ -140,8 +141,15 @@ public class EvanstonWindow extends Application {
      * This method sets up the  splitter between Sidebar and Playspaces.
      */
     private void setUpSidePlaySplitter() {
-        playSpace = new PlaySpace();
         sidePlaySplitter = new SplitPane(sideBar, playSpace);
         sidePlaySplitter.setOrientation(Orientation.VERTICAL);
+    }
+
+    public void playStepButtonClicked() {
+        Evanston.getPlayController().step();
+    }
+
+    public void playAutoButtonClicked() {
+        Evanston.getPlayController().toggle();
     }
 }
