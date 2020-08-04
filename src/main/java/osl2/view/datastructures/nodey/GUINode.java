@@ -1,20 +1,22 @@
 package osl2.view.datastructures.nodey;
 
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+import javafx.scene.Node;
 import osl2.messaging.datastructures.nodey.VNodeCommunication;
 import osl2.view.ui.draggable.Draggable;
-import osl2.view.ui.draggable.Floormat;
 
-public abstract class GUINode extends Draggable implements VNodeCommunication {
+public abstract class GUINode<T, ContentType extends Node> extends Draggable implements VNodeCommunication<T> {
+
+    private final ContentType content;
+
+    protected GUINode(ContentType content) {
+        this.content = content;
+        getChildren().add(content);
+    }
+
+    protected ContentType getContent() { return content; }
 
     @Override
     public GUINode asGUINode() {
         return this;
-    }
-
-    public GUINode(Floormat floormat) {
-        super(floormat);
-        getChildren().add(new Circle(25, Color.RED));   // TODO: More sophisticated contents ^^
     }
 }

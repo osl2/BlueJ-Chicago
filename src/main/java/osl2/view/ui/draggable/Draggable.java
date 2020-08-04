@@ -6,42 +6,34 @@ import javafx.scene.Group;
  * The draggable class is a object which can be moved.
  */
 public class Draggable extends Group {
-    private final Floormat floormat;
-
     private double xOffset;
     private double yOffset;
 
 
     /**
      * Creates a new draggable.
-     * @param floormat The floormat in which this draggable will be added.
      */
-    public Draggable(Floormat floormat) {
-        this.floormat = floormat;
+    public Draggable() {
         //TODO Add Mirror/Draggable to Mirror?
         setBehavior();
     }
 
-    /**
-     * Returns the Floormat in which the draggable will be.
-     * @return The Floormat.
-     */
-    public Floormat getFloormat() {
-        return floormat;
+    private Floormat getFloormat() {
+        return (Floormat) getParent();  // FIXME: This is a bit hacky
     }
 
     /**
-     * Raises the draggable insinde its floormat.
+     * Raises the draggable.
      */
     public void raise() {
-        floormat.raise(this);
+        toFront();
     }
 
     /**
      * Let's the draggable be removed from its floormat.
      */
     public void disappear() {
-        floormat.removeDraggable(this);
+        getFloormat().removeDraggable(this);
     }
 
     /**
@@ -81,18 +73,18 @@ public class Draggable extends Group {
      */
     private void setBehavior() {
         setOnMousePressed((event) -> {
+            event.consume();
             raise();
             xOffset =  (getLayoutX() - event.getScreenX());
             yOffset =  (getLayoutY() - event.getScreenY());
         });
 
         setOnMouseDragged((event) -> {
-
-
+            event.consume();
             if (xOffset + event.getScreenX() < 0) {
                 setLayoutX(0);
-            } else if (xOffset + event.getScreenX() > floormat.getWidth()) {
-                setLayoutX(floormat.getWidth() - 50);
+            } else if (xOffset + event.getScreenX() > getFloormat().getWidth()) {
+                setLayoutX(getFloormat().getWidth() - 50);
             } else {
                 setLayoutX(xOffset + event.getScreenX());
             }
@@ -100,8 +92,8 @@ public class Draggable extends Group {
             if (yOffset + event.getScreenY() < 0) {
                 setLayoutY(0);
 
-            } else if (yOffset + event.getScreenY() > floormat.getHeight()) {
-                setLayoutY(floormat.getHeight() + event.getScreenY());
+            } else if (yOffset + event.getScreenY() > getFloormat().getHeight()) {
+                setLayoutY(getFloormat().getHeight() + event.getScreenY());
 
             } else {
                 setLayoutY(yOffset + event.getScreenY());

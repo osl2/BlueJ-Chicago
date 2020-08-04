@@ -12,8 +12,7 @@ public class MovableWindow extends Draggable {
     private final MovableWindowBody body;
     private boolean isHighlighted;
 
-    public MovableWindow(Floormat floormat, Node title, Node contents, IMirrorController controller) {
-        super(floormat);
+    public MovableWindow(Node title, Node contents, IMirrorController controller) {
         body = new MovableWindowBody(this, title, contents);
         body.getHead().linkBtnToController(controller);
         getChildren().add(body);

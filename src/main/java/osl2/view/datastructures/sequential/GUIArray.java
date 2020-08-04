@@ -2,15 +2,12 @@ package osl2.view.datastructures.sequential;
 
 import osl2.messaging.datastructures.VArrayCommunication;
 import osl2.view.inlinerepresentation.InlineRepresentation;
-import osl2.view.ui.mirror.IMirrorController;
 
 public class GUIArray<T> extends GUISequential implements VArrayCommunication<T> {
-
 
     public GUIArray() {
         super("Value", "Index");
         setName("Array");
-
     }
 
     @Override
@@ -25,7 +22,4 @@ public class GUIArray<T> extends GUISequential implements VArrayCommunication<T>
     public void setValue(int i, T value) {
         putElement(i, InlineRepresentation.get(value));
     }
-
-
-
 }

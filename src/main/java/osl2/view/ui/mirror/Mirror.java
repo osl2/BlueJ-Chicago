@@ -10,8 +10,8 @@ import osl2.view.ui.window.MovableWindow;
  */
 public class Mirror extends MovableWindow {
 
-    public Mirror(Floormat floormat, String title, Node contents, IMirrorController controller) {
-        super(floormat, new Label(title), contents, controller);
+    public Mirror(String title, Node contents, IMirrorController controller) {
+        super(new Label(title), contents, controller);
     }
 
 }
