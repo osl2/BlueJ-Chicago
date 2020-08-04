@@ -4,12 +4,13 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Screen;
 
 /**
  * The Floormat is a place which contains Draggables.
  */
-public class Floormat extends ScrollPane {
+public class Floormat extends Region {
 
     /**
      * Creates a new Floormat.

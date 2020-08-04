@@ -16,7 +16,7 @@ public class MirrorController implements IMirrorController {
         this.isMirrorOpen = false;
         this.mainRegion = (MainRegion) mainRegion;
         this.button = new MirrorButton(visualization.getName(), this);
-        this.mirror = new Mirror(mainRegion, visualization.getName(), visualization.asNode(), this);
+        this.mirror = new Mirror(visualization.getName(), visualization.asNode(), this);
         sideBar.addMirrorButton(button);
         mirror.setVisible(false);
         isMirrorHidden = true;
