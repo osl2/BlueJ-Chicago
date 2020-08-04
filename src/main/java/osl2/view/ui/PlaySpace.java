@@ -13,6 +13,7 @@ import osl2.Evanston;
  */
 public class PlaySpace extends Pane {
 
+    private final EvanstonWindow evanstonWindow;
     private Button playAutoButton;
     private Button playStepButton;
     private Slider playSpeedSlider;
@@ -23,15 +24,21 @@ public class PlaySpace extends Pane {
     /**
      * Sets up the Playspace and all its components.
      */
-    public PlaySpace() {
+    public PlaySpace(EvanstonWindow evanstonWindow) {
+        this.evanstonWindow = evanstonWindow;
         setSplitLayout();
         setButtonBox();
         setSliderBox();
-        setStepbystepButton();
-        setPlayButton();
+        addButtons();
         setSlider();
         setVBoxListener();
         setColour();
+    }
+
+    private void addButtons() {
+        setStepbystepButton();
+        setPlayButton();
+        linkButtonToController();
     }
 
     /**
@@ -85,7 +92,6 @@ public class PlaySpace extends Pane {
      */
     private void setPlayButton() {
         playAutoButton = new Button("Play");
-        playAutoButton.setOnAction((event) -> Evanston.getPlayController().toggle());
         playAutoButton.setAlignment(Pos.CENTER_RIGHT);
         buttonBox.getChildren().add(playAutoButton);
     }
@@ -95,9 +101,13 @@ public class PlaySpace extends Pane {
      */
     private void setStepbystepButton() {
         playStepButton = new Button("Step");
-        playStepButton.setOnAction((event) -> Evanston.getPlayController().step());
         playStepButton.setAlignment(Pos.CENTER_LEFT);
         buttonBox.getChildren().add(playStepButton);
+    }
+
+    private void linkButtonToController() {
+        playStepButton.setOnAction(e -> evanstonWindow.playStepButtonClicked());
+        playAutoButton.setOnAction(e -> evanstonWindow.playAutoButtonClicked());
     }
 
     /**
