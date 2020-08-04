@@ -74,6 +74,7 @@ public class EvanstonWindow extends Application {
         DatastructureVisualization visualization = datastructure.createVisualization();
         Platform.runLater(() -> {
             MirrorController mc = new MirrorController(visualization, mainRegion, sideBar);
+            visualization.setMirrorController(mc);
             InlineRepresentation.registerInlineAction(datastructure, () -> mc.mirrorBtnClicked());
         });
         return new Broadcaster(visualization);

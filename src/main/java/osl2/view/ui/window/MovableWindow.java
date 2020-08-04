@@ -70,6 +70,10 @@ public class MovableWindow extends Draggable {
         body.toggle();
     }
 
+    public void changeHeadName(String name){
+        this.body.getHead().setTitle(name);
+    }
+
     /**
      * This method sets the behaviour, so when its highlighted and clicked, it will be unhighlighted.
      */

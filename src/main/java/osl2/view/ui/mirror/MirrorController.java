@@ -55,4 +55,10 @@ public class MirrorController implements IMirrorController {
     public MirrorButton getMirrorButton() {
         return this.button;
     }
+
+    @Override
+    public void setName(String name) {
+        this.button.setText(name);
+        this.mirror.changeHeadName(name);
+    }
 }

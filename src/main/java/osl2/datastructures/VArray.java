@@ -10,6 +10,8 @@ import osl2.view.datastructures.sequential.GUIArray;
 public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> implements IArray<T> {
     private final T[] values;
     private final int size;
+    private final String datastructureType = "Array";
+
 
     public VArray(int size) {
         this.size = size;
@@ -40,4 +42,11 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
     public DatastructureVisualization createVisualization() {
         return new GUIArray<T>();
     }
+
+    @Override
+    public String getDatastructureType() {
+        return datastructureType;
+    }
+
+
 }
