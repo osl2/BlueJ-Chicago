@@ -9,6 +9,8 @@ public class GUIGraphNode<T> extends GUINode<T, Circle> implements VGraphNodeCom
 
     public GUIGraphNode() {
         super(new Circle(25, Color.RED));
+        getContent().setCenterX(25);
+        getContent().setCenterY(25);
         // TODO: getContent().getChildren().add(InlineRepresentation.get(null));
     }
 
