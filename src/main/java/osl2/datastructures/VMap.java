@@ -10,13 +10,22 @@ import java.util.Map;
 import java.util.Set;
 
 public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> implements Map<K, V> {
+
+    private final String datastructureType = "Map";
+
     private final Map<K, V> wrapped = new HashMap<>();
+
 
     public VMap() {}
 
     @Override
     public DatastructureVisualization createVisualization() {
         return new GUIMap<K, V>();
+    }
+
+    @Override
+    public String getDatastructureType() {
+        return datastructureType;
     }
 
     @Override

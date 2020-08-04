@@ -2,6 +2,7 @@ package osl2.view.datastructures.sequential;
 
 import osl2.messaging.datastructures.VMapCommunication;
 import osl2.view.inlinerepresentation.InlineRepresentation;
+import osl2.view.ui.mirror.IMirrorController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,9 @@ public class GUIMap<K, V> extends GUISequential implements VMapCommunication<K, 
     public String getName() {
         return "Map";
     }
+
+
+
 
     @Override
     public void put(K key, V value) {
@@ -43,4 +47,6 @@ public class GUIMap<K, V> extends GUISequential implements VMapCommunication<K, 
     public void clear() {
         clearElements();
     }
+
+
 }

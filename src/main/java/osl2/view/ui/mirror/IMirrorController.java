@@ -30,4 +30,6 @@ public interface IMirrorController {
      * @return the mirror button
      */
     MirrorButton getMirrorButton();
+
+    void setName(String name);
 }

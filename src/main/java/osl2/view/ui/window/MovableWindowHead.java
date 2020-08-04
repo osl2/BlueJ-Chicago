@@ -2,6 +2,7 @@ package osl2.view.ui.window;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -17,6 +18,7 @@ public class MovableWindowHead extends HBox {
     private ActionButton hideButton;
     private HBox buttons;
     private Pane spacer;
+    private Node title;
 
     /**
      * Creates a new WindowHead
@@ -33,7 +35,9 @@ public class MovableWindowHead extends HBox {
         buttons = new HBox();
         buttons.setSpacing(2);
 
-        getChildren().addAll(title, spacer, buttons);
+        this. title = title;
+
+        getChildren().addAll(this.title, spacer, buttons);
     }
 
     /**
@@ -58,6 +62,7 @@ public class MovableWindowHead extends HBox {
     public void unHighlight(){
         this.getStyleClass().remove("movable-window-head-highlight");
         this.getStyleClass().add("movable-window-head");
+
     }
 
     /**
@@ -69,6 +74,13 @@ public class MovableWindowHead extends HBox {
         hideButton = new ActionButton("X", () -> controller.hideMirror());
         buttons.getChildren().add(minMaxButton);
         buttons.getChildren().add(hideButton);
+    }
+
+    public void setTitle(String name){
+        getChildren().removeAll(title, spacer, buttons);
+        this.title = new Label(name);
+        getChildren().addAll(title, spacer, buttons);
+
     }
 
     /**

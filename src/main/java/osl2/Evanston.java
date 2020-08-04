@@ -25,9 +25,10 @@ public class Evanston {
         EvanstonWindow.open();
 
         VArray<Integer> errorArray = new VArray<>(5);
+
         for (int i = 0; i < 6; i++) {
             errorArray.setValue(i % 5, i);
-        }
+        }errorArray.setName("blub");
         // IndexOutOfBounds error
         errorArray.setValue(10, 1);
 
