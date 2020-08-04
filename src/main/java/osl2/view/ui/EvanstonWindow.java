@@ -33,6 +33,7 @@ public class EvanstonWindow extends Application {
     private SideBar sideBar;
     private SplitPane verticalSplitter;
     private SplitPane sidePlaySplitter;
+    private boolean isPlaying = false;
 
     public EvanstonWindow() {
         if (singletonInstance == null) {
@@ -151,5 +152,13 @@ public class EvanstonWindow extends Application {
 
     public void playAutoButtonClicked() {
         Evanston.getPlayController().toggle();
+        if(isPlaying) {
+            playSpace.setPlayAutoButtonSymbolToPlay();
+            isPlaying = false;
+        } else {
+            playSpace.setPlayAutoButtonSymbolToPause();
+            isPlaying = true;
+        }
+
     }
 }
