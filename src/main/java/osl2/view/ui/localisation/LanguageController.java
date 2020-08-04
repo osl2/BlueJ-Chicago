@@ -50,6 +50,9 @@ public class LanguageController {
      * @return The message.
      */
     public String getMessage(String name){
+        if(messages == null){
+            messages = ResourceBundle.getBundle("MessagesBundle");
+        }
         return messages.getString(name);
     }
 
