@@ -101,7 +101,7 @@ public class EvanstonWindow extends Application {
         setUpSpaces();
 
         Scene scene = new Scene(verticalSplitter, WIDTH, HEIGHT);
-        scene.getStylesheets().add("style.css");
+        scene.getStylesheets().add("dark_style.css");
         stage.setScene(scene);
         stage.show();
 
