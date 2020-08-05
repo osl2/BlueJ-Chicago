@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import osl2.Evanston;
+import osl2.view.ui.settings.SettingsController;
 
 /**
  * The Playspace is the space in the View were the user can play the changes in his Datastructures.
@@ -17,10 +18,14 @@ public class PlaySpace extends Pane {
     private final EvanstonWindow evanstonWindow;
     private Button playAutoButton;
     private Button playStepButton;
+    private Button settings;
     private Slider playSpeedSlider;
     private VBox splitLayout;
     private HBox buttonBox;
     private HBox sliderBox;
+    private HBox settingsBox;
+    private SettingWindow settingWindow;
+    private SettingsController settingsController;
 
     /**
      * Sets up the Playspace and all its components.
@@ -32,6 +37,7 @@ public class PlaySpace extends Pane {
         setSliderBox();
         addButtons();
         setSlider();
+        setUpSettingBox();
         setVBoxListener();
         setColour();
     }
@@ -106,6 +112,23 @@ public class PlaySpace extends Pane {
         playStepButton.setAlignment(Pos.CENTER_LEFT);
         playStepButton.setGraphic(new ImageView("step.jpg"));
         buttonBox.getChildren().add(playStepButton);
+    }
+
+    private void setSettingsButton(){
+        settingsController = new SettingsController();
+        settingWindow = new SettingWindow();
+        settings = new Button("Settings");
+        settings.setOnAction(e -> settingsController.openSettingsWindow(settingWindow));
+        settings.setAlignment(Pos.CENTER);
+    }
+
+    private void setUpSettingBox(){
+        setSettingsButton();
+        settingsBox = new HBox();
+        settingsBox.getChildren().add(settings);
+        settingsBox.setAlignment(Pos.CENTER);
+        settingsBox.setSpacing(this.getWidth() - this.getWidth() / 1.5);
+        splitLayout.getChildren().add(settingsBox);
     }
 
     private void linkButtonToController() {
