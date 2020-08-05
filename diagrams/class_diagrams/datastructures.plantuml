@@ -1,0 +1,134 @@
+@startuml
+
+title __DATASTRUCTURES's Class Diagram__\n
+
+namespace osl2 {
+  namespace datastructures {
+      namespace interfaces {
+        interface osl2.datastructures.interfaces.IArray {
+            {abstract} + contains()
+            {abstract} + contains()
+            {abstract} + getValue()
+            {abstract} + setValue()
+        }
+        interface osl2.datastructures.interfaces.IDatastructure {
+            {abstract} + isEmpty()
+            {abstract} + removeAll()
+            {abstract} + size()
+        }
+        interface osl2.datastructures.interfaces.IGraph {
+            {abstract} + addEdge()
+            {abstract} + addNode()
+            {abstract} + containsEdge()
+            {abstract} + containsNode()
+            {abstract} + containsNodes()
+            {abstract} + getAdjacents()
+            {abstract} + getNodes()
+            {abstract} + isEmpty()
+            {abstract} + removeEdge()
+            {abstract} + removeNode()
+            {abstract} + size()
+        }
+        interface osl2.datastructures.interfaces.ITree {
+            {abstract} + addChild()
+            {abstract} + addTree()
+            {abstract} + contains()
+            {abstract} + contains()
+            {abstract} + getChilds()
+            {abstract} + getHeight()
+            {abstract} + getParent()
+            {abstract} + removeLeave()
+            {abstract} + swap()
+        }
+      }
+    namespace nodey {
+      abstract class osl2.datastructures.nodey.NodeyDatastructure {
+          + addNode()
+          + removeNode()
+          {abstract} # createNode()
+          # registerNodeVisualization()
+      }
+      class osl2.datastructures.nodey.VGraphNode {
+          - edges : Set<VGraphNode<T>>
+          + VGraphNode()
+          + connect()
+          + disconnect()
+          + disconnectAll()
+          + getAdjacents()
+          # createVisualization()
+      }
+      abstract class osl2.datastructures.nodey.VNode {
+          - broadcaster : Broadcaster<Comm>
+          + VNode()
+          {abstract} + disconnectAll()
+          + getCorrespondent()
+          + getValue()
+          + setValue()
+          {abstract} # createVisualization()
+          # getBroadcaster()
+          ~ getCommunication()
+      }
+    }
+    abstract class osl2.datastructures.EvanstonDatastructure {
+        - broadcaster : Broadcaster<B>
+        - name : String
+        + EvanstonDatastructure()
+        {abstract} + createVisualization()
+        {abstract} + getDatastructureType()
+        + getName()
+        + setName()
+        # getBroadcaster()
+    }
+    class osl2.datastructures.VArray {
+        - size : int
+        - values : T[]
+        + VArray()
+        + contains()
+        + contains()
+        + createVisualization()
+        + getDatastructureType()
+        + getValue()
+        + isEmpty()
+        + removeAll()
+        + setValue()
+        + size()
+    }
+    class osl2.datastructures.VGraph {
+        + createVisualization()
+        + getDatastructureType()
+        # createNode()
+    }
+    class osl2.datastructures.VMap {
+        - wrapped : Map<K, V>
+        + VMap()
+        + clear()
+        + containsKey()
+        + containsValue()
+        + createVisualization()
+        + entrySet()
+        + get()
+        + getDatastructureType()
+        + isEmpty()
+        + keySet()
+        + put()
+        + putAll()
+        + remove()
+        + size()
+        + values()
+    }
+  }
+}
+
+
+
+osl2.datastructures.VArray .up.|> osl2.datastructures.interfaces.IArray
+osl2.datastructures.VArray -up-|> osl2.datastructures.EvanstonDatastructure
+osl2.datastructures.VGraph -up-|> osl2.datastructures.nodey.NodeyDatastructure
+osl2.datastructures.VMap .up.|> java.util.Map
+osl2.datastructures.VMap -up-|> osl2.datastructures.EvanstonDatastructure
+
+osl2.datastructures.nodey.NodeyDatastructure -up-|> osl2.datastructures.EvanstonDatastructure
+osl2.datastructures.nodey.VGraphNode -up-|> osl2.datastructures.nodey.VNode
+osl2.datastructures.nodey.VNode o-- T : value
+
+@enduml

@@ -4,6 +4,7 @@ import osl2.datastructures.EvanstonDatastructure;
 import osl2.messaging.datastructures.nodey.VNodeCommunication;
 import osl2.messaging.datastructures.nodey.VNodeyDatastructureCommunication;
 
+
 public abstract class NodeyDatastructure<T, NodeyComm extends VNodeyDatastructureCommunication<T, CommType>, CommType extends VNodeCommunication<T>, NodeType extends VNode<CommType, T>> extends EvanstonDatastructure<NodeyComm> {
 
     protected abstract NodeType createNode();

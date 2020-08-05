@@ -7,6 +7,7 @@ import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.sequential.GUIArray;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> implements IArray<T> {
@@ -19,36 +20,14 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
         getBroadcaster().send((b) -> b.setSize(size));
     }
 
-    @Override
     public int size() {
         return values.length;
-    }
-
-    @Override
-    public boolean removeAll() {
-        return false;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return false;
     }
 
     public T getValue(int index) {
         return values[index];
     }
 
-    @Override
-    public boolean contains(T value) {
-        return false;
-    }
-
-    @Override
-    public boolean contains(Collection<T> values) {
-        return false;
-    }
-
-    @Override
     public boolean setValue(int index, T value) {
         if (index < 0 || index > this.size) {
             UserError userError = new ArrayIndexOutOfBoundsError(index, size);
@@ -58,6 +37,33 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
 
         values[index] = value;
         getBroadcaster().sendWithDelay((b) -> b.setValue(index, value));
+        return true;
+    }
+
+    public boolean contains(T value) {
+        for (T e : values) {
+            if (e == value) return true;
+        }
+        return false;
+    }
+
+    public boolean contains(Collection<T> values) {
+        for (T e : values) {
+            if (!contains(e)) return false;
+        }
+        return true;
+    }
+
+    public boolean removeAll() {
+        Arrays.fill(values, null); // TODO do not forget the broadcaster
+        return true;
+    }
+
+    public boolean isEmpty() {
+        for(T element: values) {
+            if(element != null)
+                return false;
+        }
         return true;
     }
 
