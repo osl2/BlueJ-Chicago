@@ -7,9 +7,17 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-
+/**
+ * The class of an arrow, for a visualisation.
+ */
 public class Arrow extends Group {
 
+    /**
+     * Creates a new arrow.
+     * @param from The GUINode where the arrow starts.
+     * @param to The GUINode where the arrow ends.
+     * @param color The color of the arrow.
+     */
     public Arrow(GUINode from, GUINode to, Color color) {
         Line line = new Line();
 

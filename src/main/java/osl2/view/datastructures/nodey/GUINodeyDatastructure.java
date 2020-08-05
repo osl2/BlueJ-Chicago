@@ -6,8 +6,16 @@ import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.ui.draggable.Floormat;
 
+/**
+ * The visualisation class for a nodey datastructure like graph, tree or lists.
+ * @param <T> The datatype of the nodey datastructure.
+ * @param <CommType> The communicationinterface.
+ */
 public abstract class GUINodeyDatastructure<T, CommType extends VNodeCommunication<T>> extends DatastructureVisualization<Floormat> implements VNodeyDatastructureCommunication<T, CommType> {
 
+    /**
+     * Creates a new visualisation of a GuiNodeyDatastructure.
+     */
     public GUINodeyDatastructure() {
         super(new Floormat());
         getContents().setMinWidth(250);

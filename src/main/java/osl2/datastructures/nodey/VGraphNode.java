@@ -6,9 +6,12 @@ import osl2.view.datastructures.nodey.GUIGraphNode;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * The class for a Node inside a graph.
+ * @param <T> The datatype of the node.
+ */
 public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
     private Set<VGraphNode<T>> edges = new HashSet<>();
-
 
     public void connect(VGraphNode<T> node) {
         edges.add(node);
@@ -25,11 +28,19 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
         edges.clear();
     }
 
+    /**
+     * Returns all the adjacents of a node.
+     * @return
+     */
     public VGraphNode<T>[] getAdjacents() {
         return edges.toArray(new VGraphNode[]{});
     }
 
 
+    /**
+     * Creates a new GraphNode.
+     * @param parentDS The parent of the graphnode.
+     */
     public VGraphNode(NodeyDatastructure parentDS) {
         super(parentDS);
     }

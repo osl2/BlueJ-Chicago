@@ -5,8 +5,15 @@ import osl2.messaging.datastructures.VGraphNodeCommunication;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.inlinerepresentation.InlineRepresentation;
 
+/**
+ * The class of a node vor visualisation of graphs.
+ * @param <T> The datatype of the value of the node.
+ */
 public class GUIGraphNode<T> extends GUINode<T, RoundedNodeContainer<VBox>> implements VGraphNodeCommunication<T> {
 
+    /**
+     * Creates a new GraphNode.
+     */
     public GUIGraphNode() {
         super(new RoundedNodeContainer<>(new VBox()));
         getContent().setStyle("-fx-background-color: red");
