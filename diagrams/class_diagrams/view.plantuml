@@ -1,0 +1,307 @@
+@startuml
+
+title __VIEW's Class Diagram__\n
+
+namespace osl2 {
+  namespace view {
+          namespace datastructures {
+                    namespace nodey {
+                      class osl2.view.datastructures.nodey.Arrow {
+                          + Arrow()
+                      }
+                      class osl2.view.datastructures.nodey.GUIGraphNode {
+                          + GUIGraphNode()
+                          + connect()
+                          + disconnect()
+                          + disconnectAll()
+                          + handleError()
+                          + setName()
+                          + valueChange()
+                      }
+                      abstract class osl2.view.datastructures.nodey.GUINode {
+                          + asGUINode()
+                          # GUINode()
+                          # getContent()
+                      }
+                      abstract class osl2.view.datastructures.nodey.GUINodeyDatastructure {
+                          + GUINodeyDatastructure()
+                          + addGUINode()
+                          + removeGUINode()
+                      }
+                      class osl2.view.datastructures.nodey.RoundedNodeContainer {
+                          + RoundedNodeContainer()
+                          + getContents()
+                          + setContents()
+                      }
+                    }
+                    namespace sequential {
+                      class osl2.view.datastructures.sequential.GUIArray {
+                          + GUIArray()
+                          + setSize()
+                          + setValue()
+                      }
+                      class osl2.view.datastructures.sequential.GUIMap {
+                          - keys : List<Object>
+                          + GUIMap()
+                          + clear()
+                          + getName()
+                          + put()
+                          + remove()
+                      }
+                      abstract class osl2.view.datastructures.sequential.GUISequential {
+                          # GUISequential()
+                          # clearElements()
+                          # putElement()
+                          # putElement()
+                          # removeElement()
+                      }
+                      class osl2.view.datastructures.sequential.GUISequential.GUISequentialEntry {
+                          + GUISequentialEntry()
+                      }
+                    }
+            abstract class osl2.view.datastructures.DatastructureVisualization {
+                - name : String
+                + DatastructureVisualization()
+                + asNode()
+                + getName()
+                + handleError()
+                + setMirrorController()
+                + setName()
+                # getContents()
+                - showErrorDialog()
+            }
+            class osl2.view.datastructures.GUIGraph {
+                + GUIGraph()
+            }
+          }
+          namespace inlinerepresentation {
+            class osl2.view.inlinerepresentation.InlineRepresentation {
+                {static} - inlineRepresentationFunctions : Map<Object, Runnable>
+                + InlineRepresentation()
+                {static} + get()
+                {static} + registerInlineAction()
+            }
+          }
+        namespace ui {
+                  namespace draggable {
+                    class osl2.view.ui.draggable.Draggable {
+                        - xOffset : double
+                        - yOffset : double
+                        + Draggable()
+                        + disappear()
+                        + getXOffset()
+                        + getYOffset()
+                        + raise()
+                        + setXOffset()
+                        + setYOffset()
+                        - getFloormat()
+                        - setBehavior()
+                    }
+                    class osl2.view.ui.draggable.Floormat {
+                        + Floormat()
+                        + addDraggable()
+                        + raise()
+                        + removeDraggable()
+                    }
+                  }
+                  namespace localisation {
+                    enum LANGUAGES {
+                      ENGLISH_US
+                      GERMAN
+                      country
+                      language
+                    }
+                    class osl2.view.ui.localisation.LanguageController {
+                        - locale : Locale
+                        - messages : ResourceBundle
+                        {static} - singeltonLanguageController : LanguageController
+                        + LanguageController()
+                        {static} + getLanguageController()
+                        + getMessage()
+                        + setMessages()
+                    }
+                  }
+                 namespace mirror {
+                   interface osl2.view.ui.mirror.IMirrorController {
+                       {abstract} + getMirrorButton()
+                       {abstract} + hideMirror()
+                       {abstract} + minOrMaxMirror()
+                       {abstract} + mirrorBtnClicked()
+                       {abstract} + setName()
+                   }
+                   class osl2.view.ui.mirror.Mirror {
+                       + Mirror()
+                   }
+                   class osl2.view.ui.mirror.MirrorButton {
+                       - name : String
+                       + MirrorButton()
+                       + setMirrorHiddenStyle()
+                       + setMirrorShowStyle()
+                       - linkButtonToController()
+                   }
+                   class osl2.view.ui.mirror.MirrorController {
+                       - isMirrorHidden : boolean
+                       - isMirrorOpen : boolean
+                       + MirrorController()
+                       + getMirrorButton()
+                       + hideMirror()
+                       + minOrMaxMirror()
+                       + mirrorBtnClicked()
+                       + setName()
+                       - openMirror()
+                       - showMirror()
+                   }
+                 }
+            namespace window {
+                class osl2.view.ui.window.MovableWindow {
+                    - isHighlighted : boolean
+                    + MovableWindow()
+                    + changeHeadName()
+                    + hideContents()
+                    + highlight()
+                    + showContents()
+                    + toggle()
+                    + toggleHighlight()
+                    - setBehaviourHighlight()
+                    - unHighlight()
+                }
+                class osl2.view.ui.window.MovableWindowBody {
+                    - contents : Node
+                    - contentsShown : boolean
+                    + MovableWindowBody()
+                    + getHead()
+                    + hideContents()
+                    + showContents()
+                    + toggle()
+                    - setStyle()
+                }
+                class osl2.view.ui.window.MovableWindowHead {
+                    - buttons : HBox
+                    - spacer : Pane
+                    - title : Node
+                    + MovableWindowHead()
+                    + highlight()
+                    + linkBtnToController()
+                    + setTitle()
+                    + unHighlight()
+                    - setStyle()
+                }
+                class osl2.view.ui.window.MovableWindowHead.ActionButton {
+                    + ActionButton()
+                }
+              }
+          class osl2.view.ui.EvanstonWindow {
+              {static} - APP_THREAD : Thread
+              {static} - HEIGHT : int
+              {static} - WAITER : Object
+              {static} - WIDTH : int
+              - isPlaying : boolean
+              - sidePlaySplitter : SplitPane
+              {static} - singletonInstance : EvanstonWindow
+              - verticalSplitter : SplitPane
+              + EvanstonWindow()
+              {static} + getInstance()
+              + getPlayController()
+              {static} + open()
+              + openVisualization()
+              + playAutoButtonClicked()
+              + playStepButtonClicked()
+              + start()
+              - setUpSidePlaySplitter()
+              - setUpSpaces()
+              - setUpVerticalSplitter()
+          }
+          class osl2.view.ui.MainRegion {
+              - draggableLinkedList : LinkedList<Draggable>
+              + MainRegion()
+              + getFreeSpace()
+              - setStyle()
+          }
+          class osl2.view.ui.PlaySpace {
+              - buttonBox : HBox
+              - playAutoButton : Button
+              - playSpeedSlider : Slider
+              - playStepButton : Button
+              - sliderBox : HBox
+              - splitLayout : VBox
+              + PlaySpace()
+              + setPlayAutoButtonSymbolToPause()
+              + setPlayAutoButtonSymbolToPlay()
+              - addButtons()
+              - linkButtonToController()
+              - setButtonBox()
+              - setColour()
+              - setPlayButton()
+              - setSlider()
+              - setSliderBox()
+              - setSplitLayout()
+              - setStepbystepButton()
+              - setVBoxListener()
+          }
+          class osl2.view.ui.SideBar {
+              + SideBar()
+              + addMirrorButton()
+          }
+        }
+  }
+}
+
+  osl2.view.ui.EvanstonWindow -up-|> javafx.application.Application
+  osl2.view.ui.EvanstonWindow o-- osl2.view.ui.localisation.LanguageController : languageController
+  osl2.view.ui.EvanstonWindow o-- osl2.view.ui.MainRegion : mainRegion
+  osl2.view.ui.EvanstonWindow o-- osl2.messaging.PlayController : playController
+  osl2.view.ui.EvanstonWindow o-- osl2.view.ui.PlaySpace : playSpace
+  osl2.view.ui.EvanstonWindow o-- osl2.view.ui.SideBar : sideBar
+  osl2.view.ui.MainRegion -up-|> osl2.view.ui.draggable.Floormat
+  osl2.view.ui.PlaySpace -up-|> javafx.scene.layout.Pane
+  osl2.view.ui.PlaySpace o-- osl2.view.ui.EvanstonWindow : evanstonWindow
+  osl2.view.ui.SideBar -up-|> javafx.scene.control.ListView
+    osl2.view.ui.window.MovableWindow -up-|> osl2.view.ui.draggable.Draggable
+    osl2.view.ui.window.MovableWindow o-- osl2.view.ui.window.MovableWindowBody : body
+    osl2.view.ui.window.MovableWindowBody -up-|> javafx.scene.layout.VBox
+    osl2.view.ui.window.MovableWindowBody o-- osl2.view.ui.window.MovableWindowHead : head
+    osl2.view.ui.window.MovableWindowHead -up-|> javafx.scene.layout.HBox
+    osl2.view.ui.window.MovableWindowHead o-- osl2.view.ui.window.MovableWindowHead.ActionButton : hideButton
+    osl2.view.ui.window.MovableWindowHead o-- osl2.view.ui.window.MovableWindowHead.ActionButton : minMaxButton
+    osl2.view.ui.window.MovableWindowHead +-down- osl2.view.ui.window.MovableWindowHead.ActionButton
+    osl2.view.ui.window.MovableWindowHead.ActionButton -up-|> javafx.scene.control.Button
+  osl2.view.ui.mirror.Mirror -up-|> osl2.view.ui.window.MovableWindow
+  osl2.view.ui.mirror.MirrorButton -up-|> javafx.scene.control.Button
+  osl2.view.ui.mirror.MirrorButton o-- osl2.view.ui.mirror.IMirrorController : mirrorController
+  osl2.view.ui.mirror.MirrorController .up.|> osl2.view.ui.mirror.IMirrorController
+  osl2.view.ui.mirror.MirrorController o-- osl2.view.ui.mirror.MirrorButton : button
+  osl2.view.ui.mirror.MirrorController o-- osl2.view.ui.MainRegion : mainRegion
+  osl2.view.ui.mirror.MirrorController o-- osl2.view.ui.mirror.Mirror : mirror
+
+  osl2.view.ui.draggable.Draggable -up-|> javafx.scene.Group
+  osl2.view.ui.draggable.Floormat -up-|> javafx.scene.layout.Pane
+  osl2.view.inlinerepresentation.InlineRepresentation -up-|> javafx.scene.control.Button
+  osl2.view.datastructures.DatastructureVisualization .up.|> osl2.messaging.datastructures.DatastructureCommunication
+  osl2.view.datastructures.DatastructureVisualization o-- T : contents
+  osl2.view.datastructures.DatastructureVisualization o-- osl2.view.ui.localisation.LanguageController : languageController
+  osl2.view.datastructures.DatastructureVisualization o-- osl2.view.ui.mirror.IMirrorController : mirrorController
+  osl2.view.datastructures.GUIGraph .up.|> osl2.messaging.datastructures.VGraphCommunication
+  osl2.view.datastructures.GUIGraph -up-|> osl2.view.datastructures.nodey.GUINodeyDatastructure
+  osl2.view.datastructures.sequential.GUIArray .up.|> osl2.messaging.datastructures.VArrayCommunication
+  osl2.view.datastructures.sequential.GUIArray -up-|> osl2.view.datastructures.sequential.GUISequential
+  osl2.view.datastructures.sequential.GUIMap .up.|> osl2.messaging.datastructures.VMapCommunication
+  osl2.view.datastructures.sequential.GUIMap -up-|> osl2.view.datastructures.sequential.GUISequential
+  osl2.view.datastructures.sequential.GUISequential -up-|> osl2.view.datastructures.DatastructureVisualization
+  osl2.view.datastructures.sequential.GUISequential o-- osl2.view.datastructures.sequential.GUISequential.GUISequentialEntry : head
+  osl2.view.datastructures.sequential.GUISequential +-down- osl2.view.datastructures.sequential.GUISequential.GUISequentialEntry
+  osl2.view.datastructures.sequential.GUISequential.GUISequentialEntry -up-|> javafx.scene.layout.VBox
+
+  osl2.view.datastructures.nodey.Arrow -up-|> javafx.scene.Group
+  osl2.view.datastructures.nodey.GUIGraphNode .up.|> osl2.messaging.datastructures.VGraphNodeCommunication
+  osl2.view.datastructures.nodey.GUIGraphNode -up-|> osl2.view.datastructures.nodey.GUINode
+  osl2.view.datastructures.nodey.GUINode .up.|> osl2.messaging.datastructures.nodey.VNodeCommunication
+  osl2.view.datastructures.nodey.GUINode -up-|> osl2.view.ui.draggable.Draggable
+  osl2.view.datastructures.nodey.GUINode o-- ContentType : content
+  osl2.view.datastructures.nodey.GUINodeyDatastructure .up.|> osl2.messaging.datastructures.nodey.VNodeyDatastructureCommunication
+  osl2.view.datastructures.nodey.GUINodeyDatastructure -up-|> osl2.view.datastructures.DatastructureVisualization
+  osl2.view.datastructures.nodey.RoundedNodeContainer -up-|> javafx.scene.layout.Pane
+  osl2.view.datastructures.nodey.RoundedNodeContainer o-- T : contents
+
+
+
+@enduml
