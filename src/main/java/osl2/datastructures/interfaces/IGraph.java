@@ -1,6 +1,7 @@
 package osl2.datastructures.interfaces;
 
-import osl2.datastructures.nodey.VNode;
+import osl2.datastructures.VGraph;
+import osl2.datastructures.nodey.VGraphNode;
 
 import java.util.Collection;
 
@@ -16,7 +17,7 @@ public interface IGraph<T> {
      * @param node the node
      * @return boolean true if the node was added successfully, else false
      */
-    boolean addNode(VNode node);
+    boolean addNode(VGraphNode<T> node);
 
     /**
      * Adds an edge to the graph.
@@ -25,7 +26,7 @@ public interface IGraph<T> {
      * @param end   the node at which the edge starts
      * @return boolean true if the edge was added successfully, else false
      */
-    boolean addEdge(VNode start, VNode end);
+    boolean addEdge(VGraphNode<T> start, VGraphNode<T> end);
 
     /**
      * Removes a node from the graph.
@@ -33,7 +34,7 @@ public interface IGraph<T> {
      * @param node the node
      * @return boolean true if the node was removed successfully, else false
      */
-    boolean removeNode(VNode node);
+    boolean removeNode(VGraphNode<T> node);
 
     /**
      * Removes an node from the graph.
@@ -42,7 +43,7 @@ public interface IGraph<T> {
      * @param end   the node at which the edge starts
      * @return boolean true if the edge was removed successfully, else false
      */
-    boolean removeEdge(VNode start, VNode end);
+    boolean removeEdge(VGraphNode<T> start, VGraphNode<T> end);
 
     /**
      * Returns all the edges which go from a node.
@@ -59,14 +60,14 @@ public interface IGraph<T> {
      * @param node the node to which the adjacents want to be known
      * @return Collection<VNode> the collction of nodes which are the adjacents
      */
-    Collection<VNode> getAdjacents(VNode node);
+    Collection<VGraphNode<T>> getAdjacents(VGraphNode<T> node);
 
     /**
      * Returns all the nodes in a graph.
      *
      * @return Collection<VNode> all the nodes as a collection
      */
-    Collection<VNode> getNodes();
+    Collection<VGraphNode<T>> getNodes();
 
     /**
      * Indicates if an node is in the graph.
@@ -74,7 +75,7 @@ public interface IGraph<T> {
      * @param node the node wich wants to be tested
      * @return boolean true if the node is in the graph, else false
      */
-    boolean containsNode(VNode node);
+    boolean containsNode(VGraphNode<T> node);
 
     /**
      * Indicates if a collection of nodes is in the graph.
@@ -82,7 +83,7 @@ public interface IGraph<T> {
      * @param nodes the collection of nodes which wants to be tested
      * @return boolean true if the nodes are in the graph, else false
      */
-    boolean containsNodes(Collection<VNode> nodes);
+    boolean containsNodes(Collection<VGraphNode<T>> nodes);
 
     /**
      * Indicates if an edge is in the graph.
@@ -91,7 +92,7 @@ public interface IGraph<T> {
      * @param end   the node at which the edge ends
      * @return boolean true if the edge is in the graph, else false
      */
-    boolean containsEdge(VNode start, VNode end);
+    boolean containsEdge(VGraphNode<T> start, VGraphNode<T> end);
 
     /**
      * Indicates if an collection of edges is in the graph.
@@ -100,7 +101,7 @@ public interface IGraph<T> {
      * @return boolean true if the edges are in the graph, else false
      */
     // TODO Fix
-//	boolean containsEdges(Collection<VNode<T>, VNode<T>> edges);
+//	boolean containsEdges(Collection<VGraphNode<T>, VGraphNode<T>> edges);
 
     /**
      * Returns the amount of nodes in the graph, which is the size of the graph.
