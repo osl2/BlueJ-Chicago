@@ -21,7 +21,7 @@ public class GUIGraphNode<T> extends GUINode<T, RoundedNodeContainer<VBox>> impl
     @Override
     public void connect(VGraphNodeCommunication<T> node) {
         // TODO: Make arrow to node.asGUINode()
-        getChildren().add(new Arrow(this, node.asGUINode(), null));    // TODO: Store all arrows
+        // getChildren().add(new Arrow(this, node.asGUINode(), null));    // TODO: Store all arrows
     }
 
     @Override

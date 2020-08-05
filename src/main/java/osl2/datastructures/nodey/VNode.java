@@ -20,13 +20,9 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
 
     public abstract void disconnectAll();
 
-    public Comm getCorrespondent() {
-        return getBroadcaster().getClient();
-    }
-
     protected abstract Comm createVisualization();
 
-    Comm getCommunication() { return broadcaster.getClient(); }
+    Comm getCommunication() { return getBroadcaster().getClient(); }
 
     public VNode(NodeyDatastructure parentDS) {
         Comm comm = createVisualization();

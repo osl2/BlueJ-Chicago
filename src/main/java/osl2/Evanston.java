@@ -1,12 +1,12 @@
 package osl2;
 
-import osl2.datastructures.EvanstonDatastructure;
-import osl2.datastructures.VArray;
-import osl2.datastructures.VGraph;
-import osl2.datastructures.VMap;
+import osl2.datastructures.*;
 import osl2.datastructures.nodey.VGraphNode;
+import osl2.datastructures.nodey.VLinkedList;
+import osl2.datastructures.nodey.VLinkedListNode;
 import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
+import osl2.messaging.datastructures.nodey.VLinkedListCommunication;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.ui.EvanstonWindow;
 
@@ -26,10 +26,18 @@ public class Evanston {
     public static void main(String[] args) {
         EvanstonWindow.open();
 
+        VSinglyLinkedList<Integer> lil = new VSinglyLinkedList<>();
+        VLinkedListNode<Integer> node1 = lil.addNode();
+        VLinkedListNode<Integer> node2 = lil.addNode();
+        node1.setValue(1);
+        node2.setValue(2);
+        node1.setForward(node2);
+        node2.setBackward(node1);
+
         VGraph<Integer> graph = new VGraph();
         VGraphNode<Integer> node = null;
         VGraphNode<Integer> oldNode = null;
-        for (int x = 0; x < 10; x++) {
+        for (int x = 0; x < 32; x++) {
             node = graph.addNode();
             node.setValue(x + 1);
             if (oldNode != null) oldNode.connect(node);

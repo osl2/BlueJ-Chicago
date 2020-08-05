@@ -12,7 +12,7 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
 
     public void connect(VGraphNode<T> node) {
         edges.add(node);
-        getBroadcaster().sendWithDelay(b -> b.connect(node.getCorrespondent()));
+        getBroadcaster().sendWithDelay(b -> b.connect(node.getCommunication()));
     }
 
     public void disconnect(VGraphNode<T> node) {

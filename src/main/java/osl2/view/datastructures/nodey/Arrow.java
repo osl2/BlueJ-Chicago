@@ -1,39 +1,61 @@
 package osl2.view.datastructures.nodey;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.binding.NumberExpressionBase;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
-import javafx.scene.paint.Color;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 
 
 public class Arrow extends Group {
+    private final ArrowPane from;
+    private final GUINode to;
+    private final ChangeListener updater;
 
-    public Arrow(GUINode from, GUINode to, Color color) {
+    private void connect() {
+        from.localToSceneTransformProperty().addListener(updater);
+        to.layoutXProperty().addListener(updater);
+        to.layoutYProperty().addListener(updater);
+        updater.changed(null, null, null);
+    }
+
+    public void disconnect() {
+        from.localToSceneTransformProperty().removeListener(updater);
+        to.layoutXProperty().removeListener(updater);
+        to.layoutYProperty().removeListener(updater);
+    }
+
+
+    public Arrow(ArrowPane from, GUINode to) {
+        this.from = from;
+        this.to = to;
+
         Line line = new Line();
-
-        NumberExpressionBase endX = to.layoutXProperty().subtract(from.layoutXProperty()).add(to.getBoundsInLocal().getWidth() / 2.0);
-        NumberExpressionBase endY = to.layoutYProperty().subtract(from.layoutYProperty()).add(to.getBoundsInLocal().getHeight() / 2.0);
-
-        line.endXProperty().bind(endX);
-        line.endYProperty().bind(endY);
-
-
         Line arrow1 = new Line();
         Line arrow2 = new Line();
 
-        InvalidationListener updater = o -> {
+        this.updater = (o, p, q) -> {
             final int arrowLength = 10;
             final int arrowWidth = 5;
 
-            double ex = endX.getValue().doubleValue();
-            double ey = endY.getValue().doubleValue();
-            double sx = 0;
-            double sy = 0;
+            Point2D startPos = from.localToScene(0, 0);
+            Point2D endPos = to.localToScene(0, 0);
+
+            double sx = startPos.getX();
+            double sy = startPos.getY();
+            double ex = endPos.getX();
+            double ey = endPos.getY();
+
+            line.setStartX(sx);
+            line.setStartY(sy);
+            line.setEndX(ex);
+            line.setEndY(ey);
 
             arrow1.setEndX(ex);
             arrow1.setEndY(ey);
+
             arrow2.setEndX(ex);
             arrow2.setEndY(ey);
 
@@ -59,13 +81,23 @@ public class Arrow extends Group {
                 arrow2.setStartY(ey + dy - ox);
             }
         };
-        from.boundsInLocalProperty().addListener(updater);
-        endX.addListener(updater);
-        endY.addListener(updater);
-        updater.invalidated(null);
 
         getChildren().add(line);
         getChildren().add(arrow1);
         getChildren().add(arrow2);
+
+        setManaged(false);
+
+        ChangeListener hideListener = new ChangeListener<Scene>() {
+            @Override
+            public void changed(ObservableValue<? extends Scene> observableValue, Scene scene, Scene t1) {
+                setVisible(t1 != null);
+            }
+        };
+
+        to.sceneProperty().addListener(hideListener);
+        from.sceneProperty().addListener(hideListener);
+
+        connect();
     }
 }

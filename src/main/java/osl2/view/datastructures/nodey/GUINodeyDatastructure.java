@@ -2,7 +2,6 @@ package osl2.view.datastructures.nodey;
 
 import osl2.messaging.datastructures.nodey.VNodeCommunication;
 import osl2.messaging.datastructures.nodey.VNodeyDatastructureCommunication;
-import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.ui.draggable.Floormat;
 
