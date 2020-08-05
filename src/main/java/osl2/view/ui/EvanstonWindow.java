@@ -5,12 +5,14 @@ import javafx.application.Platform;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import osl2.Evanston;
 import osl2.datastructures.EvanstonDatastructure;
 import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
 import osl2.view.datastructures.DatastructureVisualization;
+import osl2.view.datastructures.nodey.ArrowOverlay;
 import osl2.view.inlinerepresentation.InlineRepresentation;
 import osl2.view.ui.mirror.MirrorController;
 
@@ -27,8 +29,8 @@ public class EvanstonWindow extends Application {
 
     private final PlayController playController;
 
+    private ArrowOverlay arrowOverlay;
     private MainRegion mainRegion;
-
     private PlaySpace playSpace;
     private SideBar sideBar;
     private SplitPane verticalSplitter;
@@ -90,6 +92,8 @@ public class EvanstonWindow extends Application {
         return playController;
     }
 
+    public ArrowOverlay getArrowOverlay() { return arrowOverlay; }
+
     /**
      * Starts the JavaFX Visualisation.
      * @param stage The Stage in wich it will be started.
@@ -102,7 +106,13 @@ public class EvanstonWindow extends Application {
 
         setUpSpaces();
 
-        Scene scene = new Scene(verticalSplitter, WIDTH, HEIGHT);
+        this.arrowOverlay = new ArrowOverlay();
+        StackPane root = new StackPane();
+        root.getChildren().add(verticalSplitter);
+        root.getChildren().add(arrowOverlay);
+        arrowOverlay.toFront();
+
+        Scene scene = new Scene(root, WIDTH, HEIGHT);
         scene.getStylesheets().add("dark_style.css");
         stage.setScene(scene);
         stage.show();
