@@ -37,9 +37,9 @@ public class MainRegion extends Floormat {
     public void getFreeSpace(Draggable draggable) {
         if(!draggableLinkedList.contains(draggable)) {
             double lowX = 0;
-            double highX = this.getWidth();
+            double highX = this.getWidth() - draggable.getBoundsInParent().getWidth();
             double lowY = 0;
-            double highY = this.getHeight();
+            double highY = this.getHeight() - draggable.getBoundsInParent().getHeight();
             draggable.setXOffset(Math.random() * (highX - lowX));
             draggable.setYOffset(Math.random() * (highY - lowY));
             draggable.setLayoutX(draggable.getXOffset());
