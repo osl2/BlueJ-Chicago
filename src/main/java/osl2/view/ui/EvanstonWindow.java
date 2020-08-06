@@ -29,6 +29,7 @@ public class EvanstonWindow extends Application {
     private static Thread APP_THREAD = null;
     private final SettingsController settingsController;
     private final PlayController playController;
+    private Stage evanstonStage;
     private Scene scene;
     private ArrowOverlay arrowOverlay;
     private MainRegion mainRegion;
@@ -123,6 +124,7 @@ public class EvanstonWindow extends Application {
         scene.getStylesheets().add("Stylesheets/dark_style.css");
         setFontSize(FontSize.MEDIUM);
         stage.setScene(scene);
+        this.evanstonStage = stage;
         stage.show();
 
         /*
@@ -134,6 +136,10 @@ public class EvanstonWindow extends Application {
                 WAITER = null;
             }
         }
+    }
+
+    public Stage getStage(){
+        return  this.evanstonStage;
     }
 
     /**

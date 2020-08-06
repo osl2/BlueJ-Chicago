@@ -11,7 +11,7 @@ public class SettingsController {
 
     public SettingsController(EvanstonWindow evanstonWindow) {
         this.evanstonWindow = evanstonWindow;
-        this.settingsWindow = new SettingsWindow(this);
+        this.settingsWindow = new SettingsWindow(this, evanstonWindow.getStage());
     }
 
     public void openSettingsWindow() {

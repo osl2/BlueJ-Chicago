@@ -9,6 +9,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import osl2.view.ui.FontSize;
 import osl2.view.ui.localisation.LANGUAGES;
@@ -21,10 +22,12 @@ public class SettingsWindow {
     private boolean isShown;
     private VBox vBox;
     private ComboBox<LANGUAGES> languagesComboBox;
+    private final Stage owner;
 
-    public SettingsWindow(SettingsController settingsController) {
+    public SettingsWindow(SettingsController settingsController, Stage owner) {
         this.settingsController = settingsController;
         this.languageController = LanguageController.getLanguageController();
+        this.owner = owner;
         setUp();
         isShown = false;
     }
@@ -54,6 +57,9 @@ public class SettingsWindow {
         settingStage.setTitle(LanguageController.getLanguageController().getMessage("SettingsWindowTitle"));
         settingStage.setScene(settingScene);
         settingStage.setOnCloseRequest(e -> hideWindow());
+        settingStage.setOnHiding(e -> isShown = false);
+        settingStage.initOwner(owner);
+        settingStage.initModality(Modality.APPLICATION_MODAL);
     }
 
     private void hideWindow() {
@@ -65,6 +71,7 @@ public class SettingsWindow {
         languagesComboBox = new ComboBox<LANGUAGES>();
         languagesComboBox.setItems(FXCollections.observableArrayList(LANGUAGES.values()));
         languagesComboBox.setOnAction(e -> settingsController.setLanguage(languagesComboBox.getValue(), this));
+        languagesComboBox.getSelectionModel().select(LanguageController.getLanguageController().getLanguage());
         vBox.getChildren().add(languagesComboBox);
     }
 

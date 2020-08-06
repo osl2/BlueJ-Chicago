@@ -12,13 +12,16 @@ public class LanguageController {
     private Locale locale;
     private ResourceBundle messages;
     private static LanguageController singeltonLanguageController = null;
+    private LANGUAGES language;
 
     /**
      * Creates a new LanguageController.
      */
-    public LanguageController(){
+    private LanguageController(){
         if(singeltonLanguageController == null){
             singeltonLanguageController = this;
+            language = LANGUAGES.GERMAN;
+            setMessages(language);
         }
     }
 
@@ -54,6 +57,10 @@ public class LanguageController {
             messages = ResourceBundle.getBundle("MessagesBundle");
         }
         return messages.getString(name);
+    }
+
+    public LANGUAGES getLanguage(){
+        return this.language;
     }
 
 }
