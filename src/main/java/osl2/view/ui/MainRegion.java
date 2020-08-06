@@ -8,6 +8,7 @@ import osl2.view.ui.draggable.Floormat;
 import osl2.view.ui.window.MovableWindow;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 /**
  * The Mainregion will be the space, where the Mirrors will be in.
@@ -35,20 +36,14 @@ public class MainRegion extends Floormat {
      */
     public void getFreeSpace(Draggable draggable) {
         if(!draggableLinkedList.contains(draggable)) {
-            for (Draggable mirrors : draggableLinkedList) { ;
-                Bounds draggableBounds = draggable.getBoundsInParent();
-                Bounds mirrorBounds = mirrors.getBoundsInParent();
-                for(int i = 0; i < draggableBounds.getWidth(); i++){
-                    for(int j = 0; j < draggableBounds.getHeight(); j++){
-                        Point2D pointInDraggable = new Point2D(draggableBounds.getMinX() + i, draggableBounds.getMinY() +j);
-                        if(mirrorBounds.contains(pointInDraggable)){
-                            draggable.setXOffset(mirrorBounds.getMinX() + mirrorBounds.getWidth());
-                            draggable.setLayoutX(draggable.getXOffset());
-                            break;
-                        }
-                    }
-                }
-            }
+            double lowX = 0;
+            double highX = this.getWidth();
+            double lowY = 0;
+            double highY = this.getHeight();
+            draggable.setXOffset(Math.random() * (highX - lowX));
+            draggable.setYOffset(Math.random() * (highY - lowY));
+            draggable.setLayoutX(draggable.getXOffset());
+            draggable.setLayoutY(draggable.getYOffset());
             draggableLinkedList.add(draggable);
         }
     }
