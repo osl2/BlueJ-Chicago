@@ -45,7 +45,7 @@ public class EvanstonWindow extends Application {
             System.out.println("Warning: More than one EvanstonWindow instance loaded!");  // ERROR
         }
         this.playController = new PlayController();
-        this.settingsController = new SettingsController();
+        this.settingsController = new SettingsController(this);
     }
 
     public static EvanstonWindow getInstance() {
