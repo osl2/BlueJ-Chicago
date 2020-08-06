@@ -15,6 +15,9 @@ import osl2.view.ui.FontSize;
 import osl2.view.ui.localisation.LANGUAGES;
 import osl2.view.ui.localisation.LanguageController;
 
+/**
+ * The class for the SettingsWindow.
+ */
 public class SettingsWindow {
     private final SettingsController settingsController;
     private final LanguageController languageController;
@@ -24,6 +27,11 @@ public class SettingsWindow {
     private ComboBox<LANGUAGES> languagesComboBox;
     private final Stage owner;
 
+    /**
+     * Creates a new Setting Window.
+     * @param settingsController The Controller for this window.
+     * @param owner The Mainwindow to which this window is the settings window.
+     */
     public SettingsWindow(SettingsController settingsController, Stage owner) {
         this.settingsController = settingsController;
         this.languageController = LanguageController.getLanguageController();
@@ -32,6 +40,9 @@ public class SettingsWindow {
         isShown = false;
     }
 
+    /**
+     * Sets up the Settingswindow.
+     */
     private void setUp() {
         setUpPane();
         setUpCombobox();
@@ -39,6 +50,9 @@ public class SettingsWindow {
         setUpSettingStage();
     }
 
+    /**
+     * Shows the window if hidden.
+     */
     public void showWindow() {
         if (!isShown) {
             settingStage.show();
@@ -46,10 +60,14 @@ public class SettingsWindow {
         }
     }
 
+    /**
+     * Sets up the Pane inside the window.
+     */
     private void setUpPane() {
         vBox = new VBox();
         vBox.setSpacing(10);
     }
+
 
     private void setUpSettingStage() {
         settingStage = new Stage();
@@ -62,11 +80,17 @@ public class SettingsWindow {
         settingStage.initModality(Modality.APPLICATION_MODAL);
     }
 
+    /**
+     * Hides the Settingswindow.
+     */
     private void hideWindow() {
         this.settingStage.hide();
         this.isShown = false;
     }
 
+    /**
+     * Sets up the combobox for the languages.
+     */
     private void setUpCombobox() {
         languagesComboBox = new ComboBox<LANGUAGES>();
         languagesComboBox.setItems(FXCollections.observableArrayList(LANGUAGES.values()));
@@ -75,16 +99,25 @@ public class SettingsWindow {
         vBox.getChildren().add(languagesComboBox);
     }
 
+    /**
+     * Sets up the Font size selection.
+     */
     private void setUpFontSizeSelection() {
         addFontSizeLabel();
         addFontSizeBtns();
     }
 
+    /**
+     * Adds the Label for al the Fontsizes.
+     */
     private void addFontSizeLabel() {
         Label setFontLabel = new Label(languageController.getMessage("FontSetting"));
         vBox.getChildren().add(setFontLabel);
     }
 
+    /**
+     * Adds the buttons for chaning the font size.
+     */
     private void addFontSizeBtns() {
         final ToggleGroup toggleGroup = new ToggleGroup();
 
@@ -111,6 +144,10 @@ public class SettingsWindow {
         vBox.getChildren().add(radioBtns);
     }
 
+    /**
+     * Sets the title of the Settingspane.
+     * @param title The new title.
+     */
     public void setTitle(String title) {
         settingStage.setTitle(title);
     }

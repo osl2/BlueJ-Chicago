@@ -59,6 +59,10 @@ public class LanguageController {
         return messages.getString(name);
     }
 
+    /**
+     * Returns the language which is now active.
+     * @return The language.
+     */
     public LANGUAGES getLanguage(){
         return this.language;
     }
