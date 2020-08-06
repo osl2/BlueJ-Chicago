@@ -8,7 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import osl2.Evanston;
-import osl2.view.ui.settings.SettingsController;
+import osl2.view.ui.localisation.LanguageController;
 
 /**
  * The Playspace is the space in the View were the user can play the changes in his Datastructures.
@@ -24,8 +24,6 @@ public class PlaySpace extends Pane {
     private HBox buttonBox;
     private HBox sliderBox;
     private HBox settingsBox;
-    private SettingWindow settingWindow;
-    private SettingsController settingsController;
 
     /**
      * Sets up the Playspace and all its components.
@@ -114,15 +112,13 @@ public class PlaySpace extends Pane {
         buttonBox.getChildren().add(playStepButton);
     }
 
-    private void setSettingsButton(){
-        settingsController = new SettingsController();
-        settingWindow = new SettingWindow();
-        settings = new Button("Settings");
-        settings.setOnAction(e -> settingsController.openSettingsWindow(settingWindow));
+    private void setSettingsButton() {
+        settings = new Button(LanguageController.getLanguageController().getMessage("OpenSettingsBtn"));
+        settings.setOnAction(e -> evanstonWindow.openSettingsWindow());
         settings.setAlignment(Pos.CENTER);
     }
 
-    private void setUpSettingBox(){
+    private void setUpSettingBox() {
         setSettingsButton();
         settingsBox = new HBox();
         settingsBox.getChildren().add(settings);
@@ -148,7 +144,7 @@ public class PlaySpace extends Pane {
         playSpeedSlider.setValue(0);
         playSpeedSlider.setShowTickLabels(false);
         playSpeedSlider.setPrefWidth(this.getWidth());
-        playSpeedSlider.valueProperty().addListener((ov, oldVal, newVal) -> Evanston.getPlayController().setProgramDelay((long) (MAX - Math.pow((double) oldVal, 1d/8) * (MAX - 1))));
+        playSpeedSlider.valueProperty().addListener((ov, oldVal, newVal) -> Evanston.getPlayController().setProgramDelay((long) (MAX - Math.pow((double) oldVal, 1d / 8) * (MAX - 1))));
         sliderBox.getChildren().add(playSpeedSlider);
     }
 

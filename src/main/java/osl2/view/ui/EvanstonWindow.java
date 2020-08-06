@@ -15,6 +15,7 @@ import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.nodey.ArrowOverlay;
 import osl2.view.inlinerepresentation.InlineRepresentation;
 import osl2.view.ui.mirror.MirrorController;
+import osl2.view.ui.settings.SettingsController;
 
 /**
  * The MainWindow in which the MainRegion, PlaySpace and Sidebar will be in.
@@ -26,11 +27,9 @@ public class EvanstonWindow extends Application {
 
     private static EvanstonWindow singletonInstance = null;
     private static Thread APP_THREAD = null;
-
-    private Scene scene;
-
+    private final SettingsController settingsController;
     private final PlayController playController;
-
+    private Scene scene;
     private ArrowOverlay arrowOverlay;
     private MainRegion mainRegion;
     private PlaySpace playSpace;
@@ -46,6 +45,7 @@ public class EvanstonWindow extends Application {
             System.out.println("Warning: More than one EvanstonWindow instance loaded!");  // ERROR
         }
         this.playController = new PlayController();
+        this.settingsController = new SettingsController();
     }
 
     public static EvanstonWindow getInstance() {
@@ -73,6 +73,7 @@ public class EvanstonWindow extends Application {
 
     /**
      * Creates a new visualization and mirror for a Datastructure.
+     *
      * @param datastructure the Datastructure wich will be visualized.
      * @return The Broadcaster for this visualizisation.
      */
@@ -88,16 +89,20 @@ public class EvanstonWindow extends Application {
 
     /**
      * Returns the Playcontroller for the window.
+     *
      * @return The Playcontroller.
      */
     public PlayController getPlayController() {
         return playController;
     }
 
-    public ArrowOverlay getArrowOverlay() { return arrowOverlay; }
+    public ArrowOverlay getArrowOverlay() {
+        return arrowOverlay;
+    }
 
     /**
      * Starts the JavaFX Visualisation.
+     *
      * @param stage The Stage in wich it will be started.
      */
     @Override
@@ -165,7 +170,7 @@ public class EvanstonWindow extends Application {
 
     public void playAutoButtonClicked() {
         Evanston.getPlayController().toggle();
-        if(isPlaying) {
+        if (isPlaying) {
             playSpace.setPlayAutoButtonSymbolToPlay();
             isPlaying = false;
         } else {
@@ -189,5 +194,9 @@ public class EvanstonWindow extends Application {
         for (FontSize fontSize : FontSize.values()) {
             this.scene.getStylesheets().remove(fontSize.getFileName());
         }
+    }
+
+    public void openSettingsWindow() {
+        settingsController.openSettingsWindow();
     }
 }

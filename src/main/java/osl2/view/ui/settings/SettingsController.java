@@ -1,17 +1,21 @@
 package osl2.view.ui.settings;
 
-import osl2.view.ui.SettingWindow;
 import osl2.view.ui.localisation.LANGUAGES;
 import osl2.view.ui.localisation.LanguageController;
 
 public class SettingsController {
+    private final SettingsWindow settingsWindow;
 
-    public void openSettingsWindow(SettingWindow settingWindow){
-        settingWindow.showWindow();
+    public SettingsController() {
+        this.settingsWindow = new SettingsWindow(this);
     }
 
-    public void setLanguage(LANGUAGES language, SettingWindow settingWindow){
+    public void openSettingsWindow() {
+        settingsWindow.showWindow();
+    }
+
+    public void setLanguage(LANGUAGES language, SettingsWindow settingsWindow) {
         LanguageController.getLanguageController().setMessages(language);
-        settingWindow.setTitle(LanguageController.getLanguageController().getMessage("Setting"));
+        settingsWindow.setTitle(LanguageController.getLanguageController().getMessage("SettingsWindowTitle"));
     }
 }

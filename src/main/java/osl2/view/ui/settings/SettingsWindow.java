@@ -1,28 +1,22 @@
-package osl2.view.ui;
+package osl2.view.ui.settings;
 
 import javafx.collections.FXCollections;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import osl2.view.ui.localisation.LANGUAGES;
 import osl2.view.ui.localisation.LanguageController;
-import osl2.view.ui.settings.SettingsController;
 
-import static osl2.view.ui.localisation.LANGUAGES.*;
-
-public class SettingWindow {
-
+public class SettingsWindow {
+    private final SettingsController settingsController;
     private Stage settingStage;
-    private Scene settingScene;
-    private SettingsController settingsController;
     private boolean isShown;
     private Pane settingPane;
     private ComboBox<LANGUAGES> languagesComboBox;
 
-    public SettingWindow(){
-        settingsController = new SettingsController();
+    public SettingsWindow(SettingsController settingsController) {
+        this.settingsController = settingsController;
         setUp();
         isShown = false;
     }
@@ -33,33 +27,38 @@ public class SettingWindow {
         setUpSettingStage();
     }
 
-    public void showWindow(){
-        if(!isShown){
+    public void showWindow() {
+        if (!isShown) {
             settingStage.show();
             isShown = true;
-        } else {
-
         }
     }
 
-    private void setUpPane(){
+    private void setUpPane() {
         settingPane = new Pane();
     }
-    private void setUpSettingStage(){
+
+    private void setUpSettingStage() {
         settingStage = new Stage();
-        settingScene = new Scene(settingPane, 200, 200);
-        settingStage.setTitle(LanguageController.getLanguageController().getMessage("Setting"));
+        Scene settingScene = new Scene(settingPane, 400, 200);
+        settingStage.setTitle(LanguageController.getLanguageController().getMessage("SettingsWindowTitle"));
         settingStage.setScene(settingScene);
+        settingStage.setOnCloseRequest(e -> hideWindow());
     }
 
-    private void setUpCombobox(){
+    private void hideWindow() {
+        this.settingStage.hide();
+        this.isShown = false;
+    }
+
+    private void setUpCombobox() {
         languagesComboBox = new ComboBox<LANGUAGES>();
-        languagesComboBox.setItems(FXCollections.observableArrayList( LANGUAGES.values()));
+        languagesComboBox.setItems(FXCollections.observableArrayList(LANGUAGES.values()));
         languagesComboBox.setOnAction(e -> settingsController.setLanguage(languagesComboBox.getValue(), this));
         settingPane.getChildren().add(languagesComboBox);
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         settingStage.setTitle(title);
     }
 
