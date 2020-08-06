@@ -23,7 +23,8 @@ public class MirrorButton extends Button {
         this.setText(this.name);
         linkButtonToController();
 
-        this.getStyleClass().add("button-hidden");
+        this.getStyleClass().add("mirror-button");
+        this.getStyleClass().add("mirror-button-hidden");
     }
 
     /**
@@ -34,12 +35,12 @@ public class MirrorButton extends Button {
     }
 
     public void setMirrorShowStyle() {
-        this.getStyleClass().remove("button-hidden");
-        this.getStyleClass().add("button-shown");
+        this.getStyleClass().remove("mirror-button-hidden");
+        this.getStyleClass().add("mirror-button-shown");
     }
 
     public void setMirrorHiddenStyle() {
-        this.getStyleClass().remove("button-shown");
-        this.getStyleClass().add("button-hidden");
+        this.getStyleClass().remove("mirror-button-shown");
+        this.getStyleClass().add("mirror-button-hidden");
     }
 }
