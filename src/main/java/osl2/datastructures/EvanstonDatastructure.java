@@ -32,7 +32,7 @@ public abstract class EvanstonDatastructure<B extends DatastructureCommunication
 
     public void setName(String name){
             this.name = name;
-            getBroadcaster().sendWithDelay((b) -> b.setName( getDatastructureType() + " : " + this.name));
+            getBroadcaster().send((b) -> b.setName( getDatastructureType() + " : " + this.name));
 
     }
     public abstract String getDatastructureType();

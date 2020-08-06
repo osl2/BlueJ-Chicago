@@ -48,12 +48,11 @@ public class Evanston {
         VArray<Integer> errorArray = new VArray<>(5);
 
         VArray<Integer> array = new VArray<Integer>(8);
-        Map<Integer, Character> amap = new VMap<>("Iterating Array");
-        Breakpoint.block();
+        Map<Integer, Character> amap = new VMap<>("Map");
+
         VArray<VArray> arrays = new VArray<>(1);
         arrays.setValue(0, array);
-        Breakpoint.block();
-        System.out.println("Stop");
+
 
         for (int i = 0; i < 6; i++) {
             errorArray.setValue(i % 5, i);
@@ -71,6 +70,9 @@ public class Evanston {
         loop:
         for (; ; ) {
             for (int x = 0; x < array.size(); x++) {
+                if(i == 50){
+                    Breakpoint.block();
+                }
                 array.setValue(x, i++);
             }
         }
