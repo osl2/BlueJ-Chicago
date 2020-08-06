@@ -27,6 +27,8 @@ public class EvanstonWindow extends Application {
     private static EvanstonWindow singletonInstance = null;
     private static Thread APP_THREAD = null;
 
+    private Scene scene;
+
     private final PlayController playController;
 
     private ArrowOverlay arrowOverlay;
@@ -112,8 +114,9 @@ public class EvanstonWindow extends Application {
         root.getChildren().add(arrowOverlay);
         arrowOverlay.toFront();
 
-        Scene scene = new Scene(root, WIDTH, HEIGHT);
-        scene.getStylesheets().add("dark_style.css");
+        scene = new Scene(root, WIDTH, HEIGHT);
+        scene.getStylesheets().add("Stylesheets/dark_style.css");
+        setFontSize(FontSize.MEDIUM);
         stage.setScene(scene);
         stage.show();
 
@@ -170,5 +173,21 @@ public class EvanstonWindow extends Application {
             isPlaying = true;
         }
 
+    }
+
+    /**
+     * Sets the font size used in the application.
+     *
+     * @param newFontSize - the new {@link FontSize} to be used
+     */
+    public void setFontSize(FontSize newFontSize) {
+        removeAllFontSizes();
+        this.scene.getStylesheets().add(newFontSize.getFileName());
+    }
+
+    private void removeAllFontSizes() {
+        for (FontSize fontSize : FontSize.values()) {
+            this.scene.getStylesheets().remove(fontSize.getFileName());
+        }
     }
 }

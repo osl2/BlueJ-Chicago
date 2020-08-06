@@ -23,8 +23,13 @@ public class MirrorButton extends Button {
         this.setText(this.name);
         linkButtonToController();
 
+        setStyle();
+    }
+
+    private void setStyle() {
         this.getStyleClass().add("mirror-button");
         this.getStyleClass().add("mirror-button-hidden");
+        this.getStyleClass().add("mirror-button-font");
     }
 
     /**
