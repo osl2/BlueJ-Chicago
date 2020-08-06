@@ -1,6 +1,8 @@
 package osl2.view.ui.window;
 
 import javafx.scene.Node;
+import javafx.scene.control.Label;
+import osl2.view.ui.FontSize;
 import osl2.view.ui.draggable.Draggable;
 import osl2.view.ui.draggable.Floormat;
 import osl2.view.ui.mirror.IMirrorController;
@@ -12,7 +14,7 @@ public class MovableWindow extends Draggable {
     private final MovableWindowBody body;
     private boolean isHighlighted;
 
-    public MovableWindow(Node title, Node contents, IMirrorController controller) {
+    public MovableWindow(Label title, Node contents, IMirrorController controller) {
         body = new MovableWindowBody(this, title, contents);
         body.getHead().linkBtnToController(controller);
         getChildren().add(body);
@@ -83,4 +85,9 @@ public class MovableWindow extends Draggable {
             }
         });
     }
+
+    public void setFontSize(FontSize newFontSize){
+        body.getHead().setFontSize(newFontSize);
+    }
+
 }
