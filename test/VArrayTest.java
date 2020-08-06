@@ -1,13 +1,20 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import osl2.datastructures.VArray;
+import osl2.view.ui.EvanstonWindow;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class VArrayTest {
     private static VArray array;
+
+    @BeforeAll
+    static void setupAll() {
+        EvanstonWindow.open();
+    }
 
     @BeforeEach
     void setup(){

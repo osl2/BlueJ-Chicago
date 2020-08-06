@@ -1,12 +1,19 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import osl2.datastructures.VMap;
+import osl2.view.ui.EvanstonWindow;
 
 import java.util.*;
 
 public class VMapTest {
     private static Map map;
+
+    @BeforeAll
+    static void setupAll() {
+        EvanstonWindow.open();
+    }
 
     @BeforeEach
     void setup(){
