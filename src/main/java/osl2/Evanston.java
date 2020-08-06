@@ -26,15 +26,16 @@ public class Evanston {
     public static void main(String[] args) {
         EvanstonWindow.open();
 
-        VSinglyLinkedList<Integer> lil = new VSinglyLinkedList<>();
+        VSinglyLinkedList<Integer> lil = new VSinglyLinkedList<>("lilList");
         VLinkedListNode<Integer> node1 = lil.addNode();
         VLinkedListNode<Integer> node2 = lil.addNode();
         node1.setValue(1);
+        Breakpoint.block();
         node2.setValue(2);
         node1.setForward(node2);
         node2.setBackward(node1);
 
-        VGraph<Integer> graph = new VGraph();
+        VGraph<Integer> graph = new VGraph("GraphTest");
         VGraphNode<Integer> node = null;
         VGraphNode<Integer> oldNode = null;
         for (int x = 0; x < 32; x++) {
@@ -47,14 +48,17 @@ public class Evanston {
         VArray<Integer> errorArray = new VArray<>(5);
 
         VArray<Integer> array = new VArray<Integer>(8);
-        Map<Integer, Character> amap = new VMap<>();
+        Map<Integer, Character> amap = new VMap<>("Iterating Array");
+        Breakpoint.block();
         VArray<VArray> arrays = new VArray<>(1);
         arrays.setValue(0, array);
+        Breakpoint.block();
+        System.out.println("Stop");
 
         for (int i = 0; i < 6; i++) {
             errorArray.setValue(i % 5, i);
         }
-        errorArray.setName("blub");
+        errorArray.setName("SetNameTest");
         // IndexOutOfBounds error
          errorArray.setValue(10, 1);
 

@@ -20,6 +20,14 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
         getBroadcaster().send((b) -> b.setSize(size));
     }
 
+    public VArray(int size,String name){
+        this.size = size;
+        this.values = (T[]) new Object[size];
+        getBroadcaster().send((b) -> b.setSize(size));
+        super.setName(name);
+    }
+
+
     public int size() {
         return values.length;
     }

@@ -13,7 +13,13 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
     private final Map<K, V> wrapped = new HashMap<>();
 
 
-    public VMap() {}
+    public VMap(){
+
+    }
+
+    public VMap(String name) {
+        super.setName(name);
+    }
 
     @Override
     public DatastructureVisualization createVisualization() {

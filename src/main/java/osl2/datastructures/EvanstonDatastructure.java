@@ -19,6 +19,7 @@ public abstract class EvanstonDatastructure<B extends DatastructureCommunication
         broadcaster = Evanston.openVisualization(this);
     }
 
+
     protected Broadcaster<B> getBroadcaster() {
         return broadcaster;
     }
