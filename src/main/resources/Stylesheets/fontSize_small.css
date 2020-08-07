@@ -1,3 +1,11 @@
 .mirror-button-font {
     -fx-font-size: 12;
 }
+
+.label {
+    -fx-font-size: 12;
+}
+
+.radio-button {
+    -fx-font-size: 12;
+}
