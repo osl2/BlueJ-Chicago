@@ -5,8 +5,11 @@ import javafx.scene.control.Alert;
 import osl2.Evanston;
 import osl2.messaging.datastructures.DatastructureCommunication;
 import osl2.messaging.errorHandling.UserError;
+import osl2.view.inlinerepresentation.InlineRepresentation;
 import osl2.view.ui.localisation.LanguageController;
 import osl2.view.ui.mirror.IMirrorController;
+
+import java.util.LinkedList;
 
 /**
  * The abstract class for all visualization.
@@ -97,4 +100,5 @@ public abstract class DatastructureVisualization<T extends Node> implements Data
         alert.setContentText(contentText);
         alert.showAndWait();
     }
+
 }

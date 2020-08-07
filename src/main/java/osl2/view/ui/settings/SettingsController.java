@@ -38,7 +38,7 @@ public class SettingsController {
      */
     public void setLanguage(LANGUAGES language, SettingsWindow settingsWindow) {
         LanguageController.getLanguageController().setMessages(language);
-        settingsWindow.setTitle(LanguageController.getLanguageController().getMessage("SettingsWindowTitle"));
+        settingsWindow.setWithNewLanguage();
     }
 
     /**
