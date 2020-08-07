@@ -121,8 +121,8 @@ public class EvanstonWindow extends Application {
         arrowOverlay.toFront();
 
         scene = new Scene(root, WIDTH, HEIGHT);
-        scene.getStylesheets().add("Stylesheets/dark_style.css");
         setFontSize(FontSize.MEDIUM);
+        setTheme(Theme.BRIGHT);
         stage.setScene(scene);
         this.evanstonStage = stage;
         stage.show();
@@ -198,6 +198,18 @@ public class EvanstonWindow extends Application {
     private void removeAllFontSizes() {
         for (FontSize fontSize : FontSize.values()) {
             this.scene.getStylesheets().remove(fontSize.getFileName());
+        }
+    }
+
+    private void setTheme(Theme newTheme) {
+        removeAllThemes();
+        this.scene.getStylesheets().add(newTheme.getFileName());
+
+    }
+
+    private void removeAllThemes() {
+        for (Theme theme : Theme.values()) {
+            this.scene.getStylesheets().remove(theme.getFileName());
         }
     }
 
