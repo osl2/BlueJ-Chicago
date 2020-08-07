@@ -21,7 +21,12 @@ public class InlineRepresentation extends Button {    // TODO: Make this a click
      */
     public InlineRepresentation(String text, Runnable action) {
         super(text);
+        setStyle();
         setOnAction(event -> action.run());
+    }
+
+    private void setStyle(){
+        this.getStyleClass().add("inline-representation-font");
     }
 
     /**
