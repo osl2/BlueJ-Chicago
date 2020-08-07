@@ -26,6 +26,7 @@ public class SettingsWindow {
     private VBox vBox;
     private ComboBox<LANGUAGES> languagesComboBox;
     private final Stage owner;
+    private Scene settingScene;
 
     /**
      * Creates a new Setting Window.
@@ -38,6 +39,7 @@ public class SettingsWindow {
         this.owner = owner;
         setUp();
         isShown = false;
+        setFontSize(FontSize.MEDIUM);
     }
 
     /**
@@ -71,7 +73,7 @@ public class SettingsWindow {
 
     private void setUpSettingStage() {
         settingStage = new Stage();
-        Scene settingScene = new Scene(vBox, 400, 200);
+        settingScene = new Scene(vBox, 400, 200);
         settingStage.setTitle(LanguageController.getLanguageController().getMessage("SettingsWindowTitle"));
         settingStage.setScene(settingScene);
         settingStage.setOnCloseRequest(e -> hideWindow());
@@ -150,6 +152,22 @@ public class SettingsWindow {
      */
     public void setTitle(String title) {
         settingStage.setTitle(title);
+    }
+
+    /**
+     * Sets the font size used in this window.
+     *
+     * @param newFontSize - the new {@link FontSize} to be used
+     */
+    public void setFontSize(FontSize newFontSize) {
+        removeAllFontSizes();
+        this.settingScene.getStylesheets().add(newFontSize.getFileName());
+    }
+
+    private void removeAllFontSizes() {
+        for (FontSize fontSize : FontSize.values()) {
+            this.settingScene.getStylesheets().remove(fontSize.getFileName());
+        }
     }
 
 }

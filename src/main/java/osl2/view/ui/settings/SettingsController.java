@@ -39,10 +39,12 @@ public class SettingsController {
     }
 
     /**
-     * Changes the font size in the evanstonWindow.
-     * @param fontSize The new Fontsize.
+     * Changes the font size in the application.
+     *
+     * @param fontSize - the new {@link FontSize} to be used
      */
     public void setFontSize(FontSize fontSize) {
         this.evanstonWindow.setFontSize(fontSize);
+        this.settingsWindow.setFontSize(fontSize);
     }
 }
