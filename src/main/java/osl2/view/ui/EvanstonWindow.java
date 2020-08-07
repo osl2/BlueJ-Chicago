@@ -17,10 +17,13 @@ import osl2.view.inlinerepresentation.InlineRepresentation;
 import osl2.view.ui.mirror.MirrorController;
 import osl2.view.ui.settings.SettingsController;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 /**
  * The MainWindow in which the MainRegion, PlaySpace and Sidebar will be in.
  */
-public class EvanstonWindow extends Application {
+public class EvanstonWindow extends Application implements PropertyChangeListener {
     private static final int WIDTH = 1200;
     private static final int HEIGHT = 900;
     private static Object WAITER = new Object();
@@ -37,7 +40,6 @@ public class EvanstonWindow extends Application {
     private SideBar sideBar;
     private SplitPane verticalSplitter;
     private SplitPane sidePlaySplitter;
-    private boolean isPlaying = false;
 
     public EvanstonWindow() {
         if (singletonInstance == null) {
@@ -113,6 +115,7 @@ public class EvanstonWindow extends Application {
         this.mainRegion = new MainRegion();
 
         setUpSpaces();
+        Evanston.getPlayController().addPropertyChangeListener(this);
 
         this.arrowOverlay = new ArrowOverlay();
         StackPane root = new StackPane();
@@ -176,13 +179,6 @@ public class EvanstonWindow extends Application {
 
     public void playAutoButtonClicked() {
         Evanston.getPlayController().toggle();
-        if (isPlaying) {
-            playSpace.setPlayAutoButtonSymbolToPlay();
-            isPlaying = false;
-        } else {
-            playSpace.setPlayAutoButtonSymbolToPause();
-            isPlaying = true;
-        }
     }
 
     /**
@@ -220,5 +216,16 @@ public class EvanstonWindow extends Application {
 
     public void openSettingsWindow() {
         settingsController.openSettingsWindow();
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if (evt.getPropertyName().equals("isProgramRunning")) {
+            if (evt.getNewValue().equals(true)) {
+                playSpace.setPlayAutoButtonSymbolToPause();
+            } else {
+                playSpace.setPlayAutoButtonSymbolToPlay();
+            }
+        }
     }
 }
