@@ -10,11 +10,11 @@
     -fx-background-color: #121212;
 }
 
-.list-cell {
+.sidebar.list-view .list-cell {
     -fx-background-color: #242424;
 }
 
-.list-cell:filled:hover {
+.sidebar.list-view .list-cell:filled:hover {
     -fx-background-color: #363636;
 }
 
@@ -31,7 +31,13 @@
     -fx-background-color: #1675d1;
 }
 
+.settings-background {
+    -fx-background-color: #363636;
+}
 
+.white-text {
+    -fx-text-fill: white;
+}
 
 .movable-window {
     -fx-background-color: gray;
