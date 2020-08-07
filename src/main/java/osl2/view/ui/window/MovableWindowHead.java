@@ -6,11 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import osl2.view.ui.FontSize;
 import osl2.view.ui.mirror.IMirrorController;
 import osl2.view.ui.mirror.MirrorController;
-
-import java.awt.*;
 
 /**
  * The head of a MovableWindow.
@@ -21,14 +18,14 @@ public class MovableWindowHead extends HBox {
     private ActionButton hideButton;
     private HBox buttons;
     private Pane spacer;
-    private Label title;
+    private Node title;
 
     /**
      * Creates a new WindowHead
      * @param window The Window to which it belongs.
      * @param title The title of the head.
      */
-    public MovableWindowHead(MovableWindow window, Label title) {
+    public MovableWindowHead(MovableWindow window, Node title) {
         setStyle();
 
         spacer = new Pane();
@@ -81,8 +78,9 @@ public class MovableWindowHead extends HBox {
 
     public void setTitle(String name){
         getChildren().removeAll(title, spacer, buttons);
-        title.setText(name);
+        this.title = new Label(name);
         getChildren().addAll(title, spacer, buttons);
+
     }
 
     /**
@@ -98,21 +96,6 @@ public class MovableWindowHead extends HBox {
         public ActionButton(String text, Runnable runnable) {
             this.setText(text);
             setOnMousePressed((event) -> runnable.run());
-        }
-    }
-
-    public void setFontSize(FontSize newFontSize){
-        removeFontSize();
-        title.getStylesheets().add(newFontSize.getFileName());
-        hideButton.getStylesheets().add(newFontSize.getFileName());
-        minMaxButton.getStylesheets().add(newFontSize.getFileName());
-    }
-
-    private void removeFontSize(){
-        for(FontSize fontSize: FontSize.values()) {
-            title.getStylesheets().remove(fontSize.getFileName());
-            hideButton.getStylesheets().remove(fontSize.getFileName());
-            minMaxButton.getStylesheets().remove(fontSize.getFileName());
         }
     }
 }

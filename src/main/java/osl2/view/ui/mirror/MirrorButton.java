@@ -22,6 +22,7 @@ public class MirrorButton extends Button {
         this.name = name;
         this.setText(this.name);
         linkButtonToController();
+
         setStyle();
     }
 

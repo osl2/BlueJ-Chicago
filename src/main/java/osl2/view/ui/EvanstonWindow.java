@@ -195,7 +195,6 @@ public class EvanstonWindow extends Application {
         removeAllFontSizes();
         this.scene.getStylesheets().add(newFontSize.getFileName());
         this.sideBar.setFontSize(newFontSize);
-        this.mainRegion.setFontSize(newFontSize);
     }
 
     private void removeAllFontSizes() {

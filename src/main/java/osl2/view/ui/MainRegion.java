@@ -5,8 +5,6 @@ import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import osl2.view.ui.draggable.Draggable;
 import osl2.view.ui.draggable.Floormat;
-import osl2.view.ui.mirror.Mirror;
-import osl2.view.ui.mirror.MirrorButton;
 import osl2.view.ui.window.MovableWindow;
 
 import java.util.LinkedList;
@@ -27,19 +25,6 @@ public class MainRegion extends Floormat {
         this.draggableLinkedList = new LinkedList<Draggable>();
         this.setStyle();
     }
-
-    @Override
-    public void addDraggable(Draggable draggable){
-        getChildren().add(draggable);
-    }
-
-    public void setFontSize(FontSize newFontSize){
-        for(Draggable draggable: draggableLinkedList){
-            Mirror mirror = (Mirror) draggable;
-            mirror.setFontSize(newFontSize);
-        }
-    }
-
 
     private void setStyle() {
         this.getStyleClass().add("main-region");

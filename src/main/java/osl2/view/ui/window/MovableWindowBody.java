@@ -1,7 +1,6 @@
 package osl2.view.ui.window;
 
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import osl2.view.ui.mirror.IMirrorController;
 
@@ -21,7 +20,7 @@ public class MovableWindowBody extends VBox {
      * @param title The title of the head.
      * @param contents The contents of its body.
      */
-    public MovableWindowBody(MovableWindow window, Label title, Node contents) {
+    public MovableWindowBody(MovableWindow window, Node title, Node contents) {
         this.head = new MovableWindowHead(window, title);
         /*ScrollPane scroll = new ScrollPane(contents);
         scroll.setOnMouseEntered((event) -> {
