@@ -1,24 +1,24 @@
 package osl2.view.ui;
 
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.geometry.Orientation;
-import javafx.scene.Scene;
-import javafx.scene.control.SplitPane;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-import osl2.Evanston;
-import osl2.datastructures.EvanstonDatastructure;
-import osl2.messaging.Broadcaster;
-import osl2.messaging.PlayController;
-import osl2.view.datastructures.DatastructureVisualization;
-import osl2.view.datastructures.nodey.ArrowOverlay;
-import osl2.view.inlinerepresentation.InlineRepresentation;
-import osl2.view.ui.mirror.MirrorController;
-import osl2.view.ui.settings.SettingsController;
+        import javafx.application.Application;
+        import javafx.application.Platform;
+        import javafx.geometry.Orientation;
+        import javafx.scene.Scene;
+        import javafx.scene.control.SplitPane;
+        import javafx.scene.layout.StackPane;
+        import javafx.stage.Stage;
+        import osl2.Evanston;
+        import osl2.datastructures.EvanstonDatastructure;
+        import osl2.messaging.Broadcaster;
+        import osl2.messaging.PlayController;
+        import osl2.view.datastructures.DatastructureVisualization;
+        import osl2.view.datastructures.nodey.ArrowOverlay;
+        import osl2.view.inlinerepresentation.InlineRepresentation;
+        import osl2.view.ui.mirror.MirrorController;
+        import osl2.view.ui.settings.SettingsController;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+        import java.beans.PropertyChangeEvent;
+        import java.beans.PropertyChangeListener;
 
 /**
  * The MainWindow in which the MainRegion, PlaySpace and Sidebar will be in.
