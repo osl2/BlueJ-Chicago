@@ -4,12 +4,9 @@ import osl2.Evanston;
 import osl2.messaging.Broadcaster;
 import osl2.messaging.datastructures.DatastructureCommunication;
 import osl2.view.datastructures.DatastructureVisualization;
-import osl2.view.inlinerepresentation.InlineRepresentation;
-import osl2.view.ui.mirror.MirrorController;
 
 public abstract class EvanstonDatastructure<B extends DatastructureCommunication> {
     private final Broadcaster<B> broadcaster;
-
 
 
     private String name;
@@ -26,15 +23,16 @@ public abstract class EvanstonDatastructure<B extends DatastructureCommunication
 
     public abstract DatastructureVisualization createVisualization();
 
-    public  String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public void setName(String name){
-            this.name = name;
-            getBroadcaster().send((b) -> b.setName( getDatastructureType() + " : " + this.name));
+    public void setName(String name) {
+        this.name = name;
+        getBroadcaster().send((b) -> b.setName(getDatastructureType() + " : " + this.name));
 
     }
+
     public abstract String getDatastructureType();
 
 

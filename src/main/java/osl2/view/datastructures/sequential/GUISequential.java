@@ -15,7 +15,8 @@ public abstract class GUISequential extends DatastructureVisualization<HBox> {
 
     /**
      * Creates a new sequential visualisation.
-     * @param firstRowLabel The name of the first row.
+     *
+     * @param firstRowLabel  The name of the first row.
      * @param secondRowLabel The name of the second row
      */
     protected GUISequential(String firstRowLabel, String secondRowLabel) {
@@ -35,7 +36,8 @@ public abstract class GUISequential extends DatastructureVisualization<HBox> {
 
     /**
      * Puts an element at index i with a value for the first row.
-     * @param i The index.
+     *
+     * @param i     The index.
      * @param value The value.
      */
     protected void putElement(int i, Node value) {
@@ -47,7 +49,8 @@ public abstract class GUISequential extends DatastructureVisualization<HBox> {
 
     /**
      * Puts an element with values for both rows at an index.
-     * @param i The index.
+     *
+     * @param i     The index.
      * @param above The value for the row above.
      * @param below The value for the row below.
      */
@@ -60,6 +63,7 @@ public abstract class GUISequential extends DatastructureVisualization<HBox> {
 
     /**
      * Removes an element at an index.
+     *
      * @param i The index, where the element should be removed.
      */
     protected void removeElement(int i) {
@@ -75,6 +79,7 @@ public abstract class GUISequential extends DatastructureVisualization<HBox> {
 
         /**
          * Creates a new entry.
+         *
          * @param above The value for the first row.
          * @param below The value for the second row.
          */

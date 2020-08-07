@@ -21,17 +21,18 @@ import osl2.view.ui.localisation.LanguageController;
 public class SettingsWindow {
     private final SettingsController settingsController;
     private final LanguageController languageController;
+    private final Stage owner;
     private Stage settingStage;
     private boolean isShown;
     private VBox vBox;
     private ComboBox<LANGUAGES> languagesComboBox;
-    private final Stage owner;
     private Scene settingScene;
 
     /**
      * Creates a new Setting Window.
+     *
      * @param settingsController The Controller for this window.
-     * @param owner The Mainwindow to which this window is the settings window.
+     * @param owner              The Mainwindow to which this window is the settings window.
      */
     public SettingsWindow(SettingsController settingsController, Stage owner) {
         this.settingsController = settingsController;
@@ -148,6 +149,7 @@ public class SettingsWindow {
 
     /**
      * Sets the title of the Settingspane.
+     *
      * @param title The new title.
      */
     public void setTitle(String title) {

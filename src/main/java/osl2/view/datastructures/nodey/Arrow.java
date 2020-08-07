@@ -15,23 +15,6 @@ public class Arrow extends Group {
     private final ChangeListener hideListener;
 
 
-    private void connect() {
-        from.localToSceneTransformProperty().addListener(updater);
-        to.layoutXProperty().addListener(updater);
-        to.layoutYProperty().addListener(updater);
-        updater.changed(null, null, null);
-        to.sceneProperty().addListener(hideListener);
-        from.sceneProperty().addListener(hideListener);
-    }
-
-    public void disconnect() {
-        from.localToSceneTransformProperty().removeListener(updater);
-        to.layoutXProperty().removeListener(updater);
-        to.layoutYProperty().removeListener(updater);
-        to.sceneProperty().removeListener(hideListener);
-        from.sceneProperty().removeListener(hideListener);
-    }
-
     public Arrow(ArrowPane from, GUINode to) {
         this.from = from;
         this.to = to;
@@ -99,5 +82,22 @@ public class Arrow extends Group {
 
         setManaged(false);
         connect();
+    }
+
+    private void connect() {
+        from.localToSceneTransformProperty().addListener(updater);
+        to.layoutXProperty().addListener(updater);
+        to.layoutYProperty().addListener(updater);
+        updater.changed(null, null, null);
+        to.sceneProperty().addListener(hideListener);
+        from.sceneProperty().addListener(hideListener);
+    }
+
+    public void disconnect() {
+        from.localToSceneTransformProperty().removeListener(updater);
+        to.layoutXProperty().removeListener(updater);
+        to.layoutYProperty().removeListener(updater);
+        to.sceneProperty().removeListener(hideListener);
+        from.sceneProperty().removeListener(hideListener);
     }
 }

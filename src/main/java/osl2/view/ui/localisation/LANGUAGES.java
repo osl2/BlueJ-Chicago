@@ -12,8 +12,9 @@ public enum LANGUAGES {
 
     /**
      * Creates a new language.
+     *
      * @param language The language string.
-     * @param country The country string.
+     * @param country  The country string.
      */
     LANGUAGES(String language, String country) {
         this.language = language;
@@ -22,17 +23,19 @@ public enum LANGUAGES {
 
     /**
      * Returns the language.
+     *
      * @return The language.
      */
-    public String getLanguage(){
+    public String getLanguage() {
         return this.language;
     }
 
     /**
      * Returns the country.
+     *
      * @return The country.
      */
-    public String getCountry(){
+    public String getCountry() {
         return this.country;
     }
 }

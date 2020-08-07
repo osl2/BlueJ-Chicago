@@ -2,7 +2,6 @@ package osl2.view.ui.window;
 
 import javafx.scene.Node;
 import osl2.view.ui.draggable.Draggable;
-import osl2.view.ui.draggable.Floormat;
 import osl2.view.ui.mirror.IMirrorController;
 
 /**
@@ -69,7 +68,7 @@ public class MovableWindow extends Draggable {
         body.toggle();
     }
 
-    public void changeHeadName(String name){
+    public void changeHeadName(String name) {
         this.body.getHead().setTitle(name);
     }
 

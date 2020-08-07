@@ -2,22 +2,20 @@ package osl2.view.ui.window;
 
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import osl2.view.ui.mirror.IMirrorController;
 
 /**
  * This class is the body of a MovableWindow where the content of it will be shown.
  */
 public class MovableWindowBody extends VBox {
-
     private final MovableWindowHead head;
     private final Node contents;
     private boolean contentsShown = false;
 
-
     /**
      * Creates a new body.
-     * @param window Window to which it belongs.
-     * @param title The title of the head.
+     *
+     * @param window   Window to which it belongs.
+     * @param title    The title of the head.
      * @param contents The contents of its body.
      */
     public MovableWindowBody(MovableWindow window, Node title, Node contents) {
@@ -39,6 +37,7 @@ public class MovableWindowBody extends VBox {
 
     /**
      * Returns the head to this body.
+     *
      * @return The head.
      */
     public MovableWindowHead getHead() {

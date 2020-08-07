@@ -138,8 +138,8 @@ public class EvanstonWindow extends Application {
         }
     }
 
-    public Stage getStage(){
-        return  this.evanstonStage;
+    public Stage getStage() {
+        return this.evanstonStage;
     }
 
     /**
@@ -183,7 +183,6 @@ public class EvanstonWindow extends Application {
             playSpace.setPlayAutoButtonSymbolToPause();
             isPlaying = true;
         }
-
     }
 
     /**

@@ -2,14 +2,12 @@ package osl2.view.ui.mirror;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import osl2.view.ui.draggable.Floormat;
 import osl2.view.ui.window.MovableWindow;
 
 /**
  * This is the Mirror Class, which is a MovableWindow.
  */
 public class Mirror extends MovableWindow {
-
     public Mirror(String title, Node contents, IMirrorController controller) {
         super(new Label(title), contents, controller);
     }

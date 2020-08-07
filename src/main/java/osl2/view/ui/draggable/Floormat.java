@@ -1,11 +1,6 @@
 package osl2.view.ui.draggable;
 
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.stage.Screen;
 
 /**
  * The Floormat is a place which contains Draggables.
@@ -21,6 +16,7 @@ public class Floormat extends Pane {
 
     /**
      * Adds a new draggable to the floormat.
+     *
      * @param draggable The draggable which will be added.
      */
     public void addDraggable(Draggable draggable) {
@@ -29,6 +25,7 @@ public class Floormat extends Pane {
 
     /**
      * Removes a new draggable to the floormat.
+     *
      * @param draggable The draggable which will be removed.
      */
     public void removeDraggable(Draggable draggable) {
@@ -37,6 +34,7 @@ public class Floormat extends Pane {
 
     /**
      * Raises a draggable in the Floormat to the front.
+     *
      * @param draggable The draggable which will be raised.
      */
     public void raise(Draggable draggable) {

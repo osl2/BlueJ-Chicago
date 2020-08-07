@@ -2,8 +2,6 @@ package osl2.view.datastructures.nodey;
 
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import osl2.messaging.datastructures.nodey.VLinkedListNodeCommunication;
 import osl2.messaging.errorHandling.UserError;

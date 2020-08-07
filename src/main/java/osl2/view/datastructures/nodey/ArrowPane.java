@@ -9,6 +9,10 @@ import java.util.Map;
 public class ArrowPane extends Pane {
     private Map<GUINode, Arrow> arrows = new HashMap<>();
 
+    public ArrowPane() {
+        setPickOnBounds(false);
+    }
+
     public void connect(GUINode node) {
         if (!arrows.containsKey(node)) {
             Arrow arrow = new Arrow(this, node);
@@ -30,9 +34,5 @@ public class ArrowPane extends Pane {
         for (GUINode node : arrows.keySet()) {
             disconnect(node);
         }
-    }
-
-    public ArrowPane() {
-        setPickOnBounds(false);
     }
 }

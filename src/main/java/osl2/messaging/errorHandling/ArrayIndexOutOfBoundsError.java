@@ -23,6 +23,6 @@ public class ArrayIndexOutOfBoundsError implements UserError {
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "User") + userIndex + "\n" + languageController.getMessage(this.name + "Index")+ "[" + MIN_INDEX + "," + maxIndex + "]";
+        return languageController.getMessage(this.name + "User") + userIndex + "\n" + languageController.getMessage(this.name + "Index") + "[" + MIN_INDEX + "," + maxIndex + "]";
     }
 }

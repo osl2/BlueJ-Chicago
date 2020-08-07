@@ -9,11 +9,11 @@ import osl2.view.datastructures.GUIGraph;
 
 public class VGraph<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>> {
 
-    public VGraph(){
+    public VGraph() {
 
     }
 
-    public VGraph(String name){
+    public VGraph(String name) {
         super.setName(name);
     }
 

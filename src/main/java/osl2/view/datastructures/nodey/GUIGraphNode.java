@@ -7,6 +7,7 @@ import osl2.view.inlinerepresentation.InlineRepresentation;
 
 /**
  * The class of a node vor visualisation of graphs.
+ *
  * @param <T> The datatype of the value of the node.
  */
 public class GUIGraphNode<T> extends GUINode<T, RoundedNodeContainer<VBox>> implements VGraphNodeCommunication<T> {

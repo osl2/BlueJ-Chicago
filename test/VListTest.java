@@ -11,7 +11,7 @@ public class VListTest {
     private static List list;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         list = new ArrayList<>();
         list.add(1);
         list.add(2);
@@ -39,7 +39,7 @@ public class VListTest {
 
     @Test
     void toArray() {
-        Assertions.assertTrue(Arrays.equals(new Integer[] {1, 2}, list.toArray()));
+        Assertions.assertTrue(Arrays.equals(new Integer[]{1, 2}, list.toArray()));
     }
 
     @Test

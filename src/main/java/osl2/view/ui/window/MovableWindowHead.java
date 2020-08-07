@@ -7,7 +7,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import osl2.view.ui.mirror.IMirrorController;
-import osl2.view.ui.mirror.MirrorController;
 
 /**
  * The head of a MovableWindow.
@@ -22,8 +21,9 @@ public class MovableWindowHead extends HBox {
 
     /**
      * Creates a new WindowHead
+     *
      * @param window The Window to which it belongs.
-     * @param title The title of the head.
+     * @param title  The title of the head.
      */
     public MovableWindowHead(MovableWindow window, Node title) {
         setStyle();
@@ -35,7 +35,7 @@ public class MovableWindowHead extends HBox {
         buttons = new HBox();
         buttons.setSpacing(2);
 
-        this. title = title;
+        this.title = title;
 
         getChildren().addAll(this.title, spacer, buttons);
     }
@@ -51,7 +51,7 @@ public class MovableWindowHead extends HBox {
     /**
      * This method highlights the head.
      */
-    public void highlight(){
+    public void highlight() {
         this.getStyleClass().remove("movable-window-head");
         this.getStyleClass().add("movable-window-head-highlight");
     }
@@ -59,14 +59,14 @@ public class MovableWindowHead extends HBox {
     /**
      * This method unhighlights the head.
      */
-    public void unHighlight(){
+    public void unHighlight() {
         this.getStyleClass().remove("movable-window-head-highlight");
         this.getStyleClass().add("movable-window-head");
-
     }
 
     /**
      * This methods links the buttons for maximizing/minimizing and closing to the controller.
+     *
      * @param controller The controller to which the buttons will be linked.
      */
     public void linkBtnToController(IMirrorController controller) {
@@ -76,11 +76,10 @@ public class MovableWindowHead extends HBox {
         buttons.getChildren().add(hideButton);
     }
 
-    public void setTitle(String name){
+    public void setTitle(String name) {
         getChildren().removeAll(title, spacer, buttons);
         this.title = new Label(name);
         getChildren().addAll(title, spacer, buttons);
-
     }
 
     /**
@@ -90,7 +89,8 @@ public class MovableWindowHead extends HBox {
 
         /**
          * Creates a new ActionButton
-         * @param text The text of the Button.
+         *
+         * @param text     The text of the Button.
          * @param runnable The Runnable wich determines what the button does.
          */
         public ActionButton(String text, Runnable runnable) {

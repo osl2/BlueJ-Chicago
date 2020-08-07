@@ -5,5 +5,6 @@ import osl2.view.datastructures.nodey.GUINode;
 
 public interface VNodeCommunication<T> extends DatastructureCommunication {
     GUINode asGUINode();
+
     void valueChange(T newValue);
 }

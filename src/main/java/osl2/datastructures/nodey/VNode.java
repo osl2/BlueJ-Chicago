@@ -7,7 +7,15 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
     private final Broadcaster<Comm> broadcaster;
     private T value;
 
-    protected Broadcaster<Comm> getBroadcaster() { return broadcaster; }
+    public VNode(NodeyDatastructure parentDS) {
+        Comm comm = createVisualization();
+        this.broadcaster = new Broadcaster<>(comm);
+        parentDS.registerNodeVisualization(comm);
+    }
+
+    protected Broadcaster<Comm> getBroadcaster() {
+        return broadcaster;
+    }
 
     public T getValue() {
         return value;
@@ -26,11 +34,7 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
 
     protected abstract Comm createVisualization();
 
-    Comm getCommunication() { return broadcaster.getClient(); }
-
-    public VNode(NodeyDatastructure parentDS) {
-        Comm comm = createVisualization();
-        this.broadcaster = new Broadcaster<>(comm);
-        parentDS.registerNodeVisualization(comm);
+    Comm getCommunication() {
+        return broadcaster.getClient();
     }
 }

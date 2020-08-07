@@ -38,6 +38,7 @@ public class Draggable extends Group {
 
     /**
      * Returns the XOffset of this draggable.
+     *
      * @return The XOffset.
      */
     public double getXOffset() {
@@ -45,15 +46,8 @@ public class Draggable extends Group {
     }
 
     /**
-     * Returns the YOffset of this draggable.
-     * @return The YOffset.
-     */
-    public double getYOffset() {
-        return this.yOffset;
-    }
-
-    /**
      * Sets the XOffset of this draggable.
+     *
      * @param xOffset The value which will be the XOffset.
      */
     public void setXOffset(double xOffset) {
@@ -61,7 +55,17 @@ public class Draggable extends Group {
     }
 
     /**
+     * Returns the YOffset of this draggable.
+     *
+     * @return The YOffset.
+     */
+    public double getYOffset() {
+        return this.yOffset;
+    }
+
+    /**
      * Sets the YOffset of this draggable.
+     *
      * @param yOffset The value which will be the YOffset.
      */
     public void setYOffset(double yOffset) {
@@ -75,8 +79,8 @@ public class Draggable extends Group {
         setOnMousePressed((event) -> {
             event.consume();
             raise();
-            xOffset =  (getLayoutX() - event.getScreenX());
-            yOffset =  (getLayoutY() - event.getScreenY());
+            xOffset = (getLayoutX() - event.getScreenX());
+            yOffset = (getLayoutY() - event.getScreenY());
         });
 
         setOnMouseDragged((event) -> {

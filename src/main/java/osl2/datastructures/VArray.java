@@ -20,7 +20,7 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
         getBroadcaster().send((b) -> b.setSize(size));
     }
 
-    public VArray(int size,String name){
+    public VArray(int size, String name) {
         this.size = size;
         this.values = (T[]) new Object[size];
         getBroadcaster().send((b) -> b.setSize(size));
@@ -33,8 +33,8 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
     }
 
     public T getValue(int index) {
-        if (index < 0 || index > this.size){
-            UserError userError = new ArrayIndexOutOfBoundsError(index, size -1);
+        if (index < 0 || index > this.size) {
+            UserError userError = new ArrayIndexOutOfBoundsError(index, size - 1);
             getBroadcaster().send((b) -> b.handleError(userError));
             return null;
         }
@@ -43,7 +43,7 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
 
     public boolean setValue(int index, T value) {
         if (index < 0 || index > this.size) {
-            UserError userError = new ArrayIndexOutOfBoundsError(index, size-1);
+            UserError userError = new ArrayIndexOutOfBoundsError(index, size - 1);
             getBroadcaster().send((b) -> b.handleError(userError));
             return false;
         }
@@ -55,7 +55,7 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
 
     public boolean contains(T value) {
         for (T e : values) {
-            if (e.equals(value)) return true; 
+            if (e.equals(value)) return true;
         }
         return false;
     }
@@ -73,8 +73,8 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
     }
 
     public boolean isEmpty() {
-        for(T element: values) {
-            if(element != null)
+        for (T element : values) {
+            if (element != null)
                 return false;
         }
         return true;

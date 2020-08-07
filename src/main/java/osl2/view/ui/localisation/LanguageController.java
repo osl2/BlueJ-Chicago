@@ -1,6 +1,5 @@
 package osl2.view.ui.localisation;
 
-import java.util.Enumeration;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -9,16 +8,16 @@ import java.util.ResourceBundle;
  */
 public class LanguageController {
 
+    private static LanguageController singeltonLanguageController = null;
     private Locale locale;
     private ResourceBundle messages;
-    private static LanguageController singeltonLanguageController = null;
     private LANGUAGES language;
 
     /**
      * Creates a new LanguageController.
      */
-    private LanguageController(){
-        if(singeltonLanguageController == null){
+    private LanguageController() {
+        if (singeltonLanguageController == null) {
             singeltonLanguageController = this;
             language = LANGUAGES.GERMAN;
             setMessages(language);
@@ -27,10 +26,11 @@ public class LanguageController {
 
     /**
      * Returns the one languagecontroller.
+     *
      * @return The languagecontroller.
      */
-    public static LanguageController getLanguageController(){
-        if(singeltonLanguageController == null){
+    public static LanguageController getLanguageController() {
+        if (singeltonLanguageController == null) {
             new LanguageController();
             return singeltonLanguageController;
         } else {
@@ -40,6 +40,7 @@ public class LanguageController {
 
     /**
      * Sets all the messages for the language.
+     *
      * @param language The language for the messages.
      */
     public void setMessages(LANGUAGES language) {
@@ -49,11 +50,12 @@ public class LanguageController {
 
     /**
      * Returns the message in the language.
+     *
      * @param name The messagekey.
      * @return The message.
      */
-    public String getMessage(String name){
-        if(messages == null){
+    public String getMessage(String name) {
+        if (messages == null) {
             messages = ResourceBundle.getBundle("MessagesBundle");
         }
         return messages.getString(name);
@@ -61,9 +63,10 @@ public class LanguageController {
 
     /**
      * Returns the language which is now active.
+     *
      * @return The language.
      */
-    public LANGUAGES getLanguage(){
+    public LANGUAGES getLanguage() {
         return this.language;
     }
 

@@ -1,14 +1,9 @@
 package osl2.view.ui;
 
-import javafx.geometry.Bounds;
-import javafx.geometry.Point2D;
-import javafx.scene.Node;
 import osl2.view.ui.draggable.Draggable;
 import osl2.view.ui.draggable.Floormat;
-import osl2.view.ui.window.MovableWindow;
 
 import java.util.LinkedList;
-import java.util.Random;
 
 /**
  * The Mainregion will be the space, where the Mirrors will be in.
@@ -32,10 +27,11 @@ public class MainRegion extends Floormat {
 
     /**
      * This method calculates where a new Mirror can be added to not overlap with already existing mirrors.
+     *
      * @param draggable The Mirror wich will be added.
      */
     public void getFreeSpace(Draggable draggable) {
-        if(!draggableLinkedList.contains(draggable)) {
+        if (!draggableLinkedList.contains(draggable)) {
             double lowX = 0;
             double highX = this.getWidth() - draggable.getBoundsInParent().getWidth();
             double lowY = 0;
@@ -47,6 +43,4 @@ public class MainRegion extends Floormat {
             draggableLinkedList.add(draggable);
         }
     }
-
-
 }

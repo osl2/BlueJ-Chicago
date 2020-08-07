@@ -2,12 +2,9 @@ package osl2;
 
 import osl2.datastructures.*;
 import osl2.datastructures.nodey.VGraphNode;
-import osl2.datastructures.nodey.VLinkedList;
 import osl2.datastructures.nodey.VLinkedListNode;
 import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
-import osl2.messaging.datastructures.nodey.VLinkedListCommunication;
-import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.ui.EvanstonWindow;
 
 import java.util.Map;
@@ -59,7 +56,7 @@ public class Evanston {
         }
         errorArray.setName("SetNameTest");
         // IndexOutOfBounds error
-         errorArray.setValue(10, 1);
+        errorArray.setValue(10, 1);
 
         for (int x = 64; x < 69; x++) amap.put(x, (char) x);
         for (int x = 64; x < 70; x++) amap.put(x, (char) (x + 5));
@@ -70,7 +67,7 @@ public class Evanston {
         loop:
         for (; ; ) {
             for (int x = 0; x < array.size(); x++) {
-                if(i == 50){
+                if (i == 50) {
                     Breakpoint.block();
                 }
                 array.setValue(x, i++);

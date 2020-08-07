@@ -16,7 +16,7 @@ public class VMapTest {
     }
 
     @BeforeEach
-    void setup(){
+    void setup() {
         map = new VMap();
         map.put("A", 1);
         map.put("B", 2);
@@ -72,7 +72,7 @@ public class VMapTest {
     @Test
     void remove() {
         map.remove("A");
-        Assertions.assertFalse( map.containsKey("A"));
+        Assertions.assertFalse(map.containsKey("A"));
     }
 
     @Test

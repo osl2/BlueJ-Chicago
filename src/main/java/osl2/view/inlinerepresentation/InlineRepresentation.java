@@ -3,7 +3,6 @@ package osl2.view.inlinerepresentation;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import osl2.datastructures.EvanstonDatastructure;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -16,7 +15,8 @@ public class InlineRepresentation extends Button {    // TODO: Make this a click
 
     /**
      * Creates a new InlineRepresentation.
-     * @param text The text of the inlinerepresentation.
+     *
+     * @param text   The text of the inlinerepresentation.
      * @param action The action which happens, when the InlineRepresentation
      */
     public InlineRepresentation(String text, Runnable action) {
@@ -26,7 +26,8 @@ public class InlineRepresentation extends Button {    // TODO: Make this a click
 
     /**
      * Associates an action to a object.
-     * @param value The object.
+     *
+     * @param value  The object.
      * @param action The action.
      */
     public static void registerInlineAction(Object value, Runnable action) {
@@ -35,6 +36,7 @@ public class InlineRepresentation extends Button {    // TODO: Make this a click
 
     /**
      * Returns a new Inlinerepresentation if the value is a Datastructure. Else just a label with the content.
+     *
      * @param value The value which will be added to the visualization.
      * @return A Inlinerepresentation or a Label.
      */

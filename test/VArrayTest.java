@@ -17,7 +17,7 @@ public class VArrayTest {
     }
 
     @BeforeEach
-    void setup(){
+    void setup() {
         array = new VArray<Integer>(10);
     }
 
@@ -79,8 +79,8 @@ public class VArrayTest {
 
         array.removeAll();
 
-        for(int i = 0; i < array.size(); i++) {
-            if(array.getValue(i) != null) {
+        for (int i = 0; i < array.size(); i++) {
+            if (array.getValue(i) != null) {
                 throw new AssertionError("List is not empty!");
             }
         }

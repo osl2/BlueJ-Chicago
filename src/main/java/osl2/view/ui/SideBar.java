@@ -17,10 +17,10 @@ public class SideBar extends ListView<MirrorButton> {
 
     /**
      * Adds a new MirrorButton to the Sidebar.
+     *
      * @param mirrorButton The MirrorButton wich will be added.
      */
     public void addMirrorButton(MirrorButton mirrorButton) {
         getItems().add(mirrorButton);
     }
-
 }

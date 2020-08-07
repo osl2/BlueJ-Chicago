@@ -42,6 +42,7 @@ public class PlayController {
 
     /**
      * Sets the delay for the playing.
+     *
      * @param delay The delay.
      */
     public void setProgramDelay(long delay) {

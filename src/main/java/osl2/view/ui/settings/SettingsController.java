@@ -14,6 +14,7 @@ public class SettingsController {
 
     /**
      * Creates a new SettingsController.
+     *
      * @param evanstonWindow The Mainwindow to which the settings belong.
      */
     public SettingsController(EvanstonWindow evanstonWindow) {
@@ -30,7 +31,8 @@ public class SettingsController {
 
     /**
      * Sets the language which was selected.
-     * @param language The new language.
+     *
+     * @param language       The new language.
      * @param settingsWindow The settingswindow to which it is part of.
      */
     public void setLanguage(LANGUAGES language, SettingsWindow settingsWindow) {

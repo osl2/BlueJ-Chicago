@@ -1,7 +1,6 @@
 package osl2.view.ui.mirror;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.Control;
 
 /**
  * The Visual Represantation of a MirrorButton

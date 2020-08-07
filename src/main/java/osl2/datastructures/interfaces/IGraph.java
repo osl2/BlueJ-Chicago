@@ -1,6 +1,5 @@
 package osl2.datastructures.interfaces;
 
-import osl2.datastructures.VGraph;
 import osl2.datastructures.nodey.VGraphNode;
 
 import java.util.Collection;
