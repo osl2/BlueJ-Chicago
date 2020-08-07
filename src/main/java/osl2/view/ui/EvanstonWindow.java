@@ -122,7 +122,7 @@ public class EvanstonWindow extends Application {
 
         scene = new Scene(root, WIDTH, HEIGHT);
         setFontSize(FontSize.MEDIUM);
-        setTheme(Theme.BRIGHT);
+        setTheme(Theme.DARK);
         stage.setScene(scene);
         this.evanstonStage = stage;
         stage.show();
@@ -201,7 +201,12 @@ public class EvanstonWindow extends Application {
         }
     }
 
-    private void setTheme(Theme newTheme) {
+    /**
+     * Sets the theme used in the window.
+     *
+     * @param newTheme - the new {@link Theme} to be used
+     */
+    public void setTheme(Theme newTheme) {
         removeAllThemes();
         this.scene.getStylesheets().add(newTheme.getFileName());
 

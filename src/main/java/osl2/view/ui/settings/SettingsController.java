@@ -2,6 +2,7 @@ package osl2.view.ui.settings;
 
 import osl2.view.ui.EvanstonWindow;
 import osl2.view.ui.FontSize;
+import osl2.view.ui.Theme;
 import osl2.view.ui.localisation.LANGUAGES;
 import osl2.view.ui.localisation.LanguageController;
 
@@ -48,5 +49,15 @@ public class SettingsController {
     public void setFontSize(FontSize fontSize) {
         this.evanstonWindow.setFontSize(fontSize);
         this.settingsWindow.setFontSize(fontSize);
+    }
+
+    /**
+     * Changes the theme of the application.
+     *
+     * @param theme - the new {@link Theme} to be used
+     */
+    public void setTheme(Theme theme) {
+        this.evanstonWindow.setTheme(theme);
+        this.settingsWindow.setTheme(theme);
     }
 }

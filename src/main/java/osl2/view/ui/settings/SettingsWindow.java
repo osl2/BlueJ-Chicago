@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import osl2.view.ui.FontSize;
+import osl2.view.ui.Theme;
 import osl2.view.ui.localisation.LANGUAGES;
 import osl2.view.ui.localisation.LanguageController;
 
@@ -41,6 +42,7 @@ public class SettingsWindow {
         setUp();
         isShown = false;
         setFontSize(FontSize.MEDIUM);
+        setTheme(Theme.DARK);
     }
 
     /**
@@ -50,6 +52,7 @@ public class SettingsWindow {
         setUpPane();
         setUpCombobox();
         setUpFontSizeSelection();
+        setUpThemeSelection();
         setUpSettingStage();
     }
 
@@ -148,6 +151,47 @@ public class SettingsWindow {
     }
 
     /**
+     * Sets up the theme selection.
+     */
+    private void setUpThemeSelection() {
+        addThemeLabel();
+        addThemeBtns();
+    }
+
+    /**
+     * Adds the label for theme selection.
+     */
+    private void addThemeLabel() {
+        Label setThemeLabel = new Label(languageController.getMessage("ThemeSetting"));
+        vBox.getChildren().add(setThemeLabel);
+    }
+
+    /**
+     * Adds the buttons for chaning the theme.
+     */
+    private void addThemeBtns() {
+        final ToggleGroup toggleGroup = new ToggleGroup();
+
+        RadioButton themeBright = new RadioButton(languageController.getMessage("ThemeSettingBright"));
+        themeBright.setToggleGroup(toggleGroup);
+        themeBright.setUserData(Theme.BRIGHT);
+
+        RadioButton themeDark = new RadioButton(languageController.getMessage("ThemeSettingDark"));
+        themeDark.setToggleGroup(toggleGroup);
+        themeDark.setUserData(Theme.DARK);
+        themeDark.setSelected(true);
+
+        toggleGroup.selectedToggleProperty().addListener(e -> settingsController.setTheme((Theme) toggleGroup.getSelectedToggle().getUserData()));
+
+        HBox radioBtns = new HBox();
+        radioBtns.setPadding(new Insets(10));
+        radioBtns.setSpacing(10);
+        radioBtns.getChildren().addAll(themeBright, themeDark);
+
+        vBox.getChildren().add(radioBtns);
+    }
+
+    /**
      * Sets the title of the Settingspane.
      *
      * @param title The new title.
@@ -172,4 +216,20 @@ public class SettingsWindow {
         }
     }
 
+    /**
+     * Sets the theme used in the window.
+     *
+     * @param newTheme - the new {@link Theme} to be used
+     */
+    public void setTheme(Theme newTheme) {
+        removeAllThemes();
+        this.settingScene.getStylesheets().add(newTheme.getFileName());
+
+    }
+
+    private void removeAllThemes() {
+        for (Theme theme : Theme.values()) {
+            this.settingScene.getStylesheets().remove(theme.getFileName());
+        }
+    }
 }

@@ -4,7 +4,7 @@ package osl2.view.ui;
  * The themes which can be used in the application.
  */
 public enum Theme {
-    DARK("Stylesheets/theme_bright.css"),
+    DARK("Stylesheets/theme_dark.css"),
     BRIGHT("Stylesheets/theme_bright.css");
 
     private final String fileName;
