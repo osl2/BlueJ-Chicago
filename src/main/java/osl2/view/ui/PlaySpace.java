@@ -108,12 +108,13 @@ public class PlaySpace extends Pane {
     private void setStepbystepButton() {
         playStepButton = new Button();
         playStepButton.setAlignment(Pos.CENTER_LEFT);
-        playStepButton.setGraphic(new ImageView("step.jpg"));
+        playStepButton.setGraphic(new ImageView("images/step.jpg"));
         buttonBox.getChildren().add(playStepButton);
     }
 
     private void setSettingsButton() {
-        settings = new Button(LanguageController.getLanguageController().getMessage("OpenSettingsBtn"));
+        settings = new Button();
+        settings.setGraphic(new ImageView("images/settingsIcon.jpg"));
         settings.setOnAction(e -> evanstonWindow.openSettingsWindow());
         settings.setAlignment(Pos.CENTER);
     }
@@ -149,7 +150,7 @@ public class PlaySpace extends Pane {
     }
 
     public void setPlayAutoButtonSymbolToPlay() {
-        this.playAutoButton.setGraphic(new ImageView("play.jpg"));
+        this.playAutoButton.setGraphic(new ImageView("images/play.jpg"));
     }
 
     /**
@@ -160,6 +161,6 @@ public class PlaySpace extends Pane {
     }
 
     public void setPlayAutoButtonSymbolToPause() {
-        this.playAutoButton.setGraphic(new ImageView("pause.jpg"));
+        this.playAutoButton.setGraphic(new ImageView("images/pause.jpg"));
     }
 }
