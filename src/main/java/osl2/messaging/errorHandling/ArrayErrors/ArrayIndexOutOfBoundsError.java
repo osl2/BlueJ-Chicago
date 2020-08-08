@@ -1,5 +1,6 @@
-package osl2.messaging.errorHandling;
+package osl2.messaging.errorHandling.ArrayErrors;
 
+import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 public class ArrayIndexOutOfBoundsError implements UserError {
@@ -23,6 +24,7 @@ public class ArrayIndexOutOfBoundsError implements UserError {
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "User") + userIndex + "\n" + languageController.getMessage(this.name + "Index") + "[" + MIN_INDEX + "," + maxIndex + "]";
+        return languageController.getMessage(this.name + "User") + userIndex +
+                "\n" + languageController.getMessage(this.name + "Index") + "[" + MIN_INDEX + "," + maxIndex + "]";
     }
 }

@@ -1,5 +1,6 @@
-package osl2.messaging.errorHandling;
+package osl2.messaging.errorHandling.GraphErrors;
 
+import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 public class GraphNullPointerRemoveError<T> implements UserError {
@@ -21,6 +22,6 @@ public class GraphNullPointerRemoveError<T> implements UserError {
     @Override
     public String getErrorContent() {
         return languageController.getMessage(this.name + node)
-                + node.toString() + languageController.getMessage(this.name + "Remove");
+                + node.toString()  + "\n" + languageController.getMessage(this.name + "Remove");
     }
 }

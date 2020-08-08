@@ -18,6 +18,13 @@
     -fx-background-color: #363636;
 }
 
+.sidebar.list-view .scroll-bar:horizontal .increment-arrow,
+.sidebar.list-view .scroll-bar:horizontal .decrement-arrow,
+.sidebar.list-view .scroll-bar:horizontal .increment-button,
+.sidebar.list-view .scroll-bar:horizontal .decrement-button {
+    -fx-padding:0;
+}
+
 .mirror-button {
     -fx-text-fill: #ffffff;
     -fx-padding: 8, 20, 8, 20;

@@ -1,5 +1,6 @@
-package osl2.messaging.errorHandling;
+package osl2.messaging.errorHandling.GraphErrors;
 
+import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 public class GraphNodeExisitingError<T> implements UserError {
@@ -21,6 +22,6 @@ public class GraphNodeExisitingError<T> implements UserError {
     @Override
     public String getErrorContent() {
         return languageController.getMessage(this.name + "Node")
-                + node.toString() + languageController.getMessage(this.name + "Add");
+                + node.toString() + "\n" + languageController.getMessage(this.name + "Add");
     }
 }
