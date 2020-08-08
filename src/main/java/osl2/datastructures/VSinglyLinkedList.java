@@ -23,6 +23,10 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
         return "Singly Linked List";
     }
 
+    @Override
+    protected void disconnectAndRemove(VLinkedListNode<T> node) {
+        removeNode(node);
+    }
 
     @Override
     public boolean add(T t) {
@@ -57,19 +61,6 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
             }
         }
         return false;
-    }
-
-    @Override
-    public T set(int i, T t) {
-        VLinkedListNode<T> it = getHead();
-        if (it == null) /* TODO: Out of bounds error! */ return null;
-        while (i --> 0) {
-            if (it == null) /* TODO: Out of bounds error! */ return null;
-            it = it.getForward();
-        }
-        T old = it.getValue();
-        it.setValue(t);
-        return old;
     }
 
     @Override

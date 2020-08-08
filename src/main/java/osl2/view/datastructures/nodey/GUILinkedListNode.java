@@ -8,7 +8,7 @@ import osl2.messaging.errorHandling.UserError;
 import osl2.view.inlinerepresentation.InlineRepresentation;
 
 public class GUILinkedListNode<T> extends GUINode<T, VBox> implements VLinkedListNodeCommunication<T> {
-    private final HBox layoutBox;
+    private final VBox layoutBox;
     private final ArrowPane leftArrowPane;
     private final ArrowPane rightArrowPane;
 
@@ -16,14 +16,16 @@ public class GUILinkedListNode<T> extends GUINode<T, VBox> implements VLinkedLis
     public GUILinkedListNode() {
         super(new VBox());
         getContent().setStyle("-fx-background-color: white");
-        this.layoutBox = new HBox();
+        this.layoutBox = new VBox();
         getContent().getChildren().add(layoutBox);
         leftArrowPane = new ArrowPane();
         leftArrowPane.setMinWidth(10);
         leftArrowPane.setMinHeight(10);
+        leftArrowPane.setStyle("-fx-border-color: black");
         rightArrowPane = new ArrowPane();
         rightArrowPane.setMinWidth(10);
         rightArrowPane.setMinHeight(10);
+        rightArrowPane.setStyle("-fx-border-color: black");
         layoutBox.getChildren().add(leftArrowPane);
         layoutBox.getChildren().add(rightArrowPane);
         valueChange(null);

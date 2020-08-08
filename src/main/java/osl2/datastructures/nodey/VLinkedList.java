@@ -8,10 +8,15 @@ import osl2.view.datastructures.GUILinkedList;
 import java.util.*;
 
 public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> extends NodeyDatastructure<T, Comm, VLinkedListNodeCommunication<T>, VLinkedListNode<T>> implements List<T> {
-    private VLinkedListNode<T> head;
+    private final VLinkedListNode<Object> head;
 
-    protected VLinkedListNode<T> getHead() { return head; }
-    protected void setHead(VLinkedListNode<T> newHead) { this.head = newHead; }
+    public VLinkedList() {
+        head = (VLinkedListNode<Object>) createNode();
+        head.setValue("<HEAD>");
+    }
+
+    protected VLinkedListNode<T> getHead() { return (VLinkedListNode<T>) head.getForward(); }
+    protected void setHead(VLinkedListNode<T> newHead) { this.head.setForward((VLinkedListNode<Object>) newHead); }
     protected VLinkedListNode<T> getLast() {
         VLinkedListNode<T> node = getHead();
         VLinkedListNode<T> last = node;
@@ -31,6 +36,18 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
     public DatastructureVisualization createVisualization() {
         return new GUILinkedList();
     }
+
+
+    protected VLinkedListNode<T> getNode(int i) {
+        VLinkedListNode<T> it = getHead();
+        while (i --> 0) {
+            if (it == null) /* TODO: Error */ return null;
+            it = it.getForward();
+        }
+        return it;
+    }
+
+    protected abstract void disconnectAndRemove(VLinkedListNode<T> node);
 
 
     @Override
@@ -140,9 +157,10 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
     public void clear() {
         VLinkedListNode<T> node = getHead();
         setHead(null);
-        while (head != null) {
-            removeNode(node);
-            node = node.getForward();
+        while (node != null) {
+            VLinkedListNode<T> next = node.getForward();
+            disconnectAndRemove(node);
+            node = next;
         }
     }
 
@@ -156,6 +174,18 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         return it.getValue();
     }
 
+    @Override
+    public T set(int i, T t) {
+        VLinkedListNode<T> it = getHead();
+        if (it == null) /* TODO: Out of bounds error! */ return null;
+        while (i --> 0) {
+            if (it == null) /* TODO: Out of bounds error! */ return null;
+            it = it.getForward();
+        }
+        T old = it.getValue();
+        it.setValue(t);
+        return old;
+    }
 
     @Override
     public int indexOf(Object o) {

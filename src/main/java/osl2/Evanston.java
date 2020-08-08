@@ -7,6 +7,7 @@ import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
 import osl2.view.ui.EvanstonWindow;
 
+import java.util.List;
 import java.util.Map;
 
 public class Evanston {
@@ -23,12 +24,12 @@ public class Evanston {
     public static void main(String[] args) {
         EvanstonWindow.open();
 
-        VSinglyLinkedList<String> lil = new VSinglyLinkedList<>("lilList");
+        List<String> lil = new VDoublyLinkedList<>("lilList");
         lil.add("Hello");
         lil.add("World");
         lil.add("by");
         lil.add("Evanston");
-        lil.remove(1);
+        lil.clear();
 
         VGraph<Integer> graph = new VGraph("GraphTest");
         VGraphNode<Integer> node = null;
