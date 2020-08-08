@@ -34,7 +34,6 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     private final PlayController playController;
     private Stage evanstonStage;
     private Scene scene;
-    private ArrowOverlay arrowOverlay;
     private MainRegion mainRegion;
     private PlaySpace playSpace;
     private SideBar sideBar;
@@ -99,10 +98,6 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         return playController;
     }
 
-    public ArrowOverlay getArrowOverlay() {
-        return arrowOverlay;
-    }
-
     /**
      * Starts the JavaFX Visualisation.
      *
@@ -117,13 +112,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         setUpSpaces();
         Evanston.getPlayController().addPropertyChangeListener(this);
 
-        this.arrowOverlay = new ArrowOverlay();
-        StackPane root = new StackPane();
-        root.getChildren().add(verticalSplitter);
-        root.getChildren().add(arrowOverlay);
-        arrowOverlay.toFront();
-
-        scene = new Scene(root, WIDTH, HEIGHT);
+        scene = new Scene(verticalSplitter, WIDTH, HEIGHT);
         setFontSize(FontSize.MEDIUM);
         setTheme(Theme.DARK);
         stage.setScene(scene);

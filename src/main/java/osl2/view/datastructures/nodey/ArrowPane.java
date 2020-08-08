@@ -8,16 +8,22 @@ import java.util.Map;
 
 public class ArrowPane extends Pane {
     private Map<GUINode, Arrow> arrows = new HashMap<>();
+    private ArrowOverlay overlay;
 
     public ArrowPane() {
         setPickOnBounds(false);
     }
 
+    public void setOverlay(ArrowOverlay overlay) {
+        if (this.overlay != null) clear();
+        this.overlay = overlay;
+    }
+
     public void connect(GUINode node) {
         if (!arrows.containsKey(node)) {
-            Arrow arrow = new Arrow(this, node);
+            Arrow arrow = new Arrow(overlay,this, node);
             arrows.put(node, arrow);
-            EvanstonWindow.getInstance().getArrowOverlay().addArrow(arrow);
+            overlay.addArrow(arrow);
         }
     }
 
@@ -26,7 +32,7 @@ public class ArrowPane extends Pane {
         if (arrow != null) {
             arrow.disconnect();
             arrows.remove(node);
-            EvanstonWindow.getInstance().getArrowOverlay().removeArrow(arrow);
+            overlay.removeArrow(arrow);
         }
     }
 
