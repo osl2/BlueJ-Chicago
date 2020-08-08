@@ -72,7 +72,7 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
             VLinkedListNode<T> it = getHead();
             while (i --> 1) {
                 if (it == null) {
-                    outOfBoundsError();
+                    outOfBoundsError(i);
                     return;
                 }
                 it = it.getForward();
