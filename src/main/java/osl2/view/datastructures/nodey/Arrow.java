@@ -6,6 +6,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.shape.Line;
+import osl2.view.ui.draggable.Floormat;
 
 
 public class Arrow extends Group {
@@ -15,7 +16,7 @@ public class Arrow extends Group {
     private final ChangeListener hideListener;
 
 
-    public Arrow(ArrowPane from, GUINode to) {
+    public Arrow(ArrowOverlay overlay, ArrowPane from, GUINode to) {
         this.from = from;
         this.to = to;
 
@@ -26,11 +27,18 @@ public class Arrow extends Group {
         this.updater = (o, p, q) -> {
             Point2D startPos = from.localToScene(0, 0);
             Point2D endPos = to.localToScene(0, 0);
+            Point2D overlayPos = overlay.localToScene(0, 0);
 
-            double sx = startPos.getX();
-            double sy = startPos.getY();
-            double ex = endPos.getX();
-            double ey = endPos.getY();
+            final double w = to.getBoundsInParent().getWidth();
+            final double h = to.getBoundsInParent().getHeight();
+
+            double sx = startPos.getX() - overlayPos.getX() + from.getBoundsInParent().getWidth() / 2;
+            double sy = startPos.getY() - overlayPos.getY() + from.getBoundsInParent().getHeight() / 2;
+            double ex = endPos.getX() - overlayPos.getX() + w / 2;
+            double ey = endPos.getY() - overlayPos.getY() + h / 2;
+
+            ex -= Math.cos(Math.atan2(ey - sy, ex - sx)) * w / 2;
+            ey -= Math.sin(Math.atan2(ey - sy, ex - sx)) * h / 2;
 
             line.setStartX(sx);
             line.setStartY(sy);

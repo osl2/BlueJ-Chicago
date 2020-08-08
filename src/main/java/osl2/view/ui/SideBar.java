@@ -13,6 +13,7 @@ public class SideBar extends ListView<MirrorButton> {
      */
     public SideBar() {
         this.getStyleClass().add("sidebar");
+        setSideBarListener();
     }
 
     /**
@@ -21,6 +22,19 @@ public class SideBar extends ListView<MirrorButton> {
      * @param mirrorButton The MirrorButton wich will be added.
      */
     public void addMirrorButton(MirrorButton mirrorButton) {
+        mirrorButton.setPrefWidth(this.getWidth());
         getItems().add(mirrorButton);
+    }
+
+    /**
+     * Sets a listener to set the size of the MirrorButtons,
+     * when resizing the Sidebar.
+     */
+    private void setSideBarListener(){
+        this.widthProperty().addListener(e -> {
+            for(MirrorButton b: this.getItems()){
+                b.setPrefWidth(this.getWidth());
+            }
+        });
     }
 }

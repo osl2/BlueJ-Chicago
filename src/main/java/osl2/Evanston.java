@@ -23,14 +23,12 @@ public class Evanston {
     public static void main(String[] args) {
         EvanstonWindow.open();
 
-        VSinglyLinkedList<Integer> lil = new VSinglyLinkedList<>("lilList");
-        VLinkedListNode<Integer> node1 = lil.addNode();
-        VLinkedListNode<Integer> node2 = lil.addNode();
-        node1.setValue(1);
-        Breakpoint.block();
-        node2.setValue(2);
-        node1.setForward(node2);
-        node2.setBackward(node1);
+        VSinglyLinkedList<String> lil = new VSinglyLinkedList<>("lilList");
+        lil.add("Hello");
+        lil.add("World");
+        lil.add("by");
+        lil.add("Evanston");
+        lil.remove(1);
 
         VGraph<Integer> graph = new VGraph("GraphTest");
         VGraphNode<Integer> node = null;

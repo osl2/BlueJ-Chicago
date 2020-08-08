@@ -30,14 +30,21 @@ public class GUILinkedListNode<T> extends GUINode<T, VBox> implements VLinkedLis
     }
 
     @Override
+    public void setArrowOverlay(ArrowOverlay overlay) {
+        super.setArrowOverlay(overlay);
+        leftArrowPane.setOverlay(overlay);
+        rightArrowPane.setOverlay(overlay);
+    }
+
+    @Override
     public void setForward(VLinkedListNodeCommunication<T> node) {
-        rightArrowPane.getChildren().clear();
+        rightArrowPane.clear();
         if (node != null) rightArrowPane.connect(node.asGUINode());
     }
 
     @Override
     public void setBackward(VLinkedListNodeCommunication<T> node) {
-        leftArrowPane.getChildren().clear();
+        leftArrowPane.clear();
         if (node != null) leftArrowPane.connect(node.asGUINode());
     }
 
