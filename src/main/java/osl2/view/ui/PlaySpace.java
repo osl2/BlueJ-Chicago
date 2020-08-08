@@ -40,6 +40,9 @@ public class PlaySpace extends Pane {
         setColour();
     }
 
+    /**
+     * Adds the button to the playspace.
+     */
     private void addButtons() {
         setStepbystepButton();
         setPlayButton();
@@ -119,6 +122,9 @@ public class PlaySpace extends Pane {
         settings.setAlignment(Pos.CENTER);
     }
 
+    /**
+     * Sets up the settingBox.
+     */
     private void setUpSettingBox() {
         setSettingsButton();
         settingsBox = new HBox();
@@ -128,6 +134,9 @@ public class PlaySpace extends Pane {
         splitLayout.getChildren().add(settingsBox);
     }
 
+    /**
+     * Links the buttons to the controller.
+     */
     private void linkButtonToController() {
         playStepButton.setOnAction(e -> evanstonWindow.playStepButtonClicked());
         playAutoButton.setOnAction(e -> evanstonWindow.playAutoButtonClicked());
@@ -149,6 +158,9 @@ public class PlaySpace extends Pane {
         sliderBox.getChildren().add(playSpeedSlider);
     }
 
+    /**
+     * Sets the symbol of the playbutton to play.
+     */
     public void setPlayAutoButtonSymbolToPlay() {
         this.playAutoButton.setGraphic(new ImageView("images/play.jpg"));
     }
@@ -160,6 +172,9 @@ public class PlaySpace extends Pane {
         this.getStyleClass().add("playspace");
     }
 
+    /**
+     * Sets the symbol from the playbutton to pause.
+     */
     public void setPlayAutoButtonSymbolToPause() {
         this.playAutoButton.setGraphic(new ImageView("images/pause.jpg"));
     }

@@ -28,7 +28,6 @@ public class MovableWindowHead extends HBox {
      */
     public MovableWindowHead(MovableWindow window, Node title) {
         setStyle();
-        isMax = true;
 
         spacer = new Pane();
         spacer.setMinWidth(20);
@@ -72,8 +71,8 @@ public class MovableWindowHead extends HBox {
      * @param controller The controller to which the buttons will be linked.
      */
     public void linkBtnToController(IMirrorController controller) {
-        minMaxButton = new ActionButton("Ʌ", () -> controller.minOrMaxMirror());
         hideButton = new ActionButton("X", () -> controller.hideMirror());
+        minMaxButton = new ActionButton("^", () -> controller.minOrMaxMirror());
         buttons.getChildren().add(minMaxButton);
         buttons.getChildren().add(hideButton);
     }
@@ -83,10 +82,10 @@ public class MovableWindowHead extends HBox {
      */
     public void changeMinMaxButton(){
         if(isMax){
-            minMaxButton.setText("V");
+            minMaxButton.setText("^");
             isMax = false;
         } else {
-            minMaxButton.setText("Ʌ");
+            minMaxButton.setText("v");
             isMax = true;
         }
     }
