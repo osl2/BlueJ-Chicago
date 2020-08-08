@@ -3,13 +3,13 @@ package osl2.messaging.errorHandling.GraphErrors;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
-public class GraphNodeExisitingError<T> implements UserError {
+public class GraphNodeExistingError<T> implements UserError {
 
-    private final String name = "GraphNodeExisiting";
+    private final String name = "GraphNodeExisting";
     private T node;
     private LanguageController languageController;
 
-    public GraphNodeExisitingError(T node){
+    public GraphNodeExistingError(T node){
         this.languageController = LanguageController.getLanguageController();
         this.node = node;
     }
