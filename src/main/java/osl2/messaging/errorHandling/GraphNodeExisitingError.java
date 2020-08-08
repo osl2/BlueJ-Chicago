@@ -21,6 +21,6 @@ public class GraphNodeExisitingError<T> implements UserError {
     @Override
     public String getErrorContent() {
         return languageController.getMessage(this.name + "Node")
-                + node.toString() + languageController.getMessage(this.name + "Add");
+                + node.toString() + "\n" + languageController.getMessage(this.name + "Add");
     }
 }

@@ -25,6 +25,6 @@ public class MapKeyExistingError<T> implements UserError {
     @Override
     public String getErrorContent() {
         return languageController.getMessage(this.name + "Key")
-                + key.toString() + languageController.getMessage(this.name + "Add");
+                + key.toString() + "\n" + languageController.getMessage(this.name + "Add");
     }
 }

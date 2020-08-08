@@ -21,6 +21,6 @@ public class GraphNullPointerRemoveError<T> implements UserError {
     @Override
     public String getErrorContent() {
         return languageController.getMessage(this.name + node)
-                + node.toString() + languageController.getMessage(this.name + "Remove");
+                + node.toString()  + "\n" + languageController.getMessage(this.name + "Remove");
     }
 }
