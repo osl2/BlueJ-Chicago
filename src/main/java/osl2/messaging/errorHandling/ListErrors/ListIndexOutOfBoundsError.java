@@ -1,17 +1,17 @@
-package osl2.messaging.errorHandling.ArrayErrors;
+package osl2.messaging.errorHandling.ListErrors;
 
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
-public class ArrayIndexOutOfBoundsError implements UserError {
+public class ListIndexOutOfBoundsError implements UserError {
     private static final int MIN_INDEX = 0;
 
     private final int userIndex;
     private final int MAX_INDEX;
-    private final String name = "ArrayIndexIndexOutOfBounds";
+    private final String name = "ListIndexOutOfBounds";
     private LanguageController languageController;
 
-    public ArrayIndexOutOfBoundsError(int userIndex, int MAX_INDEX) {
+    public ListIndexOutOfBoundsError(int userIndex, int MAX_INDEX) {
         this.userIndex = userIndex;
         if(MAX_INDEX < 0){
             this.MAX_INDEX = 0;
@@ -32,3 +32,4 @@ public class ArrayIndexOutOfBoundsError implements UserError {
                 "\n" + languageController.getMessage(this.name + "Index") + "[" + MIN_INDEX + "," + MAX_INDEX + "]";
     }
 }
+
