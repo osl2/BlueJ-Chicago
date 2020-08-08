@@ -18,6 +18,7 @@ public class MovableWindowHead extends HBox {
     private final HBox buttons;
     private final Pane spacer;
     private Node title;
+    private boolean isMax;
 
     /**
      * Creates a new WindowHead
@@ -27,6 +28,7 @@ public class MovableWindowHead extends HBox {
      */
     public MovableWindowHead(MovableWindow window, Node title) {
         setStyle();
+        isMax = true;
 
         spacer = new Pane();
         spacer.setMinWidth(20);
@@ -70,12 +72,29 @@ public class MovableWindowHead extends HBox {
      * @param controller The controller to which the buttons will be linked.
      */
     public void linkBtnToController(IMirrorController controller) {
-        minMaxButton = new ActionButton("...", () -> controller.minOrMaxMirror());
+        minMaxButton = new ActionButton("Ʌ", () -> controller.minOrMaxMirror());
         hideButton = new ActionButton("X", () -> controller.hideMirror());
         buttons.getChildren().add(minMaxButton);
         buttons.getChildren().add(hideButton);
     }
 
+    /**
+     * Changes the minMaxButtons appearance.
+     */
+    public void changeMinMaxButton(){
+        if(isMax){
+            minMaxButton.setText("V");
+            isMax = false;
+        } else {
+            minMaxButton.setText("Ʌ");
+            isMax = true;
+        }
+    }
+
+    /**
+     * Sets the title of the head.
+     * @param name THe title.
+     */
     public void setTitle(String name) {
         getChildren().removeAll(title, spacer, buttons);
         this.title = new Label(name);

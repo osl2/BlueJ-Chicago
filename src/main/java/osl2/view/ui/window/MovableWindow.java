@@ -82,4 +82,11 @@ public class MovableWindow extends Draggable {
             }
         });
     }
+
+    /**
+     * Changes the minMaxButtons appearance in the head.
+     */
+    public void changeMinMaxButton(){
+        this.body.getHead().changeMinMaxButton();
+    }
 }
