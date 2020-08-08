@@ -21,5 +21,8 @@ public interface VArrayCommunication<T> extends DatastructureCommunication {
      */
     void setValue(int i, T value);
 
-
+    /**
+     * Sets everything to null.
+     */
+    void removeAll();
 }

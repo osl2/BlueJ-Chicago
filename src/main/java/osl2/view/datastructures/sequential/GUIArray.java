@@ -30,4 +30,10 @@ public class GUIArray<T> extends GUISequential implements VArrayCommunication<T>
     public void setValue(int i, T value) {
         putElement(i, InlineRepresentation.get(value));
     }
+
+    @Override
+    public void removeAll() {
+        final int size = getContents().getChildren().size();
+        for (int i = 0; i < size; i++) setValue(i, null);
+    }
 }
