@@ -2,6 +2,9 @@ package osl2.datastructures.nodey;
 
 import osl2.messaging.datastructures.nodey.VLinkedListCommunication;
 import osl2.messaging.datastructures.nodey.VLinkedListNodeCommunication;
+import osl2.messaging.errorHandling.ArrayErrors.ArrayIndexOutOfBoundsError;
+import osl2.messaging.errorHandling.ListErrors.ListIndexOutOfBoundsError;
+import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUILinkedList;
 
@@ -26,8 +29,9 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
     }
 
 
-    protected void outOfBoundsError() {
-        // TODO
+    protected void outOfBoundsError(int index) {
+        UserError userError = new ListIndexOutOfBoundsError(index, this.size() - 1);
+        getBroadcaster().send((b) -> b.handleError(userError));
     }
 
     protected VLinkedListNode<T> getHead() { return (VLinkedListNode<T>) head.getForward(); }
