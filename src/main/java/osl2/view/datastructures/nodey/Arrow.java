@@ -29,10 +29,16 @@ public class Arrow extends Group {
             Point2D endPos = to.localToScene(0, 0);
             Point2D overlayPos = overlay.localToScene(0, 0);
 
-            double sx = startPos.getX() - overlayPos.getX();
-            double sy = startPos.getY() - overlayPos.getY();
-            double ex = endPos.getX() - overlayPos.getX();
-            double ey = endPos.getY() - overlayPos.getY();
+            final double w = to.getBoundsInParent().getWidth();
+            final double h = to.getBoundsInParent().getHeight();
+
+            double sx = startPos.getX() - overlayPos.getX() + from.getBoundsInParent().getWidth() / 2;
+            double sy = startPos.getY() - overlayPos.getY() + from.getBoundsInParent().getHeight() / 2;
+            double ex = endPos.getX() - overlayPos.getX() + w / 2;
+            double ey = endPos.getY() - overlayPos.getY() + h / 2;
+
+            ex -= Math.cos(Math.atan2(ey - sy, ex - sx)) * w / 2;
+            ey -= Math.sin(Math.atan2(ey - sy, ex - sx)) * h / 2;
 
             line.setStartX(sx);
             line.setStartY(sy);
