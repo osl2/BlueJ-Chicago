@@ -7,10 +7,13 @@ import osl2.datastructures.nodey.VEdge;
 import osl2.datastructures.nodey.VGraphNode;
 import osl2.messaging.datastructures.VGraphCommunication;
 import osl2.messaging.datastructures.VGraphNodeCommunication;
+import osl2.messaging.errorHandling.GraphErrors.GraphNodeExistingError;
+import osl2.messaging.errorHandling.GraphErrors.GraphNodeNotExistingError;
+import osl2.messaging.errorHandling.GraphErrors.GraphRecursionError;
+import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUIGraph;
 
-import java.lang.reflect.Array;
 import java.security.InvalidParameterException;
 import java.util.*;
 
@@ -42,8 +45,15 @@ public class VGraph<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGr
 
     @Override
     public boolean addNode(VGraphNode node) {
+        if(node.equals(this)){
+            UserError userError = new GraphRecursionError();
+            getBroadcaster().send((b) -> b.handleError(userError));
+            return false;
+        }
         if(nodeList.contains(node)) {
-            throw new InvalidParameterException("The node already exists in the graph.");
+            UserError userError = new GraphNodeExistingError<>(node);
+            getBroadcaster().send((b) -> b.handleError(userError));
+            return false;
         }
 
         nodeList.add(node);
@@ -67,7 +77,9 @@ public class VGraph<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGr
     public boolean removeNode(VGraphNode node) {
         super.removeNode(node);
         if(!nodeList.contains(node)) {
-            throw new InvalidParameterException("The node does not exist in the graph.");
+            UserError userError = new GraphNodeNotExistingError<>(node);
+            getBroadcaster().send((b) -> b.handleError(userError));
+            return false;
         }
 
         nodeList.remove(node);
