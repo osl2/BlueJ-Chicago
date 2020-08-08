@@ -26,8 +26,8 @@ public abstract class GUINodeyDatastructure<T, CommType extends VNodeCommunicati
         getContents().getChildren().add(floormat);
         getContents().getChildren().add(arrows);
         arrows.toFront();
-        floormat.setMinWidth(250);
-        floormat.setMinHeight(250);
+        floormat.setMinWidth(450);
+        floormat.setMinHeight(450);
     }
 
     @Override
