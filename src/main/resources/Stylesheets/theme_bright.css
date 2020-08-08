@@ -65,6 +65,8 @@
 }
 .movable-window-body {
     -fx-background-color: lightblue;
+    -fx-border-color: #1675d1;
+    -fx-border-width: 2;
 }
 
 .movable-window-head-highlight{
