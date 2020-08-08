@@ -37,8 +37,8 @@ public class Arrow extends Group {
             double ex = endPos.getX() - overlayPos.getX() + w / 2;
             double ey = endPos.getY() - overlayPos.getY() + h / 2;
 
-            ex -= Math.cos(Math.atan2(ey - sy, ex - sx)) * w / 2;
-            ey -= Math.sin(Math.atan2(ey - sy, ex - sx)) * h / 2;
+            ex -= (ey - sy) == 0 ? 0 : (w / 2 * Math.min(1, Math.max(-1, ((ex - sx) / Math.abs(ey - sy)))));
+            ey -= (ex - sx) == 0 ? 0 : (h / 2 * Math.min(1, Math.max(-1, ((ey - sy) / Math.abs(ex - sx)))));
 
             line.setStartX(sx);
             line.setStartY(sy);
