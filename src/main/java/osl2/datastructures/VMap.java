@@ -1,6 +1,10 @@
 package osl2.datastructures;
 
 import osl2.messaging.datastructures.VMapCommunication;
+import osl2.messaging.errorHandling.MapErrors.MapKeyExistingError;
+import osl2.messaging.errorHandling.MapErrors.MapNullPointerGetError;
+import osl2.messaging.errorHandling.MapErrors.MapNullPointerRemoveError;
+import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.sequential.GUIMap;
 
@@ -53,20 +57,32 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
 
     @Override
     public V get(Object o) {
-        // TODO: Error handling
+        if(wrapped.containsKey(o)){
+            UserError userError = new MapNullPointerGetError<>(o);
+            getBroadcaster().send((b) -> b.handleError(userError));
+            return null;
+        }
         return wrapped.get(o);
     }
 
     @Override
     public V put(K k, V v) {
-        // TODO: Error handling
+        if(wrapped.containsKey(k)){
+            UserError userError = new MapKeyExistingError<>(k);
+            getBroadcaster().send((b) -> b.handleError(userError));
+            return null;
+        }
         getBroadcaster().sendWithDelay(b -> b.put(k, v));
         return wrapped.put(k, v);
     }
 
     @Override
     public V remove(Object o) {
-        // TODO: Error handling
+        if(wrapped.containsKey(o)){
+            UserError userError = new MapNullPointerRemoveError<>(o);
+            getBroadcaster().send((b) -> b.handleError(userError));
+            return null;
+        }
         getBroadcaster().sendWithDelay(b -> b.remove(o));
         return wrapped.remove(o);
     }
