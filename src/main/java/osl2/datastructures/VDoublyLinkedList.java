@@ -74,16 +74,4 @@ public class VDoublyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
             link(next.getBackward(), node, next);
         }
     }
-
-    @Override
-    public T remove(int i) {
-        VLinkedListNode<T> node = getNode(i);
-        if (node == null) {
-            /* TODO: Out of bounds Error */
-            return null;
-        } else {
-            disconnectAndRemove(node);
-        }
-        return node.getValue();
-    }
 }

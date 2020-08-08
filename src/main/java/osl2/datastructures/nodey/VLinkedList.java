@@ -15,6 +15,21 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         head.setValue("<HEAD>");
     }
 
+    @Override
+    protected VLinkedListNode<T> createNode() {
+        return new VLinkedListNode(this);
+    }
+
+    @Override
+    public DatastructureVisualization createVisualization() {
+        return new GUILinkedList();
+    }
+
+
+    protected void outOfBoundsError() {
+        // TODO
+    }
+
     protected VLinkedListNode<T> getHead() { return (VLinkedListNode<T>) head.getForward(); }
     protected void setHead(VLinkedListNode<T> newHead) { this.head.setForward((VLinkedListNode<Object>) newHead); }
     protected VLinkedListNode<T> getLast() {
@@ -27,21 +42,13 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         return last;
     }
 
-    @Override
-    protected VLinkedListNode<T> createNode() {
-        return new VLinkedListNode(this);
-    }
-
-    @Override
-    public DatastructureVisualization createVisualization() {
-        return new GUILinkedList();
-    }
-
-
     protected VLinkedListNode<T> getNode(int i) {
         VLinkedListNode<T> it = getHead();
         while (i --> 0) {
-            if (it == null) /* TODO: Error */ return null;
+            if (it == null) {
+                outOfBoundsError();
+                return null;
+            }
             it = it.getForward();
         }
         return it;
@@ -108,11 +115,6 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         return null;    // TODO
     }
 
-
-
-    // TODO from here
-
-
     @Override
     public boolean containsAll(Collection<?> collection) {
         for (Object o : collection) {
@@ -166,25 +168,38 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
 
     @Override
     public T get(int i) {
-        VLinkedListNode<T> it = getHead();
-        while (i --> 0) {
-            if (it == null) /* TODO: Out of bounds exception */ return null;
-            it = it.getForward();
+        VLinkedListNode<T> node = getNode(i);
+        if (node == null) {
+            outOfBoundsError();
+            return null;
+        } else {
+            return node.getValue();
         }
-        return it.getValue();
     }
 
     @Override
     public T set(int i, T t) {
-        VLinkedListNode<T> it = getHead();
-        if (it == null) /* TODO: Out of bounds error! */ return null;
-        while (i --> 0) {
-            if (it == null) /* TODO: Out of bounds error! */ return null;
-            it = it.getForward();
+        VLinkedListNode<T> it = getNode(i);
+        if (it == null) {
+            outOfBoundsError();
+            return null;
+        } else {
+            T old = it.getValue();
+            it.setValue(t);
+            return old;
         }
-        T old = it.getValue();
-        it.setValue(t);
-        return old;
+    }
+
+    @Override
+    public T remove(int i) {
+        VLinkedListNode<T> it = getHead();
+        if (it == null) {
+            outOfBoundsError();
+            return null;
+        } else {
+            disconnectAndRemove(it);
+            return it.getValue();
+        }
     }
 
     @Override

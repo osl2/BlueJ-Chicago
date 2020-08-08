@@ -25,7 +25,10 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
 
     @Override
     protected void disconnectAndRemove(VLinkedListNode<T> node) {
-        removeNode(node);
+        if (node != null) {
+            if (node == getHead()) setHead(node.getForward());
+            removeNode(node);
+        }
     }
 
     @Override
@@ -44,20 +47,14 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
     @Override
     public boolean remove(Object o) {
         VLinkedListNode<T> node = getHead();
-        if (node.getValue() == o) {
-            setHead(node.getForward());
-            removeNode(node);
-            return true;
-        } else {
-            VLinkedListNode<T> previous = null;
-            while (node != null) {
-                previous = node;
-                node = node.getForward();
-                if (node.getValue() == o) {
-                    previous.setForward(node.getForward());
-                    removeNode(node);
-                    return true;
-                }
+        VLinkedListNode<T> previous = null;
+        while (node != null) {
+            previous = node;
+            node = node.getForward();
+            if (node.getValue() == o) {
+                if (previous != null) previous.setForward(node.getForward());
+                disconnectAndRemove(node);
+                return true;
             }
         }
         return false;
@@ -74,36 +71,14 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
         } else {
             VLinkedListNode<T> it = getHead();
             while (i --> 1) {
-                if (it == null) /* TODO: Out of bounds error! */ return;
+                if (it == null) {
+                    outOfBoundsError();
+                    return;
+                }
                 it = it.getForward();
             }
             node.setForward(it.getForward());
             it.setForward(node);
-        }
-    }
-
-    @Override
-    public T remove(int i) {
-        VLinkedListNode<T> it = getHead();
-        if (i == 0) {
-            if (it != null) {
-                setHead(it.getForward());
-                removeNode(it);
-                return it.getValue();
-            } else {
-                /* TODO: Out of bounds error! */ return null;
-            }
-        } else {
-            VLinkedListNode<T> prev = null;
-            while (i --> 0) {
-                if (it == null) /* TODO: Out of bounds error! */ return null;
-                prev = it;
-                it = it.getForward();
-            }
-            if (it == null) /* TODO: Out of bounds error! */ return null;
-            prev.setForward(it.getForward());
-            removeNode(it);
-            return it.getValue();
         }
     }
 }
