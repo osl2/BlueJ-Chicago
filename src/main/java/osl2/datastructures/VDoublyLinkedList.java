@@ -15,7 +15,7 @@ public class VDoublyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
 
     @Override
     public String getDatastructureType() {
-        return "Singly Linked List";
+        return "Doubly Linked List";
     }
 
 
