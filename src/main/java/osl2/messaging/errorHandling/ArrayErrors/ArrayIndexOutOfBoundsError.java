@@ -1,5 +1,6 @@
-package osl2.messaging.errorHandling;
+package osl2.messaging.errorHandling.ArrayErrors;
 
+import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 public class ArrayIndexOutOfBoundsError implements UserError {

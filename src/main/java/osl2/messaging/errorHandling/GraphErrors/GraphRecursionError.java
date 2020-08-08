@@ -1,6 +1,7 @@
-package osl2.messaging.errorHandling;
+package osl2.messaging.errorHandling.GraphErrors;
 
 import javafx.scene.canvas.GraphicsContext;
+import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 public class GraphRecursionError implements UserError {
