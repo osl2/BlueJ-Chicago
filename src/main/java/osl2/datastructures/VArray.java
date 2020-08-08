@@ -68,7 +68,8 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
     }
 
     public boolean removeAll() {
-        Arrays.fill(values, null); // TODO do not forget the broadcaster
+        Arrays.fill(values, null);
+        getBroadcaster().sendWithDelay(b -> b.removeAll());
         return true;
     }
 
