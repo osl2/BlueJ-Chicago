@@ -2,6 +2,7 @@ package osl2.view.datastructures.nodey;
 
 import javafx.scene.Node;
 import osl2.messaging.datastructures.nodey.VNodeCommunication;
+import osl2.view.ui.EvanstonWindow;
 import osl2.view.ui.draggable.Draggable;
 
 /**
@@ -11,7 +12,7 @@ import osl2.view.ui.draggable.Draggable;
  * @param <ContentType> The type of JavaFX Node the content will be shown in.
  */
 public abstract class GUINode<T, ContentType extends Node> extends Draggable implements VNodeCommunication<T> {
-
+    private ArrowOverlay arrows;
     private final ContentType content;
 
     /**
@@ -31,6 +32,14 @@ public abstract class GUINode<T, ContentType extends Node> extends Draggable imp
      */
     protected ContentType getContent() {
         return content;
+    }
+
+    private ArrowOverlay getArrowOverlay() {
+        return arrows;
+    }
+
+    public void setArrowOverlay(ArrowOverlay overlay) {
+        this.arrows = overlay;
     }
 
     @Override

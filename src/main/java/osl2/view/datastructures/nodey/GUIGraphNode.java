@@ -1,5 +1,6 @@
 package osl2.view.datastructures.nodey;
 
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import osl2.messaging.datastructures.VGraphNodeCommunication;
 import osl2.messaging.errorHandling.UserError;
@@ -10,36 +11,50 @@ import osl2.view.inlinerepresentation.InlineRepresentation;
  *
  * @param <T> The datatype of the value of the node.
  */
-public class GUIGraphNode<T> extends GUINode<T, RoundedNodeContainer<VBox>> implements VGraphNodeCommunication<T> {
+public class GUIGraphNode<T> extends GUINode<T, RoundedNodeContainer<StackPane>> implements VGraphNodeCommunication<T> {
+    private final VBox vbox;
+    private final ArrowPane arrows;
 
     /**
      * Creates a new GraphNode.
      */
     public GUIGraphNode() {
-        super(new RoundedNodeContainer<>(new VBox()));
+        super(new RoundedNodeContainer<StackPane>(new StackPane()));
+
+        vbox = new VBox();
+        arrows = new ArrowPane();
+
+        getContent().getContents().getChildren().add(arrows);
+        getContent().getContents().getChildren().add(vbox);
+
         getContent().setStyle("-fx-background-color: red");
-        getContent().getContents().getChildren().add(InlineRepresentation.get(null));
+        vbox.getChildren().add(InlineRepresentation.get(null));
     }
 
     @Override
     public void valueChange(T newValue) {
-        getContent().getContents().getChildren().set(0, InlineRepresentation.get(newValue));
+        vbox.getChildren().set(0, InlineRepresentation.get(newValue));
+    }
+
+    @Override
+    public void setArrowOverlay(ArrowOverlay overlay) {
+        super.setArrowOverlay(overlay);
+        arrows.setOverlay(overlay);
     }
 
     @Override
     public void connect(VGraphNodeCommunication<T> node) {
-        // TODO: Make arrow to node.asGUINode()
-        // getChildren().add(new Arrow(this, node.asGUINode(), null));    // TODO: Store all arrows
+        arrows.connect(node.asGUINode());
     }
 
     @Override
     public void disconnect(VGraphNodeCommunication<T> node) {
-        // TODO: Remove arrow to node.asGUINode()
+        arrows.disconnect(node.asGUINode());
     }
 
     @Override
     public void disconnectAll() {
-        // TODO
+        arrows.clear();
     }
 
     @Override

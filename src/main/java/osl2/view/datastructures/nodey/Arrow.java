@@ -6,6 +6,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.shape.Line;
+import osl2.view.ui.draggable.Floormat;
 
 
 public class Arrow extends Group {
@@ -15,7 +16,7 @@ public class Arrow extends Group {
     private final ChangeListener hideListener;
 
 
-    public Arrow(ArrowPane from, GUINode to) {
+    public Arrow(ArrowOverlay overlay, ArrowPane from, GUINode to) {
         this.from = from;
         this.to = to;
 
@@ -26,11 +27,12 @@ public class Arrow extends Group {
         this.updater = (o, p, q) -> {
             Point2D startPos = from.localToScene(0, 0);
             Point2D endPos = to.localToScene(0, 0);
+            Point2D overlayPos = overlay.localToScene(0, 0);
 
-            double sx = startPos.getX();
-            double sy = startPos.getY();
-            double ex = endPos.getX();
-            double ey = endPos.getY();
+            double sx = startPos.getX() - overlayPos.getX();
+            double sy = startPos.getY() - overlayPos.getY();
+            double ex = endPos.getX() - overlayPos.getX();
+            double ey = endPos.getY() - overlayPos.getY();
 
             line.setStartX(sx);
             line.setStartY(sy);
