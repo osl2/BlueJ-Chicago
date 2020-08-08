@@ -51,6 +51,7 @@ public class VGraph<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGr
             return false;
         }
         if(nodeList.contains(node)) {
+            System.out.println("Test");
             UserError userError = new GraphNodeExistingError<>(node);
             getBroadcaster().send((b) -> b.handleError(userError));
             return false;

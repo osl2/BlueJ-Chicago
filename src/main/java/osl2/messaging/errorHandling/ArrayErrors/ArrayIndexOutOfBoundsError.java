@@ -8,7 +8,7 @@ public class ArrayIndexOutOfBoundsError implements UserError {
 
     private final int userIndex;
     private final int MAX_INDEX;
-    private final String name = "ArrayIndexIndexOutOfBounds";
+    private final String name = "ArrayIndexOutOfBounds";
     private LanguageController languageController;
 
     public ArrayIndexOutOfBoundsError(int userIndex, int MAX_INDEX) {
