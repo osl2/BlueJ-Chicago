@@ -24,6 +24,7 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
     }
 
     public void connect(VGraphNode<T> node) {
+        // TODO add checks!
         edges.add(node);
         getBroadcaster().sendWithDelay(b -> b.connect(node.getCommunication()));
     }
@@ -36,6 +37,10 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
     public void disconnectAll() {
         getBroadcaster().send(b -> b.disconnectAll());
         edges.clear();
+    }
+
+    public boolean contains(VGraphNode<T> node) {
+        return edges.contains(node);
     }
 
     /**
