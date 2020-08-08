@@ -1,6 +1,6 @@
 package osl2.datastructures.interfaces;
 
-import osl2.datastructures.nodey.VNode;
+import osl2.datastructures.nodey.VGraphNode;
 
 import java.util.Collection;
 
@@ -17,7 +17,7 @@ public interface ITree<T> {
      * @param parent the parent
      * @return boolean true if the child as added successfully, else false
      */
-    boolean addChild(VNode child, VNode parent);
+    boolean addChild(VGraphNode child, VGraphNode parent);
 
     /**
      * Removes a node if it is a leave.
@@ -25,7 +25,7 @@ public interface ITree<T> {
      * @param node the node which will be removed
      * @return boolean true if the node was removed successfully, else false
      */
-    boolean removeLeave(VNode node);
+    boolean removeLeave(VGraphNode node);
 
     /**
      * Returns the children of a parent.
@@ -33,15 +33,15 @@ public interface ITree<T> {
      * @param parent the parent
      * @return Collection<Node> the children of a parent
      */
-    Collection<VNode> getChilds(VNode parent);
+    Collection<VGraphNode> getChildren(VGraphNode parent);
 
     /**
      * Returns the parent to a child.
      *
      * @param child the child
-     * @return VNode the parent to the child.
+     * @return VGraphNode the parent to the child.
      */
-    VNode getParent(VNode child);
+    VGraphNode getParent(VGraphNode child);
 
     /**
      * Returns the height of the tree.
@@ -57,7 +57,7 @@ public interface ITree<T> {
      * @param parent the parent
      * @return boolean true if the swap was successfully, else false
      */
-    boolean swap(VNode child, VNode parent);
+    boolean swap(VGraphNode child, VGraphNode parent);
 
     /**
      * Adds an tree to this tree.
@@ -66,7 +66,7 @@ public interface ITree<T> {
      * @param child  the tree wich will be added
      * @return boolean true if the tree was added successfully, else false
      */
-    boolean addTree(VNode parent, ITree<T> child);
+    boolean addTree(VGraphNode parent, ITree<T> child);
 
     /**
      * Indicates if a node is allready in the tree.
@@ -74,7 +74,7 @@ public interface ITree<T> {
      * @param node the node
      * @return boolean true if the node is in the tree, else false
      */
-    boolean contains(VNode node);
+    boolean contains(VGraphNode node);
 
     /**
      * Indicates if a collection of nodes is allready in the tree.
@@ -82,5 +82,7 @@ public interface ITree<T> {
      * @param nodes the nodes
      * @return boolean true if the nodes are in the tree, else false
      */
-    boolean contains(Collection<VNode> nodes);
+    boolean contains(Collection<VGraphNode> nodes);
+
+    VGraphNode getRootNode();
 }

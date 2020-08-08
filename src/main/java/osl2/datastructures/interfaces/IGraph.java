@@ -1,5 +1,6 @@
 package osl2.datastructures.interfaces;
 
+import osl2.datastructures.nodey.VEdge;
 import osl2.datastructures.nodey.VGraphNode;
 
 import java.util.Collection;
@@ -50,8 +51,7 @@ public interface IGraph<T> {
      * @param node the node to which the edges want to be known
      * @return Collection<VNode, VNode> the collection of the Edges.
      */
-    // TODO Fix
-    // Collection<VNode<T>, VNode<T>> getEdges(VNode<T> node);
+    Collection<VEdge> getEdges(VGraphNode<T> node);
 
     /**
      * Returns all the adjacents to a node.
