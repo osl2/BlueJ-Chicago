@@ -18,7 +18,7 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
 
     public void setForward(VLinkedListNode<T> forward) {
         this.forward = forward;
-        getBroadcaster().sendWithDelay(b -> b.setForward(forward.getCommunication()));
+        getBroadcaster().sendWithDelay(b -> b.setForward(forward == null ? null : forward.getCommunication()));
     }
 
     public VLinkedListNode<T> getBackward() {
@@ -27,7 +27,7 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
 
     public void setBackward(VLinkedListNode<T> backward) {
         this.backward = backward;
-        getBroadcaster().sendWithDelay(b -> b.setBackward(backward.getCommunication()));
+        getBroadcaster().sendWithDelay(b -> b.setBackward(backward == null ? null : backward.getCommunication()));
     }
 
     @Override
