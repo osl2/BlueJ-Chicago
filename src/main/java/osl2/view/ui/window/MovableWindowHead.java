@@ -15,8 +15,8 @@ public class MovableWindowHead extends HBox {
 
     private ActionButton minMaxButton;
     private ActionButton hideButton;
-    private HBox buttons;
-    private Pane spacer;
+    private final HBox buttons;
+    private final Pane spacer;
     private Node title;
 
     /**
@@ -79,6 +79,7 @@ public class MovableWindowHead extends HBox {
     public void setTitle(String name) {
         getChildren().removeAll(title, spacer, buttons);
         this.title = new Label(name);
+        this.title.getStyleClass().add("movable-window-head-title");
         getChildren().addAll(title, spacer, buttons);
     }
 
@@ -96,6 +97,7 @@ public class MovableWindowHead extends HBox {
         public ActionButton(String text, Runnable runnable) {
             this.setText(text);
             setOnMousePressed((event) -> runnable.run());
+            this.getStyleClass().add("movable-window-head-button");
         }
     }
 }

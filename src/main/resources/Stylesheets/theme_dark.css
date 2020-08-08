@@ -47,15 +47,27 @@
 }
 
 .movable-window {
-    -fx-background-color: gray;
+    -fx-background-color: #1675d1;
 }
 
 .movable-window-head {
     -fx-padding: 2;
 }
 
+.movable-window-head-title {
+    -fx-padding: 10;
+    -fx-text-fill: white;
+}
+
+.movable-window-head-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 10;
+}
 .movable-window-body {
     -fx-background-color: lightblue;
+    -fx-border-color: #1675d1;
+    -fx-border-width: 2;
 }
 
 .movable-window-head-highlight{
