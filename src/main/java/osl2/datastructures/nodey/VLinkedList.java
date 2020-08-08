@@ -50,7 +50,7 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         VLinkedListNode<T> it = getHead();
         while (i --> 0) {
             if (it == null) {
-                outOfBoundsError();
+                outOfBoundsError(i);
                 return null;
             }
             it = it.getForward();
@@ -174,7 +174,7 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
     public T get(int i) {
         VLinkedListNode<T> node = getNode(i);
         if (node == null) {
-            outOfBoundsError();
+            outOfBoundsError(i);
             return null;
         } else {
             return node.getValue();
@@ -185,7 +185,7 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
     public T set(int i, T t) {
         VLinkedListNode<T> it = getNode(i);
         if (it == null) {
-            outOfBoundsError();
+            outOfBoundsError(i);
             return null;
         } else {
             T old = it.getValue();
@@ -198,7 +198,7 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
     public T remove(int i) {
         VLinkedListNode<T> it = getHead();
         if (it == null) {
-            outOfBoundsError();
+            outOfBoundsError(i);
             return null;
         } else {
             disconnectAndRemove(it);
