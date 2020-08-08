@@ -25,6 +25,9 @@ public class InlineRepresentation extends Button {    // TODO: Make this a click
         setOnAction(event -> action.run());
     }
 
+    /**
+     * Sets the style of the inlinerepresentation.
+     */
     private void setStyle(){
         this.getStyleClass().add("inline-representation-font");
     }

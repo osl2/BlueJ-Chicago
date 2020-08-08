@@ -34,10 +34,18 @@ public abstract class GUINode<T, ContentType extends Node> extends Draggable imp
         return content;
     }
 
+    /**
+     * Returns the ArrowOverlay of the GuiNode.
+     * @return The ArrowOverlay.
+     */
     private ArrowOverlay getArrowOverlay() {
         return arrows;
     }
 
+    /**
+     * Sets the ArrowOverlay of the GuiNode.
+     * @param overlay The ArrowOverlay.
+     */
     public void setArrowOverlay(ArrowOverlay overlay) {
         this.arrows = overlay;
     }

@@ -3,12 +3,20 @@ package osl2.messaging.errorHandling.TreeErrors;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
+/**
+ * Creates a new error for when a parent isn't existing.
+ * @param <T> The type of the node.
+ */
 public class TreeParentExistingError<T> implements UserError {
 
     private final String name = "TreeParentExisting";
     private LanguageController languageController;
     private T parent;
 
+    /**
+     * Creates a new TreeParentExistingError.
+     * @param parent The nonexisiting parent.
+     */
     public TreeParentExistingError(T parent){
         this.languageController = LanguageController.getLanguageController();
         this.parent = parent;

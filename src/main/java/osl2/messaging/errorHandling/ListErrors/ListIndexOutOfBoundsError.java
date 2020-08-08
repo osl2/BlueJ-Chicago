@@ -3,6 +3,9 @@ package osl2.messaging.errorHandling.ListErrors;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
+/**
+ * The class for a ListIndexOutOfBoundsError.
+ */
 public class ListIndexOutOfBoundsError implements UserError {
     private static final int MIN_INDEX = 0;
 
@@ -11,6 +14,11 @@ public class ListIndexOutOfBoundsError implements UserError {
     private final String name = "ListIndexOutOfBounds";
     private LanguageController languageController;
 
+    /**
+     * Creates a new ListIndexOutOfBoundsError.
+     * @param userIndex The Index the user used.
+     * @param MAX_INDEX The max index for the error.
+     */
     public ListIndexOutOfBoundsError(int userIndex, int MAX_INDEX) {
         this.userIndex = userIndex;
         if(MAX_INDEX < 0){

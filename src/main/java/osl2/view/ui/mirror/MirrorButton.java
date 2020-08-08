@@ -25,6 +25,9 @@ public class MirrorButton extends Button {
         setStyle();
     }
 
+    /**
+     * Sets the style of the mirrorbutton.
+     */
     private void setStyle() {
         this.getStyleClass().add("mirror-button");
         this.getStyleClass().add("mirror-button-hidden");

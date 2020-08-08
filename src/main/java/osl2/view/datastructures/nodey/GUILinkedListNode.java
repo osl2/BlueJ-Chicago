@@ -7,12 +7,19 @@ import osl2.messaging.datastructures.nodey.VLinkedListNodeCommunication;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.inlinerepresentation.InlineRepresentation;
 
+/**
+ * A Linked List node in the gui.
+ * @param <T> The datatype of the contents.
+ */
 public class GUILinkedListNode<T> extends GUINode<T, VBox> implements VLinkedListNodeCommunication<T> {
     private final VBox layoutBox;
     private final ArrowPane leftArrowPane;
     private final ArrowPane rightArrowPane;
 
 
+    /**
+     * Creates a new Linked List.
+     */
     public GUILinkedListNode() {
         super(new VBox());
         getContent().setStyle("-fx-background-color: white");

@@ -16,6 +16,12 @@ public class Arrow extends Group {
     private final ChangeListener hideListener;
 
 
+    /**
+     * Creates a new arrow.
+     * @param overlay The overlay in which it will be in.
+     * @param from Where the arrow starts.
+     * @param to Where the arrow points to.
+     */
     public Arrow(ArrowOverlay overlay, ArrowPane from, GUINode to) {
         this.from = from;
         this.to = to;
@@ -92,6 +98,9 @@ public class Arrow extends Group {
         connect();
     }
 
+    /**
+     * Connects the arrow.
+     */
     private void connect() {
         from.localToSceneTransformProperty().addListener(updater);
         to.layoutXProperty().addListener(updater);
@@ -101,6 +110,9 @@ public class Arrow extends Group {
         from.sceneProperty().addListener(hideListener);
     }
 
+    /**
+     * Disconnects the arrow.
+     */
     public void disconnect() {
         from.localToSceneTransformProperty().removeListener(updater);
         to.layoutXProperty().removeListener(updater);

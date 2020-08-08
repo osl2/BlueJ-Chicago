@@ -80,10 +80,18 @@ public class PlayController {
         }
     }
 
+    /**
+     * Adds a new PropertyChangeListener.
+     * @param listener The PropertyChangeListener.
+     */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
 
+    /**
+     * Removes a PropertyChangeListener.
+     * @param listener The PropertyChangeListener.
+     */
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         pcs.removePropertyChangeListener(listener);
     }

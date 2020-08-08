@@ -18,6 +18,10 @@ public class Draggable extends Group {
         setBehavior();
     }
 
+    /**
+     * Returns the floormat for the draggable.
+     * @return The floormat.
+     */
     private Floormat getFloormat() {
         return (Floormat) getParent();  // FIXME: This is a bit hacky
     }

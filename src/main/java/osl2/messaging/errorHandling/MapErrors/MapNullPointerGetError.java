@@ -3,6 +3,10 @@ package osl2.messaging.errorHandling.MapErrors;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
+/**
+ * Creates a NullPointer Error when trying to get.
+ * @param <T> The key datatype of the map.
+ */
 public class MapNullPointerGetError<T> implements UserError {
 
     private final String name = "MapNullPointerGet";
