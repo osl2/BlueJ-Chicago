@@ -69,7 +69,7 @@ public class VDoublyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
         VLinkedListNode next = getNode(i);
         if (next == null) {
             if (i == 0) setHead(node);
-            else /* TODO: Out of bounds Error */;
+            else outOfBoundsError(i);
         } else {
             link(next.getBackward(), node, next);
         }
