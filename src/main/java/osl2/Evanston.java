@@ -34,8 +34,11 @@ public class Evanston {
         VGraphNode node3 = tree.addTreeNode();
         node3.setValue(7);
         tree.addChild(node3, node);
+        System.out.println("Test");
+        tree.removeLeave(node);
         tree.swap(node2, node);
-        tree.removeAll();
+        tree.removeLeave(node3);
+
         List<String> lil = new VDoublyLinkedList<>("lilList");
         lil.add("Hello");
         lil.add("World");

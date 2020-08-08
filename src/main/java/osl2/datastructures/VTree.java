@@ -4,8 +4,13 @@ import osl2.datastructures.interfaces.IDatastructure;
 import osl2.datastructures.interfaces.ITree;
 import osl2.datastructures.nodey.NodeyDatastructure;
 import osl2.datastructures.nodey.VGraphNode;
+import osl2.messaging.datastructures.VGraphCommunication;
 import osl2.messaging.datastructures.VGraphNodeCommunication;
 import osl2.messaging.datastructures.VTreeCommunication;
+import osl2.messaging.errorHandling.TreeErrors.TreeChildNotExistingError;
+import osl2.messaging.errorHandling.TreeErrors.TreeNoParentError;
+import osl2.messaging.errorHandling.TreeErrors.TreeNotALeafError;
+import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUIGraph;
 
@@ -14,9 +19,10 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class VTree<T> extends NodeyDatastructure<T, VTreeCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>> implements ITree, IDatastructure {
+public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>> implements ITree, IDatastructure {
     private Map<VGraphNode, LinkedList<VGraphNode>> map;
     private Map<VGraphNode, VGraphNode> parentMap;
+    private Map<VGraphNode, Integer> heightMap;
 
     private int height;
 
@@ -25,9 +31,12 @@ public class VTree<T> extends NodeyDatastructure<T, VTreeCommunication<T>, VGrap
     public VTree(String name) {
         map = new HashMap<>();
         parentMap = new HashMap<>();
+        heightMap = new HashMap<>();
         this.root = new VGraphNode<String>(this);
         root.setValue("HEAD");
         map.put(root, new LinkedList<VGraphNode>());
+        heightMap.put(root, 0);
+        height = 0;
         super.setName(name);
     }
 
@@ -63,7 +72,10 @@ public class VTree<T> extends NodeyDatastructure<T, VTreeCommunication<T>, VGrap
         map.get(parent).add(child);
         parentMap.put(child, parent);
         parent.connect(child);
-        height++;
+        heightMap.put(child, heightMap.get(parent) + 1);
+        if(heightMap.get(parent) + 1 > height){
+            height = heightMap.get(parent) + 1;
+        }
         return true;
     }
 
@@ -72,12 +84,22 @@ public class VTree<T> extends NodeyDatastructure<T, VTreeCommunication<T>, VGrap
         if(map.get(node).isEmpty()){
             map.remove(node);
             parentMap.remove(node);
+            heightMap.remove(node);
             node.disconnectAll();
             super.removeNode(node);
-            height--;
+            boolean heightIsSmaller = true;
+            for(Integer nodeHeight: heightMap.values()){
+                if(height == nodeHeight){
+                 heightIsSmaller = false;
+                }
+            }
+            if(heightIsSmaller){
+                height--;
+            }
             return true;
         } else {
-            //TODO Fehlerbehandlung
+            UserError userError = new TreeNotALeafError<>(node);
+            getBroadcaster().send((b) -> b.handleError(userError));
             return false;
         }
     }
@@ -89,12 +111,13 @@ public class VTree<T> extends NodeyDatastructure<T, VTreeCommunication<T>, VGrap
 
     @Override
     public VGraphNode getParent(VGraphNode child) {
-        for (VGraphNode node : map.keySet()) {
-            if (map.get(node).contains(child)) {
-                return node;
-            }
+        if(parentMap.containsKey(child)){
+            return parentMap.get(child);
+        } else {
+            UserError userError = new TreeNoParentError<>(child);
+            getBroadcaster().send((b) -> b.handleError(userError));
+            return null;
         }
-        return null; // TODO Evaluate usage of an exception here.
     }
 
     @Override
