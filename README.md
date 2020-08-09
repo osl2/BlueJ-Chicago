@@ -1,6 +1,7 @@
 # BlueJ-Chicago Documents
 ##DEUTSCH
-Um den Visualizer zu nutzen importiert man einfach die Jar als Bibliothek. Von da aus kann man die Datenstrukturen VArray, VMap, VDoublyLinkedList, VSinglyLinkedList, VDirectedGraph, VUndirectedGraph und VTree nutzen.
+Um den Visualizer zu nutzen importiert man einfach die Jar als Bibliothek. Am beginn des Sourcecodes muss man noch osl2.Evanston.start(); ausführen. Von da aus kann man die Datenstrukturen VArray, VMap, VDoublyLinkedList, VSinglyLinkedList, VDirectedGraph, VUndirectedGraph und VTree nutzen.
+
 
 ###Datenstrukturen
 **Für alle Datenstrukturen:**
@@ -72,7 +73,7 @@ Für das Verändern der Größe klicke man auf den Button der im folgenden Bild 
 ![Bild 1](Resize.png "Größenänderung")
 
 ##ENGLISH
-To use the visualizer import the jar as a library.Then you can use the Datastructures VArray, VMap, VDoublyLinkedList, VSinglyLinkedList, VDirectedGraph, VUndirectedGraph and VTree. 
+To use the visualizer import the jar as a library. At the start of your code u type osl2.Evanston.start();. Then you can use the Datastructures VArray, VMap, VDoublyLinkedList, VSinglyLinkedList, VDirectedGraph, VUndirectedGraph and VTree. 
 
 ###Datastructures
 **For all Datastructures:**
