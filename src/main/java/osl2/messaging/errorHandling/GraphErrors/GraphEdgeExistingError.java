@@ -10,16 +10,19 @@ import osl2.view.ui.localisation.LanguageController;
 public class GraphEdgeExistingError<T> implements UserError {
 
     private final String name = "GraphEdgeExisting";
-    private T edge;
+    private T start;
+    private T end;
     private LanguageController languageController;
 
     /**
      * Creates a new GraphEdgeExistingError.
-     * @param edge The edge.
+     * @param start The startnode for the edge.
+     * @param end The endnode for the edge.
      */
-    public GraphEdgeExistingError(T edge){
+    public GraphEdgeExistingError(T start , T end){
         this.languageController = LanguageController.getLanguageController();
-        this.edge = edge;
+        this.start = start;
+        this.end = end;
     }
 
     @Override
@@ -30,6 +33,7 @@ public class GraphEdgeExistingError<T> implements UserError {
     @Override
     public String getErrorContent() {
         return languageController.getMessage(this.name + "Edge")
-                + edge.toString() + "\n" + languageController.getMessage(this.name + "Add");
+                + start.toString() + "-" + end.toString() +
+                "\n" + languageController.getMessage(this.name + "Add");
     }
 }
