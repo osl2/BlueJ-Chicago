@@ -84,7 +84,6 @@ public abstract class DatastructureVisualization<T extends Node> implements Data
     @Override
     public void handleError(UserError userError) {
         showErrorDialog(userError);
-        Evanston.getPlayController().pause();
     }
 
     /**

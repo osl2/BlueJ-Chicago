@@ -49,22 +49,29 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
     public boolean addEdge(VGraphNode start, VGraphNode end) {
         if (!(nodeList.contains(start))) {
             UserError userError = new GraphNodeNotExistingError<VGraphNode>(start);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return false;
         }
 
         if (!nodeList.contains(end)) {
             UserError userError = new GraphNodeNotExistingError<VGraphNode>(end);
-        getBroadcaster().send((b) -> b.handleError(userError));
+        getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
         return false;
         }
 
         if(containsEdge(start, end)){
             UserError userError = new GraphEdgeExistingError<VGraphNode>(start, end);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return false;
         }
         start.connect(end);;
+        return true;
+    }
+
+    public boolean containsEdges(Collection edges) {
+        for(Object edge: edges) {
+            containsEdge((VGraphNode) ((VEdge) edge).getStart(), (VGraphNode) ((VEdge) edge).getEnd());
+        }
         return true;
     }
 
@@ -73,7 +80,7 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
         super.removeNode(node);
         if(!nodeList.contains(node)) {
             UserError userError = new GraphNodeNotExistingError<VGraphNode>(node);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return false;
         }
         nodeList.remove(node);
@@ -90,7 +97,7 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
             }
         }
         UserError userError = new GraphEdgeNotExistingError<VGraphNode>(start, end);
-        getBroadcaster().send((b) -> b.handleError(userError));
+        getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
         return false;
     }
 
@@ -98,7 +105,7 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
     public Collection<VEdge> getEdges(VGraphNode node) {
         if(!nodeList.contains(node)){
             UserError userError = new GraphNodeNotExistingError<VGraphNode>(node);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return null;
         }
         Collection<VEdge> edges = new ArrayList<VEdge>();
@@ -116,7 +123,7 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
     public Collection<VGraphNode> getAdjacents(VGraphNode node) {
         if(!nodeList.contains(node)){
             UserError userError = new GraphNodeNotExistingError<>(node);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return null;
         }
         return Arrays.asList(node.getAdjacents());

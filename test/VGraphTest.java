@@ -81,6 +81,17 @@ public class VGraphTest {
     }
 
     @Test
+    void containsEdges() {
+        Collection list = new ArrayList();
+        VEdge v1 = new VEdge(nodeA, nodeB);
+        VEdge v2 = new VEdge(nodeA, nodeC);
+        list.add(v1);
+        list.add(v2);
+
+        Assertions.assertTrue(graph.containsEdges(list));
+    }
+
+    @Test
     void getAdjacents() {
         Collection list = new ArrayList();
         list.add(nodeB);

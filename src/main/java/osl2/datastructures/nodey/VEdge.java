@@ -41,4 +41,12 @@ public class VEdge {
         hash = 31 * hash + (end == null ? 0 : end.hashCode());
         return hash;
     }
+
+    public VNode getStart() {
+        return start;
+    }
+
+    public VNode getEnd() {
+        return end;
+    }
 }
