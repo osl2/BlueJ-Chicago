@@ -23,7 +23,6 @@ public class VArrayTest {
 
     @Test
     public void size() {
-        // array.setValue(0, 1);
         Assertions.assertEquals(10, array.size());
     }
 

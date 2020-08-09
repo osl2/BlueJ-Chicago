@@ -127,16 +127,6 @@ public class VListTest {
     }
 
     @Test
-    void listIterator() {
-        // TODO is it needed;
-    }
-
-    @Test
-    void listIteratorAtIndex() {
-        // TODO is it needed;
-    }
-
-    @Test
     void subList() {
         list.add(3);
 
@@ -177,6 +167,6 @@ public class VListTest {
 
     @Test
     void toArrayWithArrayAsArgument() {
-        // TODO
+        Assertions.assertTrue(Arrays.equals(new Integer[]{1, 2}, list.toArray(new Integer[]{})));
     }
 }
