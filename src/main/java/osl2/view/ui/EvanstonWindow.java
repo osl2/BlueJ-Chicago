@@ -1,24 +1,23 @@
 package osl2.view.ui;
 
-        import javafx.application.Application;
-        import javafx.application.Platform;
-        import javafx.geometry.Orientation;
-        import javafx.scene.Scene;
-        import javafx.scene.control.SplitPane;
-        import javafx.scene.layout.StackPane;
-        import javafx.stage.Stage;
-        import osl2.Evanston;
-        import osl2.datastructures.EvanstonDatastructure;
-        import osl2.messaging.Broadcaster;
-        import osl2.messaging.PlayController;
-        import osl2.view.datastructures.DatastructureVisualization;
-        import osl2.view.datastructures.nodey.ArrowOverlay;
-        import osl2.view.inlinerepresentation.InlineRepresentation;
-        import osl2.view.ui.mirror.MirrorController;
-        import osl2.view.ui.settings.SettingsController;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.geometry.Orientation;
+import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SplitPane;
+import javafx.stage.Stage;
+import osl2.Evanston;
+import osl2.datastructures.EvanstonDatastructure;
+import osl2.messaging.Broadcaster;
+import osl2.messaging.PlayController;
+import osl2.view.datastructures.DatastructureVisualization;
+import osl2.view.inlinerepresentation.InlineRepresentation;
+import osl2.view.ui.mirror.MirrorController;
+import osl2.view.ui.settings.SettingsController;
 
-        import java.beans.PropertyChangeEvent;
-        import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 /**
  * The MainWindow in which the MainRegion, PlaySpace and Sidebar will be in.
@@ -32,6 +31,8 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     private static Thread APP_THREAD = null;
     private final SettingsController settingsController;
     private final PlayController playController;
+    private final ScrollPane mainRegionScrollContainer;
+    private final double WINDOW_SIZE_BUFFER = 15;
     private Stage evanstonStage;
     private Scene scene;
     private MainRegion mainRegion;
@@ -51,6 +52,8 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         }
         this.playController = new PlayController();
         this.settingsController = new SettingsController(this);
+        this.mainRegionScrollContainer = new ScrollPane();
+        this.mainRegionScrollContainer.getStyleClass().add("main-region-container");
     }
 
     /**
@@ -165,9 +168,31 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
      * This method sets up the splitter between the Mainregion and the space with the Sidebar and Playspace.
      */
     private void setUpVerticalSplitter() {
-        verticalSplitter = new SplitPane(sidePlaySplitter, mainRegion);
+        setUpMainRegion();
+
+        verticalSplitter = new SplitPane(sidePlaySplitter, this.mainRegionScrollContainer);
         verticalSplitter.setOrientation(Orientation.HORIZONTAL);
         verticalSplitter.setDividerPosition(0, 0.25);
+    }
+
+    private void setUpMainRegion() {
+        this.mainRegionScrollContainer.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+        this.mainRegionScrollContainer.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        this.mainRegionScrollContainer.setOnMouseEntered((event) -> {
+            this.mainRegionScrollContainer.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+            this.mainRegionScrollContainer.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        });
+        this.mainRegionScrollContainer.setOnMouseExited((event) -> {
+            this.mainRegionScrollContainer.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+            this.mainRegionScrollContainer.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        });
+        this.mainRegionScrollContainer.pannableProperty().set(true);
+        this.mainRegionScrollContainer.fitToWidthProperty();
+        this.mainRegionScrollContainer.setContent(mainRegion);
+
+        mainRegion.setMinWidth(WIDTH * (1 - 0.25) - WINDOW_SIZE_BUFFER);
+        mainRegion.setMinHeight(HEIGHT - WINDOW_SIZE_BUFFER);
     }
 
     /**
