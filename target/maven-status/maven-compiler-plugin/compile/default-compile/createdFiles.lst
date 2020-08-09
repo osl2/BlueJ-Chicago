@@ -37,7 +37,6 @@ osl2\messaging\errorHandling\TreeErrors\TreeChildNotExistingError.class
 osl2\view\ui\MainRegion.class
 osl2\view\datastructures\nodey\ArrowPane.class
 osl2\view\inlinerepresentation\InlineRepresentation.class
-osl2\Democlass.class
 osl2\messaging\errorHandling\ArrayErrors\ArrayIndexOutOfBoundsError.class
 osl2\datastructures\VSinglyLinkedList.class
 osl2\messaging\datastructures\nodey\VNodeCommunication.class
