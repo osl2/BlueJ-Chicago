@@ -131,9 +131,9 @@ public class Democlass  {
      */
     private void setIntegerGraph(){
         integerGraph = new  VUndirectedGraph<Integer>("IntegerGraph");
-        VGraphNode node1 = stringGraph.addNode();
+        VGraphNode node1 = integerGraph.addNode();
         node1.setValue(1);
-        VGraphNode node2= stringGraph.addNode();
+        VGraphNode node2= integerGraph.addNode();
         node2.setValue(2);
         integerGraph.addEdge(node1, node2);
         integerGraph.addEdge(node2, integerGraph.addNode());
