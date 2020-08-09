@@ -13,14 +13,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Represents a Map.
+ * @param <K> The key type of the map.
+ * @param <V> The value type of the map.
+ */
 public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> implements Map<K, V> {
     private final Map<K, V> wrapped = new HashMap<>();
 
 
+    /**
+     * empty constructor
+     */
     public VMap() {
 
     }
 
+    /**
+     * Constructor which allows setting the name.
+     * @param name the name of the DS.
+     */
     public VMap(String name) {
         super.setName(name);
     }

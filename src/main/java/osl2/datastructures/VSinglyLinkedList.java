@@ -9,6 +9,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+/**
+ * Represent singly linked list
+ * @param <T> the type of the singly linked list
+ */
 public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunication<T>> {
 
     public VSinglyLinkedList() {

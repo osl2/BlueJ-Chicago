@@ -10,6 +10,10 @@ import osl2.view.datastructures.sequential.GUIArray;
 import java.util.Arrays;
 import java.util.Collection;
 
+/**
+ * Represents an array.
+ * @param <T> The type of the array
+ */
 public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> implements IArray<T> {
     private final T[] values;
     private final int size;

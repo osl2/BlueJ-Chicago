@@ -23,21 +23,37 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
         super(parentDS);
     }
 
+    /**
+     * adds a node to the edges of this node
+     * @param node the node to add to the edge list
+     */
     public void connect(VGraphNode<T> node) {
         edges.add(node);
         getBroadcaster().sendWithDelay(b -> b.connect(node.getCommunication()));
     }
 
+    /**
+     * removes a node from the edge list
+     * @param node the node to be removed from the edge list
+     */
     public void disconnect(VGraphNode<T> node) {
         edges.remove(node);
         getBroadcaster().sendWithDelay(b -> b.disconnect(node.getCommunication()));
     }
 
+    /**
+     * clears all edges of the node
+     */
     public void disconnectAll() {
         getBroadcaster().send(b -> b.disconnectAll());
         edges.clear();
     }
 
+    /**
+     * checks if the node is contained in the edges list
+     * @param node the node to be checked
+     * @return true if it is included in the edge list. Else false.
+     */
     public boolean contains(VGraphNode<T> node) {
         return edges.contains(node);
     }

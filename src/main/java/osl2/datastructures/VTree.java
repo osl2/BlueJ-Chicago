@@ -19,6 +19,10 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+/**
+ * Represents an Tree.
+ * @param <T> The type of the tree.
+ */
 public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>> implements ITree, IDatastructure {
     private Map<VGraphNode, LinkedList<VGraphNode>> map;
     private Map<VGraphNode, VGraphNode> parentMap;

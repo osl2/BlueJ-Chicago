@@ -10,9 +10,17 @@ import osl2.view.datastructures.GUILinkedList;
 
 import java.util.*;
 
+/**
+ * an abstract class to represent an linked list
+ * @param <T> the type of the linked list
+ * @param <Comm> the communication type of the linked list
+ */
 public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> extends NodeyDatastructure<T, Comm, VLinkedListNodeCommunication<T>, VLinkedListNode<T>> implements List<T> {
     private final VLinkedListNode<Object> head;
 
+    /**
+     * constructor for the linked list. Creates the head node.
+     */
     public VLinkedList() {
         head = (VLinkedListNode<Object>) createNode();
         head.setValue("<HEAD>");
