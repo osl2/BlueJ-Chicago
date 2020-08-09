@@ -9,11 +9,15 @@ import osl2.view.ui.mirror.IMirrorController;
  */
 public class MovableWindow extends Draggable {
     private final MovableWindowBody body;
+    private final MovableWindowHead head;
+    private final double MIN_BODY_HEIGHT = 50;
+    private final double HEAD_MIN_WIDTH_OFFSET = 20;
     private boolean isHighlighted;
 
     public MovableWindow(Node title, Node contents, IMirrorController controller) {
         body = new MovableWindowBody(this, title, contents);
-        body.getHead().linkBtnToController(controller);
+        head = body.getHead();
+        head.linkBtnToController(controller);
         getChildren().add(body);
         setBehaviourHighlight();
         isHighlighted = false;
@@ -34,7 +38,7 @@ public class MovableWindow extends Draggable {
      * This method highlights the window.
      */
     public void highlight() {
-        this.body.getHead().highlight();
+        this.head.highlight();
         this.isHighlighted = true;
         this.raise();
     }
@@ -43,7 +47,7 @@ public class MovableWindow extends Draggable {
      * This method unhighlights the window.
      */
     private void unHighlight() {
-        this.body.getHead().unHighlight();
+        this.head.unHighlight();
         this.isHighlighted = false;
     }
 
@@ -69,7 +73,7 @@ public class MovableWindow extends Draggable {
     }
 
     public void changeHeadName(String name) {
-        this.body.getHead().setTitle(name);
+        this.head.setTitle(name);
     }
 
     /**
@@ -86,7 +90,48 @@ public class MovableWindow extends Draggable {
     /**
      * Changes the minMaxButtons appearance in the head.
      */
-    public void changeMinMaxButton(){
-        this.body.getHead().changeMinMaxButton();
+    public void changeMinMaxButton() {
+        this.head.changeMinMaxButton();
+    }
+
+    /**
+     * Gets the width of the mirror.
+     *
+     * @return the width of the mirror
+     */
+    public double getWidth() {
+        return this.body.getBodyWidth();
+    }
+
+    /**
+     * Sets the width of the mirror.
+     *
+     * @param width - the new width
+     */
+    public void setWidth(double width) {
+        if (width > head.getHeadMinWidth() + HEAD_MIN_WIDTH_OFFSET) {
+            this.body.setBodyWidth(width);
+        }
+    }
+
+    /**
+     * Gets the height of the body.
+     *
+     * @return the height of the body.
+     */
+    public double getBodyHeight() {
+        return this.body.getBodyHeight();
+    }
+
+    /**
+     * Sets the height of the body.
+     *
+     * @param height - the new height
+     */
+    public void setBodyHeight(double height) {
+        if (height < MIN_BODY_HEIGHT) {
+            return;
+        }
+        this.body.setBodyHeight(height);
     }
 }

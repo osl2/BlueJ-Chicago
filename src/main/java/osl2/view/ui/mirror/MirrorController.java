@@ -86,4 +86,16 @@ public class MirrorController implements IMirrorController {
         this.button.setText(name);
         this.mirror.changeHeadName(name);
     }
+
+    @Override
+    public void resizeMirrorX(double xOffset) {
+        double mirrorWidth = this.mirror.getWidth();
+        this.mirror.setWidth(mirrorWidth + xOffset);
+    }
+
+    @Override
+    public void resizeMirrorY(double yOffset) {
+        double mirrorHeight = this.mirror.getBodyHeight();
+        this.mirror.setBodyHeight(mirrorHeight + yOffset);
+    }
 }

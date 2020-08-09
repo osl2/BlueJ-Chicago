@@ -3,6 +3,7 @@ package osl2.view.ui.window;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -13,12 +14,15 @@ import osl2.view.ui.mirror.IMirrorController;
  */
 public class MovableWindowHead extends HBox {
 
-    private ActionButton minMaxButton;
-    private ActionButton hideButton;
     private final HBox buttons;
     private final Pane spacer;
+    private ActionButton minMaxButton;
+    private ActionButton hideButton;
     private Node title;
     private boolean isMax;
+    private Button resizeButton;
+    private double mouseDragStartY;
+    private double mouseDragStartX;
 
     /**
      * Creates a new WindowHead
@@ -72,10 +76,35 @@ public class MovableWindowHead extends HBox {
      * @param controller The controller to which the buttons will be linked.
      */
     public void linkBtnToController(IMirrorController controller) {
-        hideButton = new ActionButton("X", () -> controller.hideMirror());
-        minMaxButton = new ActionButton("^", () -> controller.minOrMaxMirror());
+        hideButton = new ActionButton("X", controller::hideMirror);
+        minMaxButton = new ActionButton("^", controller::minOrMaxMirror);
+        setUpResizeBtn();
+        resizeButton.setOnMousePressed(mouseEvent -> {
+            mouseDragStartY = mouseEvent.getY();
+            mouseDragStartX = mouseEvent.getX();
+        });
+        resizeButton.setOnMouseDragged(mouseEvent -> {
+            double x = mouseEvent.getX() - mouseDragStartX;
+            controller.resizeMirrorX(x);
+
+            double y = (mouseDragStartY - mouseEvent.getY()) * -1;
+            controller.resizeMirrorY(y);
+            mouseDragStartY = mouseEvent.getY();
+        });
+        buttons.getChildren().add(resizeButton);
         buttons.getChildren().add(minMaxButton);
         buttons.getChildren().add(hideButton);
+    }
+
+    private void setUpResizeBtn() {
+        resizeButton = new Button();
+
+        ImageView resizeIcon = new ImageView("images/resize.png");
+        resizeIcon.setFitHeight(15);
+        resizeIcon.setFitWidth(15);
+        resizeButton.setGraphic(resizeIcon);
+
+        resizeButton.getStyleClass().add("movable-window-head-resize");
     }
 
     /**
@@ -100,6 +129,15 @@ public class MovableWindowHead extends HBox {
         this.title = new Label(name);
         this.title.getStyleClass().add("movable-window-head-title");
         getChildren().addAll(title, spacer, buttons);
+    }
+
+    /**
+     * Gets the min width of the head with which it is displayed correctly.
+     *
+     * @return the min width
+     */
+    public double getHeadMinWidth() {
+        return this.getWidth() - spacer.getWidth();
     }
 
     /**
