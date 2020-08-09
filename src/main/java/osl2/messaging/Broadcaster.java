@@ -47,4 +47,15 @@ public class Broadcaster<B> {
         send(message);
         Evanston.getPlayController().block();
     }
+
+    /**
+     * Sends a message with a pouse and a block.
+     *
+     * @param message - the message to be send
+     */
+    public void sendWithPauseBlock(BroadcasterMessage<B> message) {
+        Evanston.getPlayController().pause();
+        send(message);
+        Evanston.getPlayController().block();
+    }
 }
