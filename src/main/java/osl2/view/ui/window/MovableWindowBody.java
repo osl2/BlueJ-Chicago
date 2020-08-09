@@ -1,6 +1,7 @@
 package osl2.view.ui.window;
 
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -8,7 +9,7 @@ import javafx.scene.layout.VBox;
  */
 public class MovableWindowBody extends VBox {
     private final MovableWindowHead head;
-    private final Node contents;
+    private final ScrollPane scroll;
     private boolean contentsShown = false;
 
     /**
@@ -20,7 +21,17 @@ public class MovableWindowBody extends VBox {
      */
     public MovableWindowBody(MovableWindow window, Node title, Node contents) {
         this.head = new MovableWindowHead(window, title);
-        /*ScrollPane scroll = new ScrollPane(contents);
+        this.scroll = new ScrollPane(contents);
+        setUpScrollPane(contents);
+
+        setStyle();
+        getChildren().add(this.head);
+        showContents();
+    }
+
+    private void setUpScrollPane(Node contents) {
+        scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scroll.setOnMouseEntered((event) -> {
             scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
             scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
@@ -28,11 +39,12 @@ public class MovableWindowBody extends VBox {
         scroll.setOnMouseExited((event) -> {
             scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
             scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        });*/
-        this.contents = contents;
-        setStyle();
-        getChildren().add(this.head);
-        showContents();
+        });
+
+        scroll.setContent(contents);
+        scroll.pannableProperty().set(true);
+        scroll.setMaxWidth(400);
+        scroll.setMaxHeight(400);
     }
 
     /**
@@ -49,7 +61,7 @@ public class MovableWindowBody extends VBox {
      */
     public void showContents() {
         if (!contentsShown) {
-            getChildren().add(contents);
+            getChildren().add(scroll);
             contentsShown = true;
             head.setMinWidth(-1);   // Undo "snapping" avoidance
         }
@@ -60,9 +72,9 @@ public class MovableWindowBody extends VBox {
      */
     public void hideContents() {
         if (contentsShown) {
-            getChildren().remove(1);
+            getChildren().remove(scroll);
             contentsShown = false;
-            head.setMinWidth(contents.getBoundsInParent().getWidth());  // Avoid ugly "snapping" of the layout
+            head.setMinWidth(scroll.getWidth());
         }
     }
 
@@ -84,5 +96,43 @@ public class MovableWindowBody extends VBox {
     private void setStyle() {
         this.getStyleClass().add("movable-window");
         this.getStyleClass().add("movable-window-body");
+    }
+
+    /**
+     * Gets the width of the body.
+     *
+     * @return the width of the body
+     */
+    public double getBodyWidth() {
+        return this.scroll.getWidth();
+    }
+
+    /**
+     * Sets the width of the body.
+     *
+     * @param width - the new width
+     */
+    public void setBodyWidth(double width) {
+        this.scroll.setMinWidth(width);
+        this.scroll.setMaxWidth(width);
+    }
+
+    /**
+     * Gets the height of the body.
+     *
+     * @return the height of the body
+     */
+    public double getBodyHeight() {
+        return this.scroll.getHeight();
+    }
+
+    /**
+     * Sets the height of the body.
+     *
+     * @param height - the new height
+     */
+    public void setBodyHeight(double height) {
+        this.scroll.setMinHeight(height);
+        this.scroll.setMaxHeight(height);
     }
 }

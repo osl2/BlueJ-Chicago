@@ -59,6 +59,11 @@
     -fx-text-fill: white;
 }
 
+.movable-window-head-resize {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+}
+
 .movable-window-head-button {
     -fx-background-color: transparent;
     -fx-text-fill: white;

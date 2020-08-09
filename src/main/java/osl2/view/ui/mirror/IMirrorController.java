@@ -29,4 +29,18 @@ public interface IMirrorController {
     MirrorButton getMirrorButton();
 
     void setName(String name);
+
+    /**
+     * Resizes the mirrors width by the specified offset.
+     *
+     * @param xOffset - the specified offset
+     */
+    void resizeMirrorX(double xOffset);
+
+    /**
+     * Resizes the mirrors height by the specified offset.
+     *
+     * @param yOffset - the specified offset
+     */
+    void resizeMirrorY(double yOffset);
 }
