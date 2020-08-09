@@ -30,11 +30,11 @@
 }
 
 .mirror-button-hidden {
-    -fx-background-color: #004a9f;
+    -fx-background-color: #2E2E2E;
 }
 
 .mirror-button-shown {
-    -fx-background-color: #1675d1;
+    -fx-background-color: #848484;
 }
 
 .settings-background {
