@@ -46,7 +46,7 @@ public class Evanston {
         lil.add("Evanston");
         lil.clear();
 
-        VGraph<Integer> graph = new VGraph("GraphTest");
+        VDirectedGraph<Integer> graph = new VDirectedGraph<>("GraphTest");
         VGraphNode<Integer> nodeEy = null;
         VGraphNode<Integer> oldNode = null;
         for (int x = 0; x < 32; x++) {
