@@ -31,7 +31,7 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
     public void setValue(T newValue) {
         if(newValue.equals(parentDS)){
             UserError userError = new GraphRecursionError();
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
         }
         super.setValue(newValue);
     }

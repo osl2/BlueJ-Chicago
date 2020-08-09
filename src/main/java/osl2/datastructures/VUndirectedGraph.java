@@ -18,19 +18,19 @@ public class VUndirectedGraph<T> extends VGraph<T>{
     public boolean addEdge(VGraphNode start, VGraphNode end) {
         if (!containsNode(start)) {
             UserError userError = new GraphNodeNotExistingError<VGraphNode>(start);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return false;
         }
 
         if (!containsNode(end)) {
             UserError userError = new GraphNodeNotExistingError<VGraphNode>(end);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return false;
         }
 
         if(containsEdge(start, end)){
             UserError userError = new GraphEdgeExistingError<VGraphNode>(start, end);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return false;
         }
         start.connect(end);
@@ -48,7 +48,7 @@ public class VUndirectedGraph<T> extends VGraph<T>{
             }
         }
         UserError userError = new GraphEdgeNotExistingError<VGraphNode>(start, end);
-        getBroadcaster().send((b) -> b.handleError(userError));
+        getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
         return false;
     }
 

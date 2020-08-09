@@ -41,7 +41,7 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
 
     protected void outOfBoundsError(int index) {
         UserError userError = new ListIndexOutOfBoundsError(index, this.size() - 1);
-        getBroadcaster().send((b) -> b.handleError(userError));
+        getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
     }
 
     protected VLinkedListNode<T> getHead() { return (VLinkedListNode<T>) head.getForward(); }
