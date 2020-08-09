@@ -24,6 +24,21 @@ public class Evanston {
     public static void main(String[] args) {
         EvanstonWindow.open();
 
+        VTree<Integer> tree = new VTree<>("Tree");
+        VGraphNode node = tree.addTreeNode();
+        node.setValue(5);
+        tree.addChild(node, tree.getRootNode());
+        VGraphNode node2 = tree.addTreeNode();
+        node2.setValue(6);
+        tree.addChild(node2, node);
+        VGraphNode node3 = tree.addTreeNode();
+        node3.setValue(7);
+        tree.addChild(node3, node);
+        System.out.println("Test");
+        tree.removeLeave(node);
+        tree.swap(node2, node);
+        tree.removeLeave(node3);
+
         List<String> lil = new VDoublyLinkedList<>("lilList");
         lil.add("Hello");
         lil.add("World");
@@ -32,13 +47,13 @@ public class Evanston {
         lil.clear();
 
         VGraph<Integer> graph = new VGraph("GraphTest");
-        VGraphNode<Integer> node = null;
+        VGraphNode<Integer> nodeEy = null;
         VGraphNode<Integer> oldNode = null;
         for (int x = 0; x < 32; x++) {
-            node = graph.addNode();
-            node.setValue(x + 1);
-            if (oldNode != null) oldNode.connect(node);
-            oldNode = node;
+            nodeEy = graph.addNode();
+            nodeEy.setValue(x + 1);
+            if (oldNode != null) oldNode.connect(nodeEy);
+            oldNode = nodeEy;
         }
 
         VArray<Integer> errorArray = new VArray<>(5);

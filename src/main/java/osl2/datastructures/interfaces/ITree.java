@@ -60,15 +60,6 @@ public interface ITree<T> {
     boolean swap(VGraphNode child, VGraphNode parent);
 
     /**
-     * Adds an tree to this tree.
-     *
-     * @param parent the parent to wich the tree will be added
-     * @param child  the tree wich will be added
-     * @return boolean true if the tree was added successfully, else false
-     */
-    boolean addTree(VGraphNode parent, ITree<T> child);
-
-    /**
      * Indicates if a node is allready in the tree.
      *
      * @param node the node
@@ -84,5 +75,10 @@ public interface ITree<T> {
      */
     boolean contains(Collection<VGraphNode> nodes);
 
+    /**
+     * Returns the root node.
+     * @return The root node.
+     */
     VGraphNode getRootNode();
+
 }

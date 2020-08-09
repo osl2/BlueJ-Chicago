@@ -40,6 +40,9 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     private SplitPane verticalSplitter;
     private SplitPane sidePlaySplitter;
 
+    /**
+     * Creates a new evanston window.
+     */
     public EvanstonWindow() {
         if (singletonInstance == null) {
             singletonInstance = this;
@@ -50,10 +53,17 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         this.settingsController = new SettingsController(this);
     }
 
+    /**
+     * Returns the EvanstonWindow singleton.
+     * @return The EvanstonWindow singleton.
+     */
     public static EvanstonWindow getInstance() {
         return singletonInstance;
     }
 
+    /**
+     * Opens the evanston window.
+     */
     public static void open() {
         if (APP_THREAD == null) {
             APP_THREAD = new Thread(() -> Application.launch(EvanstonWindow.class));
@@ -119,6 +129,8 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         this.evanstonStage = stage;
         stage.show();
 
+
+
         /*
          * Notify the other threads that we are up and running
          */
@@ -130,6 +142,10 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         }
     }
 
+    /**
+     * Returns the stage.
+     * @return The stage.
+     */
     public Stage getStage() {
         return this.evanstonStage;
     }
@@ -162,10 +178,16 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         sidePlaySplitter.setOrientation(Orientation.VERTICAL);
     }
 
+    /**
+     * Makes one step in the visualization.
+     */
     public void playStepButtonClicked() {
         Evanston.getPlayController().step();
     }
 
+    /**
+     * Starts or stops the playing.
+     */
     public void playAutoButtonClicked() {
         Evanston.getPlayController().toggle();
     }
@@ -180,6 +202,9 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         this.scene.getStylesheets().add(newFontSize.getFileName());
     }
 
+    /**
+     * Removes all font sizes.
+     */
     private void removeAllFontSizes() {
         for (FontSize fontSize : FontSize.values()) {
             this.scene.getStylesheets().remove(fontSize.getFileName());
@@ -197,12 +222,18 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
 
     }
 
+    /**
+     * Removes all themes.
+     */
     private void removeAllThemes() {
         for (Theme theme : Theme.values()) {
             this.scene.getStylesheets().remove(theme.getFileName());
         }
     }
 
+    /**
+     * Opens the settings window.
+     */
     public void openSettingsWindow() {
         settingsController.openSettingsWindow();
     }
@@ -217,4 +248,6 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
             }
         }
     }
+
+
 }
