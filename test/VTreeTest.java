@@ -89,26 +89,6 @@ public class VTreeTest {
     }
 
     @Test
-    void addTree() {
-        VTree smallTree = new VTree("small Tree");
-        VGraphNode nodeE = new VGraphNode(smallTree);
-        VGraphNode nodeF = new VGraphNode(smallTree);
-        smallTree.addChild(nodeE, smallTree.getRootNode());
-        smallTree.addChild(nodeF, nodeE);
-
-        tree.addTree(nodeB, smallTree);
-
-        Collection children = new ArrayList();
-        children.add(nodeB);
-        children.add(nodeC);
-        children.add(nodeD);
-        children.add(nodeE);
-        children.add(nodeF);
-
-        Assertions.assertTrue(children.containsAll(tree.getChildren(nodeA)));
-    }
-
-    @Test
     void contains() {
         Assertions.assertTrue(tree.contains(nodeC));
     }

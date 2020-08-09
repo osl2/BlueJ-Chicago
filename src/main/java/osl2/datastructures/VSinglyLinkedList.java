@@ -39,6 +39,7 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
     public boolean add(T t) {
         VLinkedListNode<T> newNode = createNode();
         newNode.setValue(t);
+
         VLinkedListNode<T> last = getLast();
         if (last == null) {
             setHead(newNode);

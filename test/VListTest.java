@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import osl2.datastructures.VSinglyLinkedList;
+import osl2.view.ui.EvanstonWindow;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,9 +13,14 @@ import java.util.List;
 public class VListTest {
     private static List list;
 
+    @BeforeAll
+    static void setupAll() {
+        EvanstonWindow.open();
+    }
+
     @BeforeEach
     void setup() {
-        list = new ArrayList<>();
+        list = new VSinglyLinkedList();
         list.add(1);
         list.add(2);
     }

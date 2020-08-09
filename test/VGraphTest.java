@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import osl2.datastructures.VDirectedGraph;
 import osl2.datastructures.VGraph;
 import osl2.datastructures.nodey.VEdge;
 import osl2.datastructures.nodey.VGraphNode;
@@ -25,7 +26,7 @@ public class VGraphTest {
 
     @BeforeEach
     void setup() {
-        graph = new VGraph("Test");
+        graph = new VDirectedGraph("Test");
 
         nodeA = new VGraphNode(graph);
         nodeB = new VGraphNode(graph);
@@ -43,13 +44,6 @@ public class VGraphTest {
     }
 
     @Test
-    void addNode() {
-        VGraphNode nodeE = new VGraphNode(graph);
-        graph.addNode(nodeE);
-        Assertions.assertTrue(graph.containsNode(nodeE));
-    }
-
-    @Test
     void addEdge() {
         VGraphNode nodeE = new VGraphNode(graph);
         VGraphNode nodeF = new VGraphNode(graph);
@@ -59,13 +53,8 @@ public class VGraphTest {
 
     @Test
     void removeNode() {
-        VGraphNode nodeE = new VGraphNode(graph);
-
-        graph.addNode(nodeE);
-        Assertions.assertTrue(graph.containsNode(nodeE));
-
-        graph.removeNode(nodeE);
-        Assertions.assertFalse(graph.containsNode(nodeE));
+        graph.removeNode(nodeA);
+        Assertions.assertFalse(graph.containsNode(nodeA));
     }
 
     @Test

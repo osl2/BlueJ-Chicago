@@ -43,7 +43,11 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
     }
 
     protected VLinkedListNode<T> getHead() { return (VLinkedListNode<T>) head.getForward(); }
-    protected void setHead(VLinkedListNode<T> newHead) { this.head.setForward((VLinkedListNode<Object>) newHead); }
+
+    protected void setHead(VLinkedListNode<T> newHead) {
+        this.head.setForward((VLinkedListNode<Object>) newHead);
+    }
+
     protected VLinkedListNode<T> getLast() {
         VLinkedListNode<T> node = getHead();
         VLinkedListNode<T> last = node;
@@ -56,13 +60,14 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
 
     protected VLinkedListNode<T> getNode(int i) {
         VLinkedListNode<T> it = getHead();
-        while (i --> 0) {
+        while (i-- > 0) {
             if (it == null) {
                 outOfBoundsError(i);
                 return null;
             }
             it = it.getForward();
         }
+
         return it;
     }
 
@@ -77,7 +82,7 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
             node = node.getForward();
             size++;
         }
-        return 0;
+        return size;
     }
 
     @Override
@@ -88,6 +93,7 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
     @Override
     public boolean contains(Object o) {
         VLinkedListNode<T> node = getHead();
+
         while (node != null) {
             if (node.getValue() == o) return true;
             node = node.getForward();

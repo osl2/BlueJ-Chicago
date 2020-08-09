@@ -43,7 +43,7 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
      * @param newValue the newValue for this node
      */
     public void setValue(T newValue) {
-        this.value = value;
+        this.value = newValue;
         getBroadcaster().sendWithDelay(b -> b.valueChange(newValue));
     }
 
