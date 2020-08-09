@@ -24,7 +24,6 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
     }
 
     public void connect(VGraphNode<T> node) {
-        // TODO add checks!
         edges.add(node);
         getBroadcaster().sendWithDelay(b -> b.connect(node.getCommunication()));
     }
