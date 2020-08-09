@@ -69,7 +69,7 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
 
     @Override
     public V get(Object o) {
-        if(wrapped.containsKey(o)){
+        if(!wrapped.containsKey(o)){
             UserError userError = new MapNullPointerGetError<>(o);
             getBroadcaster().send((b) -> b.handleError(userError));
             return null;
@@ -90,7 +90,7 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
 
     @Override
     public V remove(Object o) {
-        if(wrapped.containsKey(o)){
+        if(!wrapped.containsKey(o)){
             UserError userError = new MapNullPointerRemoveError<>(o);
             getBroadcaster().send((b) -> b.handleError(userError));
             return null;
