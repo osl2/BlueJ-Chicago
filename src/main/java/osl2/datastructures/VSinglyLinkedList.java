@@ -30,7 +30,18 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
     @Override
     protected void disconnectAndRemove(VLinkedListNode<T> node) {
         if (node != null) {
-            if (node == getHead()) setHead(node.getForward());
+            if (node == getHead()) {
+                setHead(node.getForward());
+            } else {
+                VLinkedListNode<T> it = getHead();
+                while (it != null) {
+                    if (it.getForward() == node) {
+                        it.setForward(node.getForward());
+                        break;
+                    }
+                    it = it.getForward();
+                }
+            }
             removeNode(node);
         }
     }
