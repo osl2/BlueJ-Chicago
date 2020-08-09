@@ -44,31 +44,16 @@ public class VGraph<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGr
     }
 
     @Override
-    public boolean addNode(VGraphNode node) {
-        if(node.equals(this)){
-            UserError userError = new GraphRecursionError();
-            getBroadcaster().send((b) -> b.handleError(userError));
-            return false;
-        }
-        if(nodeList.contains(node)) {
-            System.out.println("Test");
-            UserError userError = new GraphNodeExistingError<>(node);
-            getBroadcaster().send((b) -> b.handleError(userError));
-            return false;
-        }
-
-        nodeList.add(node);
-        size++;
-        return true;
-    }
-
-    @Override
     public boolean addEdge(VGraphNode start, VGraphNode end) {
-        if (!nodeList.contains(start))
-            addNode(start);
+        if (!nodeList.contains(start)) {
+            UserError userError = new GraphNodeNotExistingError<>(start);
+            getBroadcaster().send((b) -> b.handleError(userError));
+        }
 
-        if (!nodeList.contains(end))
-            addNode(end);
+        if (!nodeList.contains(end)) {
+            UserError userError = new GraphNodeNotExistingError<>(end);
+        getBroadcaster().send((b) -> b.handleError(userError));
+        }
 
         start.connect(end);
         return true;

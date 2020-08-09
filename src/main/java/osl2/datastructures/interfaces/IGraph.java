@@ -12,14 +12,6 @@ import java.util.Collection;
  */
 public interface IGraph<T> {
     /**
-     * Adds a node to the graph.
-     *
-     * @param node the node
-     * @return boolean true if the node was added successfully, else false
-     */
-    boolean addNode(VGraphNode<T> node);
-
-    /**
      * Adds an edge to the graph.
      *
      * @param start the node at which the edge starts
