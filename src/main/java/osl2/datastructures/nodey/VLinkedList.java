@@ -210,7 +210,7 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
 
     @Override
     public T remove(int i) {
-        VLinkedListNode<T> it = getHead();
+        VLinkedListNode<T> it = getNode(i);
         if (it == null) {
             outOfBoundsError(i);
             return null;
