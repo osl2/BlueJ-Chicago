@@ -287,6 +287,6 @@ public class SettingsWindow {
         setThemeLabel.setText(LanguageController.getLanguageController().getMessage("ThemeSetting"));
         themeBright.setText(LanguageController.getLanguageController().getMessage("ThemeSettingBright"));
         themeDark.setText(LanguageController.getLanguageController().getMessage("ThemeSettingDark"));
-        themeColorBlind.setText(LanguageController.getLanguageController().getMessage("ThemeSettingDark"));
+        themeColorBlind.setText(LanguageController.getLanguageController().getMessage("ThemeSettingColorBlindness"));
     }
 }
