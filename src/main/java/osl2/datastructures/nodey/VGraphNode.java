@@ -1,6 +1,8 @@
 package osl2.datastructures.nodey;
 
 import osl2.messaging.datastructures.VGraphNodeCommunication;
+import osl2.messaging.errorHandling.GraphErrors.GraphRecursionError;
+import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.nodey.GUIGraphNode;
 
 import java.util.HashSet;
@@ -13,6 +15,7 @@ import java.util.Set;
  */
 public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
     private Set<VGraphNode<T>> edges = new HashSet<>();
+    private NodeyDatastructure parentDS;
 
     /**
      * Creates a new GraphNode.
@@ -21,6 +24,16 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
      */
     public VGraphNode(NodeyDatastructure parentDS) {
         super(parentDS);
+        this.parentDS = parentDS;
+    }
+
+    @Override
+    public void setValue(T newValue) {
+        if(newValue.equals(parentDS)){
+            UserError userError = new GraphRecursionError();
+            getBroadcaster().send((b) -> b.handleError(userError));
+        }
+        super.setValue(newValue);
     }
 
     /**
