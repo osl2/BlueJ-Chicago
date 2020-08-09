@@ -41,11 +41,6 @@ public class VListTest {
     }
 
     @Test
-    void iterator() {
-        // TODO do we need for the iterator a test?
-    }
-
-    @Test
     void toArray() {
         Assertions.assertTrue(Arrays.equals(new Integer[]{1, 2}, list.toArray()));
     }

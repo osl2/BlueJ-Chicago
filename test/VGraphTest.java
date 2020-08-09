@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class VGraphTest {
-    private VGraph graph;
+    private VGraph<Integer> graph;
 
     private VGraphNode nodeA;
     private VGraphNode nodeB;
@@ -26,12 +26,12 @@ public class VGraphTest {
 
     @BeforeEach
     void setup() {
-        graph = new VDirectedGraph("Test");
+        graph = new VDirectedGraph<Integer>("Test");
 
-        nodeA = new VGraphNode(graph);
-        nodeB = new VGraphNode(graph);
-        nodeC = new VGraphNode(graph);
-        nodeD = new VGraphNode(graph);
+        nodeA = graph.addNode();
+        nodeB = graph.addNode();
+        nodeC = graph.addNode();
+        nodeD = graph.addNode();
 
         graph.addEdge(nodeA, nodeB);
         graph.addEdge(nodeC, nodeD);
@@ -45,8 +45,8 @@ public class VGraphTest {
 
     @Test
     void addEdge() {
-        VGraphNode nodeE = new VGraphNode(graph);
-        VGraphNode nodeF = new VGraphNode(graph);
+        VGraphNode nodeE = graph.addNode();
+        VGraphNode nodeF = graph.addNode();
         graph.addEdge(nodeE, nodeF);
         Assertions.assertTrue(graph.containsEdge(nodeE, nodeF));
     }
@@ -59,8 +59,8 @@ public class VGraphTest {
 
     @Test
     void removeEdge() {
-        VGraphNode nodeE = new VGraphNode(graph);
-        VGraphNode nodeF = new VGraphNode(graph);
+        VGraphNode nodeE = graph.addNode();
+        VGraphNode nodeF = graph.addNode();
 
         graph.addEdge(nodeE, nodeF);
         Assertions.assertTrue(graph.containsEdge(nodeE, nodeF));
