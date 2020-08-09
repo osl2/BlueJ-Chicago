@@ -209,6 +209,11 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
 
     @Override
     public boolean isEmpty() {
-        return map.isEmpty();
+        boolean isEmpty = false;
+        if(map.containsKey(root) && map.size() == 1){
+            isEmpty = true;
+        }
+        return isEmpty;
+
     }
 }
