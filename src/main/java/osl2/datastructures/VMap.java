@@ -79,11 +79,6 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
 
     @Override
     public V put(K k, V v) {
-        if(wrapped.containsKey(k)){
-            UserError userError = new MapKeyExistingError<>(k);
-            getBroadcaster().send((b) -> b.handleError(userError));
-            return null;
-        }
         getBroadcaster().sendWithDelay(b -> b.put(k, v));
         return wrapped.put(k, v);
     }

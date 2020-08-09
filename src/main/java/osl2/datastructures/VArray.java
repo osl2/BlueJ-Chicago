@@ -66,10 +66,9 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
 
     public boolean contains(Collection<T> values) {
         for (T e : values) {
+            System.err.println(e);
             if (!contains(e)) return false;
         }
-
-        System.err.println();
 
         return true;
     }
