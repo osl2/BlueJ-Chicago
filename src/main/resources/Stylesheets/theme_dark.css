@@ -80,3 +80,6 @@
     -fx-background-color: orange;
 }
 
+.main-region-container > .viewport {
+    -fx-background-color: #121212;
+}

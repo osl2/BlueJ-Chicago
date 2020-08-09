@@ -14,6 +14,7 @@ import osl2.messaging.errorHandling.TreeErrors.TreeNotALeafError;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUIGraph;
+import osl2.view.datastructures.GUITree;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -58,7 +59,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
 
     @Override
     public DatastructureVisualization createVisualization() {
-        return new GUIGraph(); // TODO change to GUITree
+        return new GUITree(); // TODO change to GUITree
     }
 
     @Override
@@ -85,7 +86,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
     }
 
     @Override
-    public boolean removeLeave(VGraphNode node) {
+    public boolean removeLeaf(VGraphNode node) {
         if(map.get(node).isEmpty()){
             map.remove(node);
             parentMap.remove(node);

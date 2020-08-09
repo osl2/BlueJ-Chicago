@@ -35,9 +35,9 @@ public class Evanston {
         node3.setValue(7);
         tree.addChild(node3, node);
         System.out.println("Test");
-        tree.removeLeave(node);
+        tree.removeLeaf(node);
         tree.swap(node2, node);
-        tree.removeLeave(node3);
+        tree.removeLeaf(node3);
 
         List<String> lil = new VDoublyLinkedList<>("lilList");
         lil.add("Hello");
