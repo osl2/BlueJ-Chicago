@@ -20,12 +20,12 @@ public interface ITree<T> {
     boolean addChild(VGraphNode child, VGraphNode parent);
 
     /**
-     * Removes a node if it is a leave.
+     * Removes a node if it is a leafe.
      *
      * @param node the node which will be removed
      * @return boolean true if the node was removed successfully, else false
      */
-    boolean removeLeave(VGraphNode node);
+    boolean removeLeaf(VGraphNode node);
 
     /**
      * Returns the children of a parent.

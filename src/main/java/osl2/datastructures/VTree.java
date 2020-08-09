@@ -85,7 +85,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
     }
 
     @Override
-    public boolean removeLeave(VGraphNode node) {
+    public boolean removeLeaf(VGraphNode node) {
         if(map.get(node).isEmpty()){
             map.remove(node);
             parentMap.remove(node);
