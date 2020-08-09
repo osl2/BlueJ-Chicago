@@ -37,6 +37,7 @@ public class MovableWindowHead extends HBox {
         buttons.setSpacing(2);
 
         this.title = title;
+        this.title.getStyleClass().add("movable-window-head-title");
 
         getChildren().addAll(this.title, spacer, buttons);
     }
