@@ -40,6 +40,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     private SideBar sideBar;
     private SplitPane verticalSplitter;
     private SplitPane sidePlaySplitter;
+    private final double VERTICAL_DIVIDER_POSITION = 0;
 
     /**
      * Creates a new evanston window.
@@ -130,6 +131,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         setTheme(Theme.DARK);
         stage.setScene(scene);
         this.evanstonStage = stage;
+        stage.setMaximized(true);
         stage.show();
 
 
@@ -172,7 +174,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
 
         verticalSplitter = new SplitPane(sidePlaySplitter, this.mainRegionScrollContainer);
         verticalSplitter.setOrientation(Orientation.HORIZONTAL);
-        verticalSplitter.setDividerPosition(0, 0.25);
+        verticalSplitter.setDividerPosition(0, VERTICAL_DIVIDER_POSITION);
     }
 
     private void setUpMainRegion() {
@@ -191,7 +193,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         this.mainRegionScrollContainer.fitToWidthProperty();
         this.mainRegionScrollContainer.setContent(mainRegion);
 
-        mainRegion.setMinWidth(WIDTH * (1 - 0.25) - WINDOW_SIZE_BUFFER);
+        mainRegion.setMinWidth(WIDTH * (1 - VERTICAL_DIVIDER_POSITION) - WINDOW_SIZE_BUFFER);
         mainRegion.setMinHeight(HEIGHT - WINDOW_SIZE_BUFFER);
     }
 

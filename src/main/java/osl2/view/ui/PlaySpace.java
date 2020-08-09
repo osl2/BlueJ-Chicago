@@ -38,6 +38,7 @@ public class PlaySpace extends Pane {
         setUpSettingBox();
         setVBoxListener();
         setColour();
+        this.setMinWidth(300);
     }
 
     /**
