@@ -91,8 +91,7 @@ public interface IGraph<T> {
      * @param edges the collection of edges
      * @return boolean true if the edges are in the graph, else false
      */
-    // TODO Fix
-//	boolean containsEdges(Collection<VGraphNode<T>, VGraphNode<T>> edges);
+    boolean containsEdges(Collection<VEdge> edges);
 
     /**
      * Returns the amount of nodes in the graph, which is the size of the graph.

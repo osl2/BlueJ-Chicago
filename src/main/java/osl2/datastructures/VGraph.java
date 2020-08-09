@@ -68,6 +68,13 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
         return true;
     }
 
+    public boolean containsEdges(Collection edges) {
+        for(Object edge: edges) {
+            containsEdge((VGraphNode) ((VEdge) edge).getStart(), (VGraphNode) ((VEdge) edge).getEnd());
+        }
+        return true;
+    }
+
     @Override
     public boolean removeNode(VGraphNode node) {
         super.removeNode(node);
