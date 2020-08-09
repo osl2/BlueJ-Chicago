@@ -6,6 +6,9 @@ import osl2.messaging.errorHandling.GraphErrors.GraphEdgeNotExistingError;
 import osl2.messaging.errorHandling.GraphErrors.GraphNodeNotExistingError;
 import osl2.messaging.errorHandling.UserError;
 
+/**
+ * Represent an undirected graph
+ */
 public class VUndirectedGraph<T> extends VGraph<T>{
     public VUndirectedGraph(String name) {
         super(name);
