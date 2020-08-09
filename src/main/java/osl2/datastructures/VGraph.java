@@ -15,7 +15,7 @@ import osl2.view.datastructures.GUIGraph;
 import java.security.InvalidParameterException;
 import java.util.*;
 
-public class VGraph<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>>
+public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>>
     implements IGraph, IDatastructure {
     private LinkedList<VGraphNode> nodeList;
 
