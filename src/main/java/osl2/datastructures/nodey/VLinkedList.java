@@ -22,6 +22,7 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
      * constructor for the linked list. Creates the head node.
      */
     public VLinkedList() {
+        setName(getDatastructureType());
         head = (VLinkedListNode<Object>) createNode();
         head.setValue("<HEAD>");
     }
