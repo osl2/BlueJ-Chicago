@@ -56,7 +56,7 @@ public class VTreeTest {
     @Test
     void removeLeave() {
         Assertions.assertTrue(tree.getChildren(nodeC).contains(nodeD));
-        tree.removeLeave(nodeD);
+        tree.removeLeaf(nodeD);
         Assertions.assertFalse(tree.getChildren(nodeC).contains(nodeD));
     }
 
