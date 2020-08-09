@@ -27,16 +27,14 @@ public class VTreeTest {
     void setup() {
         tree = new VTree("Test");
 
-        nodeA = tree.addTreeNode();
+        nodeA = tree.getRootNode();
+        nodeB = tree.getTreeNode();
+        nodeC = tree.getTreeNode();
+        nodeD = tree.getTreeNode();
 
-        // nodeA = tree.getRootNode();
-        nodeB = new VGraphNode(tree);
-        nodeC = new VGraphNode(tree);
-        nodeD = new VGraphNode(tree);
-
-        tree.addChild(nodeA, nodeB);
-        tree.addChild(nodeA, nodeC);
-        tree.addChild(nodeC, nodeD);
+        tree.addChild(nodeB, nodeA);
+        tree.addChild(nodeC, nodeA);
+        tree.addChild(nodeD, nodeC);
     }
 
     @Test
