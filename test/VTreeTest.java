@@ -25,10 +25,11 @@ public class VTreeTest {
 
     @BeforeEach
     void setup() {
-        nodeA = new VGraphNode(tree);
         tree = new VTree("Test");
 
-        nodeA = tree.getRootNode();
+        nodeA = tree.addTreeNode();
+
+        // nodeA = tree.getRootNode();
         nodeB = new VGraphNode(tree);
         nodeC = new VGraphNode(tree);
         nodeD = new VGraphNode(tree);
