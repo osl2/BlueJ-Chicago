@@ -1,0 +1,82 @@
+@startuml
+
+title __MESSAGING's Class Diagram__\n
+
+namespace osl2 {
+  namespace messaging {
+    namespace datastructures {
+          namespace nodey {
+            interface osl2.messaging.datastructures.nodey.VNodeCommunication {
+                {abstract} + asGUINode()
+                {abstract} + valueChange()
+            }
+            interface osl2.messaging.datastructures.nodey.VNodeyDatastructureCommunication {
+                {abstract} + addGUINode()
+                {abstract} + removeGUINode()
+            }
+          }
+      interface osl2.messaging.datastructures.DatastructureCommunication {
+          {abstract} + handleError()
+          {abstract} + setName()
+      }
+      interface osl2.messaging.datastructures.VArrayCommunication {
+          {abstract} + setSize()
+          {abstract} + setValue()
+      }
+      interface osl2.messaging.datastructures.VGraphCommunication {
+      }
+      interface osl2.messaging.datastructures.VGraphNodeCommunication {
+          {abstract} + connect()
+          {abstract} + disconnect()
+          {abstract} + disconnectAll()
+      }
+      interface osl2.messaging.datastructures.VMapCommunication {
+          {abstract} + clear()
+          {abstract} + put()
+          {abstract} + remove()
+      }
+    }
+    namespace errorHandling {
+        class osl2.messaging.errorHandling.ArrayErrors.ArrayIndexOutOfBoundsError {
+            {static} - MIN_INDEX : int
+            - maxIndex : int
+            - name : String
+            - userIndex : int
+            + ArrayIndexOutOfBoundsError()
+            + getErrorContent()
+            + getErrorName()
+        }
+        interface osl2.messaging.errorHandling.UserError {
+            {abstract} + getErrorContent()
+            {abstract} + getErrorName()
+        }
+    }
+    class osl2.messaging.Broadcaster {
+        + Broadcaster()
+        + getClient()
+        + send()
+        + sendWithDelay()
+    }
+    interface osl2.messaging.BroadcasterMessage {
+        {abstract} + send()
+    }
+    class osl2.messaging.PlayController {
+        - delay : long
+        - isProgramRunning : boolean
+        + block()
+        + pause()
+        + play()
+        + setProgramDelay()
+        + step()
+        + toggle()
+    }
+  }
+}
+
+osl2.messaging.Broadcaster o-- B : client
+
+osl2.messaging.errorHandling.ArrayErrors.ArrayIndexOutOfBoundsError .up.|> osl2.messaging.errorHandling.UserError
+osl2.messaging.errorHandling.ArrayErrors.ArrayIndexOutOfBoundsError o-- osl2.view.ui.localisation.LanguageController : languageController
+
+
+@enduml
