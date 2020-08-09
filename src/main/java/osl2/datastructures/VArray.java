@@ -39,7 +39,7 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
     public T getValue(int index) {
         if (index < 0 || index > this.size) {
             UserError userError = new ArrayIndexOutOfBoundsError(index, size - 1);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return null;
         }
         return values[index];
@@ -48,7 +48,7 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
     public boolean setValue(int index, T value) {
         if (index < 0 || index > this.size) {
             UserError userError = new ArrayIndexOutOfBoundsError(index, size - 1);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return false;
         }
 

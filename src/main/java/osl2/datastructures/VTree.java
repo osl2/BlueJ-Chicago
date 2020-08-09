@@ -106,7 +106,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
             return true;
         } else {
             UserError userError = new TreeNotALeafError<>(node);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return false;
         }
     }
@@ -117,7 +117,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
             return map.get(parent);
         } else {
             UserError userError = new TreeNoChildError<>(parent);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return null;
         }
     }
@@ -128,7 +128,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
             return parentMap.get(child);
         } else {
             UserError userError = new TreeNoParentError<>(child);
-            getBroadcaster().send((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return null;
         }
     }
