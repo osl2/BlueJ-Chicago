@@ -95,7 +95,7 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         VLinkedListNode<T> node = getHead();
 
         while (node != null) {
-            if (node.getValue() == o) return true;
+            if (node.getValue() == null ? o == null : node.getValue().equals(o)) return true;
             node = node.getForward();
         }
         return false;
