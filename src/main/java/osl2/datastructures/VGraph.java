@@ -31,6 +31,7 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
     protected VGraphNode<T> createNode() {
         VGraphNode<T> node = new VGraphNode<T>(this);
         nodeList.add(node);
+        size++;
         return node;
     }
 
