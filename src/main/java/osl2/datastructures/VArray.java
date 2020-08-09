@@ -59,11 +59,7 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
 
     public boolean contains(T value) {
         for (T e : values) {
-            if(!(e == null)) {
-                if(!(values == null)) {
-                    if (e.equals(value)) return true;
-                }
-            }
+            if (e==null ? value==null : e.equals(value)) return true;
         }
         return false;
     }
