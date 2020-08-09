@@ -43,5 +43,6 @@ public class Evanston {
      */
     public static void main(String[] args) {
         start();
+        Democlass democlass = new Democlass();
     }
 }
