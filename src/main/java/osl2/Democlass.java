@@ -4,6 +4,9 @@ import osl2.datastructures.*;
 import osl2.datastructures.nodey.VGraphNode;
 import osl2.datastructures.nodey.VLinkedList;
 
+/**
+ * The class for the demoprogramm.
+ */
 public class Democlass  {
     private VArray<Integer> integerArray;
     private VArray<VArray>  inlineArray;
@@ -14,22 +17,30 @@ public class Democlass  {
     private VGraph<Integer> integerGraph;
     private VTree<String> stringTree;
 
+    /**
+     * Creates the new Demoprogramm.
+     */
     public Democlass(){
         play();
     }
 
-    //Plays the demo.
+    /**
+     * Plays the demo.
+     */
     private void play(){
         setIntegerArray();
         setInlineArray();
         setIntegerMap();
         setIntegerList();
         setStringList();
+        setIntegerGraph();
         setStringGraph();
         setStringTree();
     }
 
-    //For the IntegerArray.
+    /**
+     * For the IntegerArray playing.
+     */
     private void setIntegerArray(){
         integerArray = new VArray<Integer>(5, "IntegerArray");
         for(int i = 0; i < integerArray.size(); i++){
@@ -40,14 +51,18 @@ public class Democlass  {
         integerArray.setValue(6, 5);
     }
 
-    //For the InlineArray.
+    /**
+     * For the InlineArray playing.
+     */
     private void setInlineArray(){
         inlineArray = new VArray<VArray>(2, "InlineArray");
         inlineArray.setValue(0,integerArray);
         inlineArray.setValue(1,inlineArray);
     }
 
-    //For the IntegerMap.
+    /**
+     * For the IntegerMapPlaying.
+     */
     private void setIntegerMap(){
         integerMap =new VMap("IntegerMap");
         integerMap.put("A",5);
@@ -57,7 +72,9 @@ public class Democlass  {
         integerMap.put("A",8);
     }
 
-    //For the IntegerList.
+    /**
+     * For the IntegerList playing.
+     */
     private void setIntegerList(){
         integerList = new VDoublyLinkedList<Integer>("IntegerList");
         integerList.add(1);
@@ -72,7 +89,9 @@ public class Democlass  {
 
     }
 
-    //For the StringList.
+    /**
+     * For the StringList playing.
+     * */
     private void setStringList(){
         stringList = new VSinglyLinkedList<String>("StringList");
         stringList.add("A");
@@ -85,7 +104,9 @@ public class Democlass  {
         }
     }
 
-    //For the String Graph.
+    /**
+     * For the StringGraph playing.
+     */
     private void setStringGraph(){
         stringGraph = new  VDirectedGraph<String>("StringGraph");
         VGraphNode nodeA = stringGraph.addNode();
@@ -105,7 +126,9 @@ public class Democlass  {
         stringGraph.removeNode(nodeA);
     }
 
-    //For the IntegerGraph.
+    /**
+     * For the IntegerGraphplaying.
+     */
     private void setIntegerGraph(){
         integerGraph = new  VUndirectedGraph<Integer>("IntegerGraph");
         VGraphNode node1 = stringGraph.addNode();
@@ -123,7 +146,9 @@ public class Democlass  {
         integerGraph.removeEdge(node2, node1);
     }
 
-    //For the StringTree.
+    /**
+     * For the StringTree playing.
+     */
     private void setStringTree(){
         stringTree = new VTree<String> ("StringTree");
         VGraphNode nodeA = stringTree.addTreeNode();
