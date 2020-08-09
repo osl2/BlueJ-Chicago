@@ -229,6 +229,19 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
     }
 
     @Override
+    public boolean remove(Object o) {
+        VLinkedListNode<T> node = getHead();
+        while (node != null) {
+            if (node.getValue() == null ? o == null : node.getValue().equals(o)) {
+                disconnectAndRemove(node);
+                return true;
+            }
+            node = node.getForward();
+        }
+        return false;
+    }
+
+    @Override
     public int indexOf(Object o) {
         int pos = 0;
         VLinkedListNode<T> it = getHead();

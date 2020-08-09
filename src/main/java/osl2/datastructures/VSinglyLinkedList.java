@@ -61,22 +61,6 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
     }
 
     @Override
-    public boolean remove(Object o) {
-        VLinkedListNode<T> node = getHead();
-        VLinkedListNode<T> previous = null;
-        while (node != null) {
-            previous = node;
-            node = node.getForward();
-            if (node.getValue() == o) {
-                if (previous != null) previous.setForward(node.getForward());
-                disconnectAndRemove(node);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
     public void add(int i, T t) {
         VLinkedListNode<T> node = createNode();
         node.setValue(t);

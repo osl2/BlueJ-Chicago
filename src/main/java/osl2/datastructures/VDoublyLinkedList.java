@@ -50,18 +50,6 @@ public class VDoublyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
     }
 
     @Override
-    public boolean remove(Object o) {
-        VLinkedListNode<T> it = getHead();
-        while (it != null) {
-            if (it.getValue() == o) {
-                disconnectAndRemove(it);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
     public void add(int i, T t) {
         VLinkedListNode<T> node = createNode();
         node.setValue(t);
