@@ -8,6 +8,7 @@ import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUILinkedList;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -131,7 +132,14 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
 
     @Override
     public <T1> T1[] toArray(T1[] t1s) {
-        return null;    // TODO
+        T1[] data = (T1[]) Array.newInstance(t1s.getClass().getComponentType(), size());
+        int pos = 0;
+        VLinkedListNode<T> node = getHead();
+        while (node != null) {
+            data[pos++] = (T1) node.getValue();
+            node = node.getForward();
+        }
+        return data;
     }
 
     @Override
