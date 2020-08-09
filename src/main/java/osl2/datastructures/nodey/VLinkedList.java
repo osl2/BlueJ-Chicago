@@ -170,8 +170,15 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
 
     @Override
     public boolean retainAll(Collection<?> collection) {
-        // TODO
-        return false;
+        boolean hasChanged = false;
+        Object[] objects = toArray();
+        for (Object o : objects) {
+            if (!collection.contains(o)) {
+                remove(o);
+                hasChanged = true;
+            }
+        }
+        return hasChanged;
     }
 
     @Override
