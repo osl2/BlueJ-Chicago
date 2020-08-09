@@ -35,6 +35,7 @@ public class SettingsWindow {
     private Label setThemeLabel;
     private RadioButton themeBright;
     private RadioButton themeDark;
+    private RadioButton themeColorBlind;
 
     /**
      * Creates a new Setting Window.
@@ -197,12 +198,17 @@ public class SettingsWindow {
         themeDark.setSelected(true);
         themeDark.getStyleClass().add("white-text");
 
+        themeColorBlind = new RadioButton(languageController.getMessage("ThemeSettingColorBlindness"));
+        themeColorBlind.setToggleGroup(toggleGroup);
+        themeColorBlind.setUserData(Theme.COLOR_BLINDNESS);
+        themeColorBlind.getStyleClass().add("white-text");
+
         toggleGroup.selectedToggleProperty().addListener(e -> settingsController.setTheme((Theme) toggleGroup.getSelectedToggle().getUserData()));
 
         HBox radioBtns = new HBox();
         radioBtns.setPadding(new Insets(10));
         radioBtns.setSpacing(10);
-        radioBtns.getChildren().addAll(themeBright, themeDark);
+        radioBtns.getChildren().addAll(themeBright, themeDark, themeColorBlind);
 
         vBox.getChildren().add(radioBtns);
     }
@@ -281,5 +287,6 @@ public class SettingsWindow {
         setThemeLabel.setText(LanguageController.getLanguageController().getMessage("ThemeSetting"));
         themeBright.setText(LanguageController.getLanguageController().getMessage("ThemeSettingBright"));
         themeDark.setText(LanguageController.getLanguageController().getMessage("ThemeSettingDark"));
+        themeColorBlind.setText(LanguageController.getLanguageController().getMessage("ThemeSettingDark"));
     }
 }
