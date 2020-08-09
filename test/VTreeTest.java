@@ -28,9 +28,9 @@ public class VTreeTest {
         tree = new VTree("Test");
 
         nodeA = tree.getRootNode();
-        nodeB = tree.getTreeNode();
-        nodeC = tree.getTreeNode();
-        nodeD = tree.getTreeNode();
+        nodeB = tree.addTreeNode();
+        nodeC = tree.addTreeNode();
+        nodeD = tree.addTreeNode();
 
         tree.addChild(nodeB, nodeA);
         tree.addChild(nodeC, nodeA);
@@ -44,8 +44,8 @@ public class VTreeTest {
 
     @Test
     void addChild() {
-        VGraphNode nodeE = new VGraphNode(tree);
-        tree.addChild(nodeB, nodeE);
+        VGraphNode nodeE = tree.addTreeNode();
+        tree.addChild(nodeE, nodeB);
 
         Assertions.assertTrue(tree.contains(nodeE));
         Assertions.assertTrue(tree.getParent(nodeE).equals(nodeB));

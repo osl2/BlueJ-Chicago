@@ -58,7 +58,8 @@ public class ArrowPane extends Pane {
      * Disconnects the ArrowPane from all nodes.
      */
     public void clear() {
-        for (GUINode node : arrows.keySet()) {
+        GUINode[] nodeArr = arrows.keySet().toArray(new GUINode[]{});
+        for (GUINode node : nodeArr) {
             disconnect(node);
         }
     }

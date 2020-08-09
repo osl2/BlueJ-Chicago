@@ -68,6 +68,9 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
         for (T e : values) {
             if (!contains(e)) return false;
         }
+
+        System.err.println();
+
         return true;
     }
 
