@@ -8,10 +8,10 @@ import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.sequential.GUIMap;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 /**
  * Represents a Map.
@@ -77,11 +77,21 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
         return wrapped.get(o);
     }
 
+    /**
+     * Private getter for default methods which use get.
+     * @param o The Key.
+     * @return The Value to the key.
+     */
+    private V getPrivate(Object o){
+        return wrapped.get(o);
+    }
+
     @Override
     public V put(K k, V v) {
         getBroadcaster().sendWithDelay(b -> b.put(k, v));
         return wrapped.put(k, v);
     }
+
 
     @Override
     public V remove(Object o) {
@@ -118,5 +128,93 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
     @Override
     public Set<Entry<K, V>> entrySet() {
         return wrapped.entrySet();
+    }
+
+    @Override
+    public V getOrDefault(Object key, V defaultValue) {
+        if(this.containsKey(key)){
+            return this.get(key);
+        } else {
+            return defaultValue;
+        }
+    }
+
+    @Override
+    public V putIfAbsent(K key, V value) {
+        if(!this.containsKey(key)){
+            return wrapped.put(key, value);
+        }
+        return null;
+    }
+
+    @Override
+    public boolean remove(Object key, Object value) {
+        if (this.containsKey(key) && Objects.equals(this.getPrivate(key), value)) {
+            this.remove(key);
+            return true;
+        } else
+            return false;
+    }
+
+    @Override
+    public boolean replace(K key, V oldValue, V newValue) {
+        if (this.containsKey(key) && Objects.equals(this.getPrivate(key), oldValue)) {
+            this.put(key, newValue);
+            return true;
+        } else
+            return false;
+    }
+
+    @Override
+    public V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction) {
+        if (this.getPrivate(key) == null) {
+            V newValue = mappingFunction.apply(key);
+            if (newValue != null)
+                this.put(key, newValue);
+        }
+        return this.getPrivate(key);
+    }
+
+    @Override
+    public V computeIfPresent(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
+        if (this.getPrivate(key) != null) {
+            V oldValue = this.getPrivate(key);
+            V newValue = remappingFunction.apply(key, oldValue);
+            if (newValue != null)
+                this.put(key, newValue);
+            else
+               this.remove(key);
+        }
+        return this.getPrivate(key);
+    }
+
+    @Override
+    public V compute(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
+        V oldValue = this.getPrivate(key);
+        V newValue = remappingFunction.apply(key, oldValue);
+        if (oldValue != null) {
+            if (newValue != null)
+                this.put(key, newValue);
+            else
+                this.remove(key);
+        } else {
+            if (newValue != null)
+                this.put(key, newValue);
+            else
+                return null;
+        }
+        return this.getPrivate(key);
+    }
+
+    @Override
+    public V merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> remappingFunction) {
+        V oldValue = this.getPrivate(key);
+        V newValue = (oldValue == null) ? value :
+                remappingFunction.apply(oldValue, value);
+        if (newValue == null)
+           this.remove(key);
+        else
+           this.put(key, newValue);
+        return this.getPrivate(key);
     }
 }
