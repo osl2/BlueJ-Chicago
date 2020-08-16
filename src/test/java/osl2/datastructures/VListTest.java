@@ -42,7 +42,12 @@ public class VListTest {
     }
 
     @Test
-    void toArray() {
+    void containsNotElement() {
+        Assertions.assertFalse(list.contains(42));
+    }
+
+    @Test
+    void toArrayWithInteger() {
         Assertions.assertTrue(Arrays.equals(new Integer[]{1, 2}, list.toArray()));
     }
 
@@ -53,9 +58,20 @@ public class VListTest {
     }
 
     @Test
+    void addString() {
+        list.add("3"); // TODO check which error should get raised
+        Assertions.assertTrue(list.contains("3"));
+    }
+
+    @Test
     void remove() {
         list.remove(1);
         Assertions.assertFalse(list.contains(2));
+    }
+
+    @Test
+    void removeAtWrongIndex() {
+        Assertions.assertNull(list.remove(5));
     }
 
     @Test
@@ -95,9 +111,19 @@ public class VListTest {
     }
 
     @Test
+    void getAtWrongIndex() {
+        Assertions.assertNull(list.get(42));
+    }
+
+    @Test
     void set() {
         list.set(0, 10);
         Assertions.assertEquals(10, list.get(0));
+    }
+
+    @Test
+    void setAtWrongIndex() {
+        Assertions.assertNull(list.set(42, 10));
     }
 
     @Test
@@ -135,7 +161,7 @@ public class VListTest {
         collection.add(1);
         collection.add(2);
 
-        Assertions.assertTrue(collection.containsAll(list.subList(1, 2))); // hacky
+        Assertions.assertTrue(collection.containsAll(list.subList(1, 2)));
     }
 
     @Test

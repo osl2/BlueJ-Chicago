@@ -93,6 +93,12 @@ public class VTreeTest {
     }
 
     @Test
+    void containsNot() {
+        VGraphNode nodeE = tree.addTreeNode(); // wie testen?
+        Assertions.assertNull(tree.contains(nodeE));
+    }
+
+    @Test
     void containsCollection() {
         Collection children = new ArrayList();
         children.add(nodeB);

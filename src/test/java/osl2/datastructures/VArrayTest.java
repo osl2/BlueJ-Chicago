@@ -34,15 +34,30 @@ public class VArrayTest {
     }
 
     @Test
+    void getValueForInvalidIndex() {
+        Assertions.assertNull(array.getValue(11));
+    }
+
+    @Test
     void setValue() {
         array.setValue(0, 1);
         Assertions.assertEquals(1, array.getValue(0));
     }
 
     @Test
+    void setValueForInvalidIndex() {
+        Assertions.assertFalse(array.setValue(11, 1));
+    }
+
+    @Test
     void contains() {
         array.setValue(0, 1);
         Assertions.assertTrue(array.contains(1));
+    }
+
+    @Test
+    void containsForInvalidIndex() {
+        Assertions.assertFalse(array.contains(11));
     }
 
     @Test

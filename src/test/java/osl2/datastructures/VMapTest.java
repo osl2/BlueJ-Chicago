@@ -59,6 +59,11 @@ public class VMapTest {
     }
 
     @Test
+    void getNotMappedElement() {
+        Assertions.assertNull(map.get("AAA"));
+    }
+
+    @Test
     void put() {
         map.put("C", 3);
         Assertions.assertEquals(3, map.get("C"));
