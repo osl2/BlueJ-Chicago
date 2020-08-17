@@ -30,7 +30,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
 
     private int height;
 
-    private VGraphNode root;
+    private VGraphNode<T> rootNode;
 
     /**
      * Creates a new VTree.
@@ -53,18 +53,21 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
         map = new HashMap<>();
         parentMap = new HashMap<>();
         heightMap = new HashMap<>();
-        this.root = new VGraphNode<String>(this);
-        root.setValue("HEAD");
-        map.put(root, new LinkedList<VGraphNode>());
-        heightMap.put(root, 0);
         height = 0;
     }
 
     @Override
     public VGraphNode addTreeNode() {
         VGraphNode node = super.addNode();
+        setRootNodeIfNotSet(node);
         map.put(node, new LinkedList<VGraphNode>());
         return node;
+    }
+
+    private void setRootNodeIfNotSet(VGraphNode node) {
+        if (rootNode == null) {
+            rootNode = node;
+        }
     }
 
     @Override
@@ -84,7 +87,10 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
 
     @Override
     public VGraphNode getRootNode() {
-        return root;
+        if (rootNode == null) {
+            this.addTreeNode();
+        }
+        return rootNode;
     }
 
     @Override
@@ -92,11 +98,21 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
         map.get(parent).add(child);
         parentMap.put(child, parent);
         parent.connect(child);
-        heightMap.put(child, heightMap.get(parent) + 1);
-        if (heightMap.get(parent) + 1 > height) {
-            height = heightMap.get(parent) + 1;
-        }
+        updateHeight(child, parent);
         return true;
+    }
+
+    private void updateHeight(VGraphNode child, VGraphNode parent) {
+        int childHeight;
+        if (heightMap.containsKey(parent)) {
+            childHeight = heightMap.get(parent) + 1;
+        } else {
+            childHeight = 0;
+        }
+        heightMap.put(child, childHeight + 1);
+        if (childHeight > height) {
+            height = childHeight;
+        }
     }
 
     @Override
@@ -210,23 +226,12 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
         for (VGraphNode node : map.keySet()) {
             super.removeNode(node);
         }
-        map = new HashMap<>();
-        parentMap = new HashMap<>();
-        heightMap = new HashMap<>();
-        height = 0;
-        this.root = new VGraphNode<String>(this);
-        root.setValue("HEAD");
-        map.put(root, new LinkedList<VGraphNode>());
-        heightMap.put(root, 0);
+        init();
         return true;
     }
 
     @Override
     public boolean isEmpty() {
-        boolean isEmpty = false;
-        if (map.containsKey(root) && map.size() == 1) {
-            isEmpty = true;
-        }
-        return isEmpty;
+        return map.isEmpty();
     }
 }
