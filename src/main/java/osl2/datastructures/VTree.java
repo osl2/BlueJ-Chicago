@@ -34,7 +34,24 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
 
     private VGraphNode root;
 
+    /**
+     * Create a new VTree.
+     */
+    public VTree() {
+        init();
+    }
+
+    /**
+     * Create a new {@link VTree} with a specified name.
+     *
+     * @param name - the name of the VTree
+     */
     public VTree(String name) {
+        init();
+        super.setName(name);
+    }
+
+    private void init() {
         map = new HashMap<>();
         parentMap = new HashMap<>();
         heightMap = new HashMap<>();
@@ -43,7 +60,6 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
         map.put(root, new LinkedList<VGraphNode>());
         heightMap.put(root, 0);
         height = 0;
-        super.setName(name);
     }
 
     public VGraphNode addTreeNode(){
