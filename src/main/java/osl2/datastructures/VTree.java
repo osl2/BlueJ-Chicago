@@ -6,14 +6,11 @@ import osl2.datastructures.nodey.NodeyDatastructure;
 import osl2.datastructures.nodey.VGraphNode;
 import osl2.messaging.datastructures.VGraphCommunication;
 import osl2.messaging.datastructures.VGraphNodeCommunication;
-import osl2.messaging.datastructures.VTreeCommunication;
-import osl2.messaging.errorHandling.TreeErrors.TreeChildNotExistingError;
 import osl2.messaging.errorHandling.TreeErrors.TreeNoChildError;
 import osl2.messaging.errorHandling.TreeErrors.TreeNoParentError;
 import osl2.messaging.errorHandling.TreeErrors.TreeNotALeafError;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
-import osl2.view.datastructures.GUIGraph;
 import osl2.view.datastructures.GUITree;
 
 import java.util.Collection;
@@ -23,7 +20,8 @@ import java.util.Map;
 
 /**
  * Represents an Tree.
- * @param <T> The type of the tree.
+ *
+ * @param <T> - The type of the tree
  */
 public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>> implements ITree, IDatastructure {
     private Map<VGraphNode, LinkedList<VGraphNode>> map;
@@ -35,14 +33,14 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
     private VGraphNode root;
 
     /**
-     * Create a new VTree.
+     * Creates a new VTree.
      */
     public VTree() {
         init();
     }
 
     /**
-     * Create a new {@link VTree} with a specified name.
+     * Creates a new {@link VTree} with a specified name.
      *
      * @param name - the name of the VTree
      */
@@ -62,7 +60,8 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
         height = 0;
     }
 
-    public VGraphNode addTreeNode(){
+    @Override
+    public VGraphNode addTreeNode() {
         VGraphNode node = super.addNode();
         map.put(node, new LinkedList<VGraphNode>());
         return node;
@@ -75,7 +74,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
 
     @Override
     public DatastructureVisualization createVisualization() {
-        return new GUITree(); // TODO change to GUITree
+        return new GUITree();
     }
 
     @Override
@@ -88,14 +87,13 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
         return root;
     }
 
-
     @Override
     public boolean addChild(VGraphNode child, VGraphNode parent) {
         map.get(parent).add(child);
         parentMap.put(child, parent);
         parent.connect(child);
         heightMap.put(child, heightMap.get(parent) + 1);
-        if(heightMap.get(parent) + 1 > height){
+        if (heightMap.get(parent) + 1 > height) {
             height = heightMap.get(parent) + 1;
         }
         return true;
@@ -103,7 +101,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
 
     @Override
     public boolean removeLeaf(VGraphNode node) {
-        if(map.get(node).isEmpty()){
+        if (map.get(node).isEmpty()) {
             map.remove(node);
             map.get(parentMap.get(node)).remove(node);
             parentMap.remove(node);
@@ -111,40 +109,40 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
             node.disconnectAll();
             super.removeNode(node);
             boolean heightIsSmaller = true;
-            for(Integer nodeHeight: heightMap.values()){
-                if(height == nodeHeight){
-                 heightIsSmaller = false;
+            for (Integer nodeHeight : heightMap.values()) {
+                if (height == nodeHeight) {
+                    heightIsSmaller = false;
                 }
             }
-            if(heightIsSmaller){
+            if (heightIsSmaller) {
                 height--;
             }
             return true;
         } else {
             UserError userError = new TreeNotALeafError<>(node);
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return false;
         }
     }
 
     @Override
     public Collection<VGraphNode> getChildren(VGraphNode parent) {
-        if(map.containsKey(parent)) {
+        if (map.containsKey(parent)) {
             return map.get(parent);
         } else {
             UserError userError = new TreeNoChildError<>(parent);
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return null;
         }
     }
 
     @Override
     public VGraphNode getParent(VGraphNode child) {
-        if(parentMap.containsKey(child)){
+        if (parentMap.containsKey(child)) {
             return parentMap.get(child);
         } else {
             UserError userError = new TreeNoParentError<>(child);
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return null;
         }
     }
@@ -158,10 +156,10 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
     public boolean swap(VGraphNode child, VGraphNode parent) {
         LinkedList<VGraphNode> childData = map.get(child);
         LinkedList<VGraphNode> parentData = map.get(parent);
-        for(VGraphNode node: map.get(parent)){
+        for (VGraphNode node : map.get(parent)) {
             parent.disconnect(node);
         }
-        for(VGraphNode node: map.get(child)){
+        for (VGraphNode node : map.get(child)) {
             child.disconnect(node);
         }
         parentData.remove(child);
@@ -170,10 +168,10 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
         map.remove(parent);
         map.put(child, parentData);
         map.put(parent, childData);
-        for(VGraphNode node: map.get(parent)){
+        for (VGraphNode node : map.get(parent)) {
             parent.connect(node);
         }
-        for(VGraphNode node: map.get(child)){
+        for (VGraphNode node : map.get(child)) {
             child.connect(node);
         }
         VGraphNode parentParent = parentMap.get(parent);
@@ -209,7 +207,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
 
     @Override
     public boolean removeAll() {
-        for(VGraphNode node: map.keySet()){
+        for (VGraphNode node : map.keySet()) {
             super.removeNode(node);
         }
         map = new HashMap<>();
@@ -226,10 +224,9 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
     @Override
     public boolean isEmpty() {
         boolean isEmpty = false;
-        if(map.containsKey(root) && map.size() == 1){
+        if (map.containsKey(root) && map.size() == 1) {
             isEmpty = true;
         }
         return isEmpty;
-
     }
 }
