@@ -3,7 +3,7 @@ package osl2.datastructures.interfaces;
 import java.util.Collection;
 
 /**
- * The interface for a array object.
+ * The interface for an array object.
  *
  * @param <T> - the type of objects which can be used as values in an array
  */
@@ -18,7 +18,7 @@ public interface IArray<T> extends IDatastructure {
     boolean setValue(int index, T value);
 
     /**
-     * Returns a value at an index.
+     * Gets the value a specified index.
      *
      * @param index - the index for which the value wants to be known
      * @return the value at the index

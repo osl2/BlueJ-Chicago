@@ -12,7 +12,7 @@ import java.util.Collection;
 public interface ITree<T> {
 
     /**
-     * Create a node and add it to the tree.
+     * Creates a node and adds it to the tree.
      *
      * @return the created node
      */
