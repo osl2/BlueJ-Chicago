@@ -9,7 +9,20 @@ import osl2.messaging.errorHandling.UserError;
 /**
  * Represent an undirected graph
  */
-public class VUndirectedGraph<T> extends VGraph<T>{
+public class VUndirectedGraph<T> extends VGraph<T> {
+
+    /**
+     * Creates a new {@link VUndirectedGraph}.
+     */
+    public VUndirectedGraph() {
+        super();
+    }
+
+    /**
+     * Creates a new {@link VUndirectedGraph} with a name.
+     *
+     * @param name - the name of the graph
+     */
     public VUndirectedGraph(String name) {
         super(name);
     }
@@ -28,7 +41,7 @@ public class VUndirectedGraph<T> extends VGraph<T>{
             return false;
         }
 
-        if(containsEdge(start, end)){
+        if (containsEdge(start, end)) {
             UserError userError = new GraphEdgeExistingError<VGraphNode>(start, end);
             getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
             return false;
@@ -39,9 +52,9 @@ public class VUndirectedGraph<T> extends VGraph<T>{
     }
 
     @Override
-    public boolean removeEdge(VGraphNode start, VGraphNode end){
-        if(containsNode(start)) {
-            if(start.contains(end)) {
+    public boolean removeEdge(VGraphNode start, VGraphNode end) {
+        if (containsNode(start)) {
+            if (start.contains(end)) {
                 start.disconnect(end);
                 end.disconnect(start);
                 return true;
