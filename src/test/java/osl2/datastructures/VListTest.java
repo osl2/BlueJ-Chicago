@@ -161,6 +161,11 @@ public class VListTest {
     }
 
     @Test
+    void setAtNegativeIndex() {
+        Assertions.assertNull(list.set(-42, 10));
+    }
+
+    @Test
     void addAtIndex() {
         list.add(1, 5);
 
