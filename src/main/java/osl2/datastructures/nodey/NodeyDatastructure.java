@@ -30,6 +30,17 @@ public abstract class NodeyDatastructure<T, NodeyComm extends VNodeyDatastructur
     }
 
     /**
+     * creates a new node with a value
+     * @param value the value
+     * @return the new node.
+     */
+    final public NodeType addNode(T value) {
+        NodeType node = createNode();
+        node.setValue(value);
+        return node;
+    }
+
+    /**
      * removes the node
      * @param node the node to be remoeved
      * @return true if the operation was successful.

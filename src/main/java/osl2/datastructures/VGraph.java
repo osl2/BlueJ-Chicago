@@ -42,6 +42,9 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
         super.setName(name);
     }
 
+    /**
+     * Initiates the needed places for the data.
+     */
     private void init() {
         nodeList = new LinkedList<>();
         size = 0;
