@@ -61,6 +61,11 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
     }
 
     protected VLinkedListNode<T> getNode(int i) {
+        if (i < 0) {
+            outOfBoundsError(i);
+            return null;
+        }
+
         VLinkedListNode<T> it = getHead();
         while (i-- > 0) {
             if (it == null) {
