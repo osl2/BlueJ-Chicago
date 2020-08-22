@@ -187,12 +187,6 @@ public class VListTest {
     }
 
     @Test
-    void removeAtIndex() {
-        list.remove(1);
-        Assertions.assertFalse(list.contains(2));
-    }
-
-    @Test
     void indexOf() {
         Assertions.assertEquals(1, list.indexOf(2));
     }
