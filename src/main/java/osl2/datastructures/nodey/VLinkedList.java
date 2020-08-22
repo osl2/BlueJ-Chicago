@@ -165,6 +165,11 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
 
     @Override
     public boolean addAll(int i, Collection<? extends T> collection) {
+        if(i < 0 || i > size()) {
+            // TODO raise exception
+            return false;
+        }
+
         for (T value : collection) {
             add(i++, value);
         }
