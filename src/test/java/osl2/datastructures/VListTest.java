@@ -75,6 +75,11 @@ public class VListTest {
     }
 
     @Test
+    void removeAtNegativeIndex() {
+        Assertions.assertNull(list.remove(-5));
+    }
+
+    @Test
     void addAll() {
         List<Integer> collection = new ArrayList<>();
         collection.add(5);
