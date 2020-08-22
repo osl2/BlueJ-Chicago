@@ -62,6 +62,11 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
 
     @Override
     public void add(int i, T t) {
+        if(i < 0 || i > size()) {
+            // TODO raise exception
+            throw new IndexOutOfBoundsException();
+        }
+
         VLinkedListNode<T> node = createNode();
         node.setValue(t);
 
