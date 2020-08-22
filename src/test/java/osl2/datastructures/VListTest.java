@@ -32,6 +32,12 @@ public class VListTest {
     }
 
     @Test
+    public void sizeOfAnEmptyList() {
+        list = new VSinglyLinkedList();
+        Assertions.assertEquals(0, list.size());
+    }
+
+    @Test
     void isEmpty() {
         Assertions.assertFalse(list.isEmpty());
     }
