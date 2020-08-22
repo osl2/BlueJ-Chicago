@@ -145,6 +145,11 @@ public class VListTest {
     }
 
     @Test
+    void getAtNegativeIndex() {
+        Assertions.assertNull(list.get(-42));
+    }
+
+    @Test
     void set() {
         list.set(0, 10);
         Assertions.assertEquals(10, list.get(0));
