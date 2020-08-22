@@ -105,6 +105,24 @@ public class VListTest {
     }
 
     @Test
+    void AddAllAtAWrongIndex() {
+        List<Integer> collection = new ArrayList<>();
+        collection.add(5);
+        collection.add(7);
+
+        Assertions.assertFalse(list.addAll(5, collection));
+    }
+
+    @Test
+    void AddAllAtANegativeIndex() {
+        List<Integer> collection = new ArrayList<>();
+        collection.add(5);
+        collection.add(7);
+
+        Assertions.assertFalse(list.addAll(-5, collection));
+    }
+
+    @Test
     void clear() {
         list.clear();
         Assertions.assertTrue(list.isEmpty());
