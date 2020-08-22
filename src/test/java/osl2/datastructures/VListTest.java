@@ -175,6 +175,18 @@ public class VListTest {
     }
 
     @Test
+    void addAtWrongIndex() {
+        // TODO check for exception
+        list.add(5, 5);
+    }
+
+    @Test
+    void addAtNegativeIndex() {
+        // TODO check for exception
+        list.add(-5, 5);
+    }
+
+    @Test
     void removeAtIndex() {
         list.remove(1);
         Assertions.assertFalse(list.contains(2));
