@@ -204,6 +204,11 @@ public class VListTest {
     }
 
     @Test
+    void lastIndexOfNotContainedElement() {
+        Assertions.assertEquals(-1, list.lastIndexOf(42));
+    }
+
+    @Test
     void subList() {
         list.add(3);
 
