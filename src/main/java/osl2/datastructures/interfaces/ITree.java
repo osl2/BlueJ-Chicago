@@ -1,5 +1,6 @@
 package osl2.datastructures.interfaces;
 
+import osl2.datastructures.VGraph;
 import osl2.datastructures.nodey.VGraphNode;
 
 import java.util.Collection;
@@ -14,18 +15,19 @@ public interface ITree<T> {
     /**
      * Creates a node and adds it to the tree.
      *
+     * @param parent The parent of the node.
      * @return the created node
      */
-    VGraphNode<T> addTreeNode();
+    VGraphNode<T> addTreeNode(VGraphNode<T> parent);
 
     /**
-     * Adds a child to a parent.
-     *
-     * @param child  - the child
-     * @param parent - the parent
-     * @return true if the child as added successfully, else false
+     * Creates a node and adds it to the tree.
+     * @param parent The parent of the node.
+     * @param value The value of the node.
+     * @return The created node.
      */
-    boolean addChild(VGraphNode<T> child, VGraphNode<T> parent);
+    VGraphNode<T> addTreeNode(VGraphNode<T> parent, T value);
+
 
     /**
      * Removes a node if it is a leave.
@@ -89,4 +91,16 @@ public interface ITree<T> {
      * @return the root node
      */
     VGraphNode<T> getRootNode();
+
+    /**
+     * Sets the root node.
+     *
+     */
+    void setRootNode();
+
+    /**
+     * Sets the root node.
+     * @param value the value of the root node.
+     */
+    void setRootNode(T value);
 }

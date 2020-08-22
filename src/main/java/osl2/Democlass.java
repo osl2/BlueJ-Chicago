@@ -35,7 +35,6 @@ public class Democlass  {
         setStringList();
         setIntegerGraph();
         setStringGraph();
-        setStringTree();
     }
 
     /**
@@ -146,25 +145,7 @@ public class Democlass  {
         integerGraph.removeEdge(node2, node1);
     }
 
-    /**
-     * For the StringTree playing.
-     */
-    private void setStringTree(){
-        stringTree = new VTree<String> ("StringTree");
-        VGraphNode nodeA = stringTree.addTreeNode();
-        nodeA.setValue("A");
-        stringTree.addChild(nodeA, stringTree.getRootNode());
-        VGraphNode nodeB = stringTree.addTreeNode();
-        nodeB.setValue("B");
-        stringTree.addChild(nodeB, nodeA);
-        VGraphNode nodeC = stringTree.addTreeNode();
-        nodeC.setValue("C");
-        stringTree.addChild(nodeC, nodeA);
-        stringTree.swap(nodeB, nodeA);
-        //Not a Leaf Node error.
-        stringTree.removeLeaf(nodeB);
-        stringTree.removeLeaf(nodeA);
-    }
+
 
 
 
