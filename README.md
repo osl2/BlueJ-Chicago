@@ -41,6 +41,7 @@ Um den Visualizer zu nutzen importiert man einfach die Jar als Bibliothek. Am be
 - VDirectedGraph<T>(String name):<br> Erstellt einen neuen gerichteten Graphen mit dem Namen name.
 - VUndirectedGraph<T>(String name):<br> Erstellt einen neuen ungerichteten Graphen mit dem Namen name.
 - addNode() returns VGraphNode<T>:<br> addNode erstellt einen Knoten im Graphen. Nur so erstellte Knoten können im Graphen benutzt werden.
+- addNode(T value) returns VGraphNode<T>:<br> addNode erstellt einen Knoten im Graphen. Der Knoten bekommt den Wert value. Nur so erstellte Knoten können im Graphen benutzt werden.
 - addEdge(VGraphNode<T>  start, VGraphNode<T> end) returns boolean:<br> Fügt eine Kante von start zu end hinzu. Gibt true bei Erfolg zurück ansonsten false.
 - removeNode(VGraphNode<T>  node)returns boolean:<br> Entfernt einen Knoten aus dem Graphen. Gibt true bei Erfolg zurück ansonsten false.
 - removeEdge(VGraphNode<T>  start, VGraphNode<T> end) returns boolean:<br> Entfernt eine Kante aus dem Graphen. Gibt true bei Erfolg zurück ansonsten false.
@@ -52,8 +53,8 @@ Um den Visualizer zu nutzen importiert man einfach die Jar als Bibliothek. Am be
 **VTree<T>:** (Nutzt auch VGraphNodes)
 - VTree<T>():<br> Erstellt einen neuen Baum.
 - VTree<T>(String name):<br> Erstellt einen neuen Baum mit dem Namen name.
-- addTreeNode() returns VGraphNode<T>:<br> addNode erstellt einen Knoten im Tree. Nur so erstellte Knoten können im Baum benutzt werden.
-- addChild(VGraphNode<T>:  child, VGraphNode<T> parent) returns boolean:<br> Fügt einen Childknoten zu einem Parentknoten hinzu. 
+- addTreeNode(VGraphNode<T> parent) returns VGraphNode<T>:<br> addNode erstellt einen Knoten im Tree. Dieser Knoten wird zu einem Parent im Tree hinzugefügt.
+- addTreeNode(VGraphNode<T> parent, T value) returns VGraphNode<T>:<br> addNode erstellt einen Knoten im Tree. Dieser Knoten wird zu einem Parent im Tree hinzugefügt. Außerdem wird für ihn der Wert value gesetzt.
 - removeLeaf(VGraphNode node)returns boolean:<br> Entfernt einen Knoten, falls er ein Blatt ist. Gibt true bei Erfolg zurück ansonsten false.
 - getChildren(VGraphNode parent)returns collection<VGraphNode>:<br> Gibt alle Childknoten eines Parentknoten zurück.
 - getParent(VGraphNode child)returns VGraphNode:<br> Gibt den Parentknoten eines Childknoten zurück.
