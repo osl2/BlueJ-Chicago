@@ -1,9 +1,10 @@
-package osl2.datastructures;
+package java.osl2.datastructures;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import osl2.datastructures.VTree;
 import osl2.datastructures.nodey.VGraphNode;
 import osl2.view.ui.EvanstonWindow;
 
