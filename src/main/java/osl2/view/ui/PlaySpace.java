@@ -191,4 +191,7 @@ public class PlaySpace extends Pane {
     public Slider getPlaySpeedSlider(){
         return playSpeedSlider;
     }
+    public HBox getButtonBox(){
+        return buttonBox;
+    }
 }
