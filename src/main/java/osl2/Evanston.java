@@ -1,8 +1,6 @@
 package osl2;
 
-import osl2.datastructures.EvanstonDatastructure;
-import osl2.datastructures.VArray;
-import osl2.datastructures.VTree;
+import osl2.datastructures.*;
 import osl2.datastructures.nodey.VGraphNode;
 import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
@@ -44,11 +42,18 @@ public class Evanston {
      */
     public static void main(String[] args) {
         start();
+        VDirectedGraph<Integer> graph = new VDirectedGraph<>();
+        VGraphNode node = graph.addNode(1);
+        VGraphNode node2 = graph.addNode(2);
+        node.connect(node2);
+        node.connect(node);
+        node2.connect(node);
+
         VTree<Integer> tree = new VTree<Integer>();
         tree.addTreeNode(tree.getRootNode(), 5);
         VTree<Integer> tree2 = new VTree<Integer>();
-        VGraphNode<Integer> node = tree2.getRootNode();
-        tree.addTreeNode(node, 6);
+        VGraphNode<Integer> xnode = tree2.getRootNode();
+        tree.addTreeNode(xnode, 6);
         //Democlass democlass = new Democlass();
     }
 }
