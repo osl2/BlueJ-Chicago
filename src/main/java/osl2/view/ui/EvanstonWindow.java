@@ -67,7 +67,9 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
      * @return The EvanstonWindow singleton.
      */
     public static EvanstonWindow getInstance() {
-
+        if(singletonInstance==null){
+            singletonInstance = new EvanstonWindow();
+        }
         return singletonInstance;
     }
 
