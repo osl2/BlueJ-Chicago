@@ -6,6 +6,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import osl2.Evanston;
 import osl2.datastructures.EvanstonDatastructure;
@@ -55,6 +56,10 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         this.settingsController = new SettingsController(this);
         this.mainRegionScrollContainer = new ScrollPane();
         this.mainRegionScrollContainer.getStyleClass().add("main-region-container");
+        this.mainRegion = new MainRegion();
+
+        setUpSpaces();
+        Evanston.getPlayController().addPropertyChangeListener(this);
     }
 
     /**
@@ -62,6 +67,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
      * @return The EvanstonWindow singleton.
      */
     public static EvanstonWindow getInstance() {
+
         return singletonInstance;
     }
 
@@ -121,10 +127,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     public void start(Stage stage) {
         stage.setTitle("Evanston Live Data Visualizer");
 
-        this.mainRegion = new MainRegion();
 
-        setUpSpaces();
-        Evanston.getPlayController().addPropertyChangeListener(this);
 
         scene = new Scene(verticalSplitter, WIDTH, HEIGHT);
         setFontSize(FontSize.MEDIUM);
@@ -274,6 +277,15 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
                 playSpace.setPlayAutoButtonSymbolToPlay();
             }
         }
+    }
+    public MainRegion getMainRegion(){
+        return this.mainRegion;
+    }
+    public SplitPane getVerticalSplitter(){
+        return verticalSplitter;
+    }
+    public PlaySpace getPlayspace(){
+        return this.playSpace;
     }
 
 

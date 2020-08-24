@@ -44,7 +44,7 @@ public class PlayController {
     }
 
     /**
-     * Playes one step inside the datastructures.
+     * Plays one step inside the datastructures.
      */
     public synchronized void step() {
         if (!isProgramRunning) this.notify();
@@ -94,5 +94,12 @@ public class PlayController {
      */
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         pcs.removePropertyChangeListener(listener);
+    }
+
+    public boolean getIsRunning(){
+        return isProgramRunning;
+    }
+    public long getDelay(){
+        return delay;
     }
 }

@@ -173,10 +173,22 @@ public class PlaySpace extends Pane {
         this.getStyleClass().add("playspace");
     }
 
+
     /**
      * Sets the symbol from the playbutton to pause.
      */
     public void setPlayAutoButtonSymbolToPause() {
         this.playAutoButton.setGraphic(new ImageView("images/pause.jpg"));
+    }
+
+    public Button getPlayAutoButton(){
+        return playAutoButton;
+    }
+    public Button getPlayStepButton(){
+        return playStepButton;
+    }
+
+    public Slider getPlaySpeedSlider(){
+        return playSpeedSlider;
     }
 }
