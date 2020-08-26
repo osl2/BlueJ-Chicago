@@ -27,7 +27,7 @@ public class GUIGraphNode<T> extends GUINode<T, RoundedNodeContainer<StackPane>>
         getContent().getContents().getChildren().add(arrows);
         getContent().getContents().getChildren().add(vbox);
 
-        getContent().setStyle("-fx-background-color: red");
+        getContent().setContentStyle("-fx-background-color: red");
         vbox.getChildren().add(InlineRepresentation.get(null));
     }
 
@@ -44,11 +44,13 @@ public class GUIGraphNode<T> extends GUINode<T, RoundedNodeContainer<StackPane>>
 
     @Override
     public void connect(VGraphNodeCommunication<T> node) {
+        if (node == this) getContent().showSelfRefArrow();
         arrows.connect(node.asGUINode());
     }
 
     @Override
     public void disconnect(VGraphNodeCommunication<T> node) {
+        if (node == this) getContent().hideSelfRefArrow();
         arrows.disconnect(node.asGUINode());
     }
 
