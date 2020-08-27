@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.robot.MouseRobot;
 import osl2.Evanston;
+import osl2.datastructures.VArray;
 import osl2.view.ui.EvanstonWindow;
 import osl2.view.ui.PlaySpace;
 
@@ -52,6 +53,7 @@ public class PlayspaceTest extends ApplicationTest {
     public void resetScene(){
         tmpScene.setRoot(new Pane());
     }
+
     @Test public void click_on_PlayPause()  {
 
         clickOn(point(playSpace.getPlayAutoButton().getLayoutX(),playSpace.getPlayAutoButton().getLayoutY()));
@@ -65,8 +67,11 @@ public class PlayspaceTest extends ApplicationTest {
         Assert.assertTrue(!evanstonWindow.getPlayController().getIsRunning());
     }
 
-    //TODO How to check this ?
+    //TODO How to check this ? Use 2 Threads, one creates new Array and sets the Value, second thread clicks on playStep. if both are finished get the setted value
     @Test public void click_on_playStep(){
+        VArray<Integer> vArray = new VArray<>(2, "Array");
+        vArray.setValue(0,0);
+
         clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
         Assert.assertTrue(true);
     }
