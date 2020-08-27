@@ -290,6 +290,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         return this.playSpace;
     }
     public SideBar getSideBar(){ return this.sideBar; }
+    public SplitPane getSidePlaySplitter(){return this.sidePlaySplitter;}
 
 
 }

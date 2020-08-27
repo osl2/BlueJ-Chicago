@@ -55,7 +55,6 @@ public class PlayspaceTest extends ApplicationTest {
     }
 
     @Test public void click_on_PlayPause()  {
-
         clickOn(point(playSpace.getPlayAutoButton().getLayoutX(),playSpace.getPlayAutoButton().getLayoutY()));
         Assert.assertTrue(evanstonWindow.getPlayController().getIsRunning());
         clickOn(point(playSpace.getPlayAutoButton().getLayoutX(),playSpace.getPlayAutoButton().getLayoutY()));
@@ -83,6 +82,8 @@ public class PlayspaceTest extends ApplicationTest {
         dropTo(point(playSpace.getPlaySpeedSlider().getLayoutX()+(playSpace.getPlaySpeedSlider().getWidth()/2),playSpace.getPlaySpeedSlider().getLayoutY()+playSpace.getButtonBox().getHeight()));
         Assert.assertTrue(evanstonWindow.getPlayController().getDelay()<1000);
     }
+
+
 
 
 }

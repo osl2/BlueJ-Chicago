@@ -2,9 +2,22 @@ package UI.Tests;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.junit.After;
+import org.testfx.framework.junit.ApplicationTest;
+import osl2.datastructures.VArray;
+import osl2.view.ui.EvanstonWindow;
+import osl2.view.ui.PlaySpace;
+import osl2.view.ui.SideBar;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.matcher.control.LabeledMatchers.hasText;
+
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,9 +29,10 @@ import osl2.view.ui.EvanstonWindow;
 import osl2.view.ui.SideBar;
 
 
+
 public class SideBarTest extends ApplicationTest {
 
-    private SideBar sideBar;
+    private SplitPane splitPane;
     private EvanstonWindow evanstonWindow;
     private Scene tmpScene;
 
@@ -26,18 +40,17 @@ public class SideBarTest extends ApplicationTest {
     @Override
     public void start(Stage stage) {
         evanstonWindow = EvanstonWindow.getInstance();
-        sideBar = evanstonWindow.getSideBar();
-        Parent sceneRoot = sideBar;
-        tmpScene = new Scene(sceneRoot, Screen.getPrimary().getBounds().getMaxX()/4, Screen.getPrimary().getBounds().getMaxY()/2);
+        splitPane = evanstonWindow.getVerticalSplitter();
+        Parent sceneRoot = splitPane;
+        tmpScene = new Scene(sceneRoot, Screen.getPrimary().getBounds().getMaxX()/2, Screen.getPrimary().getBounds().getMaxY()/2);
         stage.setScene(tmpScene);
         stage.show();
     }
 
-    @BeforeAll
-    public void mouse_To_Default() {
-        moveTo(point(0, 0));
-        VArray<Integer> vArray = new VArray<>(2, "Array");
-
+    @Test
+    public void test1() {
+        TestThread thread = new TestThread();
+        thread.run();
     }
 
     @After
@@ -45,9 +58,13 @@ public class SideBarTest extends ApplicationTest {
         tmpScene.setRoot(new Pane());
     }
 
-    @Test
-    public void button_Exists() {
-        System.out.println(sideBar.getItems().size());
-        Assert.assertTrue(true);
+    class TestThread extends Thread {
+        public void run() {
+            VArray<Integer> array = new VArray(5);
+            array.setValue(1, 3);
+            array.setValue(2, 4);
+            array.setValue(3, 5);
+
+        }
     }
 }
