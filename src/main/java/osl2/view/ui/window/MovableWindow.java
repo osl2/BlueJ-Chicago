@@ -134,4 +134,6 @@ public class MovableWindow extends Draggable {
         }
         this.body.setBodyHeight(height);
     }
+
+    public boolean getIsHighlighted(){return this.isHighlighted;}
 }

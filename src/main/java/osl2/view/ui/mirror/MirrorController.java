@@ -81,6 +81,10 @@ public class MirrorController implements IMirrorController {
         return this.button;
     }
 
+    public Mirror getMirror(){return this.mirror;}
+
+    public boolean getIsMirrorOpen(){return this.isMirrorOpen;}
+
     @Override
     public void setName(String name) {
         this.button.setText(name);
