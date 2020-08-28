@@ -4,50 +4,70 @@ import osl2.datastructures.EvanstonDatastructure;
 import osl2.messaging.datastructures.nodey.VNodeCommunication;
 import osl2.messaging.datastructures.nodey.VNodeyDatastructureCommunication;
 
+/**
+ * Represents a datastructure that uses nodes.
+ *
+ * @param <T>
+ *         the datatype used in the datastructure
+ * @param <K>
+ *         the communication used
+ * @param <C>
+ *         the communication type used
+ * @param <N>
+ *         the type of node
+ */
+public abstract class NodeyDatastructure<T, K extends VNodeyDatastructureCommunication<T, C>,
+        C extends VNodeCommunication<T>, N extends VNode<C, T>> extends EvanstonDatastructure<K> {
 
-public abstract class NodeyDatastructure<T, NodeyComm extends VNodeyDatastructureCommunication<T, CommType>, CommType extends VNodeCommunication<T>, NodeType extends VNode<CommType, T>> extends EvanstonDatastructure<NodeyComm> {
+  /**
+   * Creates a new Node.
+   *
+   * @return a new node of NodeType
+   */
+  protected abstract N createNode();
 
-    /**
-     * creates a new Node
-     * @return a new node of NodeType
-     */
-    protected abstract NodeType createNode();
+  /**
+   * Registers the communication.
+   *
+   * @param comm
+   *         the communication
+   */
+  protected final void registerNodeVisualization(C comm) {
+    getBroadcaster().sendWithDelay(b -> b.addGUINode(comm));
+  }
 
-    /**
-     * registers the communication
-     * @param comm the communication
-     */
-    final protected void registerNodeVisualization(CommType comm) {
-        getBroadcaster().sendWithDelay(b -> b.addGUINode(comm));
-    }
+  /**
+   * Creates a new node.
+   *
+   * @return the newly created node
+   */
+  public final N addNode() {
+    return createNode();
+  }
 
-    /**
-     * creates a new node
-     * @return the newly created node
-     */
-    final public NodeType addNode() {
-        return createNode();
-    }
+  /**
+   * Creates a new node with a value.
+   *
+   * @param value
+   *         the value
+   * @return the new node
+   */
+  public final N addNode(T value) {
+    N node = createNode();
+    node.setValue(value);
+    return node;
+  }
 
-    /**
-     * creates a new node with a value
-     * @param value the value
-     * @return the new node.
-     */
-    final public NodeType addNode(T value) {
-        NodeType node = createNode();
-        node.setValue(value);
-        return node;
-    }
-
-    /**
-     * removes the node
-     * @param node the node to be remoeved
-     * @return true if the operation was successful.
-     */
-    public boolean removeNode(NodeType node) {
-        node.disconnectAll();
-        getBroadcaster().sendWithDelay(b -> b.removeGUINode(node.getCommunication()));
-        return true;
-    }
+  /**
+   * Removes the node.
+   *
+   * @param node
+   *         the node to be removed
+   * @return true if the operation was successful
+   */
+  public boolean removeNode(N node) {
+    node.disconnectAll();
+    getBroadcaster().sendWithDelay(b -> b.removeGUINode(node.getCommunication()));
+    return true;
+  }
 }

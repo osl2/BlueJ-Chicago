@@ -1,10 +1,10 @@
 package osl2.messaging.datastructures.nodey;
 
 import osl2.messaging.datastructures.DatastructureCommunication;
-import osl2.view.datastructures.nodey.GUINode;
+import osl2.view.datastructures.nodey.GuiNode;
 
 public interface VNodeCommunication<T> extends DatastructureCommunication {
-    GUINode asGUINode();
+  GuiNode asGuiNode();
 
-    void valueChange(T newValue);
+  void valueChange(T newValue);
 }

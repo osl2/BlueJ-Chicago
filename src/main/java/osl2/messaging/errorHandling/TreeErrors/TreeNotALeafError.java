@@ -6,27 +6,29 @@ import osl2.view.ui.localisation.LanguageController;
 public class TreeNotALeafError<T> implements UserError {
 
 
-    private final String name = "TreeNotALeaf";
-    private LanguageController languageController;
-    private T child;
+  private final String name = "TreeNotALeaf";
+  private final LanguageController languageController;
+  private final T child;
 
-    /**
-     * Creates a new TreeNotALeafError.
-     * @param child The child, thats not a leaf.
-     */
-    public TreeNotALeafError(T child){
-        this.languageController = LanguageController.getLanguageController();
-        this.child = child;
-    }
+  /**
+   * Creates a new TreeNotALeafError.
+   *
+   * @param child
+   *         The child, thats not a leaf.
+   */
+  public TreeNotALeafError(T child) {
+    this.languageController = LanguageController.getLanguageController();
+    this.child = child;
+  }
 
-    @Override
-    public String getErrorName() {
-        return this.name;
-    }
+  @Override
+  public String getErrorName() {
+    return this.name;
+  }
 
-    @Override
-    public String getErrorContent() {
-        return languageController.getMessage(this.name + "Child") + child.toString() + "\n"
-                + languageController.getMessage(this.name + "NotLeaf");
-    }
+  @Override
+  public String getErrorContent() {
+    return languageController.getMessage(this.name + "Child") + child.toString() + "\n"
+            + languageController.getMessage(this.name + "NotLeaf");
+  }
 }

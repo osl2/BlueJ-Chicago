@@ -7,37 +7,40 @@ import javafx.scene.layout.Pane;
  */
 public class Floormat extends Pane {
 
-    /**
-     * Creates a new Floormat.
-     */
-    public Floormat() {
-        super();
-    }
+  /**
+   * Creates a new Floormat.
+   */
+  public Floormat() {
+    super();
+  }
 
-    /**
-     * Adds a new draggable to the floormat.
-     *
-     * @param draggable The draggable which will be added.
-     */
-    public void addDraggable(Draggable draggable) {
-        getChildren().add(draggable);
-    }
+  /**
+   * Adds a new draggable to the floormat.
+   *
+   * @param draggable
+   *         The draggable which will be added.
+   */
+  public void addDraggable(Draggable draggable) {
+    getChildren().add(draggable);
+  }
 
-    /**
-     * Removes a new draggable to the floormat.
-     *
-     * @param draggable The draggable which will be removed.
-     */
-    public void removeDraggable(Draggable draggable) {
-        getChildren().remove(draggable);
-    }
+  /**
+   * Removes a new draggable to the floormat.
+   *
+   * @param draggable
+   *         The draggable which will be removed.
+   */
+  public void removeDraggable(Draggable draggable) {
+    getChildren().remove(draggable);
+  }
 
-    /**
-     * Raises a draggable in the Floormat to the front.
-     *
-     * @param draggable The draggable which will be raised.
-     */
-    public void raise(Draggable draggable) {
-        draggable.toFront();
-    }
+  /**
+   * Raises a draggable in the Floormat to the front.
+   *
+   * @param draggable
+   *         The draggable which will be raised.
+   */
+  public void raise(Draggable draggable) {
+    draggable.toFront();
+  }
 }

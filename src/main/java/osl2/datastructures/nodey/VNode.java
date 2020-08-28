@@ -4,66 +4,79 @@ import osl2.messaging.Broadcaster;
 import osl2.messaging.datastructures.nodey.VNodeCommunication;
 
 /**
- * Represent a generic node
- * @param <Comm> the communication of the node
- * @param <T> the type of the node
+ * Represent a generic node.
+ *
+ * @param <C>
+ *         the communication of the node
+ * @param <T>
+ *         the type of the node
  */
-public abstract class VNode<Comm extends VNodeCommunication, T> {
-    private final Broadcaster<Comm> broadcaster;
-    private T value;
+public abstract class VNode<C extends VNodeCommunication<T>, T> {
 
-    /**
-     * Constructor for the VNode. Initialize visualization, broadcaster and registers itself in the parent DS.
-     * @param parentDS
-     */
-    public VNode(NodeyDatastructure parentDS) {
-        Comm comm = createVisualization();
-        this.broadcaster = new Broadcaster<>(comm);
-        parentDS.registerNodeVisualization(comm);
-    }
+  private final Broadcaster<C> broadcaster;
+  private T value;
 
-    /**
-     * gets the broadcaster
-     * @return the broadcaster of this node
-     */
-    protected Broadcaster<Comm> getBroadcaster() {
-        return broadcaster;
-    }
+  /**
+   * Constructor for the VNode. Initialize visualization, broadcaster and registers itself in the
+   * parent DS.
+   *
+   * @param parentDS
+   *         the parent {@link NodeyDatastructure}
+   */
+  public VNode(NodeyDatastructure parentDS) {
+    C c = createVisualization();
+    this.broadcaster = new Broadcaster<>(c);
+    parentDS.registerNodeVisualization(c);
+  }
 
-    /**
-     * get the Value of this node
-     * @return the value of this node
-     */
-    public T getValue() {
-        return value;
-    }
+  /**
+   * Gets the broadcaster.
+   *
+   * @return the broadcaster of this node
+   */
+  protected Broadcaster<C> getBroadcaster() {
+    return broadcaster;
+  }
 
-    /**
-     * sets new value for this node
-     * @param newValue the newValue for this node
-     */
-    public void setValue(T newValue) {
-        this.value = newValue;
-        getBroadcaster().sendWithDelay(b -> b.valueChange(newValue));
-    }
+  /**
+   * Get the Value of this node.
+   *
+   * @return the value of this node
+   */
+  public T getValue() {
+    return value;
+  }
 
-    public abstract void disconnectAll();
+  /**
+   * Sets new value for this node.
+   *
+   * @param newValue
+   *         the newValue for this node
+   */
+  public void setValue(T newValue) {
+    this.value = newValue;
+    getBroadcaster().sendWithDelay(b -> b.valueChange(newValue));
+  }
 
-    /**
-     * Gets the broadcasters corresponding client
-     * @return Communication
-     */
-    public Comm getCorrespondent() {
-        return getBroadcaster().getClient();
-    }
+  public abstract void disconnectAll();
 
-    protected abstract Comm createVisualization();
+  /**
+   * Gets the broadcasters corresponding client.
+   *
+   * @return Communication
+   */
+  public C getCorrespondent() {
+    return getBroadcaster().getClient();
+  }
 
-    /**
-     * Gets the communication
-     * @return Communication
-     */
-    Comm getCommunication() {
-        return broadcaster.getClient();
-    }
+  protected abstract C createVisualization();
+
+  /**
+   * Gets the communication.
+   *
+   * @return the communication
+   */
+  C getCommunication() {
+    return broadcaster.getClient();
+  }
 }
