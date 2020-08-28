@@ -27,7 +27,7 @@ import org.testfx.framework.junit.ApplicationTest;
 import osl2.datastructures.VArray;
 import osl2.view.ui.EvanstonWindow;
 import osl2.view.ui.SideBar;
-
+import osl2.view.ui.mirror.MirrorButton;
 
 
 public class SideBarTest extends ApplicationTest {
@@ -35,7 +35,7 @@ public class SideBarTest extends ApplicationTest {
     private SplitPane splitPane;
     private EvanstonWindow evanstonWindow;
     private Scene tmpScene;
-
+    private Thread thread;
 
     @Override
     public void start(Stage stage) {
@@ -48,9 +48,19 @@ public class SideBarTest extends ApplicationTest {
     }
 
     @Test
-    public void test1() {
-        TestThread thread = new TestThread();
+    public void mirrorButton_adding() {
+        thread = new TestThread();
         thread.start();
+        MirrorButton button;
+        boolean added = true;
+        clickOn(point(evanstonWindow.getPlayspace().getPlayStepButton().getLayoutX(), evanstonWindow.getPlayspace().getPlayStepButton().getLayoutY()));
+        button =  evanstonWindow.getSideBar().getItems().get(0);
+        if(!button.getName().equals("Array")){
+            added = false;
+
+        }
+        Assert.assertTrue(added);
+
     }
 
     @After
@@ -61,10 +71,6 @@ public class SideBarTest extends ApplicationTest {
     class TestThread extends Thread {
         public void run() {
             VArray<Integer> array = new VArray(5);
-            array.setValue(1, 3);
-            array.setValue(2, 4);
-            array.setValue(3, 5);
-
         }
     }
 }
