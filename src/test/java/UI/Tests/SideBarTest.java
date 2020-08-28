@@ -2,11 +2,13 @@ package UI.Tests;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.junit.After;
 import org.testfx.framework.junit.ApplicationTest;
+import osl2.datastructures.VArray;
 import osl2.view.ui.EvanstonWindow;
 import osl2.view.ui.PlaySpace;
 import osl2.view.ui.SideBar;
@@ -19,46 +21,56 @@ import javafx.stage.Screen;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.testfx.framework.junit.ApplicationTest;
-import org.testfx.robot.Motion;
-
-import javafx.scene.control.Button;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import org.junit.Test;
-import org.testfx.robot.MouseRobot;
-import osl2.Evanston;
+import osl2.datastructures.VArray;
 import osl2.view.ui.EvanstonWindow;
-import osl2.view.ui.PlaySpace;
-
-import java.awt.geom.Point2D;
-
-public class SideBarTest {
+import osl2.view.ui.SideBar;
+import osl2.view.ui.mirror.MirrorButton;
 
 
+public class SideBarTest extends ApplicationTest {
 
+    private SplitPane splitPane;
+    private EvanstonWindow evanstonWindow;
+    private Scene tmpScene;
+    private Thread thread;
 
-    public class PlayspaceTest extends ApplicationTest {
+    @Override
+    public void start(Stage stage) {
+        evanstonWindow = EvanstonWindow.getInstance();
+        splitPane = evanstonWindow.getVerticalSplitter();
+        Parent sceneRoot = splitPane;
+        tmpScene = new Scene(sceneRoot, Screen.getPrimary().getBounds().getMaxX()/2, Screen.getPrimary().getBounds().getMaxY()/2);
+        stage.setScene(tmpScene);
+        stage.show();
+    }
 
-        private SideBar sideBar;
-        private EvanstonWindow evanstonWindow;
-        private Scene tmpScene;
+    @Test
+    public void mirrorButton_adding() {
+        thread = new TestThread();
+        thread.start();
+        MirrorButton button;
+        boolean added = true;
+        clickOn(point(evanstonWindow.getPlayspace().getPlayStepButton().getLayoutX(), evanstonWindow.getPlayspace().getPlayStepButton().getLayoutY()));
+        button =  evanstonWindow.getSideBar().getItems().get(0);
+        if(!button.getName().equals("Array")){
+            added = false;
 
-
-
-        @Override public void start(Stage stage) {
-            evanstonWindow = EvanstonWindow.getInstance();
-            sideBar = evanstonWindow.getSideBar();
-            Parent sceneRoot = sideBar;
-            tmpScene = new Scene(sceneRoot, Screen.getPrimary().getBounds().getMaxX(), Screen.getPrimary().getBounds().getMaxY());
-            stage.setScene(tmpScene);
-            stage.show();
         }
-        @After
-        public void resetScene(){
-            tmpScene.setRoot(new Pane());
+        Assert.assertTrue(added);
+
+    }
+
+    @After
+    public void resetScene() {
+        tmpScene.setRoot(new Pane());
+    }
+
+    class TestThread extends Thread {
+        public void run() {
+            VArray<Integer> array = new VArray(5);
         }
-}}
+    }
+}

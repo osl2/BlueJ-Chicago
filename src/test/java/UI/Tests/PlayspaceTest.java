@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.robot.MouseRobot;
 import osl2.Evanston;
+import osl2.datastructures.VArray;
 import osl2.view.ui.EvanstonWindow;
 import osl2.view.ui.PlaySpace;
 
@@ -31,6 +32,8 @@ public class PlayspaceTest extends ApplicationTest {
     private PlaySpace playSpace;
     private EvanstonWindow evanstonWindow;
     private Scene tmpScene;
+    private TestThread thread;
+    final int x = 0;
 
 
 
@@ -43,6 +46,7 @@ public class PlayspaceTest extends ApplicationTest {
         stage.show();
     }
 
+
     @Before
     public void resetMouse(){
         moveTo(point(0,0));
@@ -52,32 +56,71 @@ public class PlayspaceTest extends ApplicationTest {
     public void resetScene(){
         tmpScene.setRoot(new Pane());
     }
-    @Test public void click_on_PlayPause()  {
 
+    @Test public void click_on_PlayPause()  {
         clickOn(point(playSpace.getPlayAutoButton().getLayoutX(),playSpace.getPlayAutoButton().getLayoutY()));
         Assert.assertTrue(evanstonWindow.getPlayController().getIsRunning());
         clickOn(point(playSpace.getPlayAutoButton().getLayoutX(),playSpace.getPlayAutoButton().getLayoutY()));
 
     }
     //TODO
-    @Test public void fast_auto_toggle(){
+        @Test public void fast_auto_toggle(){
         doubleClickOn(point(playSpace.getPlayAutoButton().getLayoutX(),playSpace.getPlayAutoButton().getLayoutY()));
         Assert.assertTrue(!evanstonWindow.getPlayController().getIsRunning());
     }
 
-    //TODO How to check this ?
+    //TODO How to check this ? Use 2 Threads, one creates new Array and sets the Value, second thread clicks on playStep. if both are finished get the setted value
     @Test public void click_on_playStep(){
+        thread = new TestThread();
+        thread.start();
+        boolean setCorrectly = true;
+
         clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
-        Assert.assertTrue(true);
+        if(!thread.getArray().getValue(0).equals(3)){
+            setCorrectly = false;
+        }
+        moveTo(point(0,0));
+        clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
+        if(!thread.getArray().getValue(1).equals(22)){
+            setCorrectly = false;
+        }
+        moveTo(point(0,0));
+        clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
+        if(!thread.getArray().getValue(2).equals(8)){
+            setCorrectly = false;
+        }
+
+        Assert.assertTrue(setCorrectly);
     }
+
+    class TestThread extends Thread {
+        VArray<Integer> array;
+        public void run() {
+            array = new VArray(5);
+            set();
+        }
+        public void set(){
+            array.setValue(0,3);
+            array.setValue(1,22);
+            array.setValue(2,8);
+        }
+        public VArray getArray(){
+            return array;
+        }
+
+    }
+
+
 
     @Test public void drag_scale_bar(){
 
 
         drag(point(playSpace.getPlaySpeedSlider().getLayoutX(),playSpace.getPlaySpeedSlider().getLayoutY()+playSpace.getButtonBox().getHeight()));
         dropTo(point(playSpace.getPlaySpeedSlider().getLayoutX()+(playSpace.getPlaySpeedSlider().getWidth()/2),playSpace.getPlaySpeedSlider().getLayoutY()+playSpace.getButtonBox().getHeight()));
-        Assert.assertTrue(evanstonWindow.getPlayController().getDelay()<1000);
+        Assert.assertTrue(evanstonWindow.getPlayController().getDelay()<600);
     }
+
+
 
 
 }
