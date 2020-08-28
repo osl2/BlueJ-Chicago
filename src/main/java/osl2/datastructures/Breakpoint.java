@@ -7,10 +7,10 @@ import osl2.Evanston;
  */
 public class Breakpoint {
 
-  /**
-   * pauses the visualization
-   */
-  public static void block() {
-    Evanston.getPlayController().pause();
-  }
+    /**
+     * pauses the visualization
+     */
+    public static void block() {
+        Evanston.getPlayController().pause();
+    }
 }

@@ -1,5 +1,6 @@
 package osl2.messaging.errorHandling.GraphErrors;
 
+import javafx.scene.canvas.GraphicsContext;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
@@ -8,23 +9,23 @@ import osl2.view.ui.localisation.LanguageController;
  */
 public class GraphRecursionError implements UserError {
 
-  private final String name = "GraphRecursion";
-  private final LanguageController languageController;
+    private final String name = "GraphRecursion";
+    private LanguageController languageController;
 
-  /**
-   * Creates a new GraphRecursionError.
-   */
-  public GraphRecursionError() {
-    this.languageController = LanguageController.getLanguageController();
-  }
+    /**
+     * Creates a new GraphRecursionError.
+     */
+    public GraphRecursionError(){
+        this.languageController = LanguageController.getLanguageController();
+    }
 
-  @Override
-  public String getErrorName() {
-    return this.name;
-  }
+    @Override
+    public String getErrorName() {
+        return this.name;
+    }
 
-  @Override
-  public String getErrorContent() {
-    return languageController.getMessage(this.name);
-  }
+    @Override
+    public String getErrorContent() {
+        return languageController.getMessage(this.name);
+    }
 }

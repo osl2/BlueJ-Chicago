@@ -1,4 +1,4 @@
-package java.osl2.datastructures;
+package osl2.datastructures;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
