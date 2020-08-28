@@ -32,6 +32,7 @@ public class PlayspaceTest extends ApplicationTest {
     private PlaySpace playSpace;
     private EvanstonWindow evanstonWindow;
     private Scene tmpScene;
+    private TestThread thread;
 
 
 
@@ -39,7 +40,7 @@ public class PlayspaceTest extends ApplicationTest {
         evanstonWindow = EvanstonWindow.getInstance();
         playSpace = evanstonWindow.getPlayspace();
         Parent sceneRoot = playSpace;
-        tmpScene = new Scene(sceneRoot, Screen.getPrimary().getBounds().getMaxX(), Screen.getPrimary().getBounds().getMaxY());
+        tmpScene = new Scene(sceneRoot, Screen.getPrimary().getBounds().getMaxX()/2, Screen.getPrimary().getBounds().getMaxY()/2);
         stage.setScene(tmpScene);
         stage.show();
     }
@@ -47,6 +48,8 @@ public class PlayspaceTest extends ApplicationTest {
     @Before
     public void resetMouse(){
         moveTo(point(0,0));
+        thread = new TestThread();
+        thread.run();
     }
 
     @After
@@ -68,11 +71,21 @@ public class PlayspaceTest extends ApplicationTest {
 
     //TODO How to check this ? Use 2 Threads, one creates new Array and sets the Value, second thread clicks on playStep. if both are finished get the setted value
     @Test public void click_on_playStep(){
-        VArray<Integer> vArray = new VArray<>(2, "Array");
-        vArray.setValue(0,0);
-
+        moveTo(point(10,10));
         clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
-        Assert.assertTrue(true);
+        Assert.assertTrue(thread.getArray().getValue(1).equals(3));
+    }
+
+    class TestThread extends Thread {
+        VArray<Integer> array;
+        public void run() {
+            array = new VArray(5);
+
+        }
+        public VArray getArray(){
+            return array;
+        }
+
     }
 
     @Test public void drag_scale_bar(){
