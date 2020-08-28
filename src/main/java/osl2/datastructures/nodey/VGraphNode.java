@@ -1,26 +1,27 @@
 package osl2.datastructures.nodey;
 
+import java.util.HashSet;
+import java.util.Set;
 import osl2.messaging.datastructures.VGraphNodeCommunication;
 import osl2.messaging.errorHandling.GraphErrors.GraphRecursionError;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.nodey.GUIGraphNode;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * The class for a Node inside a graph.
  *
- * @param <T> The datatype of the node.
+ * @param <T>
+ *         The datatype of the node.
  */
 public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
-    private Set<VGraphNode<T>> edges = new HashSet<>();
-    private NodeyDatastructure parentDS;
+    private final Set<VGraphNode<T>> edges = new HashSet<>();
+    private final NodeyDatastructure parentDS;
 
     /**
      * Creates a new GraphNode.
      *
-     * @param parentDS The parent of the graphnode.
+     * @param parentDS
+     *         The parent of the graphnode.
      */
     public VGraphNode(NodeyDatastructure parentDS) {
         super(parentDS);
@@ -29,7 +30,7 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
 
     @Override
     public void setValue(T newValue) {
-        if(newValue.equals(parentDS)){
+        if (newValue.equals(parentDS)) {
             UserError userError = new GraphRecursionError();
             getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
         }
@@ -38,7 +39,9 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
 
     /**
      * adds a node to the edges of this node
-     * @param node the node to add to the edge list
+     *
+     * @param node
+     *         the node to add to the edge list
      */
     public void connect(VGraphNode<T> node) {
         edges.add(node);
@@ -47,7 +50,9 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
 
     /**
      * removes a node from the edge list
-     * @param node the node to be removed from the edge list
+     *
+     * @param node
+     *         the node to be removed from the edge list
      */
     public void disconnect(VGraphNode<T> node) {
         edges.remove(node);
@@ -64,7 +69,9 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
 
     /**
      * checks if the node is contained in the edges list
-     * @param node the node to be checked
+     *
+     * @param node
+     *         the node to be checked
      * @return true if it is included in the edge list. Else false.
      */
     public boolean contains(VGraphNode<T> node) {

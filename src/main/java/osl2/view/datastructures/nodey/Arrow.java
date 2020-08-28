@@ -6,7 +6,6 @@ import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.shape.Line;
-import osl2.view.ui.draggable.Floormat;
 
 
 public class Arrow extends Group {
@@ -18,9 +17,13 @@ public class Arrow extends Group {
 
     /**
      * Creates a new arrow.
-     * @param overlay The overlay in which it will be in.
-     * @param from Where the arrow starts.
-     * @param to Where the arrow points to.
+     *
+     * @param overlay
+     *         The overlay in which it will be in.
+     * @param from
+     *         Where the arrow starts.
+     * @param to
+     *         Where the arrow points to.
      */
     public Arrow(ArrowOverlay overlay, ArrowPane from, GUINode to) {
         this.from = from;

@@ -5,21 +5,26 @@ import osl2.view.ui.localisation.LanguageController;
 
 /**
  * The class for when a edge in a graph allready exist.
- * @param <T> The datatype of the edge.
+ *
+ * @param <T>
+ *         The datatype of the edge.
  */
 public class GraphEdgeExistingError<T> implements UserError {
 
     private final String name = "GraphEdgeExisting";
-    private T start;
-    private T end;
-    private LanguageController languageController;
+    private final T start;
+    private final T end;
+    private final LanguageController languageController;
 
     /**
      * Creates a new GraphEdgeExistingError.
-     * @param start The startnode for the edge.
-     * @param end The endnode for the edge.
+     *
+     * @param start
+     *         The startnode for the edge.
+     * @param end
+     *         The endnode for the edge.
      */
-    public GraphEdgeExistingError(T start , T end){
+    public GraphEdgeExistingError(T start, T end) {
         this.languageController = LanguageController.getLanguageController();
         this.start = start;
         this.end = end;

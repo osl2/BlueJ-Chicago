@@ -1,11 +1,10 @@
 package osl2.view.inlinerepresentation;
 
+import java.util.Map;
+import java.util.WeakHashMap;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
-import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * A inline representation for the elements inside an datastructure.
@@ -16,8 +15,10 @@ public class InlineRepresentation extends Button {    // TODO: Make this a click
     /**
      * Creates a new InlineRepresentation.
      *
-     * @param text   The text of the inlinerepresentation.
-     * @param action The action which happens, when the InlineRepresentation
+     * @param text
+     *         The text of the inlinerepresentation.
+     * @param action
+     *         The action which happens, when the InlineRepresentation
      */
     public InlineRepresentation(String text, Runnable action) {
         super(text);
@@ -26,17 +27,12 @@ public class InlineRepresentation extends Button {    // TODO: Make this a click
     }
 
     /**
-     * Sets the style of the inlinerepresentation.
-     */
-    private void setStyle(){
-        this.getStyleClass().add("inline-representation-font");
-    }
-
-    /**
      * Associates an action to a object.
      *
-     * @param value  The object.
-     * @param action The action.
+     * @param value
+     *         The object.
+     * @param action
+     *         The action.
      */
     public static void registerInlineAction(Object value, Runnable action) {
         inlineRepresentationFunctions.put(value, action);
@@ -45,7 +41,8 @@ public class InlineRepresentation extends Button {    // TODO: Make this a click
     /**
      * Returns a new Inlinerepresentation if the value is a Datastructure. Else just a label with the content.
      *
-     * @param value The value which will be added to the visualization.
+     * @param value
+     *         The value which will be added to the visualization.
      * @return A Inlinerepresentation or a Label.
      */
     public static Node get(Object value) {
@@ -53,5 +50,12 @@ public class InlineRepresentation extends Button {    // TODO: Make this a click
         Runnable action = inlineRepresentationFunctions.get(value);
         if (action != null) return new InlineRepresentation(text, action);
         else return new Label(text);
+    }
+
+    /**
+     * Sets the style of the inlinerepresentation.
+     */
+    private void setStyle() {
+        this.getStyleClass().add("inline-representation-font");
     }
 }

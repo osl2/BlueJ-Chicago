@@ -40,8 +40,10 @@ public class SettingsWindow {
     /**
      * Creates a new Setting Window.
      *
-     * @param settingsController The Controller for this window.
-     * @param owner              The Mainwindow to which this window is the settings window.
+     * @param settingsController
+     *         The Controller for this window.
+     * @param owner
+     *         The Mainwindow to which this window is the settings window.
      */
     public SettingsWindow(SettingsController settingsController, Stage owner) {
         this.settingsController = settingsController;
@@ -216,7 +218,8 @@ public class SettingsWindow {
     /**
      * Sets the title of the Settingspane.
      *
-     * @param title The new title.
+     * @param title
+     *         The new title.
      */
     private void setTitle(String title) {
         settingStage.setTitle(title);
@@ -225,7 +228,8 @@ public class SettingsWindow {
     /**
      * Sets the font size used in this window.
      *
-     * @param newFontSize - the new {@link FontSize} to be used
+     * @param newFontSize
+     *         - the new {@link FontSize} to be used
      */
     public void setFontSize(FontSize newFontSize) {
         removeAllFontSizes();
@@ -244,7 +248,8 @@ public class SettingsWindow {
     /**
      * Sets the theme used in the window.
      *
-     * @param newTheme - the new {@link Theme} to be used
+     * @param newTheme
+     *         - the new {@link Theme} to be used
      */
     public void setTheme(Theme newTheme) {
         removeAllThemes();
@@ -264,7 +269,7 @@ public class SettingsWindow {
     /**
      * Sets the new language in the SettingsWindow.
      */
-    public void setWithNewLanguage(){
+    public void setWithNewLanguage() {
         setTitle(LanguageController.getLanguageController().getMessage("SettingsWindowTitle"));
         setFontSizeLanguage();
         setThemeLanguage();
@@ -273,7 +278,7 @@ public class SettingsWindow {
     /**
      * Sets the language for the font size region.
      */
-    private void setFontSizeLanguage(){
+    private void setFontSizeLanguage() {
         setFontLabel.setText(LanguageController.getLanguageController().getMessage("FontSetting"));
         fontSmall.setText(LanguageController.getLanguageController().getMessage("FontSettingSmall"));
         fontMedium.setText(LanguageController.getLanguageController().getMessage("FontSettingMedium"));
@@ -283,7 +288,7 @@ public class SettingsWindow {
     /**
      * Sets the language for the theme region.
      */
-    private void setThemeLanguage(){
+    private void setThemeLanguage() {
         setThemeLabel.setText(LanguageController.getLanguageController().getMessage("ThemeSetting"));
         themeBright.setText(LanguageController.getLanguageController().getMessage("ThemeSettingBright"));
         themeDark.setText(LanguageController.getLanguageController().getMessage("ThemeSettingDark"));

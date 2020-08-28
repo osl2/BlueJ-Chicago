@@ -106,7 +106,8 @@ public class MovableWindow extends Draggable {
     /**
      * Sets the width of the mirror.
      *
-     * @param width - the new width
+     * @param width
+     *         - the new width
      */
     public void setWidth(double width) {
         if (width > head.getHeadMinWidth() + HEAD_MIN_WIDTH_OFFSET) {
@@ -126,7 +127,8 @@ public class MovableWindow extends Draggable {
     /**
      * Sets the height of the body.
      *
-     * @param height - the new height
+     * @param height
+     *         - the new height
      */
     public void setBodyHeight(double height) {
         if (height < MIN_BODY_HEIGHT) {

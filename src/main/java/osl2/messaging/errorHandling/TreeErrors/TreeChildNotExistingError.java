@@ -5,21 +5,26 @@ import osl2.view.ui.localisation.LanguageController;
 
 /**
  * The class for a Error, when the child doesn't exist.
- * @param <T> The type of the node.
+ *
+ * @param <T>
+ *         The type of the node.
  */
 public class TreeChildNotExistingError<T> implements UserError {
 
     private final String name = "TreeChildNotExisting";
-    private LanguageController languageController;
-    private T parent;
-    private T child;
+    private final LanguageController languageController;
+    private final T parent;
+    private final T child;
 
     /**
      * Creates a new TreeChildNotExistingError.
-     * @param parent The parent.
-     * @param child The nonexisting child.
+     *
+     * @param parent
+     *         The parent.
+     * @param child
+     *         The nonexisting child.
      */
-    public TreeChildNotExistingError(T parent, T child){
+    public TreeChildNotExistingError(T parent, T child) {
         this.languageController = LanguageController.getLanguageController();
         this.parent = parent;
         this.child = child;

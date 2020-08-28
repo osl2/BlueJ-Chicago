@@ -1,16 +1,14 @@
 package osl2.view.datastructures.nodey;
 
-import javafx.scene.layout.Pane;
-import osl2.view.ui.EvanstonWindow;
-
 import java.util.HashMap;
 import java.util.Map;
+import javafx.scene.layout.Pane;
 
 /**
  * The Arrowpane is the place where an arrow starts.
  */
 public class ArrowPane extends Pane {
-    private Map<GUINode, Arrow> arrows = new HashMap<>();
+    private final Map<GUINode, Arrow> arrows = new HashMap<>();
     private ArrowOverlay overlay;
 
     /**
@@ -22,7 +20,9 @@ public class ArrowPane extends Pane {
 
     /**
      * Sets the overlay for this ArrowPane.
-     * @param overlay The overlay.
+     *
+     * @param overlay
+     *         The overlay.
      */
     public void setOverlay(ArrowOverlay overlay) {
         if (this.overlay != null) clear();
@@ -31,11 +31,13 @@ public class ArrowPane extends Pane {
 
     /**
      * Connects the ArrowPane to a node.
-     * @param node The node.
+     *
+     * @param node
+     *         The node.
      */
     public void connect(GUINode node) {
         if (!arrows.containsKey(node)) {
-            Arrow arrow = new Arrow(overlay,this, node);
+            Arrow arrow = new Arrow(overlay, this, node);
             arrows.put(node, arrow);
             overlay.addArrow(arrow);
         }
@@ -43,7 +45,9 @@ public class ArrowPane extends Pane {
 
     /**
      * Disconnects the ArrowPane from a node.
-     * @param node The node.
+     *
+     * @param node
+     *         The node.
      */
     public void disconnect(GUINode node) {
         Arrow arrow = arrows.get(node);

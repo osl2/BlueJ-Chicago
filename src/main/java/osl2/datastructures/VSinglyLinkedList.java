@@ -4,14 +4,11 @@ import osl2.datastructures.nodey.VLinkedList;
 import osl2.datastructures.nodey.VLinkedListNode;
 import osl2.messaging.datastructures.nodey.VLinkedListCommunication;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
 /**
  * Represent singly linked list
- * @param <T> the type of the singly linked list
+ *
+ * @param <T>
+ *         the type of the singly linked list
  */
 public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunication<T>> {
 
@@ -62,7 +59,7 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
 
     @Override
     public void add(int i, T t) {
-        if(i < 0 || i > size()) {
+        if (i < 0 || i > size()) {
             // TODO raise exception
             throw new IndexOutOfBoundsException();
         }
@@ -75,7 +72,7 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
             setHead(node);
         } else {
             VLinkedListNode<T> it = getHead();
-            while (i --> 1) {
+            while (i-- > 1) {
                 if (it == null) {
                     outOfBoundsError(i);
                     return;

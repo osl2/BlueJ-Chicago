@@ -6,7 +6,8 @@ import osl2.view.inlinerepresentation.InlineRepresentation;
 /**
  * The class for a visualized array.
  *
- * @param <T> The datatype of the array.
+ * @param <T>
+ *         The datatype of the array.
  */
 public class GUIArray<T> extends GUISequential implements VArrayCommunication<T> {
 

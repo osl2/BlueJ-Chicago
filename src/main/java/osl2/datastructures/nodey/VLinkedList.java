@@ -1,20 +1,25 @@
 package osl2.datastructures.nodey;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import osl2.messaging.datastructures.nodey.VLinkedListCommunication;
 import osl2.messaging.datastructures.nodey.VLinkedListNodeCommunication;
-import osl2.messaging.errorHandling.ArrayErrors.ArrayIndexOutOfBoundsError;
 import osl2.messaging.errorHandling.ListErrors.ListIndexOutOfBoundsError;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUILinkedList;
 
-import java.lang.reflect.Array;
-import java.util.*;
-
 /**
  * an abstract class to represent an linked list
- * @param <T> the type of the linked list
- * @param <Comm> the communication type of the linked list
+ *
+ * @param <T>
+ *         the type of the linked list
+ * @param <Comm>
+ *         the communication type of the linked list
  */
 public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> extends NodeyDatastructure<T, Comm, VLinkedListNodeCommunication<T>, VLinkedListNode<T>> implements List<T> {
     private final VLinkedListNode<Object> head;
@@ -44,7 +49,9 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
     }
 
-    protected VLinkedListNode<T> getHead() { return (VLinkedListNode<T>) head.getForward(); }
+    protected VLinkedListNode<T> getHead() {
+        return (VLinkedListNode<T>) head.getForward();
+    }
 
     protected void setHead(VLinkedListNode<T> newHead) {
         this.head.setForward((VLinkedListNode<Object>) newHead);
@@ -165,7 +172,7 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
 
     @Override
     public boolean addAll(int i, Collection<? extends T> collection) {
-        if(i < 0 || i > size()) {
+        if (i < 0 || i > size()) {
             // TODO raise exception
             return false;
         }

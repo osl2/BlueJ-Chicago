@@ -1,9 +1,8 @@
 package osl2.messaging;
 
-import javafx.application.Platform;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import javafx.application.Platform;
 
 /**
  * The controller for the play functionalities.
@@ -53,7 +52,8 @@ public class PlayController {
     /**
      * Sets the delay for the playing.
      *
-     * @param delay The delay.
+     * @param delay
+     *         The delay.
      */
     public void setProgramDelay(long delay) {
         this.delay = delay;
@@ -82,7 +82,9 @@ public class PlayController {
 
     /**
      * Adds a new PropertyChangeListener.
-     * @param listener The PropertyChangeListener.
+     *
+     * @param listener
+     *         The PropertyChangeListener.
      */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
@@ -90,16 +92,19 @@ public class PlayController {
 
     /**
      * Removes a PropertyChangeListener.
-     * @param listener The PropertyChangeListener.
+     *
+     * @param listener
+     *         The PropertyChangeListener.
      */
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         pcs.removePropertyChangeListener(listener);
     }
 
-    public boolean getIsRunning(){
+    public boolean getIsRunning() {
         return isProgramRunning;
     }
-    public long getDelay(){
+
+    public long getDelay() {
         return delay;
     }
 }

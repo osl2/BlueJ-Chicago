@@ -20,6 +20,7 @@ public class Draggable extends Group {
 
     /**
      * Returns the floormat for the draggable.
+     *
      * @return The floormat.
      */
     private Floormat getFloormat() {
@@ -52,7 +53,8 @@ public class Draggable extends Group {
     /**
      * Sets the XOffset of this draggable.
      *
-     * @param xOffset The value which will be the XOffset.
+     * @param xOffset
+     *         The value which will be the XOffset.
      */
     public void setXOffset(double xOffset) {
         this.xOffset = xOffset;
@@ -70,7 +72,8 @@ public class Draggable extends Group {
     /**
      * Sets the YOffset of this draggable.
      *
-     * @param yOffset The value which will be the YOffset.
+     * @param yOffset
+     *         The value which will be the YOffset.
      */
     public void setYOffset(double yOffset) {
         this.yOffset = yOffset;

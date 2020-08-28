@@ -16,7 +16,8 @@ public class SettingsController {
     /**
      * Creates a new SettingsController.
      *
-     * @param evanstonWindow The Mainwindow to which the settings belong.
+     * @param evanstonWindow
+     *         The Mainwindow to which the settings belong.
      */
     public SettingsController(EvanstonWindow evanstonWindow) {
         this.evanstonWindow = evanstonWindow;
@@ -33,8 +34,10 @@ public class SettingsController {
     /**
      * Sets the language which was selected.
      *
-     * @param language       The new language.
-     * @param settingsWindow The settingswindow to which it is part of.
+     * @param language
+     *         The new language.
+     * @param settingsWindow
+     *         The settingswindow to which it is part of.
      */
     public void setLanguage(LANGUAGES language, SettingsWindow settingsWindow) {
         LanguageController.getLanguageController().setMessages(language);
@@ -44,7 +47,8 @@ public class SettingsController {
     /**
      * Changes the font size in the application.
      *
-     * @param fontSize - the new {@link FontSize} to be used
+     * @param fontSize
+     *         - the new {@link FontSize} to be used
      */
     public void setFontSize(FontSize fontSize) {
         this.evanstonWindow.setFontSize(fontSize);
@@ -54,7 +58,8 @@ public class SettingsController {
     /**
      * Changes the theme of the application.
      *
-     * @param theme - the new {@link Theme} to be used
+     * @param theme
+     *         - the new {@link Theme} to be used
      */
     public void setTheme(Theme theme) {
         this.evanstonWindow.setTheme(theme);

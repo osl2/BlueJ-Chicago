@@ -16,7 +16,8 @@ public class VDirectedGraph<T> extends VGraph<T> {
     /**
      * Creates a new {@link VDirectedGraph} with a name.
      *
-     * @param name - the name of the graph
+     * @param name
+     *         - the name of the graph
      */
     public VDirectedGraph(String name) {
         super(name);

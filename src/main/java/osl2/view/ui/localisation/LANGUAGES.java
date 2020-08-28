@@ -7,14 +7,16 @@ public enum LANGUAGES {
     ENGLISH_US("en", "US"),
     GERMAN("de", "DE");
 
-    private String language;
-    private String country;
+    private final String language;
+    private final String country;
 
     /**
      * Creates a new language.
      *
-     * @param language The language string.
-     * @param country  The country string.
+     * @param language
+     *         The language string.
+     * @param country
+     *         The country string.
      */
     LANGUAGES(String language, String country) {
         this.language = language;

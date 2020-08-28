@@ -5,7 +5,9 @@ import osl2.view.datastructures.nodey.GUILinkedListNode;
 
 /**
  * Represents a node of an linked list
- * @param <T> the type of the node
+ *
+ * @param <T>
+ *         the type of the node
  */
 public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T> {
     private VLinkedListNode<T> forward;
@@ -18,6 +20,7 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
 
     /**
      * get forward node
+     *
      * @return the next node
      */
     public VLinkedListNode<T> getForward() {
@@ -26,7 +29,9 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
 
     /**
      * set the forward node
-     * @param forward the node to be set as backward node
+     *
+     * @param forward
+     *         the node to be set as backward node
      */
     public void setForward(VLinkedListNode<T> forward) {
         if (forward != getForward()) {
@@ -37,6 +42,7 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
 
     /**
      * get backward node
+     *
      * @return the node before the current node
      */
     public VLinkedListNode<T> getBackward() {
@@ -45,7 +51,9 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
 
     /**
      * set the backward node
-     * @param backward the node to be set as backward node
+     *
+     * @param backward
+     *         the node to be set as backward node
      */
     public void setBackward(VLinkedListNode<T> backward) {
         if (backward != getBackward()) {

@@ -12,16 +12,19 @@ public class ArrayIndexOutOfBoundsError implements UserError {
     private final int userIndex;
     private final int MAX_INDEX;
     private final String name = "ArrayIndexOutOfBounds";
-    private LanguageController languageController;
+    private final LanguageController languageController;
 
     /**
      * Creates a new ArrayIndexOutOfBoundsError.
-     * @param userIndex The Index the user used.
-     * @param MAX_INDEX The max index for the error.
+     *
+     * @param userIndex
+     *         The Index the user used.
+     * @param MAX_INDEX
+     *         The max index for the error.
      */
     public ArrayIndexOutOfBoundsError(int userIndex, int MAX_INDEX) {
         this.userIndex = userIndex;
-        if(MAX_INDEX < 0){
+        if (MAX_INDEX < 0) {
             this.MAX_INDEX = 0;
         } else {
             this.MAX_INDEX = MAX_INDEX;

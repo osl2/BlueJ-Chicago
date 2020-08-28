@@ -5,18 +5,22 @@ import osl2.view.ui.localisation.LanguageController;
 
 /**
  * The class for when a node in a graph doesn't exist.
- * @param <T> The type of the node.
+ *
+ * @param <T>
+ *         The type of the node.
  */
 public class GraphNodeNotExistingError<T> implements UserError {
     private final String name = "GraphNodeNotExisting";
-    private T node;
-    private LanguageController languageController;
+    private final T node;
+    private final LanguageController languageController;
 
     /**
      * Creates a new GraphNodeNotExistingError.
-     * @param node The node.
+     *
+     * @param node
+     *         The node.
      */
-    public GraphNodeNotExistingError(T node){
+    public GraphNodeNotExistingError(T node) {
         this.languageController = LanguageController.getLanguageController();
         this.node = node;
     }

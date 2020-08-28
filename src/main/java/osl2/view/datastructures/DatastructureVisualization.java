@@ -2,30 +2,28 @@ package osl2.view.datastructures;
 
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import osl2.Evanston;
 import osl2.messaging.datastructures.DatastructureCommunication;
 import osl2.messaging.errorHandling.UserError;
-import osl2.view.inlinerepresentation.InlineRepresentation;
 import osl2.view.ui.localisation.LanguageController;
 import osl2.view.ui.mirror.IMirrorController;
-
-import java.util.LinkedList;
 
 /**
  * The abstract class for all visualization.
  *
- * @param <T> The contents of the visualization.
+ * @param <T>
+ *         The contents of the visualization.
  */
 public abstract class DatastructureVisualization<T extends Node> implements DatastructureCommunication {
     private final T contents;
+    private final LanguageController languageController;
     private String name;
     private IMirrorController mirrorController;
-    private LanguageController languageController;
 
     /**
      * Creates a new visualization.
      *
-     * @param contents The contents of the visualisation.
+     * @param contents
+     *         The contents of the visualisation.
      */
     public DatastructureVisualization(T contents) {
         this.name = "???";
@@ -45,7 +43,8 @@ public abstract class DatastructureVisualization<T extends Node> implements Data
     /**
      * Sets the name for the visualisation.
      *
-     * @param name The name.
+     * @param name
+     *         The name.
      */
     public void setName(String name) {
         this.name = name;
@@ -75,7 +74,8 @@ public abstract class DatastructureVisualization<T extends Node> implements Data
     /**
      * Sets the MirrorController for this Visualisation.
      *
-     * @param mirrorController The MirrorController.
+     * @param mirrorController
+     *         The MirrorController.
      */
     public void setMirrorController(IMirrorController mirrorController) {
         this.mirrorController = mirrorController;
@@ -89,7 +89,8 @@ public abstract class DatastructureVisualization<T extends Node> implements Data
     /**
      * Shows the error in an errorpane.
      *
-     * @param userError The error of the datastructure.
+     * @param userError
+     *         The error of the datastructure.
      */
     private void showErrorDialog(UserError userError) {
         Alert alert = new Alert(Alert.AlertType.WARNING);

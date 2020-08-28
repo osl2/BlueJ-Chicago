@@ -1,6 +1,8 @@
 package osl2;
 
-import osl2.datastructures.*;
+import osl2.datastructures.EvanstonDatastructure;
+import osl2.datastructures.VDirectedGraph;
+import osl2.datastructures.VTree;
 import osl2.datastructures.nodey.VGraphNode;
 import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
@@ -11,7 +13,8 @@ public class Evanston {
     /**
      * Opens the visualization.
      *
-     * @param datastructure The datastructure.
+     * @param datastructure
+     *         The datastructure.
      * @return The Broadcaster.
      */
     public static Broadcaster openVisualization(EvanstonDatastructure datastructure) {
@@ -38,7 +41,8 @@ public class Evanston {
     /**
      * Main method.
      *
-     * @param args Args parameter.
+     * @param args
+     *         Args parameter.
      */
     public static void main(String[] args) {
         start();

@@ -5,19 +5,23 @@ import osl2.view.ui.localisation.LanguageController;
 
 /**
  * Creates a NullPointer Error when trying to get.
- * @param <T> The key datatype of the map.
+ *
+ * @param <T>
+ *         The key datatype of the map.
  */
 public class MapNullPointerGetError<T> implements UserError {
 
     private final String name = "MapNullPointerGet";
-    private T key;
-    private LanguageController languageController;
+    private final T key;
+    private final LanguageController languageController;
 
     /**
      * Creates a new MappNullPointerGetError
-     * @param key The key that can't be removed.
+     *
+     * @param key
+     *         The key that can't be removed.
      */
-    public MapNullPointerGetError(T key){
+    public MapNullPointerGetError(T key) {
         this.key = key;
         this.languageController = LanguageController.getLanguageController();
     }

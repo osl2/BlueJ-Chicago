@@ -15,9 +15,12 @@ public class MovableWindowBody extends VBox {
     /**
      * Creates a new body.
      *
-     * @param window   Window to which it belongs.
-     * @param title    The title of the head.
-     * @param contents The contents of its body.
+     * @param window
+     *         Window to which it belongs.
+     * @param title
+     *         The title of the head.
+     * @param contents
+     *         The contents of its body.
      */
     public MovableWindowBody(MovableWindow window, Node title, Node contents) {
         this.head = new MovableWindowHead(window, title);
@@ -110,7 +113,8 @@ public class MovableWindowBody extends VBox {
     /**
      * Sets the width of the body.
      *
-     * @param width - the new width
+     * @param width
+     *         - the new width
      */
     public void setBodyWidth(double width) {
         this.scroll.setMinWidth(width);
@@ -129,7 +133,8 @@ public class MovableWindowBody extends VBox {
     /**
      * Sets the height of the body.
      *
-     * @param height - the new height
+     * @param height
+     *         - the new height
      */
     public void setBodyHeight(double height) {
         this.scroll.setMinHeight(height);

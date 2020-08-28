@@ -4,13 +4,16 @@ package osl2.datastructures.nodey;
  * represents an Edge
  */
 public class VEdge {
-    private VNode start;
-    private VNode end;
+    private final VNode start;
+    private final VNode end;
 
     /**
      * The constructor for the VEdge
-     * @param start the start node of the edge
-     * @param end the end node of the edge
+     *
+     * @param start
+     *         the start node of the edge
+     * @param end
+     *         the end node of the edge
      */
     public VEdge(VNode start, VNode end) {
         this.start = start;
@@ -29,9 +32,7 @@ public class VEdge {
 
         final VEdge other = (VEdge) obj;
 
-        if(start.equals(other.start) && end.equals(other.end))
-            return true;
-        return false;
+        return start.equals(other.start) && end.equals(other.end);
     }
 
     @Override

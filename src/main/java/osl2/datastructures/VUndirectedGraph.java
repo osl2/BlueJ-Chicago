@@ -21,7 +21,8 @@ public class VUndirectedGraph<T> extends VGraph<T> {
     /**
      * Creates a new {@link VUndirectedGraph} with a name.
      *
-     * @param name - the name of the graph
+     * @param name
+     *         - the name of the graph
      */
     public VUndirectedGraph(String name) {
         super(name);

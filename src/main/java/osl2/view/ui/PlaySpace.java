@@ -8,7 +8,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import osl2.Evanston;
-import osl2.view.ui.localisation.LanguageController;
 
 /**
  * The Playspace is the space in the View were the user can play the changes in his Datastructures.
@@ -181,17 +180,19 @@ public class PlaySpace extends Pane {
         this.playAutoButton.setGraphic(new ImageView("images/pause.jpg"));
     }
 
-    public Button getPlayAutoButton(){
+    public Button getPlayAutoButton() {
         return playAutoButton;
     }
-    public Button getPlayStepButton(){
+
+    public Button getPlayStepButton() {
         return playStepButton;
     }
 
-    public Slider getPlaySpeedSlider(){
+    public Slider getPlaySpeedSlider() {
         return playSpeedSlider;
     }
-    public HBox getButtonBox(){
+
+    public HBox getButtonBox() {
         return buttonBox;
     }
 }

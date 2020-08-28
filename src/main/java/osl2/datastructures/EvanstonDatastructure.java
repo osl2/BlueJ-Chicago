@@ -7,6 +7,7 @@ import osl2.view.datastructures.DatastructureVisualization;
 
 /**
  * Represents the data structures
+ *
  * @param <B>
  */
 public abstract class EvanstonDatastructure<B extends DatastructureCommunication> {
@@ -26,6 +27,7 @@ public abstract class EvanstonDatastructure<B extends DatastructureCommunication
 
     /**
      * gets the broadcaster
+     *
      * @return broadcaster
      */
     protected Broadcaster<B> getBroadcaster() {
@@ -36,6 +38,7 @@ public abstract class EvanstonDatastructure<B extends DatastructureCommunication
 
     /**
      * gets the name of the DS
+     *
      * @return string which represents the name
      */
     public String getName() {
@@ -44,7 +47,9 @@ public abstract class EvanstonDatastructure<B extends DatastructureCommunication
 
     /**
      * sets the name of the DS
-     * @param name the new name to set for the DS
+     *
+     * @param name
+     *         the new name to set for the DS
      */
     public void setName(String name) {
         this.name = name;
@@ -54,6 +59,7 @@ public abstract class EvanstonDatastructure<B extends DatastructureCommunication
 
     /**
      * gets the type of DS. Used for the titlebar.
+     *
      * @return a String representing the type of the DS
      */
     public abstract String getDatastructureType();

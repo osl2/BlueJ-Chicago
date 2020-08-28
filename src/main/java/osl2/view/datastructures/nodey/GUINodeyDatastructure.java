@@ -9,8 +9,10 @@ import osl2.view.ui.draggable.Floormat;
 /**
  * The visualisation class for a nodey datastructure like graph, tree or lists.
  *
- * @param <T>        The datatype of the nodey datastructure.
- * @param <CommType> The communicationinterface.
+ * @param <T>
+ *         The datatype of the nodey datastructure.
+ * @param <CommType>
+ *         The communicationinterface.
  */
 public abstract class GUINodeyDatastructure<T, CommType extends VNodeCommunication<T>> extends DatastructureVisualization<StackPane> implements VNodeyDatastructureCommunication<T, CommType> {
     private final Floormat floormat;

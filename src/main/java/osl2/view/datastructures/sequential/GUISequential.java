@@ -16,8 +16,10 @@ public abstract class GUISequential extends DatastructureVisualization<HBox> {
     /**
      * Creates a new sequential visualisation.
      *
-     * @param firstRowLabel  The name of the first row.
-     * @param secondRowLabel The name of the second row
+     * @param firstRowLabel
+     *         The name of the first row.
+     * @param secondRowLabel
+     *         The name of the second row
      */
     protected GUISequential(String firstRowLabel, String secondRowLabel) {
         super(new HBox());
@@ -37,8 +39,10 @@ public abstract class GUISequential extends DatastructureVisualization<HBox> {
     /**
      * Puts an element at index i with a value for the first row.
      *
-     * @param i     The index.
-     * @param value The value.
+     * @param i
+     *         The index.
+     * @param value
+     *         The value.
      */
     protected void putElement(int i, Node value) {
         Label label = new Label("" + i);
@@ -50,9 +54,12 @@ public abstract class GUISequential extends DatastructureVisualization<HBox> {
     /**
      * Puts an element with values for both rows at an index.
      *
-     * @param i     The index.
-     * @param above The value for the row above.
-     * @param below The value for the row below.
+     * @param i
+     *         The index.
+     * @param above
+     *         The value for the row above.
+     * @param below
+     *         The value for the row below.
      */
     protected void putElement(int i, Node above, Node below) {
         while (getContents().getChildren().size() - 1 <= i) {
@@ -64,7 +71,8 @@ public abstract class GUISequential extends DatastructureVisualization<HBox> {
     /**
      * Removes an element at an index.
      *
-     * @param i The index, where the element should be removed.
+     * @param i
+     *         The index, where the element should be removed.
      */
     protected void removeElement(int i) {
         if (i >= 0 && i < getContents().getChildren().size() - 1) {
@@ -80,8 +88,10 @@ public abstract class GUISequential extends DatastructureVisualization<HBox> {
         /**
          * Creates a new entry.
          *
-         * @param above The value for the first row.
-         * @param below The value for the second row.
+         * @param above
+         *         The value for the first row.
+         * @param below
+         *         The value for the second row.
          */
         public GUISequentialEntry(Node above, Node below) {
             setSpacing(5);

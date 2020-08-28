@@ -16,7 +16,9 @@ public class ArrowOverlay extends Pane {
 
     /**
      * Adds a new arrow.
-     * @param arrow The new arrow.
+     *
+     * @param arrow
+     *         The new arrow.
      */
     public void addArrow(Arrow arrow) {
         getChildren().add(arrow);
@@ -24,7 +26,9 @@ public class ArrowOverlay extends Pane {
 
     /**
      * Removes a arrow from the overlay.
-     * @param arrow The arrow.
+     *
+     * @param arrow
+     *         The arrow.
      */
     public void removeArrow(Arrow arrow) {
         getChildren().remove(arrow);

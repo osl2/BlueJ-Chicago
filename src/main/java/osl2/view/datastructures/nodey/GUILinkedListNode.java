@@ -8,7 +8,9 @@ import osl2.view.inlinerepresentation.InlineRepresentation;
 
 /**
  * A Linked List node in the gui.
- * @param <T> The datatype of the contents.
+ *
+ * @param <T>
+ *         The datatype of the contents.
  */
 public class GUILinkedListNode<T> extends GUINode<T, VBox> implements VLinkedListNodeCommunication<T> {
     private final VBox layoutBox;

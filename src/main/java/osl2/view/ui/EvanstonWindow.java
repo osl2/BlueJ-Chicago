@@ -1,12 +1,13 @@
 package osl2.view.ui;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import osl2.Evanston;
 import osl2.datastructures.EvanstonDatastructure;
@@ -16,9 +17,6 @@ import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.inlinerepresentation.InlineRepresentation;
 import osl2.view.ui.mirror.MirrorController;
 import osl2.view.ui.settings.SettingsController;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 /**
  * The MainWindow in which the MainRegion, PlaySpace and Sidebar will be in.
@@ -34,14 +32,14 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     private final PlayController playController;
     private final ScrollPane mainRegionScrollContainer;
     private final double WINDOW_SIZE_BUFFER = 15;
+    private final double VERTICAL_DIVIDER_POSITION = 0;
+    private final MainRegion mainRegion;
     private Stage evanstonStage;
     private Scene scene;
-    private MainRegion mainRegion;
     private PlaySpace playSpace;
     private SideBar sideBar;
     private SplitPane verticalSplitter;
     private SplitPane sidePlaySplitter;
-    private final double VERTICAL_DIVIDER_POSITION = 0;
 
     /**
      * Creates a new evanston window.
@@ -64,10 +62,11 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
 
     /**
      * Returns the EvanstonWindow singleton.
+     *
      * @return The EvanstonWindow singleton.
      */
     public static EvanstonWindow getInstance() {
-        if(singletonInstance==null){
+        if (singletonInstance == null) {
             singletonInstance = new EvanstonWindow();
         }
         return singletonInstance;
@@ -98,7 +97,8 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     /**
      * Creates a new visualization and mirror for a Datastructure.
      *
-     * @param datastructure the Datastructure wich will be visualized.
+     * @param datastructure
+     *         the Datastructure wich will be visualized.
      * @return The Broadcaster for this visualizisation.
      */
     public Broadcaster openVisualization(EvanstonDatastructure datastructure) {
@@ -123,12 +123,12 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     /**
      * Starts the JavaFX Visualisation.
      *
-     * @param stage The Stage in wich it will be started.
+     * @param stage
+     *         The Stage in wich it will be started.
      */
     @Override
     public void start(Stage stage) {
         stage.setTitle("Evanston Live Data Visualizer");
-
 
 
         scene = new Scene(verticalSplitter, WIDTH, HEIGHT);
@@ -154,6 +154,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
 
     /**
      * Returns the stage.
+     *
      * @return The stage.
      */
     public Stage getStage() {
@@ -227,7 +228,8 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     /**
      * Sets the font size used in the application.
      *
-     * @param newFontSize - the new {@link FontSize} to be used
+     * @param newFontSize
+     *         - the new {@link FontSize} to be used
      */
     public void setFontSize(FontSize newFontSize) {
         removeAllFontSizes();
@@ -246,7 +248,8 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     /**
      * Sets the theme used in the window.
      *
-     * @param newTheme - the new {@link Theme} to be used
+     * @param newTheme
+     *         - the new {@link Theme} to be used
      */
     public void setTheme(Theme newTheme) {
         removeAllThemes();
@@ -280,16 +283,22 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
             }
         }
     }
-    public MainRegion getMainRegion(){
+
+    public MainRegion getMainRegion() {
         return this.mainRegion;
     }
-    public SplitPane getVerticalSplitter(){
+
+    public SplitPane getVerticalSplitter() {
         return verticalSplitter;
     }
-    public PlaySpace getPlayspace(){
+
+    public PlaySpace getPlayspace() {
         return this.playSpace;
     }
-    public SideBar getSideBar(){ return this.sideBar; }
+
+    public SideBar getSideBar() {
+        return this.sideBar;
+    }
 
 
 }

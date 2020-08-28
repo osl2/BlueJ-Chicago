@@ -27,8 +27,10 @@ public class MovableWindowHead extends HBox {
     /**
      * Creates a new WindowHead
      *
-     * @param window The Window to which it belongs.
-     * @param title  The title of the head.
+     * @param window
+     *         The Window to which it belongs.
+     * @param title
+     *         The title of the head.
      */
     public MovableWindowHead(MovableWindow window, Node title) {
         setStyle();
@@ -73,7 +75,8 @@ public class MovableWindowHead extends HBox {
     /**
      * This methods links the buttons for maximizing/minimizing and closing to the controller.
      *
-     * @param controller The controller to which the buttons will be linked.
+     * @param controller
+     *         The controller to which the buttons will be linked.
      */
     public void linkBtnToController(IMirrorController controller) {
         hideButton = new ActionButton("X", controller::hideMirror);
@@ -110,8 +113,8 @@ public class MovableWindowHead extends HBox {
     /**
      * Changes the minMaxButtons appearance.
      */
-    public void changeMinMaxButton(){
-        if(isMax){
+    public void changeMinMaxButton() {
+        if (isMax) {
             minMaxButton.setText("^");
             isMax = false;
         } else {
@@ -122,7 +125,9 @@ public class MovableWindowHead extends HBox {
 
     /**
      * Sets the title of the head.
-     * @param name THe title.
+     *
+     * @param name
+     *         THe title.
      */
     public void setTitle(String name) {
         getChildren().removeAll(title, spacer, buttons);
@@ -148,8 +153,10 @@ public class MovableWindowHead extends HBox {
         /**
          * Creates a new ActionButton
          *
-         * @param text     The text of the Button.
-         * @param runnable The Runnable wich determines what the button does.
+         * @param text
+         *         The text of the Button.
+         * @param runnable
+         *         The Runnable wich determines what the button does.
          */
         public ActionButton(String text, Runnable runnable) {
             this.setText(text);

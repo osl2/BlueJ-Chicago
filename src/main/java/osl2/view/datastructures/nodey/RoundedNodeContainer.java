@@ -8,17 +8,19 @@ import javafx.scene.layout.Pane;
 /**
  * A rounded node with element.
  *
- * @param <T> The nodetype of the contents.
+ * @param <T>
+ *         The nodetype of the contents.
  */
 public class RoundedNodeContainer<T extends Node> extends HBox {
     private final Pane pane;
-    private ImageView arrow;
+    private final ImageView arrow;
     private T contents;
 
     /**
      * Creates a new rounded node.
      *
-     * @param contents The contents of the new node.
+     * @param contents
+     *         The contents of the new node.
      */
     public RoundedNodeContainer(T contents) {
         this.pane = new Pane();
@@ -41,6 +43,17 @@ public class RoundedNodeContainer<T extends Node> extends HBox {
         return contents;
     }
 
+    /**
+     * Sets the content fot he node.
+     *
+     * @param newContents
+     *         The new contents.
+     */
+    public void setContents(T newContents) {
+        this.contents = newContents;
+        pane.getChildren().set(0, newContents);
+    }
+
     public void showSelfRefArrow() {
         if (!getChildren().contains(arrow)) getChildren().add(arrow);
     }
@@ -51,15 +64,5 @@ public class RoundedNodeContainer<T extends Node> extends HBox {
 
     protected void setContentStyle(String style) {
         pane.setStyle(style);
-    }
-
-    /**
-     * Sets the content fot he node.
-     *
-     * @param newContents The new contents.
-     */
-    public void setContents(T newContents) {
-        this.contents = newContents;
-        pane.getChildren().set(0, newContents);
     }
 }

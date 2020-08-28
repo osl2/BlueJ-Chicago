@@ -6,14 +6,16 @@ import osl2.view.ui.localisation.LanguageController;
 public class TreeNoParentError<T> implements UserError {
 
     private final String name = "TreeNoParent";
-    private LanguageController languageController;
-    private T child;
+    private final LanguageController languageController;
+    private final T child;
 
     /**
      * Creates a new TreeNoParentError.
-     * @param child The nonexisting child.
+     *
+     * @param child
+     *         The nonexisting child.
      */
-    public TreeNoParentError( T child){
+    public TreeNoParentError(T child) {
         this.languageController = LanguageController.getLanguageController();
         this.child = child;
     }

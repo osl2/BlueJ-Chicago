@@ -9,13 +9,16 @@ public abstract class NodeyDatastructure<T, NodeyComm extends VNodeyDatastructur
 
     /**
      * creates a new Node
+     *
      * @return a new node of NodeType
      */
     protected abstract NodeType createNode();
 
     /**
      * registers the communication
-     * @param comm the communication
+     *
+     * @param comm
+     *         the communication
      */
     final protected void registerNodeVisualization(CommType comm) {
         getBroadcaster().sendWithDelay(b -> b.addGUINode(comm));
@@ -23,6 +26,7 @@ public abstract class NodeyDatastructure<T, NodeyComm extends VNodeyDatastructur
 
     /**
      * creates a new node
+     *
      * @return the newly created node
      */
     final public NodeType addNode() {
@@ -31,7 +35,9 @@ public abstract class NodeyDatastructure<T, NodeyComm extends VNodeyDatastructur
 
     /**
      * creates a new node with a value
-     * @param value the value
+     *
+     * @param value
+     *         the value
      * @return the new node.
      */
     final public NodeType addNode(T value) {
@@ -42,7 +48,9 @@ public abstract class NodeyDatastructure<T, NodeyComm extends VNodeyDatastructur
 
     /**
      * removes the node
-     * @param node the node to be remoeved
+     *
+     * @param node
+     *         the node to be remoeved
      * @return true if the operation was successful.
      */
     public boolean removeNode(NodeType node) {

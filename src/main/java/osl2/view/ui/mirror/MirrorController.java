@@ -17,9 +17,13 @@ public class MirrorController implements IMirrorController {
 
     /**
      * Creates a new MirrorController.
-     * @param visualization The visualisation of the Mirror.
-     * @param mainRegion The Mainregion where the Mirror will be in.
-     * @param sideBar The Sidebar where the MirrorButtons will be in
+     *
+     * @param visualization
+     *         The visualisation of the Mirror.
+     * @param mainRegion
+     *         The Mainregion where the Mirror will be in.
+     * @param sideBar
+     *         The Sidebar where the MirrorButtons will be in
      */
     public MirrorController(DatastructureVisualization visualization, Floormat mainRegion, SideBar sideBar) {
         this.isMirrorOpen = false;

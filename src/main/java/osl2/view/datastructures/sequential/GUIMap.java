@@ -1,16 +1,17 @@
 package osl2.view.datastructures.sequential;
 
-import osl2.messaging.datastructures.VMapCommunication;
-import osl2.view.inlinerepresentation.InlineRepresentation;
-
 import java.util.ArrayList;
 import java.util.List;
+import osl2.messaging.datastructures.VMapCommunication;
+import osl2.view.inlinerepresentation.InlineRepresentation;
 
 /**
  * The class for a visualized map.
  *
- * @param <K> The datatype for the key.
- * @param <V> The datatype for the value.
+ * @param <K>
+ *         The datatype for the key.
+ * @param <V>
+ *         The datatype for the value.
  */
 public class GUIMap<K, V> extends GUISequential implements VMapCommunication<K, V> {
 

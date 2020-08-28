@@ -6,7 +6,8 @@ import osl2.Evanston;
 /**
  * A broadcaster which sends messages to one client.
  *
- * @param <B> The clienttypes.
+ * @param <B>
+ *         The clienttypes.
  */
 public class Broadcaster<B> {
     private final B client;
@@ -14,7 +15,8 @@ public class Broadcaster<B> {
     /**
      * Creates a new broadcaster for one client.
      *
-     * @param client The client for this Broadcaster.
+     * @param client
+     *         The client for this Broadcaster.
      */
     public Broadcaster(B client) {
         this.client = client;
@@ -32,7 +34,8 @@ public class Broadcaster<B> {
     /**
      * Sends a message to the client.
      *
-     * @param message The message for the client.
+     * @param message
+     *         The message for the client.
      */
     public void send(BroadcasterMessage<B> message) {
         Platform.runLater(() -> message.send(client));  // Run in other thread
@@ -41,7 +44,8 @@ public class Broadcaster<B> {
     /**
      * Sends a message to the client with a delay. Delay accordingly to the speed in the PlayController.
      *
-     * @param message he message for the client.
+     * @param message
+     *         he message for the client.
      */
     public void sendWithDelay(BroadcasterMessage<B> message) {
         send(message);
@@ -51,7 +55,8 @@ public class Broadcaster<B> {
     /**
      * Sends a message with a pouse and a block.
      *
-     * @param message - the message to be send
+     * @param message
+     *         - the message to be send
      */
     public void sendWithPauseBlock(BroadcasterMessage<B> message) {
         Evanston.getPlayController().pause();

@@ -41,7 +41,8 @@ public class LanguageController {
     /**
      * Sets all the messages for the language.
      *
-     * @param language The language for the messages.
+     * @param language
+     *         The language for the messages.
      */
     public void setMessages(LANGUAGES language) {
         locale = new Locale(language.getLanguage(), language.getCountry());
@@ -51,7 +52,8 @@ public class LanguageController {
     /**
      * Returns the message in the language.
      *
-     * @param name The messagekey.
+     * @param name
+     *         The messagekey.
      * @return The message.
      */
     public String getMessage(String name) {

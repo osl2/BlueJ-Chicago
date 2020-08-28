@@ -10,14 +10,16 @@ public interface DatastructureCommunication {
     /**
      * Handles error of the datastructure.
      *
-     * @param userError The error which should be handeled.
+     * @param userError
+     *         The error which should be handeled.
      */
     void handleError(UserError userError);
 
     /**
      * Sets the Name of the datastructure.
      *
-     * @param name The name of the datastructure.
+     * @param name
+     *         The name of the datastructure.
      */
     void setName(String name);
 }

@@ -1,5 +1,7 @@
 package osl2.datastructures;
 
+import java.util.Arrays;
+import java.util.Collection;
 import osl2.datastructures.interfaces.IArray;
 import osl2.messaging.datastructures.VArrayCommunication;
 import osl2.messaging.errorHandling.ArrayErrors.ArrayIndexOutOfBoundsError;
@@ -7,12 +9,11 @@ import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.sequential.GUIArray;
 
-import java.util.Arrays;
-import java.util.Collection;
-
 /**
  * Represents an array.
- * @param <T> The type of the array
+ *
+ * @param <T>
+ *         The type of the array
  */
 public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> implements IArray<T> {
     private final T[] values;
@@ -59,7 +60,7 @@ public class VArray<T> extends EvanstonDatastructure<VArrayCommunication<T>> imp
 
     public boolean contains(T value) {
         for (T e : values) {
-            if (e==null ? value==null : e.equals(value)) return true;
+            if (e == null ? value == null : e.equals(value)) return true;
         }
         return false;
     }

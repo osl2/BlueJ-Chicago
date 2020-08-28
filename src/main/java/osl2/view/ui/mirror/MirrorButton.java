@@ -7,14 +7,16 @@ import javafx.scene.control.Button;
  */
 public class MirrorButton extends Button {
 
-    private IMirrorController mirrorController;
-    private String name;
+    private final IMirrorController mirrorController;
+    private final String name;
 
     /**
      * The Constructor of the MirrorButton. Here the name and mirrorController field will be set to its values.
      *
-     * @param name,             this String will be the text of MirrorButton
-     * @param mirrorController, The MirrorController will be linked to the actions of this MirrorButton
+     * @param name,
+     *         this String will be the text of MirrorButton
+     * @param mirrorController,
+     *         The MirrorController will be linked to the actions of this MirrorButton
      */
     public MirrorButton(String name, IMirrorController mirrorController) {
         this.mirrorController = mirrorController;

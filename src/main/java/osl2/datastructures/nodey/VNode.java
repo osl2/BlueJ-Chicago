@@ -5,8 +5,11 @@ import osl2.messaging.datastructures.nodey.VNodeCommunication;
 
 /**
  * Represent a generic node
- * @param <Comm> the communication of the node
- * @param <T> the type of the node
+ *
+ * @param <Comm>
+ *         the communication of the node
+ * @param <T>
+ *         the type of the node
  */
 public abstract class VNode<Comm extends VNodeCommunication, T> {
     private final Broadcaster<Comm> broadcaster;
@@ -14,6 +17,7 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
 
     /**
      * Constructor for the VNode. Initialize visualization, broadcaster and registers itself in the parent DS.
+     *
      * @param parentDS
      */
     public VNode(NodeyDatastructure parentDS) {
@@ -24,6 +28,7 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
 
     /**
      * gets the broadcaster
+     *
      * @return the broadcaster of this node
      */
     protected Broadcaster<Comm> getBroadcaster() {
@@ -32,6 +37,7 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
 
     /**
      * get the Value of this node
+     *
      * @return the value of this node
      */
     public T getValue() {
@@ -40,7 +46,9 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
 
     /**
      * sets new value for this node
-     * @param newValue the newValue for this node
+     *
+     * @param newValue
+     *         the newValue for this node
      */
     public void setValue(T newValue) {
         this.value = newValue;
@@ -51,6 +59,7 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
 
     /**
      * Gets the broadcasters corresponding client
+     *
      * @return Communication
      */
     public Comm getCorrespondent() {
@@ -61,6 +70,7 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
 
     /**
      * Gets the communication
+     *
      * @return Communication
      */
     Comm getCommunication() {

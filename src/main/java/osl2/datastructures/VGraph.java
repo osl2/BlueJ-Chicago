@@ -1,5 +1,9 @@
 package osl2.datastructures;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedList;
 import osl2.datastructures.interfaces.IDatastructure;
 import osl2.datastructures.interfaces.IGraph;
 import osl2.datastructures.nodey.NodeyDatastructure;
@@ -13,11 +17,6 @@ import osl2.messaging.errorHandling.GraphErrors.GraphNodeNotExistingError;
 import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUIGraph;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.LinkedList;
 
 public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>>
         implements IGraph, IDatastructure {
@@ -35,7 +34,8 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
     /**
      * Creates a new {@link VGraph} with a name.
      *
-     * @param name - the name of the graph
+     * @param name
+     *         - the name of the graph
      */
     public VGraph(String name) {
         this.init();

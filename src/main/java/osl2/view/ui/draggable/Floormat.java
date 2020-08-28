@@ -17,7 +17,8 @@ public class Floormat extends Pane {
     /**
      * Adds a new draggable to the floormat.
      *
-     * @param draggable The draggable which will be added.
+     * @param draggable
+     *         The draggable which will be added.
      */
     public void addDraggable(Draggable draggable) {
         getChildren().add(draggable);
@@ -26,7 +27,8 @@ public class Floormat extends Pane {
     /**
      * Removes a new draggable to the floormat.
      *
-     * @param draggable The draggable which will be removed.
+     * @param draggable
+     *         The draggable which will be removed.
      */
     public void removeDraggable(Draggable draggable) {
         getChildren().remove(draggable);
@@ -35,7 +37,8 @@ public class Floormat extends Pane {
     /**
      * Raises a draggable in the Floormat to the front.
      *
-     * @param draggable The draggable which will be raised.
+     * @param draggable
+     *         The draggable which will be raised.
      */
     public void raise(Draggable draggable) {
         draggable.toFront();

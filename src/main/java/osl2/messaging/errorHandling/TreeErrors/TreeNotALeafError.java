@@ -7,14 +7,16 @@ public class TreeNotALeafError<T> implements UserError {
 
 
     private final String name = "TreeNotALeaf";
-    private LanguageController languageController;
-    private T child;
+    private final LanguageController languageController;
+    private final T child;
 
     /**
      * Creates a new TreeNotALeafError.
-     * @param child The child, thats not a leaf.
+     *
+     * @param child
+     *         The child, thats not a leaf.
      */
-    public TreeNotALeafError(T child){
+    public TreeNotALeafError(T child) {
         this.languageController = LanguageController.getLanguageController();
         this.child = child;
     }
