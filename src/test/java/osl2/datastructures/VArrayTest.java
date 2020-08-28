@@ -35,6 +35,12 @@ public class VArrayTest {
     }
 
     @Test
+    void getValueForNegativeInvalidIndex(){Assertions.assertNull(array.getValue(-1));}
+
+    @Test
+    void getValueForInvalidIndexSameAsSize(){Assertions.assertNull(array.getValue(10));}
+
+    @Test
     void getValueForInvalidIndex() {
         Assertions.assertNull(array.getValue(11));
     }
