@@ -50,7 +50,7 @@ public class SideBarTest extends ApplicationTest {
     @Test
     public void test1() {
         TestThread thread = new TestThread();
-        thread.run();
+        thread.start();
     }
 
     @After

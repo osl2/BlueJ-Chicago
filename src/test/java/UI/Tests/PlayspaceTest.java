@@ -33,6 +33,7 @@ public class PlayspaceTest extends ApplicationTest {
     private EvanstonWindow evanstonWindow;
     private Scene tmpScene;
     private TestThread thread;
+    final int x = 0;
 
 
 
@@ -71,13 +72,15 @@ public class PlayspaceTest extends ApplicationTest {
     //TODO How to check this ? Use 2 Threads, one creates new Array and sets the Value, second thread clicks on playStep. if both are finished get the setted value
     @Test public void click_on_playStep(){
         thread = new TestThread();
-        thread.run();
+        thread.start();
+
 
         moveTo(point(50,50));
 
         clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
 
-       // Assert.assertTrue(thread.getArray().getValue(0).equals(3));
+
+       Assert.assertTrue(thread.getArray().getValue(0).equals(3));
     }
 
     class TestThread extends Thread {
@@ -85,7 +88,6 @@ public class PlayspaceTest extends ApplicationTest {
         public void run() {
             array = new VArray(5);
             set();
-
         }
         public void set(){
             array.setValue(0,3);
@@ -94,6 +96,14 @@ public class PlayspaceTest extends ApplicationTest {
             return array;
         }
 
+    }
+
+    class ThreadTwo extends Thread {
+        public void run(){
+            moveTo(point(50,50));
+
+            clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
+        }
     }
 
     @Test public void drag_scale_bar(){

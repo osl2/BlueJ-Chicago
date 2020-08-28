@@ -57,22 +57,14 @@ public class MainRegionTest extends ApplicationTest {
 
     @Test public void moveMirror(){
         clickOn(point(mirrorButton.getLayoutX() + 5,mirrorButton.getLayoutY()));
-        moveTo(point(mirror.getLayoutX() + evanstonWindow.getSideBar().getWidth() +10, mirror.getLayoutY()));
+        moveTo(point(mirror.getLayoutX() + evanstonWindow.getSideBar().getWidth() + 10, mirror.getLayoutY()));
         double oldX = mirror.getLayoutX();
         double oldY = mirror.getLayoutY();
-        System.out.println("OldX " + oldX);
-        System.out.println("OldY " + oldY);
-        System.out.println("NewX " + mirror.getLayoutX());
-        System.out.println("NewY " + mirror.getLayoutY());
         press(MouseButton.PRIMARY);
         moveTo(point(oldX+ evanstonWindow.getSideBar().getWidth() +100, oldY +100));
         release(MouseButton.PRIMARY);
-        System.out.println("OldOldX " + oldX);
-        System.out.println("OldOldY " + oldY);
-        System.out.println("NewNewX " + mirror.getLayoutX());
-        System.out.println("NewNewY " + mirror.getLayoutY());
         //+90, because the mouse was moved 10 points to the right.
-        Assert.assertTrue((mirror.getLayoutX()  == oldX + 90) && mirror.getLayoutY() == oldY +100);
+        Assert.assertTrue((mirror.getLayoutX() == oldX + 90) && mirror.getLayoutY() == oldY +100);
 
     }
 
