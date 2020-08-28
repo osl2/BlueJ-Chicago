@@ -139,14 +139,31 @@ public class MovableWindow extends Draggable {
         this.body.setBodyHeight(height);
     }
 
-    public boolean getIsHighlighted(){return this.isHighlighted;}
-    public Button getResizeButton(){return head.getResizeButton();}
-    public Button getHideButton(){return head.getHideButton();}
-    public Button getMinMaxButton(){return head.getMinMaxButton();}
-    public HBox getButtons(){return head.getButtons();}
-    public boolean getContentsShown(){return body.getContentsShown(); }
+    public boolean getIsHighlighted() {
+        return this.isHighlighted;
+    }
 
-    public double getHeight(){
+    public Button getResizeButton() {
+        return head.getResizeButton();
+    }
+
+    public Button getHideButton() {
+        return head.getHideButton();
+    }
+
+    public Button getMinMaxButton() {
+        return head.getMinMaxButton();
+    }
+
+    public HBox getButtons() {
+        return head.getButtons();
+    }
+
+    public boolean getContentsShown() {
+        return body.getContentsShown();
+    }
+
+    public double getHeight() {
         return this.head.getHeight() + this.body.getHeight();
     }
 }

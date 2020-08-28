@@ -141,7 +141,7 @@ public class MovableWindowBody extends VBox {
         this.scroll.setMaxHeight(height);
     }
 
-    public boolean getContentsShown(){
+    public boolean getContentsShown() {
         return this.contentsShown;
     }
 }
