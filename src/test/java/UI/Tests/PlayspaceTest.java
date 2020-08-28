@@ -73,14 +73,24 @@ public class PlayspaceTest extends ApplicationTest {
     @Test public void click_on_playStep(){
         thread = new TestThread();
         thread.start();
-
-
-        moveTo(point(50,50));
+        boolean setCorrectly = true;
 
         clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
+        if(!thread.getArray().getValue(0).equals(3)){
+            setCorrectly = false;
+        }
+        moveTo(point(0,0));
+        clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
+        if(!thread.getArray().getValue(1).equals(22)){
+            setCorrectly = false;
+        }
+        moveTo(point(0,0));
+        clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
+        if(!thread.getArray().getValue(2).equals(8)){
+            setCorrectly = false;
+        }
 
-
-       Assert.assertTrue(thread.getArray().getValue(0).equals(3));
+        Assert.assertTrue(setCorrectly);
     }
 
     class TestThread extends Thread {
@@ -91,6 +101,8 @@ public class PlayspaceTest extends ApplicationTest {
         }
         public void set(){
             array.setValue(0,3);
+            array.setValue(1,22);
+            array.setValue(2,8);
         }
         public VArray getArray(){
             return array;
@@ -98,20 +110,14 @@ public class PlayspaceTest extends ApplicationTest {
 
     }
 
-    class ThreadTwo extends Thread {
-        public void run(){
-            moveTo(point(50,50));
 
-            clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
-        }
-    }
 
     @Test public void drag_scale_bar(){
 
 
         drag(point(playSpace.getPlaySpeedSlider().getLayoutX(),playSpace.getPlaySpeedSlider().getLayoutY()+playSpace.getButtonBox().getHeight()));
         dropTo(point(playSpace.getPlaySpeedSlider().getLayoutX()+(playSpace.getPlaySpeedSlider().getWidth()/2),playSpace.getPlaySpeedSlider().getLayoutY()+playSpace.getButtonBox().getHeight()));
-        Assert.assertTrue(evanstonWindow.getPlayController().getDelay()<1000);
+        Assert.assertTrue(evanstonWindow.getPlayController().getDelay()<600);
     }
 
 
