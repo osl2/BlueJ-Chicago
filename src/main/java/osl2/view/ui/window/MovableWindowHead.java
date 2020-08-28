@@ -19,7 +19,7 @@ public class MovableWindowHead extends HBox {
     private ActionButton minMaxButton;
     private ActionButton hideButton;
     private Node title;
-    private boolean isMax;
+    private boolean isMin;
     private Button resizeButton;
     private double mouseDragStartY;
     private double mouseDragStartX;
@@ -111,12 +111,12 @@ public class MovableWindowHead extends HBox {
      * Changes the minMaxButtons appearance.
      */
     public void changeMinMaxButton(){
-        if(isMax){
+        if(isMin){
             minMaxButton.setText("^");
-            isMax = false;
+            isMin = false;
         } else {
             minMaxButton.setText("v");
-            isMax = true;
+            isMin = true;
         }
     }
 
@@ -157,4 +157,10 @@ public class MovableWindowHead extends HBox {
             this.getStyleClass().add("movable-window-head-button");
         }
     }
+
+    public Button getResizeButton(){return this.resizeButton;}
+    public Button getHideButton(){return this.hideButton;}
+    public Button getMinMaxButton(){return this.minMaxButton;}
+    public HBox getButtons(){return this.buttons;}
+    public boolean isMin(){return this.isMin;}
 }

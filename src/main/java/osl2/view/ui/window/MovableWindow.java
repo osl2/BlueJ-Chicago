@@ -1,6 +1,8 @@
 package osl2.view.ui.window;
 
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import osl2.view.ui.draggable.Draggable;
 import osl2.view.ui.mirror.IMirrorController;
 
@@ -136,4 +138,13 @@ public class MovableWindow extends Draggable {
     }
 
     public boolean getIsHighlighted(){return this.isHighlighted;}
+    public Button getResizeButton(){return head.getResizeButton();}
+    public Button getHideButton(){return head.getHideButton();}
+    public Button getMinMaxButton(){return head.getMinMaxButton();}
+    public HBox getButtons(){return head.getButtons();}
+    public boolean getContentsShown(){return body.getContentsShown(); }
+
+    public double getHeight(){
+        return this.head.getHeight() + this.body.getHeight();
+    }
 }

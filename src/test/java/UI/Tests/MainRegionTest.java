@@ -1,6 +1,8 @@
 package UI.Tests;
 
+import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
@@ -57,6 +59,7 @@ public class MainRegionTest extends ApplicationTest {
 
     @Test public void moveMirror(){
         clickOn(point(mirrorButton.getLayoutX() + 5,mirrorButton.getLayoutY()));
+        //+10 because draging doesn't work on the edges.
         moveTo(point(mirror.getLayoutX() + evanstonWindow.getSideBar().getWidth() + 10, mirror.getLayoutY()));
         double oldX = mirror.getLayoutX();
         double oldY = mirror.getLayoutY();
@@ -65,7 +68,55 @@ public class MainRegionTest extends ApplicationTest {
         release(MouseButton.PRIMARY);
         //+90, because the mouse was moved 10 points to the right.
         Assert.assertTrue((mirror.getLayoutX() == oldX + 90) && mirror.getLayoutY() == oldY +100);
+    }
 
+    @Test public void minimizeMirror(){
+        clickOn(point(mirrorButton.getLayoutX() + 5,mirrorButton.getLayoutY()));
+        Bounds bound = mirror.getMinMaxButton().getBoundsInParent();
+        System.out.println(bound.getCenterX());
+        System.out.println(bound.getCenterY());
+        moveTo(point(bound.getCenterX() + mirror.getLayoutX() + mirror.getButtons().getLayoutX() + evanstonWindow.getSideBar().getWidth(), mirror.getLayoutY()));
+        clickOn(MouseButton.PRIMARY);
+        Assert.assertTrue(!mirror.getContentsShown());
+    }
+
+    @Test public void maximizeMirror(){
+        clickOn(point(mirrorButton.getLayoutX() + 5,mirrorButton.getLayoutY()));
+        Bounds bound = mirror.getMinMaxButton().getBoundsInParent();
+        moveTo(point(bound.getCenterX() + mirror.getLayoutX() + mirror.getButtons().getLayoutX() + evanstonWindow.getSideBar().getWidth(), mirror.getLayoutY()));
+        clickOn(MouseButton.PRIMARY);
+        clickOn(MouseButton.PRIMARY);
+        Assert.assertTrue(mirror.getContentsShown());
+    }
+
+    @Test public void closeMirror(){
+        clickOn(point(mirrorButton.getLayoutX() + 5,mirrorButton.getLayoutY()));
+        Bounds bound = mirror.getHideButton().getBoundsInParent();
+        moveTo(point(bound.getCenterX() + mirror.getLayoutX() + mirror.getButtons().getLayoutX() + evanstonWindow.getSideBar().getWidth(), mirror.getLayoutY()));
+        clickOn(MouseButton.PRIMARY);
+        Assert.assertTrue(!controller.getIsMirrorOpen());
+    }
+
+    @Test public void resizeMirrorWidth(){
+        clickOn(point(mirrorButton.getLayoutX() + 5,mirrorButton.getLayoutY()));
+        Bounds bound = mirror.getResizeButton().getBoundsInParent();
+        double oldWidth = mirror.getWidth();
+        moveTo(point(bound.getCenterX() + mirror.getLayoutX() + mirror.getButtons().getLayoutX() + evanstonWindow.getSideBar().getWidth(), mirror.getLayoutY()));
+        press(MouseButton.PRIMARY);
+        moveTo(point(bound.getCenterX() + mirror.getLayoutX() + mirror.getButtons().getLayoutX() + evanstonWindow.getSideBar().getWidth() + 100, mirror.getLayoutY()));
+        release(MouseButton.PRIMARY);
+        Assert.assertTrue(oldWidth + 100 == mirror.getWidth());
+    }
+
+    @Test public void resizeMirrorHeight(){
+        clickOn(point(mirrorButton.getLayoutX() + 5,mirrorButton.getLayoutY()));
+        Bounds bound = mirror.getResizeButton().getBoundsInParent();
+        double oldHeight = mirror.getHeight();
+        moveTo(point(bound.getCenterX() + mirror.getLayoutX() + mirror.getButtons().getLayoutX() + evanstonWindow.getSideBar().getWidth(), mirror.getLayoutY()));
+        press(MouseButton.PRIMARY);
+        moveTo(point(bound.getCenterX() + mirror.getLayoutX() + mirror.getButtons().getLayoutX() + evanstonWindow.getSideBar().getWidth()+400, mirror.getLayoutY() +400));
+        release(MouseButton.PRIMARY);
+        Assert.assertTrue(oldHeight < mirror.getHeight());
     }
 
     @After
