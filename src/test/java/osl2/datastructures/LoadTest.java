@@ -51,7 +51,7 @@ public class LoadTest {
 
     public static long firstLoadTest() {
         VDirectedGraph<Integer> graph = new VDirectedGraph<>();
-        int numberOfGraphElements = 10;
+        int numberOfGraphElements = 60;
 
         Instant start = Instant.now();
 
@@ -77,7 +77,7 @@ public class LoadTest {
 
         List list = new VSinglyLinkedList<VGraph>();
 
-        int numberOfListElements = 10;
+        int numberOfListElements = 40;
 
         Instant start = Instant.now();
 
@@ -90,7 +90,7 @@ public class LoadTest {
 
     public static long thirdLoadTest() {
         List list = new VSinglyLinkedList<Integer>();
-        int numberOfListElements = 10;
+        int numberOfListElements = 1000;
 
         Instant start = Instant.now();
         for(int i = 0; i < numberOfListElements; i++) {
@@ -101,7 +101,7 @@ public class LoadTest {
     }
 
     public static long lastLoadTest() {
-        int numberOfRecursions = 2;
+        int numberOfRecursions = 4;
 
         List list = new VSinglyLinkedList<VGraph>();
         int numberOfListElements = 10;
