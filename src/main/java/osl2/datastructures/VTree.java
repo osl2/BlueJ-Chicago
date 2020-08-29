@@ -179,6 +179,11 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
 
     @Override
     public boolean removeLeaf(VGraphNode<T> node) {
+        if(node.equals(getRootNode())){
+            UserError userError = new TreeNotALeafError<>(node);
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
+            return false;
+        }
         if (mapChildrenToNode.get(node).isEmpty()) {
             mapChildrenToNode.remove(node);
             mapChildrenToNode.get(mapParentToNode.get(node)).remove(node);
