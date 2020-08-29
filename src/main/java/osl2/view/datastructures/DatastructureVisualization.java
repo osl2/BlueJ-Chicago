@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import osl2.messaging.datastructures.DatastructureCommunication;
 import osl2.messaging.errorHandling.UserError;
+import osl2.view.ui.EvanstonWindow;
 import osl2.view.ui.localisation.LanguageController;
 import osl2.view.ui.mirror.IMirrorController;
 
@@ -83,22 +84,6 @@ public abstract class DatastructureVisualization<T extends Node> implements Data
 
     @Override
     public void handleError(UserError userError) {
-        showErrorDialog(userError);
+        EvanstonWindow.getInstance().showErrorDialog(userError);
     }
-
-    /**
-     * Shows the error in an errorpane.
-     *
-     * @param userError
-     *         The error of the datastructure.
-     */
-    private void showErrorDialog(UserError userError) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(languageController.getMessage("UserError"));
-        alert.setHeaderText(userError.getErrorName());
-        String contentText = userError.getErrorContent() + "\n" + languageController.getMessage("ErrorSkipped");
-        alert.setContentText(contentText);
-        alert.showAndWait();
-    }
-
 }

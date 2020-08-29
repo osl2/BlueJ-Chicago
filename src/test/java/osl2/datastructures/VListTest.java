@@ -17,7 +17,7 @@ public class VListTest {
 
     @BeforeAll
     static void setupAll() {
-        EvanstonWindow.open();
+        EvanstonWindow.openForTests();
     }
 
     @BeforeEach

@@ -14,7 +14,7 @@ public class VMapTest {
 
     @BeforeAll
     static void setupAll() {
-        EvanstonWindow.open();
+        EvanstonWindow.openForTests();
     }
 
     @BeforeEach

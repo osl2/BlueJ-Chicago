@@ -23,7 +23,7 @@ public class VGraphTest {
 
     @BeforeAll
     static void setupAll() {
-        EvanstonWindow.open();
+        EvanstonWindow.openForTests();
     }
 
     @BeforeEach

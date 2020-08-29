@@ -9,6 +9,7 @@ import javafx.application.Platform;
  */
 public class PlayController {
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    private boolean testModeActive = false;
     private boolean isProgramRunning = false;
     private long delay = 1000;
 
@@ -63,14 +64,14 @@ public class PlayController {
      * Blocks the playing.
      */
     public void block() {
-        if (delay > 0) {
+        if (getDelay() > 0) {
             try {
-                Thread.sleep(delay);
+                Thread.sleep(getDelay());
             } catch (InterruptedException e) {
             }
         }
 
-        if (!isProgramRunning) {
+        if (!isProgramRunning && !testModeActive) {
             synchronized (this) {
                 try {
                     this.wait();
@@ -105,6 +106,10 @@ public class PlayController {
     }
 
     public long getDelay() {
-        return delay;
+        return testModeActive ? 100 : delay;
+    }
+
+    public void activateTestMode() {
+        testModeActive = true;
     }
 }

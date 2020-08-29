@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
@@ -13,8 +14,10 @@ import osl2.Evanston;
 import osl2.datastructures.EvanstonDatastructure;
 import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
+import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.inlinerepresentation.InlineRepresentation;
+import osl2.view.ui.localisation.LanguageController;
 import osl2.view.ui.mirror.MirrorController;
 import osl2.view.ui.settings.SettingsController;
 
@@ -40,6 +43,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     private SideBar sideBar;
     private SplitPane verticalSplitter;
     private SplitPane sidePlaySplitter;
+    private boolean testModeActive = false;
 
     /**
      * Creates a new evanston window.
@@ -94,6 +98,16 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         }
     }
 
+    public static void openForTests() {
+        open();
+        getInstance().activateTestMode();
+    }
+
+    private void activateTestMode() {
+        this.testModeActive = true;
+        playController.activateTestMode();
+    }
+
     /**
      * Creates a new visualization and mirror for a Datastructure.
      *
@@ -107,6 +121,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
             MirrorController mc = new MirrorController(visualization, mainRegion, sideBar);
             visualization.setMirrorController(mc);
             InlineRepresentation.registerInlineAction(datastructure, () -> mc.mirrorBtnClicked());
+            if (testModeActive) mc.mirrorBtnClicked();
         });
         return new Broadcaster(visualization);
     }
@@ -304,5 +319,23 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         return this.sidePlaySplitter;
     }
 
-
+    /**
+     * Shows the error in an errorpane.
+     *
+     * @param userError
+     *         The error of the datastructure.
+     */
+    public void showErrorDialog(UserError userError) {
+        if (!testModeActive) {
+            final LanguageController languageController = LanguageController.getLanguageController();
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle(languageController.getMessage("UserError"));
+            alert.setHeaderText(userError.getErrorName());
+            String contentText = userError.getErrorContent() + "\n" + languageController.getMessage("ErrorSkipped");
+            alert.setContentText(contentText);
+            alert.showAndWait();
+        } else {
+            System.err.println("Evanston Error (suppressed GUI dialog due to activated test mode): " + userError.getErrorName() + " / " + userError.getErrorContent());
+        }
+    }
 }
