@@ -139,30 +139,58 @@ public class MovableWindow extends Draggable {
         this.body.setBodyHeight(height);
     }
 
+    /**
+     * Returns the isHighlighted variable. For testing.
+     * @return the isHighlighted variable,
+     */
     public boolean getIsHighlighted() {
         return this.isHighlighted;
     }
 
+    /**
+     * Returns the ResizeButton. For testing.
+     * @return The ResizeButton.
+     */
     public Button getResizeButton() {
         return head.getResizeButton();
     }
 
+    /**
+     * Returns the HideButton. For testin.
+     * @return The HideButton.
+     */
     public Button getHideButton() {
         return head.getHideButton();
     }
 
+    /**
+     * Returns the MinMaxButton. For testing.
+     * @return The MinMaxButton.
+     */
     public Button getMinMaxButton() {
         return head.getMinMaxButton();
     }
 
+    /**
+     * Returns the HBox for the Buttons. For Testing.
+     * @return The HBox for the Buttons.
+     */
     public HBox getButtons() {
         return head.getButtons();
     }
 
+    /**
+     * Returns if the content is shown. For testing.
+     * @return True if the content is shown else false.
+     */
     public boolean getContentsShown() {
         return body.getContentsShown();
     }
 
+    /**
+     * Returns the height of the MovableWindow. For testing.
+     * @return The height of the MovableWindow.
+     */
     public double getHeight() {
         return this.head.getHeight() + this.body.getHeight();
     }

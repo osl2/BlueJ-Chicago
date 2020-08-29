@@ -180,18 +180,34 @@ public class PlaySpace extends Pane {
         this.playAutoButton.setGraphic(new ImageView("images/pause.jpg"));
     }
 
+    /**
+     * Returns the PlayAutoButton. For testing.
+     * @return The PlayAutoButton.
+     */
     public Button getPlayAutoButton() {
         return playAutoButton;
     }
 
+    /**
+     * Returns the PlayStepButton. For testing.
+     * @return The PlayStepButton.
+     */
     public Button getPlayStepButton() {
         return playStepButton;
     }
 
+    /**
+     * Returns the PlaySpeedSlider. For testing.
+     * @return PlaySpeedSlider
+     */
     public Slider getPlaySpeedSlider() {
         return playSpeedSlider;
     }
 
+    /**
+     * Returns the ButtonBox. For testing.
+     * @return The ButtonBox.
+     */
     public HBox getButtonBox() {
         return buttonBox;
     }
