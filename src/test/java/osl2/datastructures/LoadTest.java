@@ -12,8 +12,6 @@ public class LoadTest {
     private final static int NUMBER_OF_SECONDS_STARTUP_TEST = 15;
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println("Startup time test: " + testStartingTimeOfApplication(NUMBER_OF_ITERATIONS_STARTUP_TEST));
-
         Evanston.startForTest();
 
         for(int i = 0; i < 5; i++) {
@@ -22,6 +20,8 @@ public class LoadTest {
             System.out.println("singly linked list with a lot of elements: " + thirdLoadTest());
             System.out.println("recursive load test: " + lastLoadTest());
         }
+
+        System.out.println("Startup time test: " + testStartingTimeOfApplication(NUMBER_OF_ITERATIONS_STARTUP_TEST));
     }
 
     public static boolean testStartingTimeOfApplication(int numberOfIterations) throws InterruptedException {
