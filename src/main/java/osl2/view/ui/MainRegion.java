@@ -20,6 +20,9 @@ public class MainRegion extends Floormat {
         this.setStyle();
     }
 
+    /**
+     * Sets the stlye.
+     */
     private void setStyle() {
         this.getStyleClass().add("main-region");
     }

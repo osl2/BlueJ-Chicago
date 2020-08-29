@@ -53,6 +53,10 @@ public class MirrorButton extends Button {
         this.getStyleClass().add("mirror-button-hidden");
     }
 
+    /**
+     * Returns the name of the MirrorButton. For testing.
+     * @return The name of the MirrorButton.
+     */
     public String getName() {
         return this.name;
     }

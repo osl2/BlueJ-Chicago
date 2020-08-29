@@ -299,22 +299,42 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         }
     }
 
+    /**
+     * Getter for the Mainregion. For testing.
+     * @return The Mainregion.
+     */
     public MainRegion getMainRegion() {
         return this.mainRegion;
     }
 
+    /**
+     * Getter for the VerticalSplitter. For testing.
+     * @return The VerticalSplitter.
+     */
     public SplitPane getVerticalSplitter() {
         return verticalSplitter;
     }
 
+    /**
+     * Returns the Playspace. For testing.
+     * @return The Playspace.
+     */
     public PlaySpace getPlayspace() {
         return this.playSpace;
     }
 
+    /**
+     * Returns the SideBar. For testing.
+     * @return The Sidebar.
+     */
     public SideBar getSideBar() {
         return this.sideBar;
     }
 
+    /**
+     * Returns the SidePlaySplitter. For testing.
+     * @return The Sideplaysplitter.
+     */
     public SplitPane getSidePlaySplitter() {
         return this.sidePlaySplitter;
     }

@@ -145,18 +145,34 @@ public class MovableWindowHead extends HBox {
         return this.getWidth() - spacer.getWidth();
     }
 
+    /**
+     * Returns the ResizeButton. For testing.
+     * @return The ResizeButton.
+     */
     public Button getResizeButton() {
         return this.resizeButton;
     }
 
+    /**
+     * Returns the HideButton. For testin.
+     * @return The HideButton.
+     */
     public Button getHideButton() {
         return this.hideButton;
     }
 
+    /**
+     * Returns the MinMaxButton. For testing.
+     * @return The MinMaxButton.
+     */
     public Button getMinMaxButton() {
         return this.minMaxButton;
     }
 
+    /**
+     * Returns the HBox for the Buttons. For Testing.
+     * @return The HBox for the Buttons.
+     */
     public HBox getButtons() {
         return this.buttons;
     }

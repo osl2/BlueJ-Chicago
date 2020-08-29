@@ -85,10 +85,18 @@ public class MirrorController implements IMirrorController {
         return this.button;
     }
 
+    /**
+     * Returns the Mirror. For testing.
+     * @return The Mirror.
+     */
     public Mirror getMirror() {
         return this.mirror;
     }
 
+    /**
+     * Returns the IsMirrorOpen variable. For testing.
+     * @return isMirrorOpen.
+     */
     public boolean getIsMirrorOpen() {
         return this.isMirrorOpen;
     }
