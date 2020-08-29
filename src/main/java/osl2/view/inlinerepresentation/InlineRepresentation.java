@@ -5,11 +5,12 @@ import java.util.WeakHashMap;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 /**
  * A inline representation for the elements inside an datastructure.
  */
-public class InlineRepresentation extends Button {    // TODO: Make this a clickable pane
+public class InlineRepresentation extends Pane {
     private static final Map<Object, Runnable> inlineRepresentationFunctions = new WeakHashMap<>();
 
     /**
@@ -21,9 +22,13 @@ public class InlineRepresentation extends Button {    // TODO: Make this a click
      *         The action which happens, when the InlineRepresentation
      */
     public InlineRepresentation(String text, Runnable action) {
-        super(text);
+        super();
         setStyle();
-        setOnAction(event -> action.run());
+        getChildren().add(new Label(text));
+        setOnMouseClicked(event -> {
+            System.out.println("Foo!");
+            action.run();
+        });
     }
 
     /**

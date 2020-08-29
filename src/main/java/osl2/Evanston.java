@@ -46,12 +46,16 @@ public class Evanston {
      */
     public static void main(String[] args) {
         start();
+
         VDirectedGraph<Integer> graph = new VDirectedGraph<>();
         VGraphNode node = graph.addNode(1);
         VGraphNode node2 = graph.addNode(2);
         node.connect(node2);
         node.connect(node);
         node2.connect(node);
+
+        VDirectedGraph<VDirectedGraph> graph1 = new VDirectedGraph<>();
+        graph1.addNode(graph);
 
         VTree<Integer> tree = new VTree<Integer>();
         tree.addTreeNode(tree.getRootNode(), 5);
