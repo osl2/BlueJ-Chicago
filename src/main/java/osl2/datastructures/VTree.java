@@ -24,9 +24,11 @@ import osl2.view.datastructures.GUITree;
  * Represents an Tree.
  *
  * @param <T>
- *         - The type of the tree
+ *         the type of data used in the tree
  */
-public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>> implements ITree<T>, IDatastructure {
+public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>>
+        implements ITree<T>, IDatastructure {
+
     private Map<VGraphNode<T>, LinkedList<VGraphNode<T>>> mapChildrenToNode;
     private Map<VGraphNode<T>, VGraphNode<T>> mapParentToNode;
     private Map<VGraphNode<T>, Integer> heightMap;
@@ -36,7 +38,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
     private VGraphNode<T> rootNode;
 
     /**
-     * Creates a new VTree.
+     * Creates a new {@link VTree}.
      */
     public VTree() {
         init();
@@ -46,16 +48,13 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
      * Creates a new {@link VTree} with a specified name.
      *
      * @param name
-     *         - the name of the VTree
+     *         the name of the VTree
      */
     public VTree(String name) {
         init();
         super.setName(name);
     }
 
-    /**
-     * Initiates the needed places for the data.
-     */
     private void init() {
         mapChildrenToNode = new HashMap<>();
         mapParentToNode = new HashMap<>();
@@ -143,10 +142,10 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
      * Adds a child to a parent.
      *
      * @param child
-     *         - the child
+     *         the child
      * @param parent
-     *         - the parent
-     * @return true if the child as added successfully, else false
+     *         the parent
+     * @return {@code true} if the child as added successfully, {@code false} otherwise
      */
     private boolean addChild(VGraphNode<T> child, VGraphNode<T> parent) {
         mapChildrenToNode.get(parent).add(child);
@@ -157,12 +156,12 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
     }
 
     /**
-     * Updates the height
+     * Updates the height.
      *
      * @param child
-     *         The child.
+     *         the child
      * @param parent
-     *         The parent.
+     *         the parent
      */
     private void updateHeight(VGraphNode<T> child, VGraphNode<T> parent) {
         int childHeight;
@@ -179,7 +178,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
 
     @Override
     public boolean removeLeaf(VGraphNode<T> node) {
-        if(node.equals(getRootNode())){
+        if (node.equals(getRootNode())) {
             UserError userError = new TreeNotALeafError<>(node);
             getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return false;
@@ -302,8 +301,9 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
     @Override
     public boolean contains(Collection<VGraphNode<T>> nodes) {
         for (VGraphNode<T> node : nodes) {
-            if (!contains(node))
+            if (!contains(node)) {
                 return false;
+            }
         }
         return true;
     }

@@ -8,10 +8,10 @@ import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.nodey.GUIGraphNode;
 
 /**
- * The class for a Node inside a graph.
+ * Represents a node in a {@link osl2.datastructures.interfaces.IGraph}.
  *
  * @param <T>
- *         The datatype of the node.
+ *         the datatype of the node
  */
 public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
     private final Set<VGraphNode<T>> edges = new HashSet<>();
@@ -21,7 +21,7 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
      * Creates a new GraphNode.
      *
      * @param parentDS
-     *         The parent of the graphnode.
+     *         The parent of the graph node
      */
     public VGraphNode(NodeyDatastructure parentDS) {
         super(parentDS);
@@ -32,13 +32,13 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
     public void setValue(T newValue) {
         if (newValue.equals(parentDS)) {
             UserError userError = new GraphRecursionError();
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
         }
         super.setValue(newValue);
     }
 
     /**
-     * adds a node to the edges of this node
+     * Adds a node to the edges of this node.
      *
      * @param node
      *         the node to add to the edge list
@@ -49,7 +49,7 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
     }
 
     /**
-     * removes a node from the edge list
+     * Removes a node from the edge list.
      *
      * @param node
      *         the node to be removed from the edge list
@@ -60,15 +60,15 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
     }
 
     /**
-     * clears all edges of the node
+     * Clears all edges of the node.
      */
     public void disconnectAll() {
-        getBroadcaster().send(b -> b.disconnectAll());
+        getBroadcaster().send(VGraphNodeCommunication::disconnectAll);
         edges.clear();
     }
 
     /**
-     * checks if the node is contained in the edges list
+     * Checks if the node is contained in the edges list.
      *
      * @param node
      *         the node to be checked
@@ -79,9 +79,9 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
     }
 
     /**
-     * Returns all the adjacents of a node.
+     * Gets all the adjacents of a node.
      *
-     * @return
+     * @return all nodes which are adjacent to this one
      */
     public VGraphNode<T>[] getAdjacents() {
         return edges.toArray(new VGraphNode[]{});
@@ -89,6 +89,6 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
 
     @Override
     protected VGraphNodeCommunication<T> createVisualization() {
-        return new GUIGraphNode<T>();
+        return new GUIGraphNode<>();
     }
 }

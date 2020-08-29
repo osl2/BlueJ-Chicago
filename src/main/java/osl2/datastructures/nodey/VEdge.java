@@ -1,32 +1,47 @@
 package osl2.datastructures.nodey;
 
+import osl2.messaging.datastructures.nodey.VNodeCommunication;
+
 /**
- * represents an Edge
+ * Represents an Edge.
  */
-public class VEdge {
-    private final VNode start;
-    private final VNode end;
+public class VEdge<S, E> {
+    private final VNode<VNodeCommunication<S>, S> start;
+    private final VNode<VNodeCommunication<E>, E> end;
 
     /**
-     * The constructor for the VEdge
+     * Creates a new {@link VEdge}.
      *
      * @param start
      *         the start node of the edge
      * @param end
      *         the end node of the edge
      */
-    public VEdge(VNode start, VNode end) {
+    public VEdge(VNode<VNodeCommunication<S>, S> start, VNode<VNodeCommunication<E>, E> end) {
         this.start = start;
         this.end = end;
     }
 
+    /**
+     * Creates a new {@link VEdge}.
+     *
+     * @param start
+     *         the start node of the edge
+     * @param end
+     *         the end node of the edge
+     */
+    public VEdge(VGraphNode<S> start, VGraphNode<E> end) {
+        this.start = (VNode) start;
+        this.end = (VNode) end;
+    }
+
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
+        if (this == obj) {
+            return true;
         }
 
-        if (!VEdge.class.isAssignableFrom(obj.getClass())) {
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
 
@@ -43,11 +58,21 @@ public class VEdge {
         return hash;
     }
 
-    public VNode getStart() {
+    /**
+     * Gets the start node.
+     *
+     * @return the start node
+     */
+    public VNode<VNodeCommunication<S>, S> getStart() {
         return start;
     }
 
-    public VNode getEnd() {
+    /**
+     * Gets the end node.
+     *
+     * @return the end node
+     */
+    public VNode<VNodeCommunication<E>, E> getEnd() {
         return end;
     }
 }

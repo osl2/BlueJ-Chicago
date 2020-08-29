@@ -3,12 +3,15 @@ package osl2.datastructures;
 import osl2.Evanston;
 
 /**
- * represents an Breakpoint
+ * Represents a Breakpoint.
  */
 public class Breakpoint {
 
+    private Breakpoint() {
+    }
+
     /**
-     * pauses the visualization
+     * Pauses the visualization.
      */
     public static void block() {
         Evanston.getPlayController().pause();

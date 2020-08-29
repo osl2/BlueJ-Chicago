@@ -49,7 +49,7 @@ public interface IGraph<T> {
      *         the node to which the edges want to be known
      * @return the collection of the Edges
      */
-    Collection<VEdge> getEdges(VGraphNode<T> node);
+    Collection<VEdge<T, T>> getEdges(VGraphNode<T> node);
 
     /**
      * Returns all the adjacent nodes of a node.
@@ -103,7 +103,7 @@ public interface IGraph<T> {
      *         the collection of edges
      * @return true if the edges are in the graph, else false
      */
-    boolean containsEdges(Collection<VEdge> edges);
+    boolean containsEdges(Collection<VEdge<T, T>> edges);
 
     /**
      * Returns the amount of nodes in the graph, which is the size of the graph.

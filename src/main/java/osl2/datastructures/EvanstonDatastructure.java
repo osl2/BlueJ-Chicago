@@ -6,63 +6,59 @@ import osl2.messaging.datastructures.DatastructureCommunication;
 import osl2.view.datastructures.DatastructureVisualization;
 
 /**
- * Represents the data structures
+ * Represents the data structures.
  *
- * @param <B>
+ * @param <C>
+ *         the datastructure communication used
  */
-public abstract class EvanstonDatastructure<B extends DatastructureCommunication> {
-    private final Broadcaster<B> broadcaster;
-
+public abstract class EvanstonDatastructure<C extends DatastructureCommunication> {
+    private final Broadcaster<C> broadcaster;
 
     private String name;
 
     /**
-     * Constructor. Creates and open visualization.
+     * Creates and opens a visualization.
      */
     public EvanstonDatastructure() {
-        DatastructureVisualization visualization = createVisualization();
         broadcaster = Evanston.openVisualization(this);
     }
 
 
     /**
-     * gets the broadcaster
+     * Gets the broadcaster.
      *
-     * @return broadcaster
+     * @return the broadcaster
      */
-    protected Broadcaster<B> getBroadcaster() {
+    protected Broadcaster<C> getBroadcaster() {
         return broadcaster;
     }
 
     public abstract DatastructureVisualization createVisualization();
 
     /**
-     * gets the name of the DS
+     * Gets the name of the datastructure.
      *
-     * @return string which represents the name
+     * @return the name
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * sets the name of the DS
+     * Sets the name of the datastructure.
      *
      * @param name
      *         the new name to set for the DS
      */
     public void setName(String name) {
         this.name = name;
-        getBroadcaster().send((b) -> b.setName(getDatastructureType() + " : " + this.name));
-
+        getBroadcaster().send(c -> c.setName(getDatastructureType() + " : " + this.name));
     }
 
     /**
-     * gets the type of DS. Used for the titlebar.
+     * Gets the type of datastructure used for the title bar.
      *
-     * @return a String representing the type of the DS
+     * @return the type of the datastructure
      */
     public abstract String getDatastructureType();
-
-
 }

@@ -4,7 +4,7 @@ import osl2.messaging.datastructures.nodey.VLinkedListNodeCommunication;
 import osl2.view.datastructures.nodey.GUILinkedListNode;
 
 /**
- * Represents a node of an linked list
+ * Represents a node of an linked list.
  *
  * @param <T>
  *         the type of the node
@@ -13,13 +13,18 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
     private VLinkedListNode<T> forward;
     private VLinkedListNode<T> backward;
 
+    /**
+     * Creates a new {@link VLinkedListNode}.
+     *
+     * @param parentDS
+     *         the parent datastructure
+     */
     public VLinkedListNode(NodeyDatastructure parentDS) {
         super(parentDS);
     }
 
-
     /**
-     * get forward node
+     * Gets the forward node.
      *
      * @return the next node
      */
@@ -28,10 +33,10 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
     }
 
     /**
-     * set the forward node
+     * Sets the forward node.
      *
      * @param forward
-     *         the node to be set as backward node
+     *         the node to be set as forward node
      */
     public void setForward(VLinkedListNode<T> forward) {
         if (forward != getForward()) {
@@ -41,7 +46,7 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
     }
 
     /**
-     * get backward node
+     * Gets the backward node.
      *
      * @return the node before the current node
      */
@@ -50,7 +55,7 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
     }
 
     /**
-     * set the backward node
+     * Sets the backward node.
      *
      * @param backward
      *         the node to be set as backward node
@@ -70,6 +75,6 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
 
     @Override
     protected VLinkedListNodeCommunication<T> createVisualization() {
-        return new GUILinkedListNode<T>();
+        return new GUILinkedListNode<>();
     }
 }

@@ -5,16 +5,25 @@ import osl2.datastructures.nodey.VLinkedListNode;
 import osl2.messaging.datastructures.nodey.VLinkedListCommunication;
 
 /**
- * Represent singly linked list
+ * Represent a singly linked list.
  *
  * @param <T>
- *         the type of the singly linked list
+ *         the type of data used in the singly linked list
  */
 public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunication<T>> {
 
+    /**
+     * Creates a new {@link VSinglyLinkedList}.
+     */
     public VSinglyLinkedList() {
     }
 
+    /**
+     * Creates a new {@link VSinglyLinkedList} with a specified name.
+     *
+     * @param name
+     *         the name of the list to be created
+     */
     public VSinglyLinkedList(String name) {
         super.setName(name);
     }
@@ -68,7 +77,9 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
         node.setValue(t);
 
         if (i == 0) {
-            if (getHead() != null) node.setForward(getHead());
+            if (getHead() != null) {
+                node.setForward(getHead());
+            }
             setHead(node);
         } else {
             VLinkedListNode<T> it = getHead();

@@ -3,6 +3,7 @@ package osl2.datastructures;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import osl2.datastructures.interfaces.IDatastructure;
 import osl2.datastructures.interfaces.IGraph;
@@ -18,9 +19,16 @@ import osl2.messaging.errorHandling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUIGraph;
 
-public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>>
-        implements IGraph, IDatastructure {
-    private LinkedList<VGraphNode> nodeList;
+/**
+ * Represents a graph.
+ *
+ * @param <T>
+ *         the type of data used in the graph
+ */
+public abstract class VGraph<T>
+        extends NodeyDatastructure<T, VGraphCommunication<T>, VGraphNodeCommunication<T>, VGraphNode<T>>
+        implements IGraph<T>, IDatastructure {
+    private LinkedList<VGraphNode<T>> nodeList;
 
     private int size;
 
@@ -35,16 +43,13 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
      * Creates a new {@link VGraph} with a name.
      *
      * @param name
-     *         - the name of the graph
+     *         the name of the graph
      */
     public VGraph(String name) {
         this.init();
         super.setName(name);
     }
 
-    /**
-     * Initiates the needed places for the data.
-     */
     private void init() {
         nodeList = new LinkedList<>();
         size = 0;
@@ -52,7 +57,7 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
 
     @Override
     protected VGraphNode<T> createNode() {
-        VGraphNode<T> node = new VGraphNode<T>(this);
+        VGraphNode<T> node = new VGraphNode(this);
         nodeList.add(node);
         size++;
         return node;
@@ -69,41 +74,42 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
     }
 
     @Override
-    public boolean addEdge(VGraphNode start, VGraphNode end) {
+    public boolean addEdge(VGraphNode<T> start, VGraphNode<T> end) {
         if (!(nodeList.contains(start))) {
-            UserError userError = new GraphNodeNotExistingError<VGraphNode>(start);
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+            UserError userError = new GraphNodeNotExistingError<VGraphNode<T>>(start);
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return false;
         }
 
         if (!nodeList.contains(end)) {
-            UserError userError = new GraphNodeNotExistingError<VGraphNode>(end);
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+            UserError userError = new GraphNodeNotExistingError<VGraphNode<T>>(end);
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return false;
         }
 
         if (containsEdge(start, end)) {
-            UserError userError = new GraphEdgeExistingError<VGraphNode>(start, end);
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+            UserError userError = new GraphEdgeExistingError<VGraphNode<T>>(start, end);
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return false;
         }
         start.connect(end);
         return true;
     }
 
-    public boolean containsEdges(Collection edges) {
-        for (Object edge : edges) {
-            containsEdge((VGraphNode) ((VEdge) edge).getStart(), (VGraphNode) ((VEdge) edge).getEnd());
+    @Override
+    public boolean containsEdges(Collection<VEdge<T, T>> edges) {
+        for (VEdge<T, T> edge : edges) {
+            containsEdge((VGraphNode) edge.getStart(), (VGraphNode) edge.getEnd());
         }
         return true;
     }
 
     @Override
-    public boolean removeNode(VGraphNode node) {
+    public boolean removeNode(VGraphNode<T> node) {
         super.removeNode(node);
         if (!nodeList.contains(node)) {
-            UserError userError = new GraphNodeNotExistingError<VGraphNode>(node);
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+            UserError userError = new GraphNodeNotExistingError<VGraphNode<T>>(node);
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return false;
         }
         nodeList.remove(node);
@@ -112,67 +118,67 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
     }
 
     @Override
-    public boolean removeEdge(VGraphNode start, VGraphNode end) {
-        if (nodeList.contains(start)) {
-            if (start.contains(end)) {
-                start.disconnect(end);
-                return true;
-            }
+    public boolean removeEdge(VGraphNode<T> start, VGraphNode<T> end) {
+        if (nodeList.contains(start) && start.contains(end)) {
+            start.disconnect(end);
+            return true;
         }
-        UserError userError = new GraphEdgeNotExistingError<VGraphNode>(start, end);
-        getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+        UserError userError = new GraphEdgeNotExistingError<VGraphNode<T>>(start, end);
+        getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
         return false;
     }
 
     @Override
-    public Collection<VEdge> getEdges(VGraphNode node) {
+    public Collection<VEdge<T, T>> getEdges(VGraphNode<T> node) {
         if (!nodeList.contains(node)) {
-            UserError userError = new GraphNodeNotExistingError<VGraphNode>(node);
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
-            return null;
+            UserError userError = new GraphNodeNotExistingError<VGraphNode<T>>(node);
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
+            return Collections.emptyList();
         }
-        Collection<VEdge> edges = new ArrayList<VEdge>();
+        Collection<VEdge<T, T>> edges = new ArrayList<>();
 
-        VGraphNode[] adjacents = node.getAdjacents();
+        VGraphNode<T>[] adjacents = node.getAdjacents();
 
-        for (VGraphNode neighbour : adjacents) {
-            VEdge edge = new VEdge(node, neighbour);
+        for (VGraphNode<T> neighbour : adjacents) {
+            VEdge<T, T> edge = new VEdge<>(node, neighbour);
             edges.add(edge);
         }
         return edges;
     }
 
     @Override
-    public Collection<VGraphNode> getAdjacents(VGraphNode node) {
+    public Collection<VGraphNode<T>> getAdjacents(VGraphNode<T> node) {
         if (!nodeList.contains(node)) {
             UserError userError = new GraphNodeNotExistingError<>(node);
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
-            return null;
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
+            return Collections.emptyList();
         }
         return Arrays.asList(node.getAdjacents());
     }
 
     @Override
-    public Collection<VGraphNode> getNodes() {
-        return nodeList; // TODO changes orginal values too? Violation of capsulation?
+    public Collection<VGraphNode<T>> getNodes() {
+        // TODO changes orginal values too? Violation of capsulation?
+        return nodeList;
     }
 
     @Override
-    public boolean containsNode(VGraphNode node) {
+    public boolean containsNode(VGraphNode<T> node) {
         return nodeList.contains(node);
     }
 
     @Override
-    public boolean containsNodes(Collection nodes) {
-        for (Object node : nodes) {
-            if (!containsNode((VGraphNode) node))
+    public boolean containsNodes(Collection<VGraphNode<T>> nodes) {
+        for (VGraphNode<T> node : nodes) {
+            if (!containsNode(node)) {
                 return false;
+            }
         }
         return true;
     }
 
     @Override
-    public boolean containsEdge(VGraphNode start, VGraphNode end) {
+    public boolean containsEdge(VGraphNode<T> start, VGraphNode<T> end) {
         if (nodeList.contains(start)) {
             return start.contains(end);
         }
@@ -191,7 +197,7 @@ public abstract class VGraph<T> extends NodeyDatastructure<T, VGraphCommunicatio
 
     @Override
     public boolean removeAll() {
-        for (VGraphNode node : nodeList) {
+        for (VGraphNode<T> node : nodeList) {
             super.removeNode(node);
         }
         nodeList = new LinkedList<>();

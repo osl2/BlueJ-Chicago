@@ -18,26 +18,25 @@ import osl2.view.datastructures.sequential.GUIMap;
  * Represents a Map.
  *
  * @param <K>
- *         The key type of the map.
+ *         the key type of the map
  * @param <V>
- *         The value type of the map.
+ *         the value type of the map
  */
 public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> implements Map<K, V> {
     private final Map<K, V> wrapped = new HashMap<>();
 
-
     /**
-     * empty constructor
+     * Creates a new {@link VMap}.
      */
     public VMap() {
 
     }
 
     /**
-     * Constructor which allows setting the name.
+     * Creates a new {@link VMap} with a specified name.
      *
      * @param name
-     *         the name of the DS.
+     *         the name of the datastructure
      */
     public VMap(String name) {
         super.setName(name);
@@ -74,24 +73,24 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
     }
 
     @Override
-    public V get(Object o) {
-        if (!wrapped.containsKey(o)) {
-            UserError userError = new MapNullPointerGetError<>(o);
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+    public V get(Object obj) {
+        if (!wrapped.containsKey(obj)) {
+            UserError userError = new MapNullPointerGetError<>(obj);
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return null;
         }
-        return wrapped.get(o);
+        return wrapped.get(obj);
     }
 
     /**
      * Private getter for default methods which use get.
      *
-     * @param o
-     *         The Key.
+     * @param obj
+     *         the Key
      * @return The Value to the key.
      */
-    private V getPrivate(Object o) {
-        return wrapped.get(o);
+    private V getPrivate(Object obj) {
+        return wrapped.get(obj);
     }
 
     @Override
@@ -100,26 +99,37 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
         return wrapped.put(k, v);
     }
 
-
     @Override
-    public V remove(Object o) {
-        if (!wrapped.containsKey(o)) {
-            UserError userError = new MapNullPointerRemoveError<>(o);
-            getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+    public V remove(Object k) {
+        if (!wrapped.containsKey(k)) {
+            UserError userError = new MapNullPointerRemoveError<>(k);
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return null;
         }
-        getBroadcaster().sendWithDelay(b -> b.remove(o));
-        return wrapped.remove(o);
+        getBroadcaster().sendWithDelay(b -> b.remove(k));
+        return wrapped.remove(k);
+    }
+
+    @Override
+    public boolean remove(Object key, Object value) {
+        if (this.containsKey(key) && Objects.equals(this.getPrivate(key), value)) {
+            this.remove(key);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void putAll(Map<? extends K, ? extends V> map) {
-        for (K key : map.keySet()) put(key, map.get(key));
+        for (Map.Entry<? extends K, ? extends V> entry : map.entrySet()) {
+            put(entry.getKey(), entry.getValue());
+        }
     }
 
     @Override
     public void clear() {
-        getBroadcaster().sendWithDelay(b -> b.clear());
+        getBroadcaster().sendWithDelay(VMapCommunication::clear);
         wrapped.clear();
     }
 
@@ -156,29 +166,22 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
     }
 
     @Override
-    public boolean remove(Object key, Object value) {
-        if (this.containsKey(key) && Objects.equals(this.getPrivate(key), value)) {
-            this.remove(key);
-            return true;
-        } else
-            return false;
-    }
-
-    @Override
     public boolean replace(K key, V oldValue, V newValue) {
         if (this.containsKey(key) && Objects.equals(this.getPrivate(key), oldValue)) {
             this.put(key, newValue);
             return true;
-        } else
+        } else {
             return false;
+        }
     }
 
     @Override
     public V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction) {
         if (this.getPrivate(key) == null) {
             V newValue = mappingFunction.apply(key);
-            if (newValue != null)
+            if (newValue != null) {
                 this.put(key, newValue);
+            }
         }
         return this.getPrivate(key);
     }
@@ -188,10 +191,11 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
         if (this.getPrivate(key) != null) {
             V oldValue = this.getPrivate(key);
             V newValue = remappingFunction.apply(key, oldValue);
-            if (newValue != null)
+            if (newValue != null) {
                 this.put(key, newValue);
-            else
+            } else {
                 this.remove(key);
+            }
         }
         return this.getPrivate(key);
     }
@@ -201,15 +205,17 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
         V oldValue = this.getPrivate(key);
         V newValue = remappingFunction.apply(key, oldValue);
         if (oldValue != null) {
-            if (newValue != null)
+            if (newValue != null) {
                 this.put(key, newValue);
-            else
+            } else {
                 this.remove(key);
+            }
         } else {
-            if (newValue != null)
+            if (newValue != null) {
                 this.put(key, newValue);
-            else
+            } else {
                 return null;
+            }
         }
         return this.getPrivate(key);
     }
@@ -219,10 +225,11 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
         V oldValue = this.getPrivate(key);
         V newValue = (oldValue == null) ? value :
                 remappingFunction.apply(oldValue, value);
-        if (newValue == null)
+        if (newValue == null) {
             this.remove(key);
-        else
+        } else {
             this.put(key, newValue);
+        }
         return this.getPrivate(key);
     }
 }

@@ -14,28 +14,38 @@ import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUILinkedList;
 
 /**
- * an abstract class to represent an linked list
+ * An abstract class to represent an linked list.
  *
  * @param <T>
  *         the type of the linked list
- * @param <Comm>
+ * @param <C>
  *         the communication type of the linked list
  */
-public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> extends NodeyDatastructure<T, Comm, VLinkedListNodeCommunication<T>, VLinkedListNode<T>> implements List<T> {
+public abstract class VLinkedList<T, C extends VLinkedListCommunication<T>>
+        extends NodeyDatastructure<T, C, VLinkedListNodeCommunication<T>, VLinkedListNode<T>> implements List<T> {
     private final VLinkedListNode<Object> head;
 
     /**
-     * constructor for the linked list. Creates the head node.
+     * Constructor for the linked list. Creates the head node.
      */
     public VLinkedList() {
         setName(getDatastructureType());
-        head = (VLinkedListNode<Object>) createNode();
+        head = createHeadNode();
         head.setValue("<HEAD>");
+    }
+
+    /**
+     * Creates a head node.
+     *
+     * @return a node with type Object
+     */
+    protected VLinkedListNode<Object> createHeadNode() {
+        return new VLinkedListNode<>(this);
     }
 
     @Override
     protected VLinkedListNode<T> createNode() {
-        return new VLinkedListNode(this);
+        return new VLinkedListNode<>(this);
     }
 
     @Override
@@ -43,20 +53,41 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         return new GUILinkedList();
     }
 
-
+    /**
+     * Handle outOfBoundsError.
+     *
+     * @param index
+     *         the index that caused the error
+     */
     protected void outOfBoundsError(int index) {
         UserError userError = new ListIndexOutOfBoundsError(index, this.size() - 1);
-        getBroadcaster().sendWithPauseBlock((b) -> b.handleError(userError));
+        getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
     }
 
+    /**
+     * Gets the head node.
+     *
+     * @return the head node
+     */
     protected VLinkedListNode<T> getHead() {
         return (VLinkedListNode<T>) head.getForward();
     }
 
+    /**
+     * Sets the head node.
+     *
+     * @param newHead
+     *         the head node
+     */
     protected void setHead(VLinkedListNode<T> newHead) {
         this.head.setForward((VLinkedListNode<Object>) newHead);
     }
 
+    /**
+     * Gets the last element of the list.
+     *
+     * @return the last element
+     */
     protected VLinkedListNode<T> getLast() {
         VLinkedListNode<T> node = getHead();
         VLinkedListNode<T> last = node;
@@ -67,6 +98,13 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         return last;
     }
 
+    /**
+     * Gets the node at the specified index.
+     *
+     * @param i
+     *         the index
+     * @return the node at the index
+     */
     protected VLinkedListNode<T> getNode(int i) {
         if (i < 0) {
             outOfBoundsError(i);
@@ -86,7 +124,6 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
     }
 
     protected abstract void disconnectAndRemove(VLinkedListNode<T> node);
-
 
     @Override
     public int size() {
@@ -271,7 +308,9 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         int pos = 0;
         VLinkedListNode<T> it = getHead();
         while (it != null) {
-            if (it.getValue() == o) return pos;
+            if (it.getValue() == o) {
+                return pos;
+            }
             it = it.getForward();
             pos++;
         }
@@ -284,7 +323,9 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         int last = -1;
         VLinkedListNode<T> it = getHead();
         while (it != null) {
-            if (it.getValue() == o) last = pos;
+            if (it.getValue() == o) {
+                last = pos;
+            }
             it = it.getForward();
             pos++;
         }
@@ -298,7 +339,9 @@ public abstract class VLinkedList<T, Comm extends VLinkedListCommunication<T>> e
         int pos = 0;
         VLinkedListNode<T> it = getHead();
         while (it != null && pos < i1) {
-            if (pos >= i) lst.add(it.getValue());
+            if (pos >= i) {
+                lst.add(it.getValue());
+            }
             it = it.getForward();
             pos++;
         }

@@ -4,39 +4,40 @@ import osl2.messaging.Broadcaster;
 import osl2.messaging.datastructures.nodey.VNodeCommunication;
 
 /**
- * Represent a generic node
+ * Represent a generic node.
  *
- * @param <Comm>
+ * @param <C>
  *         the communication of the node
  * @param <T>
  *         the type of the node
  */
-public abstract class VNode<Comm extends VNodeCommunication, T> {
-    private final Broadcaster<Comm> broadcaster;
+public abstract class VNode<C extends VNodeCommunication, T> {
+    private final Broadcaster<C> broadcaster;
     private T value;
 
     /**
      * Constructor for the VNode. Initialize visualization, broadcaster and registers itself in the parent DS.
      *
      * @param parentDS
+     *         the parent datastructure
      */
     public VNode(NodeyDatastructure parentDS) {
-        Comm comm = createVisualization();
-        this.broadcaster = new Broadcaster<>(comm);
-        parentDS.registerNodeVisualization(comm);
+        C c = createVisualization();
+        this.broadcaster = new Broadcaster<>(c);
+        parentDS.registerNodeVisualization(c);
     }
 
     /**
-     * gets the broadcaster
+     * Gets the broadcaster.
      *
      * @return the broadcaster of this node
      */
-    protected Broadcaster<Comm> getBroadcaster() {
+    protected Broadcaster<C> getBroadcaster() {
         return broadcaster;
     }
 
     /**
-     * get the Value of this node
+     * Gets the Value of this node.
      *
      * @return the value of this node
      */
@@ -45,7 +46,7 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
     }
 
     /**
-     * sets new value for this node
+     * Sets new value for this node.
      *
      * @param newValue
      *         the newValue for this node
@@ -58,22 +59,22 @@ public abstract class VNode<Comm extends VNodeCommunication, T> {
     public abstract void disconnectAll();
 
     /**
-     * Gets the broadcasters corresponding client
+     * Gets the broadcasters corresponding client.
      *
-     * @return Communication
+     * @return communication
      */
-    public Comm getCorrespondent() {
+    public C getCorrespondent() {
         return getBroadcaster().getClient();
     }
 
-    protected abstract Comm createVisualization();
+    protected abstract C createVisualization();
 
     /**
-     * Gets the communication
+     * Gets the communication.
      *
-     * @return Communication
+     * @return communication
      */
-    Comm getCommunication() {
+    C getCommunication() {
         return broadcaster.getClient();
     }
 }
