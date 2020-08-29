@@ -1,5 +1,6 @@
 package osl2;
 
+import javafx.application.Platform;
 import osl2.datastructures.EvanstonDatastructure;
 import osl2.datastructures.VDirectedGraph;
 import osl2.datastructures.VTree;
@@ -9,6 +10,7 @@ import osl2.messaging.PlayController;
 import osl2.view.ui.EvanstonWindow;
 
 public class Evanston {
+    private static EvanstonWindow window;
 
     /**
      * Opens the visualization.
@@ -18,8 +20,12 @@ public class Evanston {
      * @return The Broadcaster.
      */
     public static Broadcaster openVisualization(EvanstonDatastructure datastructure) {
-        EvanstonWindow window = EvanstonWindow.getInstance();
+        window = EvanstonWindow.getInstance();
         return window.openVisualization(datastructure);
+    }
+
+    public static void closeVisualization() {
+        Platform.exit();
     }
 
     /**
@@ -36,6 +42,10 @@ public class Evanston {
      */
     public static void start() {
         EvanstonWindow.open();
+    }
+
+    public static void startForTest() {
+        EvanstonWindow.openForTests();
     }
 
     /**
