@@ -27,6 +27,11 @@ public class SideBar extends ListView<MirrorButton> {
         getItems().add(mirrorButton);
     }
 
+    //
+    public void removeMirrorButton(MirrorButton mirrorButton){
+
+    }
+
     /**
      * Sets a listener to set the size of the MirrorButtons,
      * when resizing the Sidebar.
