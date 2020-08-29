@@ -5,8 +5,6 @@ import java.time.Instant;
 import java.util.List;
 import osl2.Evanston;
 import osl2.datastructures.nodey.VGraphNode;
-import osl2.datastructures.nodey.VLinkedList;
-import osl2.view.ui.EvanstonWindow;
 
 public class LoadTest {
     private final static int NUMBER_OF_ITERATIONS_STARTUP_TEST = 15;
@@ -17,10 +15,13 @@ public class LoadTest {
         System.out.println("Startup time test: " + testStartingTimeOfApplication(NUMBER_OF_ITERATIONS_STARTUP_TEST));
 
         Evanston.startForTest();
-        System.out.println("huge connected graph test: " + firstLoadTest());
-        System.out.println("linked list with graphs in it test: " + secondLoadTest());
-        System.out.println("singly linked list with a lot of elements: " + thirdLoadTest());
-        System.out.println("recursive load test: " + lastLoadTest());
+
+        for(int i = 0; i < 5; i++) {
+            System.out.println("huge connected graph test: " + firstLoadTest());
+            System.out.println("linked list with graphs in it test: " + secondLoadTest());
+            System.out.println("singly linked list with a lot of elements: " + thirdLoadTest());
+            System.out.println("recursive load test: " + lastLoadTest());
+        }
     }
 
     public static boolean testStartingTimeOfApplication(int numberOfIterations) throws InterruptedException {
