@@ -26,7 +26,6 @@ public class InlineRepresentation extends Pane {
         setStyle();
         getChildren().add(new Label(text));
         setOnMouseClicked(event -> {
-            System.out.println("Foo!");
             action.run();
         });
     }
