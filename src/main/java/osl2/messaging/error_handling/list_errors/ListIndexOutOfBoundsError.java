@@ -11,7 +11,7 @@ public class ListIndexOutOfBoundsError implements UserError {
 
     private final int userIndex;
     private final int maxIndex;
-    private final String name = "ListIndexOutOfBounds";
+    private static final String NAME = "ListIndexOutOfBounds";
     private final LanguageController languageController;
 
     /**
@@ -30,13 +30,13 @@ public class ListIndexOutOfBoundsError implements UserError {
 
     @Override
     public String getErrorName() {
-        return this.name;
+        return NAME;
     }
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "User") + userIndex
-                + "\n" + languageController.getMessage(this.name + "Index") + "[" + MIN_INDEX + "," + maxIndex + "]";
+        return languageController.getMessage(NAME + "User") + userIndex
+                + "\n" + languageController.getMessage(NAME + "Index") + "[" + MIN_INDEX + "," + maxIndex + "]";
     }
 }
 

@@ -158,7 +158,6 @@ public abstract class VGraph<T>
 
     @Override
     public Collection<VGraphNode<T>> getNodes() {
-        // TODO changes original values too? Violation of encapsulation?
         return nodeList;
     }
 

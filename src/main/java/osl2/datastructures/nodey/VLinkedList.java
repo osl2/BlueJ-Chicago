@@ -210,7 +210,8 @@ public abstract class VLinkedList<T, C extends VLinkedListCommunication<T>>
     @Override
     public boolean addAll(int i, Collection<? extends T> collection) {
         if (i < 0 || i > size()) {
-            // TODO raise exception
+            UserError userError = new ListIndexOutOfBoundsError(i, size());
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return false;
         }
 

@@ -4,7 +4,6 @@ import osl2.datastructures.nodey.VLinkedList;
 import osl2.datastructures.nodey.VLinkedListNode;
 import osl2.messaging.datastructures.nodey.VLinkedListCommunication;
 import osl2.messaging.error_handling.UserError;
-import osl2.messaging.error_handling.array_errors.ArrayIndexOutOfBoundsError;
 import osl2.messaging.error_handling.list_errors.ListIndexOutOfBoundsError;
 
 /**
