@@ -31,7 +31,7 @@ public class LoadTest {
             Instant start = Instant.now();
             Evanston.start();
             Instant end = Instant.now();
-            resultsForEachIteration[i] = Duration.between(start, end).getSeconds();
+            resultsForEachIteration[i] = Duration.between(start, end).getNano();
             Evanston.closeVisualization();
         }
 
@@ -64,7 +64,7 @@ public class LoadTest {
         }
 
         Instant end = Instant.now();
-        return Duration.between(start, end).getSeconds();
+        return Duration.between(start, end).getNano();
     }
 
     public static long secondLoadTest() {
@@ -85,7 +85,7 @@ public class LoadTest {
             list.add(graph);
         }
         Instant end = Instant.now();
-        return Duration.between(start, end).getSeconds();
+        return Duration.between(start, end).getNano();
     }
 
     public static long thirdLoadTest() {
@@ -97,7 +97,7 @@ public class LoadTest {
             list.add(1000);
         }
         Instant end = Instant.now();
-        return Duration.between(start, end).getSeconds();
+        return Duration.between(start, end).getNano();
     }
 
     public static long lastLoadTest() {
@@ -116,6 +116,6 @@ public class LoadTest {
             }
         }
         Instant end = Instant.now();
-        return Duration.between(start, end).getSeconds();
+        return Duration.between(start, end).getNano();
     }
 }
