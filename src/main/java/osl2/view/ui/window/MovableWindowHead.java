@@ -13,6 +13,7 @@ import osl2.view.ui.mirror.IMirrorController;
  * The head of a MovableWindow.
  */
 public class MovableWindowHead extends HBox {
+    private static final String MOVABLE_WINDOW_HEAD = "movable-window-head";
     private final HBox buttons;
     private final Pane spacer;
     private ActionButton minMaxButton;
@@ -22,7 +23,6 @@ public class MovableWindowHead extends HBox {
     private Button resizeButton;
     private double mouseDragStartY;
     private double mouseDragStartX;
-    private static final String MOVABLE_WINDOW_HEAD = "movable-window-head";
 
     /**
      * Creates a new WindowHead.

@@ -8,10 +8,9 @@ import osl2.view.ui.localisation.LanguageController;
  */
 public class ListIndexOutOfBoundsError implements UserError {
     private static final int MIN_INDEX = 0;
-
+    private static final String NAME = "ListIndexOutOfBounds";
     private final int userIndex;
     private final int maxIndex;
-    private static final String NAME = "ListIndexOutOfBounds";
     private final LanguageController languageController;
 
     /**

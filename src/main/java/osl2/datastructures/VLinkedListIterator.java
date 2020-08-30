@@ -9,6 +9,11 @@ public class VLinkedListIterator<T> implements ListIterator<T> {
     private int index = 0;
     private VLinkedListNode<T> node;
 
+    public VLinkedListIterator(VLinkedList list, VLinkedListNode<T> head) {
+        this.list = list;
+        this.node = head;
+    }
+
     @Override
     public boolean hasNext() {
         return node != null;
@@ -59,10 +64,5 @@ public class VLinkedListIterator<T> implements ListIterator<T> {
     @Override
     public void add(T t) {
         // TODO: Error
-    }
-
-    public VLinkedListIterator(VLinkedList list, VLinkedListNode<T> head) {
-        this.list = list;
-        this.node = head;
     }
 }
