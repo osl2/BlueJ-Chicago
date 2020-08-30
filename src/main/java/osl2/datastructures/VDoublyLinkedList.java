@@ -3,6 +3,8 @@ package osl2.datastructures;
 import osl2.datastructures.nodey.VLinkedList;
 import osl2.datastructures.nodey.VLinkedListNode;
 import osl2.messaging.datastructures.nodey.VLinkedListCommunication;
+import osl2.messaging.error_handling.UserError;
+import osl2.messaging.error_handling.list_errors.ListIndexOutOfBoundsError;
 
 /**
  * Represents a doubly linked list.
@@ -75,6 +77,11 @@ public class VDoublyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
 
     @Override
     public void add(int i, T t) {
+        if (i < 0 || i > size()) {
+            UserError userError = new ListIndexOutOfBoundsError(i, size());
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
+            return;
+        }
         VLinkedListNode<T> node = createNode();
         node.setValue(t);
 

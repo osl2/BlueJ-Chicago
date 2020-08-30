@@ -3,6 +3,9 @@ package osl2.datastructures;
 import osl2.datastructures.nodey.VLinkedList;
 import osl2.datastructures.nodey.VLinkedListNode;
 import osl2.messaging.datastructures.nodey.VLinkedListCommunication;
+import osl2.messaging.error_handling.UserError;
+import osl2.messaging.error_handling.array_errors.ArrayIndexOutOfBoundsError;
+import osl2.messaging.error_handling.list_errors.ListIndexOutOfBoundsError;
 
 /**
  * Represent a singly linked list.
@@ -69,8 +72,9 @@ public class VSinglyLinkedList<T> extends VLinkedList<T, VLinkedListCommunicatio
     @Override
     public void add(int i, T t) {
         if (i < 0 || i > size()) {
-            // TODO raise exception
-            throw new IndexOutOfBoundsException();
+            UserError userError = new ListIndexOutOfBoundsError(i, size());
+            getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
+            return;
         }
 
         VLinkedListNode<T> node = createNode();
