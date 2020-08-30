@@ -103,15 +103,26 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         }
     }
 
+    /**
+     * Opens the Testmode with delay 100.
+     */
     public static void openForTests() {
         openForTests(100);
     }
 
+    /**
+     * Opens the testmode with a delay.
+     * @param delay The delay.
+     */
     public static void openForTests(long delay) {
         open();
         getInstance().activateTestMode(delay);
     }
 
+    /**
+     * Activates testmode with delay.
+     * @param delay The delay.
+     */
     private void activateTestMode(long delay) {
         this.testModeActive = true;
         playController.activateTestMode(delay);
@@ -209,6 +220,9 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         verticalSplitter.setDividerPosition(0, VERTICAL_DIVIDER_POSITION);
     }
 
+    /**
+     * Sets uo Mainregion.
+     */
     private void setUpMainRegion() {
         this.mainRegionScrollContainer.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
