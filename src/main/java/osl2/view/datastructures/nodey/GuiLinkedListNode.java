@@ -12,19 +12,17 @@ import osl2.view.inlinerepresentation.InlineRepresentation;
  * @param <T>
  *         The datatype of the contents.
  */
-public class GUILinkedListNode<T> extends GUINode<T, VBox> implements VLinkedListNodeCommunication<T> {
-    private final VBox layoutBox;
+public class GuiLinkedListNode<T> extends GuiNode<T, VBox> implements VLinkedListNodeCommunication<T> {
     private final ArrowPane backwardArrowPane;
     private final ArrowPane forwardArrowPane;
-
 
     /**
      * Creates a new Linked List.
      */
-    public GUILinkedListNode() {
+    public GuiLinkedListNode() {
         super(new VBox());
         getContent().setStyle("-fx-background-color: white");
-        this.layoutBox = new VBox();
+        VBox layoutBox = new VBox();
         getContent().getChildren().add(layoutBox);
         backwardArrowPane = new ArrowPane();
         backwardArrowPane.setMinWidth(10);
@@ -49,13 +47,17 @@ public class GUILinkedListNode<T> extends GUINode<T, VBox> implements VLinkedLis
     @Override
     public void setForward(VLinkedListNodeCommunication<T> node) {
         forwardArrowPane.clear();
-        if (node != null) forwardArrowPane.connect(node.asGUINode());
+        if (node != null) {
+            forwardArrowPane.connect(node.asGUINode());
+        }
     }
 
     @Override
     public void setBackward(VLinkedListNodeCommunication<T> node) {
         backwardArrowPane.clear();
-        if (node != null) backwardArrowPane.connect(node.asGUINode());
+        if (node != null) {
+            backwardArrowPane.connect(node.asGUINode());
+        }
     }
 
     @Override
@@ -70,9 +72,11 @@ public class GUILinkedListNode<T> extends GUINode<T, VBox> implements VLinkedLis
 
     @Override
     public void handleError(UserError userError) {
+        // Not needed for nodes
     }
 
     @Override
     public void setName(String name) {
+        // Not needed for nodes
     }
 }

@@ -24,9 +24,7 @@ public class InlineRepresentation extends Pane {
         super();
         setStyle();
         getChildren().add(new Label(text));
-        setOnMouseClicked(event -> {
-            action.run();
-        });
+        setOnMouseClicked(event -> action.run());
     }
 
     /**
@@ -51,8 +49,11 @@ public class InlineRepresentation extends Pane {
     public static Node get(Object value) {
         String text = ((value == null) ? "null" : value.toString());
         Runnable action = inlineRepresentationFunctions.get(value);
-        if (action != null) return new InlineRepresentation(text, action);
-        else return new Label(text);
+        if (action != null) {
+            return new InlineRepresentation(text, action);
+        } else {
+            return new Label(text);
+        }
     }
 
     /**

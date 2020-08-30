@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
-import osl2.view.datastructures.sequential.GUIArray;
+import osl2.view.datastructures.sequential.GuiArray;
 import osl2.view.ui.EvanstonWindow;
 import osl2.view.ui.mirror.Mirror;
 import osl2.view.ui.mirror.MirrorButton;
@@ -31,7 +31,7 @@ public class MainRegionHighlight extends ApplicationTest {
         tmpScene = new Scene(sceneRoot, Screen.getPrimary().getBounds().getMaxX(), Screen.getPrimary().getBounds().getMaxY());
         stage.setScene(tmpScene);
         stage.show();
-        controller= new MirrorController(new GUIArray(), evanstonWindow.getMainRegion(), evanstonWindow.getSideBar());
+        controller= new MirrorController(new GuiArray(), evanstonWindow.getMainRegion(), evanstonWindow.getSideBar());
         mirrorButton = controller.getMirrorButton();
         mirror = controller.getMirror();
     }

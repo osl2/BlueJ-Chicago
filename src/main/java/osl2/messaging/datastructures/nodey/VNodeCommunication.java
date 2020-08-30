@@ -1,7 +1,7 @@
 package osl2.messaging.datastructures.nodey;
 
 import osl2.messaging.datastructures.DatastructureCommunication;
-import osl2.view.datastructures.nodey.GUINode;
+import osl2.view.datastructures.nodey.GuiNode;
 
 /**
  * The communication used by {@link osl2.datastructures.nodey.VNode}.
@@ -15,7 +15,7 @@ public interface VNodeCommunication<T> extends DatastructureCommunication {
      *
      * @return this as a node
      */
-    GUINode asGUINode();
+    GuiNode asGUINode();
 
     /**
      * Sets a specified value.

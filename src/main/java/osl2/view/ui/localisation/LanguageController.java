@@ -7,9 +7,7 @@ import java.util.ResourceBundle;
  * The language controller, which determines the language of the test.
  */
 public class LanguageController {
-
     private static LanguageController singeltonLanguageController = null;
-    private Locale locale;
     private ResourceBundle messages;
     private LANGUAGES language;
 
@@ -45,7 +43,7 @@ public class LanguageController {
      *         The language for the messages.
      */
     public void setMessages(LANGUAGES language) {
-        locale = new Locale(language.getLanguage(), language.getCountry());
+        Locale locale = new Locale(language.getLanguage(), language.getCountry());
         messages = ResourceBundle.getBundle("MessagesBundle", locale);
     }
 

@@ -9,20 +9,19 @@ import osl2.view.ui.draggable.Draggable;
  *
  * @param <T>
  *         The datatype of the content.
- * @param <ContentType>
+ * @param <C>
  *         The type of JavaFX Node the content will be shown in.
  */
-public abstract class GUINode<T, ContentType extends Node> extends Draggable implements VNodeCommunication<T> {
-    private final ContentType content;
-    private ArrowOverlay arrows;
+public abstract class GuiNode<T, C extends Node> extends Draggable implements VNodeCommunication<T> {
+    private final C content;
 
     /**
-     * Creates a new GUINode
+     * Creates a new {@link GuiNode}.
      *
      * @param content
      *         The content of the node.
      */
-    protected GUINode(ContentType content) {
+    protected GuiNode(C content) {
         this.content = content;
         getChildren().add(content);
     }
@@ -32,17 +31,8 @@ public abstract class GUINode<T, ContentType extends Node> extends Draggable imp
      *
      * @return The content of the node.
      */
-    protected ContentType getContent() {
+    protected C getContent() {
         return content;
-    }
-
-    /**
-     * Returns the ArrowOverlay of the GuiNode.
-     *
-     * @return The ArrowOverlay.
-     */
-    private ArrowOverlay getArrowOverlay() {
-        return arrows;
     }
 
     /**
@@ -52,11 +42,10 @@ public abstract class GUINode<T, ContentType extends Node> extends Draggable imp
      *         The ArrowOverlay.
      */
     public void setArrowOverlay(ArrowOverlay overlay) {
-        this.arrows = overlay;
     }
 
     @Override
-    public GUINode asGUINode() {
+    public GuiNode asGUINode() {
         return this;
     }
 }

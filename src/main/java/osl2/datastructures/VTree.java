@@ -18,7 +18,7 @@ import osl2.messaging.error_handling.tree_errors.TreeNoParentError;
 import osl2.messaging.error_handling.tree_errors.TreeNotALeafError;
 import osl2.messaging.error_handling.tree_errors.TreeParentExistingError;
 import osl2.view.datastructures.DatastructureVisualization;
-import osl2.view.datastructures.GUITree;
+import osl2.view.datastructures.GuiTree;
 
 /**
  * Represents an Tree.
@@ -104,7 +104,7 @@ public class VTree<T> extends NodeyDatastructure<T, VGraphCommunication<T>, VGra
 
     @Override
     public DatastructureVisualization createVisualization() {
-        return new GUITree<T>();
+        return new GuiTree<T>();
     }
 
     @Override

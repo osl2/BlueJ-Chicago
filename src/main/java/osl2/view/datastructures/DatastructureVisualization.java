@@ -15,7 +15,6 @@ import osl2.view.ui.mirror.IMirrorController;
  */
 public abstract class DatastructureVisualization<T extends Node> implements DatastructureCommunication {
     private final T contents;
-    private final LanguageController languageController;
     private String name;
     private IMirrorController mirrorController;
 
@@ -28,13 +27,13 @@ public abstract class DatastructureVisualization<T extends Node> implements Data
     public DatastructureVisualization(T contents) {
         this.name = "???";
         this.contents = contents;
-        this.languageController = LanguageController.getLanguageController();
+        LanguageController.getLanguageController();
     }
 
     /**
      * Returns the name of the datastructure which is visualized.
      *
-     * @return
+     * @return the name
      */
     public String getName() {
         return name;

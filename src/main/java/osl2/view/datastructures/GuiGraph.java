@@ -10,12 +10,13 @@ import osl2.view.datastructures.nodey.GUINodeyDatastructure;
  * @param <T>
  *         The datatype of the datastructure.
  */
-public class GUIGraph<T> extends GUINodeyDatastructure<T, VGraphNodeCommunication<T>> implements VGraphCommunication<T> {
+public class GuiGraph<T> extends GUINodeyDatastructure<T, VGraphNodeCommunication<T>>
+        implements VGraphCommunication<T> {
 
     /**
      * Creates a new graph visualisation.
      */
-    public GUIGraph() {
+    public GuiGraph() {
         setName("Graph");
     }
 }

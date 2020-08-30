@@ -1,7 +1,7 @@
 package osl2.datastructures.nodey;
 
 import osl2.messaging.datastructures.nodey.VLinkedListNodeCommunication;
-import osl2.view.datastructures.nodey.GUILinkedListNode;
+import osl2.view.datastructures.nodey.GuiLinkedListNode;
 
 /**
  * Represents a node of an linked list.
@@ -75,6 +75,6 @@ public class VLinkedListNode<T> extends VNode<VLinkedListNodeCommunication<T>, T
 
     @Override
     protected VLinkedListNodeCommunication<T> createVisualization() {
-        return new GUILinkedListNode<>();
+        return new GuiLinkedListNode<>();
     }
 }

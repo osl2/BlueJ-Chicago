@@ -33,14 +33,4 @@ public class Floormat extends Pane {
     public void removeDraggable(Draggable draggable) {
         getChildren().remove(draggable);
     }
-
-    /**
-     * Raises a draggable in the Floormat to the front.
-     *
-     * @param draggable
-     *         The draggable which will be raised.
-     */
-    public void raise(Draggable draggable) {
-        draggable.toFront();
-    }
 }

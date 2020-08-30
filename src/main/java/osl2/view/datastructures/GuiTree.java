@@ -6,12 +6,12 @@ package osl2.view.datastructures;
  * @param <T>
  *         The datatype of the datastructure.
  */
-public class GUITree<T> extends GUIGraph<T> {
+public class GuiTree<T> extends GuiGraph<T> {
 
     /**
      * Creates a new GuiTree.
      */
-    public GUITree() {
+    public GuiTree() {
         setName("Tree");
     }
 }

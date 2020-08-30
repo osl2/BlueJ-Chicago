@@ -13,14 +13,14 @@ import osl2.view.inlinerepresentation.InlineRepresentation;
  * @param <V>
  *         The datatype for the value.
  */
-public class GUIMap<K, V> extends GUISequential implements VMapCommunication<K, V> {
+public class GuiMap<K, V> extends GuiSequential implements VMapCommunication<K, V> {
 
     private final List<Object> keys = new ArrayList<>();
 
     /**
      * Creates a new GUIMap.
      */
-    public GUIMap() {
+    public GuiMap() {
         super("Key", "Value");
     }
 

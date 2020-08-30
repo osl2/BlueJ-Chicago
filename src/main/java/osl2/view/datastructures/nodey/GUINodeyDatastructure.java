@@ -1,5 +1,6 @@
 package osl2.view.datastructures.nodey;
 
+import java.util.Random;
 import javafx.scene.layout.StackPane;
 import osl2.messaging.datastructures.nodey.VNodeCommunication;
 import osl2.messaging.datastructures.nodey.VNodeyDatastructureCommunication;
@@ -11,12 +12,15 @@ import osl2.view.ui.draggable.Floormat;
  *
  * @param <T>
  *         The datatype of the nodey datastructure.
- * @param <CommType>
- *         The communicationinterface.
+ * @param <C>
+ *         The communication interface.
  */
-public abstract class GUINodeyDatastructure<T, CommType extends VNodeCommunication<T>> extends DatastructureVisualization<StackPane> implements VNodeyDatastructureCommunication<T, CommType> {
+public abstract class GUINodeyDatastructure<T, C extends VNodeCommunication<T>>
+        extends DatastructureVisualization<StackPane> implements VNodeyDatastructureCommunication<T, C> {
+
     private final Floormat floormat;
     private final ArrowOverlay arrows;
+    Random rand = new Random();
 
     /**
      * Creates a new visualisation of a GuiNodeyDatastructure.
@@ -33,15 +37,15 @@ public abstract class GUINodeyDatastructure<T, CommType extends VNodeCommunicati
     }
 
     @Override
-    public void addGUINode(CommType node) {
+    public void addGUINode(C node) {
         node.asGUINode().setArrowOverlay(arrows);
         floormat.addDraggable(node.asGUINode());
-        node.asGUINode().setLayoutX((int) (Math.random() * floormat.getMinWidth()));
-        node.asGUINode().setLayoutY((int) (Math.random() * floormat.getMinHeight()));
+        node.asGUINode().setLayoutX(rand.nextInt((int) floormat.getMinWidth()));
+        node.asGUINode().setLayoutY(rand.nextInt((int) floormat.getMinHeight()));
     }
 
     @Override
-    public void removeGUINode(CommType node) {
+    public void removeGUINode(C node) {
         floormat.removeDraggable(node.asGUINode());
     }
 }

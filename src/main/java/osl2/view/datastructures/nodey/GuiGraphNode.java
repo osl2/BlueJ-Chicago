@@ -12,15 +12,15 @@ import osl2.view.inlinerepresentation.InlineRepresentation;
  * @param <T>
  *         The datatype of the value of the node.
  */
-public class GUIGraphNode<T> extends GUINode<T, RoundedNodeContainer<StackPane>> implements VGraphNodeCommunication<T> {
+public class GuiGraphNode<T> extends GuiNode<T, RoundedNodeContainer<StackPane>> implements VGraphNodeCommunication<T> {
     private final VBox vbox;
     private final ArrowPane arrows;
 
     /**
      * Creates a new GraphNode.
      */
-    public GUIGraphNode() {
-        super(new RoundedNodeContainer<StackPane>(new StackPane()));
+    public GuiGraphNode() {
+        super(new RoundedNodeContainer<>(new StackPane()));
 
         vbox = new VBox();
         arrows = new ArrowPane();
@@ -28,7 +28,7 @@ public class GUIGraphNode<T> extends GUINode<T, RoundedNodeContainer<StackPane>>
         getContent().getContents().getChildren().add(arrows);
         getContent().getContents().getChildren().add(vbox);
 
-        getContent().setContentStyle("-fx-background-color: red");
+        getContent().setContentStyle();
         vbox.getChildren().add(InlineRepresentation.get(null));
     }
 
@@ -62,11 +62,11 @@ public class GUIGraphNode<T> extends GUINode<T, RoundedNodeContainer<StackPane>>
 
     @Override
     public void handleError(UserError userError) {
-        // TODO / FIXME: Not needed for Nodes
+        // Not needed for nodes
     }
 
     @Override
     public void setName(String name) {
-        // TODO / FIXME: Not needed for Nodes
+        // Not needed for nodes
     }
 }

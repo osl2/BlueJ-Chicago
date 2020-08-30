@@ -1,19 +1,19 @@
 package osl2.view.datastructures.nodey;
 
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.shape.Line;
 
-
+/**
+ * Represents an arrow.
+ */
 public class Arrow extends Group {
     private final ArrowPane from;
-    private final GUINode to;
+    private final GuiNode to;
     private final ChangeListener updater;
     private final ChangeListener hideListener;
-
 
     /**
      * Creates a new arrow.
@@ -25,7 +25,7 @@ public class Arrow extends Group {
      * @param to
      *         Where the arrow points to.
      */
-    public Arrow(ArrowOverlay overlay, ArrowPane from, GUINode to) {
+    public Arrow(ArrowOverlay overlay, ArrowPane from, GuiNode to) {
         this.from = from;
         this.to = to;
 
@@ -86,12 +86,7 @@ public class Arrow extends Group {
             }
         };
 
-        hideListener = new ChangeListener<Scene>() {
-            @Override
-            public void changed(ObservableValue<? extends Scene> observableValue, Scene scene, Scene t1) {
-                setVisible(t1 != null);
-            }
-        };
+        hideListener = (ChangeListener<Scene>) (observableValue, scene, t1) -> setVisible(t1 != null);
 
         getChildren().add(line);
         getChildren().add(arrow1);

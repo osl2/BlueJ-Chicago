@@ -9,7 +9,7 @@ namespace osl2 {
                       class osl2.view.datastructures.nodey.Arrow {
                           + Arrow()
                       }
-                      class osl2.view.datastructures.nodey.GUIGraphNode {
+                      class osl2.view.datastructures.nodey.GuiGraphNode {
                           + GUIGraphNode()
                           + connect()
                           + disconnect()
@@ -18,7 +18,7 @@ namespace osl2 {
                           + setName()
                           + valueChange()
                       }
-                      abstract class osl2.view.datastructures.nodey.GUINode {
+                      abstract class osl2.view.datastructures.nodey.GuiNode {
                           + asGUINode()
                           # GUINode()
                           # getContent()
@@ -35,12 +35,12 @@ namespace osl2 {
                       }
                     }
                     namespace sequential {
-                      class osl2.view.datastructures.sequential.GUIArray {
+                      class osl2.view.datastructures.sequential.GuiArray {
                           + GUIArray()
                           + setSize()
                           + setValue()
                       }
-                      class osl2.view.datastructures.sequential.GUIMap {
+                      class osl2.view.datastructures.sequential.GuiMap {
                           - keys : List<Object>
                           + GUIMap()
                           + clear()
@@ -48,14 +48,14 @@ namespace osl2 {
                           + put()
                           + remove()
                       }
-                      abstract class osl2.view.datastructures.sequential.GUISequential {
+                      abstract class osl2.view.datastructures.sequential.GuiSequential {
                           # GUISequential()
                           # clearElements()
                           # putElement()
                           # putElement()
                           # removeElement()
                       }
-                      class osl2.view.datastructures.sequential.GUISequential.GUISequentialEntry {
+                      class osl2.view.datastructures.sequential.GuiSequential.GUISequentialEntry {
                           + GUISequentialEntry()
                       }
                     }
@@ -70,7 +70,7 @@ namespace osl2 {
                 # getContents()
                 - showErrorDialog()
             }
-            class osl2.view.datastructures.GUIGraph {
+            class osl2.view.datastructures.GuiGraph {
                 + GUIGraph()
             }
           }
@@ -280,23 +280,23 @@ namespace osl2 {
   osl2.view.datastructures.DatastructureVisualization o-- T : contents
   osl2.view.datastructures.DatastructureVisualization o-- osl2.view.ui.localisation.LanguageController : languageController
   osl2.view.datastructures.DatastructureVisualization o-- osl2.view.ui.mirror.IMirrorController : mirrorController
-  osl2.view.datastructures.GUIGraph .up.|> osl2.messaging.datastructures.VGraphCommunication
-  osl2.view.datastructures.GUIGraph -up-|> osl2.view.datastructures.nodey.GUINodeyDatastructure
-  osl2.view.datastructures.sequential.GUIArray .up.|> osl2.messaging.datastructures.VArrayCommunication
-  osl2.view.datastructures.sequential.GUIArray -up-|> osl2.view.datastructures.sequential.GUISequential
-  osl2.view.datastructures.sequential.GUIMap .up.|> osl2.messaging.datastructures.VMapCommunication
-  osl2.view.datastructures.sequential.GUIMap -up-|> osl2.view.datastructures.sequential.GUISequential
-  osl2.view.datastructures.sequential.GUISequential -up-|> osl2.view.datastructures.DatastructureVisualization
-  osl2.view.datastructures.sequential.GUISequential o-- osl2.view.datastructures.sequential.GUISequential.GUISequentialEntry : head
-  osl2.view.datastructures.sequential.GUISequential +-down- osl2.view.datastructures.sequential.GUISequential.GUISequentialEntry
-  osl2.view.datastructures.sequential.GUISequential.GUISequentialEntry -up-|> javafx.scene.layout.VBox
+  osl2.view.datastructures.GuiGraph .up.|> osl2.messaging.datastructures.VGraphCommunication
+  osl2.view.datastructures.GuiGraph -up-|> osl2.view.datastructures.nodey.GUINodeyDatastructure
+  osl2.view.datastructures.sequential.GuiArray .up.|> osl2.messaging.datastructures.VArrayCommunication
+  osl2.view.datastructures.sequential.GuiArray -up-|> osl2.view.datastructures.sequential.GuiSequential
+  osl2.view.datastructures.sequential.GuiMap .up.|> osl2.messaging.datastructures.VMapCommunication
+  osl2.view.datastructures.sequential.GuiMap -up-|> osl2.view.datastructures.sequential.GuiSequential
+  osl2.view.datastructures.sequential.GuiSequential -up-|> osl2.view.datastructures.DatastructureVisualization
+  osl2.view.datastructures.sequential.GuiSequential o-- osl2.view.datastructures.sequential.GuiSequential.GUISequentialEntry : head
+  osl2.view.datastructures.sequential.GuiSequential +-down- osl2.view.datastructures.sequential.GuiSequential.GUISequentialEntry
+  osl2.view.datastructures.sequential.GuiSequential.GUISequentialEntry -up-|> javafx.scene.layout.VBox
 
   osl2.view.datastructures.nodey.Arrow -up-|> javafx.scene.Group
-  osl2.view.datastructures.nodey.GUIGraphNode .up.|> osl2.messaging.datastructures.VGraphNodeCommunication
-  osl2.view.datastructures.nodey.GUIGraphNode -up-|> osl2.view.datastructures.nodey.GUINode
-  osl2.view.datastructures.nodey.GUINode .up.|> osl2.messaging.datastructures.nodey.VNodeCommunication
-  osl2.view.datastructures.nodey.GUINode -up-|> osl2.view.ui.draggable.Draggable
-  osl2.view.datastructures.nodey.GUINode o-- ContentType : content
+  osl2.view.datastructures.nodey.GuiGraphNode .up.|> osl2.messaging.datastructures.VGraphNodeCommunication
+  osl2.view.datastructures.nodey.GuiGraphNode -up-|> osl2.view.datastructures.nodey.GuiNode
+  osl2.view.datastructures.nodey.GuiNode .up.|> osl2.messaging.datastructures.nodey.VNodeCommunication
+  osl2.view.datastructures.nodey.GuiNode -up-|> osl2.view.ui.draggable.Draggable
+  osl2.view.datastructures.nodey.GuiNode o-- ContentType : content
   osl2.view.datastructures.nodey.GUINodeyDatastructure .up.|> osl2.messaging.datastructures.nodey.VNodeyDatastructureCommunication
   osl2.view.datastructures.nodey.GUINodeyDatastructure -up-|> osl2.view.datastructures.DatastructureVisualization
   osl2.view.datastructures.nodey.RoundedNodeContainer -up-|> javafx.scene.layout.Pane

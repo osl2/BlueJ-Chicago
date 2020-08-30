@@ -3,7 +3,7 @@ package osl2.view.datastructures.nodey;
 import javafx.scene.layout.Pane;
 
 /**
- * The arrowoverlay, where the arrows will be contained.
+ * The arrow overlay, where the arrows will be contained.
  */
 public class ArrowOverlay extends Pane {
 

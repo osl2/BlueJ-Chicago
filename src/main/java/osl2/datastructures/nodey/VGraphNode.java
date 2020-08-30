@@ -5,7 +5,7 @@ import java.util.Set;
 import osl2.messaging.datastructures.VGraphNodeCommunication;
 import osl2.messaging.error_handling.UserError;
 import osl2.messaging.error_handling.graph_errors.GraphRecursionError;
-import osl2.view.datastructures.nodey.GUIGraphNode;
+import osl2.view.datastructures.nodey.GuiGraphNode;
 
 /**
  * Represents a node in a {@link osl2.datastructures.interfaces.IGraph}.
@@ -89,6 +89,6 @@ public class VGraphNode<T> extends VNode<VGraphNodeCommunication<T>, T> {
 
     @Override
     protected VGraphNodeCommunication<T> createVisualization() {
-        return new GUIGraphNode<>();
+        return new GuiGraphNode<>();
     }
 }

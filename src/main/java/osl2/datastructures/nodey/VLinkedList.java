@@ -11,7 +11,7 @@ import osl2.messaging.datastructures.nodey.VLinkedListNodeCommunication;
 import osl2.messaging.error_handling.UserError;
 import osl2.messaging.error_handling.list_errors.ListIndexOutOfBoundsError;
 import osl2.view.datastructures.DatastructureVisualization;
-import osl2.view.datastructures.GUILinkedList;
+import osl2.view.datastructures.GuiLinkedList;
 
 /**
  * An abstract class to represent an linked list.
@@ -50,7 +50,7 @@ public abstract class VLinkedList<T, C extends VLinkedListCommunication<T>>
 
     @Override
     public DatastructureVisualization createVisualization() {
-        return new GUILinkedList();
+        return new GuiLinkedList();
     }
 
     /**

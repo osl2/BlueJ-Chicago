@@ -17,7 +17,7 @@ import osl2.messaging.error_handling.graph_errors.GraphEdgeExistingError;
 import osl2.messaging.error_handling.graph_errors.GraphEdgeNotExistingError;
 import osl2.messaging.error_handling.graph_errors.GraphNodeNotExistingError;
 import osl2.view.datastructures.DatastructureVisualization;
-import osl2.view.datastructures.GUIGraph;
+import osl2.view.datastructures.GuiGraph;
 
 /**
  * Represents a graph.
@@ -65,7 +65,7 @@ public abstract class VGraph<T>
 
     @Override
     public DatastructureVisualization createVisualization() {
-        return new GUIGraph();
+        return new GuiGraph();
     }
 
     @Override

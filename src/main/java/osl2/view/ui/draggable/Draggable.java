@@ -6,15 +6,13 @@ import javafx.scene.Group;
  * The draggable class is a object which can be moved.
  */
 public class Draggable extends Group {
-    private double xOffset;
-    private double yOffset;
-
+    private double xoffset;
+    private double yoffset;
 
     /**
      * Creates a new draggable.
      */
     public Draggable() {
-        //TODO Add Mirror/Draggable to Mirror?
         setBehavior();
     }
 
@@ -24,7 +22,7 @@ public class Draggable extends Group {
      * @return The floormat.
      */
     private Floormat getFloormat() {
-        return (Floormat) getParent();  // FIXME: This is a bit hacky
+        return (Floormat) getParent();
     }
 
     /**
@@ -47,17 +45,17 @@ public class Draggable extends Group {
      * @return The XOffset.
      */
     public double getXOffset() {
-        return this.xOffset;
+        return this.xoffset;
     }
 
     /**
      * Sets the XOffset of this draggable.
      *
-     * @param xOffset
+     * @param xoffset
      *         The value which will be the XOffset.
      */
-    public void setXOffset(double xOffset) {
-        this.xOffset = xOffset;
+    public void setXOffset(double xoffset) {
+        this.xoffset = xoffset;
     }
 
     /**
@@ -66,48 +64,48 @@ public class Draggable extends Group {
      * @return The YOffset.
      */
     public double getYOffset() {
-        return this.yOffset;
+        return this.yoffset;
     }
 
     /**
      * Sets the YOffset of this draggable.
      *
-     * @param yOffset
+     * @param yoffset
      *         The value which will be the YOffset.
      */
-    public void setYOffset(double yOffset) {
-        this.yOffset = yOffset;
+    public void setYOffset(double yoffset) {
+        this.yoffset = yoffset;
     }
 
     /**
      * Sets the behaviour off the draggable, so that it can be moved inside its parent.
      */
     private void setBehavior() {
-        setOnMousePressed((event) -> {
+        setOnMousePressed(event -> {
             event.consume();
             raise();
-            xOffset = (getLayoutX() - event.getScreenX());
-            yOffset = (getLayoutY() - event.getScreenY());
+            xoffset = (getLayoutX() - event.getScreenX());
+            yoffset = (getLayoutY() - event.getScreenY());
         });
 
-        setOnMouseDragged((event) -> {
+        setOnMouseDragged(event -> {
             event.consume();
-            if (xOffset + event.getScreenX() < 0) {
+            if (xoffset + event.getScreenX() < 0) {
                 setLayoutX(0);
-            } else if (xOffset + event.getScreenX() > getFloormat().getWidth()) {
+            } else if (xoffset + event.getScreenX() > getFloormat().getWidth()) {
                 setLayoutX(getFloormat().getWidth() - 50);
             } else {
-                setLayoutX(xOffset + event.getScreenX());
+                setLayoutX(xoffset + event.getScreenX());
             }
 
-            if (yOffset + event.getScreenY() < 0) {
+            if (yoffset + event.getScreenY() < 0) {
                 setLayoutY(0);
 
-            } else if (yOffset + event.getScreenY() > getFloormat().getHeight()) {
+            } else if (yoffset + event.getScreenY() > getFloormat().getHeight()) {
                 setLayoutY(getFloormat().getHeight() + event.getScreenY());
 
             } else {
-                setLayoutY(yOffset + event.getScreenY());
+                setLayoutY(yoffset + event.getScreenY());
             }
         });
     }

@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
  * A rounded node with element.
  *
  * @param <T>
- *         The nodetype of the contents.
+ *         The node type of the contents.
  */
 public class RoundedNodeContainer<T extends Node> extends HBox {
     private final Pane pane;
@@ -54,15 +54,20 @@ public class RoundedNodeContainer<T extends Node> extends HBox {
         pane.getChildren().set(0, newContents);
     }
 
+    /**
+     * Shows an arrow.
+     */
     public void showSelfRefArrow() {
-        if (!getChildren().contains(arrow)) getChildren().add(arrow);
+        if (!getChildren().contains(arrow)) {
+            getChildren().add(arrow);
+        }
     }
 
     public void hideSelfRefArrow() {
         getChildren().remove(arrow);
     }
 
-    protected void setContentStyle(String style) {
-        pane.setStyle(style);
+    protected void setContentStyle() {
+        pane.setStyle("-fx-background-color: red");
     }
 }

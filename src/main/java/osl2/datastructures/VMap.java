@@ -12,7 +12,7 @@ import osl2.messaging.error_handling.UserError;
 import osl2.messaging.error_handling.map_errors.MapNullPointerGetError;
 import osl2.messaging.error_handling.map_errors.MapNullPointerRemoveError;
 import osl2.view.datastructures.DatastructureVisualization;
-import osl2.view.datastructures.sequential.GUIMap;
+import osl2.view.datastructures.sequential.GuiMap;
 
 /**
  * Represents a Map.
@@ -44,7 +44,7 @@ public class VMap<K, V> extends EvanstonDatastructure<VMapCommunication<K, V>> i
 
     @Override
     public DatastructureVisualization createVisualization() {
-        return new GUIMap<K, V>();
+        return new GuiMap<K, V>();
     }
 
     @Override

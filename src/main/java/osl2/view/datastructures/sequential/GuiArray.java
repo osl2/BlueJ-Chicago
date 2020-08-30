@@ -9,12 +9,12 @@ import osl2.view.inlinerepresentation.InlineRepresentation;
  * @param <T>
  *         The datatype of the array.
  */
-public class GUIArray<T> extends GUISequential implements VArrayCommunication<T> {
+public class GuiArray<T> extends GuiSequential implements VArrayCommunication<T> {
 
     /**
      * Creates a new array.
      */
-    public GUIArray() {
+    public GuiArray() {
         super("Value", "Index");
         setName("Array");
     }
@@ -35,6 +35,8 @@ public class GUIArray<T> extends GUISequential implements VArrayCommunication<T>
     @Override
     public void removeAll() {
         final int size = getContents().getChildren().size();
-        for (int i = 0; i < size; i++) setValue(i, null);
+        for (int i = 0; i < size; i++) {
+            setValue(i, null);
+        }
     }
 }

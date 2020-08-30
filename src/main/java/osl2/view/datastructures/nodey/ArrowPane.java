@@ -5,14 +5,14 @@ import java.util.Map;
 import javafx.scene.layout.Pane;
 
 /**
- * The Arrowpane is the place where an arrow starts.
+ * Represents the place where an arrow starts.
  */
 public class ArrowPane extends Pane {
-    private final Map<GUINode, Arrow> arrows = new HashMap<>();
+    private final Map<GuiNode, Arrow> arrows = new HashMap<>();
     private ArrowOverlay overlay;
 
     /**
-     * Creates a new Arrowpane.
+     * Creates a new {@link ArrowPane}.
      */
     public ArrowPane() {
         setPickOnBounds(false);
@@ -35,7 +35,7 @@ public class ArrowPane extends Pane {
      * @param node
      *         The node.
      */
-    public void connect(GUINode node) {
+    public void connect(GuiNode node) {
         if (!arrows.containsKey(node)) {
             Arrow arrow = new Arrow(overlay, this, node);
             arrows.put(node, arrow);
@@ -49,7 +49,7 @@ public class ArrowPane extends Pane {
      * @param node
      *         The node.
      */
-    public void disconnect(GUINode node) {
+    public void disconnect(GuiNode node) {
         Arrow arrow = arrows.get(node);
         if (arrow != null) {
             arrow.disconnect();
@@ -62,8 +62,8 @@ public class ArrowPane extends Pane {
      * Disconnects the ArrowPane from all nodes.
      */
     public void clear() {
-        GUINode[] nodeArr = arrows.keySet().toArray(new GUINode[]{});
-        for (GUINode node : nodeArr) {
+        GuiNode[] nodeArr = arrows.keySet().toArray(new GuiNode[]{});
+        for (GuiNode node : nodeArr) {
             disconnect(node);
         }
     }

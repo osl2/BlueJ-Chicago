@@ -10,7 +10,7 @@ import osl2.view.datastructures.DatastructureVisualization;
 /**
  * The visualisation class for a sequential datastructure like map or array. With two rows.
  */
-public abstract class GUISequential extends DatastructureVisualization<HBox> {
+public abstract class GuiSequential extends DatastructureVisualization<HBox> {
     private final GUISequentialEntry head;
 
     /**
@@ -21,7 +21,7 @@ public abstract class GUISequential extends DatastructureVisualization<HBox> {
      * @param secondRowLabel
      *         The name of the second row
      */
-    protected GUISequential(String firstRowLabel, String secondRowLabel) {
+    protected GuiSequential(String firstRowLabel, String secondRowLabel) {
         super(new HBox());
         getContents().setSpacing(10);
         head = new GUISequentialEntry(new Label(firstRowLabel), new Label(secondRowLabel));
