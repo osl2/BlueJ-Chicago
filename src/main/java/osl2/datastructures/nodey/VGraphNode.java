@@ -3,8 +3,8 @@ package osl2.datastructures.nodey;
 import java.util.HashSet;
 import java.util.Set;
 import osl2.messaging.datastructures.VGraphNodeCommunication;
-import osl2.messaging.errorHandling.GraphErrors.GraphRecursionError;
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
+import osl2.messaging.error_handling.graph_errors.GraphRecursionError;
 import osl2.view.datastructures.nodey.GUIGraphNode;
 
 /**

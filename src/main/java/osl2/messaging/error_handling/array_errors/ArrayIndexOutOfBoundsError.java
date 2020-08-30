@@ -1,6 +1,6 @@
-package osl2.messaging.errorHandling.ArrayErrors;
+package osl2.messaging.error_handling.array_errors;
 
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 /**
@@ -8,10 +8,9 @@ import osl2.view.ui.localisation.LanguageController;
  */
 public class ArrayIndexOutOfBoundsError implements UserError {
     private static final int MIN_INDEX = 0;
-
+    private static final String NAME = "ArrayIndexOutOfBounds";
     private final int userIndex;
-    private final int MAX_INDEX;
-    private final String name = "ArrayIndexOutOfBounds";
+    private final int maxIndex;
     private final LanguageController languageController;
 
     /**
@@ -19,27 +18,23 @@ public class ArrayIndexOutOfBoundsError implements UserError {
      *
      * @param userIndex
      *         The Index the user used.
-     * @param MAX_INDEX
+     * @param maxIndex
      *         The max index for the error.
      */
-    public ArrayIndexOutOfBoundsError(int userIndex, int MAX_INDEX) {
+    public ArrayIndexOutOfBoundsError(int userIndex, int maxIndex) {
         this.userIndex = userIndex;
-        if (MAX_INDEX < 0) {
-            this.MAX_INDEX = 0;
-        } else {
-            this.MAX_INDEX = MAX_INDEX;
-        }
+        this.maxIndex = Math.max(maxIndex, 0);
         this.languageController = LanguageController.getLanguageController();
     }
 
     @Override
     public String getErrorName() {
-        return this.name;
+        return NAME;
     }
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "User") + userIndex +
-                "\n" + languageController.getMessage(this.name + "Index") + "[" + MIN_INDEX + "," + MAX_INDEX + "]";
+        return languageController.getMessage(NAME + "User") + userIndex + "\n"
+                + languageController.getMessage(NAME + "Index") + "[" + MIN_INDEX + "," + maxIndex + "]";
     }
 }

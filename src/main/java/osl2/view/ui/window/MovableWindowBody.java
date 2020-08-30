@@ -34,7 +34,9 @@ public class MovableWindowBody extends VBox {
 
     /**
      * Sets up the scrollpane.
-     * @param contents The contents of the scrollpane.
+     *
+     * @param contents
+     *         The contents of the scrollpane.
      */
     private void setUpScrollPane(Node contents) {
         scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -147,6 +149,7 @@ public class MovableWindowBody extends VBox {
 
     /**
      * Returns if the content is shown. For testing.
+     *
      * @return True if the content is shown else false.
      */
     public boolean getContentsShown() {

@@ -1,6 +1,6 @@
-package osl2.messaging.errorHandling.MapErrors;
+package osl2.messaging.error_handling.map_errors;
 
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 /**
@@ -11,12 +11,12 @@ import osl2.view.ui.localisation.LanguageController;
  */
 public class MapNullPointerGetError<T> implements UserError {
 
-    private final String name = "MapNullPointerGet";
+    private static final String NAME = "MapNullPointerGet";
     private final T key;
     private final LanguageController languageController;
 
     /**
-     * Creates a new MappNullPointerGetError
+     * Creates a new MapNullPointerGetError
      *
      * @param key
      *         The key that can't be removed.
@@ -28,12 +28,12 @@ public class MapNullPointerGetError<T> implements UserError {
 
     @Override
     public String getErrorName() {
-        return this.name;
+        return NAME;
     }
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "Key") +
-                key.toString() + languageController.getMessage(this.name + "Get");
+        return languageController.getMessage(NAME + "Key")
+                + key.toString() + languageController.getMessage(NAME + "Get");
     }
 }

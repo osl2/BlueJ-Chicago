@@ -4,6 +4,7 @@ package osl2.messaging.datastructures;
  * The interface for the communication between arrays.
  *
  * @param <T>
+ *         the type used
  */
 public interface VArrayCommunication<T> extends DatastructureCommunication {
     /**

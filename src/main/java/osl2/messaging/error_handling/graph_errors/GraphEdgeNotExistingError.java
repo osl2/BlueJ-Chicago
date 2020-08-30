@@ -1,6 +1,6 @@
-package osl2.messaging.errorHandling.GraphErrors;
+package osl2.messaging.error_handling.graph_errors;
 
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 /**
@@ -11,7 +11,7 @@ import osl2.view.ui.localisation.LanguageController;
  */
 public class GraphEdgeNotExistingError<T> implements UserError {
 
-    private final String name = "GraphEdgeNotExisting";
+    private static final String NAME = "GraphEdgeNotExisting";
     private final T start;
     private final T end;
     private final LanguageController languageController;
@@ -20,9 +20,9 @@ public class GraphEdgeNotExistingError<T> implements UserError {
      * Creates a new GraphEdgeNotExistingError.
      *
      * @param start
-     *         The startnode for the edge.
+     *         The start node for the edge.
      * @param end
-     *         The endnode for the edge.
+     *         The end node for the edge.
      */
     public GraphEdgeNotExistingError(T start, T end) {
         this.languageController = LanguageController.getLanguageController();
@@ -32,13 +32,13 @@ public class GraphEdgeNotExistingError<T> implements UserError {
 
     @Override
     public String getErrorName() {
-        return this.name;
+        return NAME;
     }
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "Node")
-                + start.toString() + "-" + end.toString() +
-                "\n" + languageController.getMessage(this.name + "Get");
+        return languageController.getMessage(NAME + "Node")
+                + start.toString() + "-" + end.toString()
+                + "\n" + languageController.getMessage(NAME + "Get");
     }
 }

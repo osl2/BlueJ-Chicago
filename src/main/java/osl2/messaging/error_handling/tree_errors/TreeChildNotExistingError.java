@@ -1,6 +1,6 @@
-package osl2.messaging.errorHandling.TreeErrors;
+package osl2.messaging.error_handling.tree_errors;
 
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 /**
@@ -11,7 +11,7 @@ import osl2.view.ui.localisation.LanguageController;
  */
 public class TreeChildNotExistingError<T> implements UserError {
 
-    private final String name = "TreeChildNotExisting";
+    private static final String NAME = "TreeChildNotExisting";
     private final LanguageController languageController;
     private final T parent;
     private final T child;
@@ -22,7 +22,7 @@ public class TreeChildNotExistingError<T> implements UserError {
      * @param parent
      *         The parent.
      * @param child
-     *         The nonexisting child.
+     *         The none existing child.
      */
     public TreeChildNotExistingError(T parent, T child) {
         this.languageController = LanguageController.getLanguageController();
@@ -32,13 +32,13 @@ public class TreeChildNotExistingError<T> implements UserError {
 
     @Override
     public String getErrorName() {
-        return this.name;
+        return NAME;
     }
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "Child") + child.toString() + "\n"
-                + languageController.getMessage(this.name + "Parent") + parent.toString() + "\n"
-                + languageController.getMessage(this.name + "Exist");
+        return languageController.getMessage(NAME + "Child") + child.toString() + "\n"
+                + languageController.getMessage(NAME + "Parent") + parent.toString() + "\n"
+                + languageController.getMessage(NAME + "Exist");
     }
 }

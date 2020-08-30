@@ -20,7 +20,8 @@ public class PlayController {
         boolean oldIsProgramRunning = isProgramRunning;
         isProgramRunning = true;
         this.notifyAll();
-        Platform.runLater(() -> pcs.firePropertyChange("isProgramRunning", oldIsProgramRunning, isProgramRunning));
+        Platform.runLater(() ->
+                pcs.firePropertyChange("isProgramRunning", oldIsProgramRunning, isProgramRunning));
     }
 
     /**
@@ -29,7 +30,8 @@ public class PlayController {
     public synchronized void pause() {
         boolean oldIsProgramRunning = isProgramRunning;
         isProgramRunning = false;
-        Platform.runLater(() -> pcs.firePropertyChange("isProgramRunning", oldIsProgramRunning, isProgramRunning));
+        Platform.runLater(() ->
+                pcs.firePropertyChange("isProgramRunning", oldIsProgramRunning, isProgramRunning));
     }
 
     /**
@@ -47,7 +49,9 @@ public class PlayController {
      * Plays one step inside the datastructures.
      */
     public synchronized void step() {
-        if (!isProgramRunning) this.notify();
+        if (!isProgramRunning) {
+            this.notifyAll();
+        }
     }
 
     /**
@@ -68,6 +72,7 @@ public class PlayController {
             try {
                 Thread.sleep(getDelay());
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
             }
         }
 
@@ -76,6 +81,7 @@ public class PlayController {
                 try {
                     this.wait();
                 } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                 }
             }
         }

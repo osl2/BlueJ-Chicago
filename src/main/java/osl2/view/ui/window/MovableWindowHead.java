@@ -147,6 +147,7 @@ public class MovableWindowHead extends HBox {
 
     /**
      * Returns the ResizeButton. For testing.
+     *
      * @return The ResizeButton.
      */
     public Button getResizeButton() {
@@ -155,6 +156,7 @@ public class MovableWindowHead extends HBox {
 
     /**
      * Returns the HideButton. For testin.
+     *
      * @return The HideButton.
      */
     public Button getHideButton() {
@@ -163,6 +165,7 @@ public class MovableWindowHead extends HBox {
 
     /**
      * Returns the MinMaxButton. For testing.
+     *
      * @return The MinMaxButton.
      */
     public Button getMinMaxButton() {
@@ -171,6 +174,7 @@ public class MovableWindowHead extends HBox {
 
     /**
      * Returns the HBox for the Buttons. For Testing.
+     *
      * @return The HBox for the Buttons.
      */
     public HBox getButtons() {

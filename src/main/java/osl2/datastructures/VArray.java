@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.Objects;
 import osl2.datastructures.interfaces.IArray;
 import osl2.messaging.datastructures.VArrayCommunication;
-import osl2.messaging.errorHandling.ArrayErrors.ArrayIndexOutOfBoundsError;
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
+import osl2.messaging.error_handling.array_errors.ArrayIndexOutOfBoundsError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.sequential.GUIArray;
 

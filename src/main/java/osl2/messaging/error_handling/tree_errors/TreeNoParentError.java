@@ -1,11 +1,10 @@
-package osl2.messaging.errorHandling.TreeErrors;
+package osl2.messaging.error_handling.tree_errors;
 
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 public class TreeNoParentError<T> implements UserError {
-
-    private final String name = "TreeNoParent";
+    private static final String NAME = "TreeNoParent";
     private final LanguageController languageController;
     private final T child;
 
@@ -22,12 +21,12 @@ public class TreeNoParentError<T> implements UserError {
 
     @Override
     public String getErrorName() {
-        return this.name;
+        return NAME;
     }
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "Child") + child.toString() + "\n"
-                + languageController.getMessage(this.name + "NoParent");
+        return languageController.getMessage(NAME + "Child") + child.toString() + "\n"
+                + languageController.getMessage(NAME + "NoParent");
     }
 }

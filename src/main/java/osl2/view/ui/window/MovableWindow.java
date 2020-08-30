@@ -141,6 +141,7 @@ public class MovableWindow extends Draggable {
 
     /**
      * Returns the isHighlighted variable. For testing.
+     *
      * @return the isHighlighted variable,
      */
     public boolean getIsHighlighted() {
@@ -149,6 +150,7 @@ public class MovableWindow extends Draggable {
 
     /**
      * Returns the ResizeButton. For testing.
+     *
      * @return The ResizeButton.
      */
     public Button getResizeButton() {
@@ -157,6 +159,7 @@ public class MovableWindow extends Draggable {
 
     /**
      * Returns the HideButton. For testin.
+     *
      * @return The HideButton.
      */
     public Button getHideButton() {
@@ -165,6 +168,7 @@ public class MovableWindow extends Draggable {
 
     /**
      * Returns the MinMaxButton. For testing.
+     *
      * @return The MinMaxButton.
      */
     public Button getMinMaxButton() {
@@ -173,6 +177,7 @@ public class MovableWindow extends Draggable {
 
     /**
      * Returns the HBox for the Buttons. For Testing.
+     *
      * @return The HBox for the Buttons.
      */
     public HBox getButtons() {
@@ -181,6 +186,7 @@ public class MovableWindow extends Draggable {
 
     /**
      * Returns if the content is shown. For testing.
+     *
      * @return True if the content is shown else false.
      */
     public boolean getContentsShown() {
@@ -189,6 +195,7 @@ public class MovableWindow extends Draggable {
 
     /**
      * Returns the height of the MovableWindow. For testing.
+     *
      * @return The height of the MovableWindow.
      */
     public double getHeight() {

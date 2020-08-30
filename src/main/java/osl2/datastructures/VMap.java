@@ -8,9 +8,9 @@ import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import osl2.messaging.datastructures.VMapCommunication;
-import osl2.messaging.errorHandling.MapErrors.MapNullPointerGetError;
-import osl2.messaging.errorHandling.MapErrors.MapNullPointerRemoveError;
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
+import osl2.messaging.error_handling.map_errors.MapNullPointerGetError;
+import osl2.messaging.error_handling.map_errors.MapNullPointerRemoveError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.sequential.GUIMap;
 

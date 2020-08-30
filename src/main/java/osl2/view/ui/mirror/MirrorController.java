@@ -87,6 +87,7 @@ public class MirrorController implements IMirrorController {
 
     /**
      * Returns the Mirror. For testing.
+     *
      * @return The Mirror.
      */
     public Mirror getMirror() {
@@ -95,6 +96,7 @@ public class MirrorController implements IMirrorController {
 
     /**
      * Returns the IsMirrorOpen variable. For testing.
+     *
      * @return isMirrorOpen.
      */
     public boolean getIsMirrorOpen() {

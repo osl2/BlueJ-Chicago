@@ -14,7 +14,7 @@ import osl2.Evanston;
 import osl2.datastructures.EvanstonDatastructure;
 import osl2.messaging.Broadcaster;
 import osl2.messaging.PlayController;
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.inlinerepresentation.InlineRepresentation;
 import osl2.view.ui.localisation.LanguageController;
@@ -36,9 +36,9 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     private final ScrollPane mainRegionScrollContainer;
     private final double WINDOW_SIZE_BUFFER = 15;
     private final double VERTICAL_DIVIDER_POSITION = 0;
+    private final MainRegion mainRegion;
     private Stage evanstonStage;
     private Scene scene;
-    private final MainRegion mainRegion;
     private PlaySpace playSpace;
     private SideBar sideBar;
     private SplitPane verticalSplitter;
@@ -301,6 +301,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
 
     /**
      * Getter for the Mainregion. For testing.
+     *
      * @return The Mainregion.
      */
     public MainRegion getMainRegion() {
@@ -309,6 +310,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
 
     /**
      * Getter for the VerticalSplitter. For testing.
+     *
      * @return The VerticalSplitter.
      */
     public SplitPane getVerticalSplitter() {
@@ -317,6 +319,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
 
     /**
      * Returns the Playspace. For testing.
+     *
      * @return The Playspace.
      */
     public PlaySpace getPlayspace() {
@@ -325,6 +328,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
 
     /**
      * Returns the SideBar. For testing.
+     *
      * @return The Sidebar.
      */
     public SideBar getSideBar() {
@@ -333,6 +337,7 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
 
     /**
      * Returns the SidePlaySplitter. For testing.
+     *
      * @return The Sideplaysplitter.
      */
     public SplitPane getSidePlaySplitter() {

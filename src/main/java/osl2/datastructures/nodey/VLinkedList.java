@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.ListIterator;
 import osl2.messaging.datastructures.nodey.VLinkedListCommunication;
 import osl2.messaging.datastructures.nodey.VLinkedListNodeCommunication;
-import osl2.messaging.errorHandling.ListErrors.ListIndexOutOfBoundsError;
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
+import osl2.messaging.error_handling.list_errors.ListIndexOutOfBoundsError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUILinkedList;
 

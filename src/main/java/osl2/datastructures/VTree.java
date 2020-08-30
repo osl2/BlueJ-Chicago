@@ -12,11 +12,11 @@ import osl2.datastructures.nodey.NodeyDatastructure;
 import osl2.datastructures.nodey.VGraphNode;
 import osl2.messaging.datastructures.VGraphCommunication;
 import osl2.messaging.datastructures.VGraphNodeCommunication;
-import osl2.messaging.errorHandling.TreeErrors.TreeNoChildError;
-import osl2.messaging.errorHandling.TreeErrors.TreeNoParentError;
-import osl2.messaging.errorHandling.TreeErrors.TreeNotALeafError;
-import osl2.messaging.errorHandling.TreeErrors.TreeParentExistingError;
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
+import osl2.messaging.error_handling.tree_errors.TreeNoChildError;
+import osl2.messaging.error_handling.tree_errors.TreeNoParentError;
+import osl2.messaging.error_handling.tree_errors.TreeNotALeafError;
+import osl2.messaging.error_handling.tree_errors.TreeParentExistingError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUITree;
 

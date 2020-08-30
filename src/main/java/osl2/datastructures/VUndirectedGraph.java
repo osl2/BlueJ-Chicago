@@ -1,10 +1,10 @@
 package osl2.datastructures;
 
 import osl2.datastructures.nodey.VGraphNode;
-import osl2.messaging.errorHandling.GraphErrors.GraphEdgeExistingError;
-import osl2.messaging.errorHandling.GraphErrors.GraphEdgeNotExistingError;
-import osl2.messaging.errorHandling.GraphErrors.GraphNodeNotExistingError;
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
+import osl2.messaging.error_handling.graph_errors.GraphEdgeExistingError;
+import osl2.messaging.error_handling.graph_errors.GraphEdgeNotExistingError;
+import osl2.messaging.error_handling.graph_errors.GraphNodeNotExistingError;
 
 /**
  * Represent an undirected graph.
