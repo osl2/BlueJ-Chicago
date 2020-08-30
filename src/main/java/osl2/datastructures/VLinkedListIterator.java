@@ -32,7 +32,7 @@ public class VLinkedListIterator<T> implements ListIterator<T> {
 
     @Override
     public T previous() {
-        // TODO: Error if there is no next element
+        // An error can occur when there is no next element
         node = node.getBackward();
         index--;
         return node.getValue();
@@ -55,11 +55,11 @@ public class VLinkedListIterator<T> implements ListIterator<T> {
 
     @Override
     public void remove() {
-        // TODO: Error
+        // This method is not implemented
     }
 
     @Override
     public void add(T t) {
-        // TODO: Error
+        // This method is not implemented
     }
 }
