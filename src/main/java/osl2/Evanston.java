@@ -55,21 +55,6 @@ public class Evanston {
      */
     public static void main(String[] args) {
         start();
-
-        VDirectedGraph<Integer> graph = new VDirectedGraph<>();
-        VGraphNode<Integer> node = graph.addNode(1);
-        VGraphNode<Integer> node2 = graph.addNode(2);
-        node.connect(node2);
-        node.connect(node);
-        node2.connect(node);
-
-        VDirectedGraph<VDirectedGraph<Integer>> graph1 = new VDirectedGraph<>();
-        graph1.addNode(graph);
-
-        VTree<Integer> tree = new VTree<>();
-        tree.addTreeNode(tree.getRootNode(), 5);
-        VTree<Integer> tree2 = new VTree<>();
-        VGraphNode<Integer> xnode = tree2.getRootNode();
-        tree.addTreeNode(xnode, 6);
+        Democlass democlass = new Democlass();
     }
 }

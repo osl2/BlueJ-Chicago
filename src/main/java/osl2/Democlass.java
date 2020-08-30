@@ -152,5 +152,21 @@ public class Democlass {
         integerGraph.removeEdge(node2, node1);
     }
 
+    /**
+     * For the StringTree playing.
+     */
+    private void setStringTree(){
+        stringTree = new VTree<String> ("StringTree");
+        VGraphNode nodeA = stringTree.addTreeNode(stringTree.getRootNode());
+        nodeA.setValue("A");
+        VGraphNode nodeB = stringTree.addTreeNode(nodeA);
+        nodeB.setValue("B");
+        VGraphNode nodeC = stringTree.addTreeNode(nodeA);
+        nodeC.setValue("C");
+        stringTree.swap(nodeB, nodeA);
+        //Not a Leaf Node error.
+        stringTree.removeLeaf(nodeB);
+        stringTree.removeLeaf(nodeA);
+    }
 
 }
