@@ -23,7 +23,7 @@ namespace osl2 {
                           # GUINode()
                           # getContent()
                       }
-                      abstract class osl2.view.datastructures.nodey.GUINodeyDatastructure {
+                      abstract class osl2.view.datastructures.nodey.GuiNodeyDatastructure {
                           + GUINodeyDatastructure()
                           + addGUINode()
                           + removeGUINode()
@@ -281,7 +281,7 @@ namespace osl2 {
   osl2.view.datastructures.DatastructureVisualization o-- osl2.view.ui.localisation.LanguageController : languageController
   osl2.view.datastructures.DatastructureVisualization o-- osl2.view.ui.mirror.IMirrorController : mirrorController
   osl2.view.datastructures.GuiGraph .up.|> osl2.messaging.datastructures.VGraphCommunication
-  osl2.view.datastructures.GuiGraph -up-|> osl2.view.datastructures.nodey.GUINodeyDatastructure
+  osl2.view.datastructures.GuiGraph -up-|> osl2.view.datastructures.nodey.GuiNodeyDatastructure
   osl2.view.datastructures.sequential.GuiArray .up.|> osl2.messaging.datastructures.VArrayCommunication
   osl2.view.datastructures.sequential.GuiArray -up-|> osl2.view.datastructures.sequential.GuiSequential
   osl2.view.datastructures.sequential.GuiMap .up.|> osl2.messaging.datastructures.VMapCommunication
@@ -297,8 +297,8 @@ namespace osl2 {
   osl2.view.datastructures.nodey.GuiNode .up.|> osl2.messaging.datastructures.nodey.VNodeCommunication
   osl2.view.datastructures.nodey.GuiNode -up-|> osl2.view.ui.draggable.Draggable
   osl2.view.datastructures.nodey.GuiNode o-- ContentType : content
-  osl2.view.datastructures.nodey.GUINodeyDatastructure .up.|> osl2.messaging.datastructures.nodey.VNodeyDatastructureCommunication
-  osl2.view.datastructures.nodey.GUINodeyDatastructure -up-|> osl2.view.datastructures.DatastructureVisualization
+  osl2.view.datastructures.nodey.GuiNodeyDatastructure .up.|> osl2.messaging.datastructures.nodey.VNodeyDatastructureCommunication
+  osl2.view.datastructures.nodey.GuiNodeyDatastructure -up-|> osl2.view.datastructures.DatastructureVisualization
   osl2.view.datastructures.nodey.RoundedNodeContainer -up-|> javafx.scene.layout.Pane
   osl2.view.datastructures.nodey.RoundedNodeContainer o-- T : contents
 

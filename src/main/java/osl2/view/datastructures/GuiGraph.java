@@ -2,7 +2,7 @@ package osl2.view.datastructures;
 
 import osl2.messaging.datastructures.VGraphCommunication;
 import osl2.messaging.datastructures.VGraphNodeCommunication;
-import osl2.view.datastructures.nodey.GUINodeyDatastructure;
+import osl2.view.datastructures.nodey.GuiNodeyDatastructure;
 
 /**
  * The Visualisation of a Graph.
@@ -10,7 +10,7 @@ import osl2.view.datastructures.nodey.GUINodeyDatastructure;
  * @param <T>
  *         The datatype of the datastructure.
  */
-public class GuiGraph<T> extends GUINodeyDatastructure<T, VGraphNodeCommunication<T>>
+public class GuiGraph<T> extends GuiNodeyDatastructure<T, VGraphNodeCommunication<T>>
         implements VGraphCommunication<T> {
 
     /**

@@ -15,7 +15,7 @@ import osl2.view.ui.draggable.Floormat;
  * @param <C>
  *         The communication interface.
  */
-public abstract class GUINodeyDatastructure<T, C extends VNodeCommunication<T>>
+public abstract class GuiNodeyDatastructure<T, C extends VNodeCommunication<T>>
         extends DatastructureVisualization<StackPane> implements VNodeyDatastructureCommunication<T, C> {
 
     private final Floormat floormat;
@@ -25,7 +25,7 @@ public abstract class GUINodeyDatastructure<T, C extends VNodeCommunication<T>>
     /**
      * Creates a new visualisation of a GuiNodeyDatastructure.
      */
-    public GUINodeyDatastructure() {
+    public GuiNodeyDatastructure() {
         super(new StackPane());
         floormat = new Floormat();
         arrows = new ArrowOverlay();
