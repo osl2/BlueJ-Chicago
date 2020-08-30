@@ -39,6 +39,7 @@ public class SideBarTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) {
+        EvanstonWindow.removeInstance();
         evanstonWindow = EvanstonWindow.getInstance();
         splitPane = evanstonWindow.getVerticalSplitter();
         Parent sceneRoot = splitPane;

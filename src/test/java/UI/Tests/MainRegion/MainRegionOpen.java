@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
@@ -25,6 +26,7 @@ public class MainRegionOpen extends ApplicationTest {
 
 
     @Override public void start(Stage stage) {
+        EvanstonWindow.removeInstance();
         evanstonWindow = EvanstonWindow.getInstance();
         splitPane = evanstonWindow.getVerticalSplitter();
         Parent sceneRoot = splitPane;
@@ -39,6 +41,11 @@ public class MainRegionOpen extends ApplicationTest {
     public void openMirror(){
         clickOn(point(mirrorButton.getLayoutX() + 5,mirrorButton.getLayoutY()));
         Assert.assertTrue(controller.getIsMirrorOpen());
+    }
+
+    @After
+    public void reset(){
+        EvanstonWindow.removeInstance();
     }
 
 }

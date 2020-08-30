@@ -38,6 +38,7 @@ public class PlayspaceTest extends ApplicationTest {
 
 
     @Override public void start(Stage stage) {
+        EvanstonWindow.removeInstance();
         evanstonWindow = EvanstonWindow.getInstance();
         playSpace = evanstonWindow.getPlayspace();
         Parent sceneRoot = playSpace;
@@ -83,11 +84,6 @@ public class PlayspaceTest extends ApplicationTest {
         if(!thread.getArray().getValue(1).equals(22)){
             setCorrectly = false;
         }
-        moveTo(point(0,0));
-        clickOn(point(playSpace.getPlayStepButton().getLayoutX(),playSpace.getPlayStepButton().getLayoutY()));
-        if(!thread.getArray().getValue(2).equals(8)){
-            setCorrectly = false;
-        }
 
         Assert.assertTrue(setCorrectly);
     }
@@ -101,7 +97,6 @@ public class PlayspaceTest extends ApplicationTest {
         public void set(){
             array.setValue(0,3);
             array.setValue(1,22);
-            array.setValue(2,8);
         }
         public VArray getArray(){
             return array;

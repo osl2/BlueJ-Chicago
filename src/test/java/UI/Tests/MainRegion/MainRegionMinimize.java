@@ -7,6 +7,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
@@ -27,6 +28,7 @@ public class MainRegionMinimize extends ApplicationTest {
 
 
     @Override public void start(Stage stage) {
+        EvanstonWindow.removeInstance();
         evanstonWindow = EvanstonWindow.getInstance();
         splitPane = evanstonWindow.getVerticalSplitter();
         Parent sceneRoot = splitPane;
@@ -44,6 +46,11 @@ public class MainRegionMinimize extends ApplicationTest {
         moveTo(point(bound.getCenterX() + mirror.getLayoutX() + mirror.getButtons().getLayoutX() + evanstonWindow.getSideBar().getWidth(), mirror.getLayoutY()));
         clickOn(MouseButton.PRIMARY);
         Assert.assertTrue(!mirror.getContentsShown());
+    }
+
+    @After
+    public void reset(){
+        EvanstonWindow.removeInstance();
     }
 
 }

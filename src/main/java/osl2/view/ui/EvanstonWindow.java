@@ -75,6 +75,13 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     }
 
     /**
+     * Removes the instance for testing.
+     */
+    public static void removeInstance(){
+        singletonInstance = null;
+    }
+
+    /**
      * Opens the evanston window.
      */
     public static void open() {

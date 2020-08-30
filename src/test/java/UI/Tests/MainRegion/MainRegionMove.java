@@ -6,6 +6,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
@@ -26,6 +27,7 @@ public class MainRegionMove extends ApplicationTest {
 
 
     @Override public void start(Stage stage) {
+        EvanstonWindow.removeInstance();
         evanstonWindow = EvanstonWindow.getInstance();
         splitPane = evanstonWindow.getVerticalSplitter();
         Parent sceneRoot = splitPane;
@@ -49,5 +51,10 @@ public class MainRegionMove extends ApplicationTest {
         release(MouseButton.PRIMARY);
         //+90, because the mouse was moved 10 points to the right.
         Assert.assertTrue((mirror.getLayoutX() == oldX + 90) && mirror.getLayoutY() == oldY +100);
+    }
+
+    @After
+    public void reset(){
+        EvanstonWindow.removeInstance();
     }
 }

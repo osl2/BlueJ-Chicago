@@ -7,6 +7,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
@@ -27,6 +28,7 @@ public class MainRegionResizeWidth extends ApplicationTest {
 
 
     @Override public void start(Stage stage) {
+        EvanstonWindow.removeInstance();
         evanstonWindow = EvanstonWindow.getInstance();
         splitPane = evanstonWindow.getVerticalSplitter();
         Parent sceneRoot = splitPane;
@@ -50,5 +52,10 @@ public class MainRegionResizeWidth extends ApplicationTest {
         System.out.println(oldWidth);
         System.out.println(mirror.getWidth());
         Assert.assertTrue(oldWidth + 100 == mirror.getWidth());
+    }
+
+    @After
+    public void reset(){
+        EvanstonWindow.removeInstance();
     }
 }
