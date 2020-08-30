@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import osl2.datastructures.VLinkedListIterator;
 import osl2.messaging.datastructures.nodey.VLinkedListCommunication;
 import osl2.messaging.datastructures.nodey.VLinkedListNodeCommunication;
 import osl2.messaging.error_handling.UserError;
@@ -154,17 +155,19 @@ public abstract class VLinkedList<T, C extends VLinkedListCommunication<T>>
 
     @Override
     public Iterator<T> iterator() {
-        return null;    // TODO
+        return listIterator();
     }
 
     @Override
     public ListIterator<T> listIterator() {
-        return null;    // TODO
+        return listIterator(0);
     }
 
     @Override
     public ListIterator<T> listIterator(int i) {
-        return null;    // TODO
+        ListIterator<T> it = new VLinkedListIterator<>(this, getHead());
+        while (i-->0) it.next();
+        return it;
     }
 
     @Override
