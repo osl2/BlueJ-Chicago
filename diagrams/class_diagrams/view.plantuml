@@ -55,7 +55,7 @@ namespace osl2 {
                           # putElement()
                           # removeElement()
                       }
-                      class osl2.view.datastructures.sequential.GuiSequential.GUISequentialEntry {
+                      class osl2.view.datastructures.sequential.GuiSequential.GuiSequentialEntry {
                           + GUISequentialEntry()
                       }
                     }
@@ -287,9 +287,9 @@ namespace osl2 {
   osl2.view.datastructures.sequential.GuiMap .up.|> osl2.messaging.datastructures.VMapCommunication
   osl2.view.datastructures.sequential.GuiMap -up-|> osl2.view.datastructures.sequential.GuiSequential
   osl2.view.datastructures.sequential.GuiSequential -up-|> osl2.view.datastructures.DatastructureVisualization
-  osl2.view.datastructures.sequential.GuiSequential o-- osl2.view.datastructures.sequential.GuiSequential.GUISequentialEntry : head
-  osl2.view.datastructures.sequential.GuiSequential +-down- osl2.view.datastructures.sequential.GuiSequential.GUISequentialEntry
-  osl2.view.datastructures.sequential.GuiSequential.GUISequentialEntry -up-|> javafx.scene.layout.VBox
+  osl2.view.datastructures.sequential.GuiSequential o-- osl2.view.datastructures.sequential.GuiSequential.GuiSequentialEntry : head
+  osl2.view.datastructures.sequential.GuiSequential +-down- osl2.view.datastructures.sequential.GuiSequential.GuiSequentialEntry
+  osl2.view.datastructures.sequential.GuiSequential.GuiSequentialEntry -up-|> javafx.scene.layout.VBox
 
   osl2.view.datastructures.nodey.Arrow -up-|> javafx.scene.Group
   osl2.view.datastructures.nodey.GuiGraphNode .up.|> osl2.messaging.datastructures.VGraphNodeCommunication

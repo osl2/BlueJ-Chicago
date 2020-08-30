@@ -18,7 +18,7 @@ public class TreeParentExistingError<T> implements UserError {
      * Creates a new TreeParentExistingError.
      *
      * @param parent
-     *         The nonexisiting parent.
+     *         The none existing parent.
      */
     public TreeParentExistingError(T parent) {
         this.languageController = LanguageController.getLanguageController();

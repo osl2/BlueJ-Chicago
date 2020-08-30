@@ -19,7 +19,7 @@ public interface VNodeyDatastructureCommunication<T, C extends VNodeCommunicatio
      * @param node
      *         the node to be added
      */
-    void addGUINode(C node);
+    void addGuiNode(C node);
 
     /**
      * Removes a specified node.
@@ -27,5 +27,5 @@ public interface VNodeyDatastructureCommunication<T, C extends VNodeCommunicatio
      * @param node
      *         the node to be removed
      */
-    void removeGUINode(C node);
+    void removeGuiNode(C node);
 }

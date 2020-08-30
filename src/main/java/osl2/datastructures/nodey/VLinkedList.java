@@ -51,7 +51,7 @@ public abstract class VLinkedList<T, C extends VLinkedListCommunication<T>>
 
     @Override
     public DatastructureVisualization createVisualization() {
-        return new GuiLinkedList();
+        return new GuiLinkedList<T>();
     }
 
     /**
@@ -147,7 +147,9 @@ public abstract class VLinkedList<T, C extends VLinkedListCommunication<T>>
         VLinkedListNode<T> node = getHead();
 
         while (node != null) {
-            if (node.getValue() == null ? o == null : node.getValue().equals(o)) return true;
+            if (node.getValue() == null ? o == null : node.getValue().equals(o)) {
+                return true;
+            }
             node = node.getForward();
         }
         return false;
@@ -165,8 +167,10 @@ public abstract class VLinkedList<T, C extends VLinkedListCommunication<T>>
 
     @Override
     public ListIterator<T> listIterator(int i) {
-        ListIterator<T> it = new VLinkedListIterator<>(this, getHead());
-        while (i-- > 0) it.next();
+        ListIterator<T> it = new VLinkedListIterator<>(getHead());
+        while (i-- > 0) {
+            it.next();
+        }
         return it;
     }
 
@@ -197,7 +201,9 @@ public abstract class VLinkedList<T, C extends VLinkedListCommunication<T>>
     @Override
     public boolean containsAll(Collection<?> collection) {
         for (Object o : collection) {
-            if (!contains(o)) return false;
+            if (!contains(o)) {
+                return false;
+            }
         }
         return true;
     }

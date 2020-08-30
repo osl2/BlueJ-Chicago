@@ -45,14 +45,18 @@ public class GuiGraphNode<T> extends GuiNode<T, RoundedNodeContainer<StackPane>>
 
     @Override
     public void connect(VGraphNodeCommunication<T> node) {
-        if (node == this) getContent().showSelfRefArrow();
-        arrows.connect(node.asGUINode());
+        if (node == this) {
+            getContent().showSelfRefArrow();
+        }
+        arrows.connect(node.asGuiNode());
     }
 
     @Override
     public void disconnect(VGraphNodeCommunication<T> node) {
-        if (node == this) getContent().hideSelfRefArrow();
-        arrows.disconnect(node.asGUINode());
+        if (node == this) {
+            getContent().hideSelfRefArrow();
+        }
+        arrows.disconnect(node.asGuiNode());
     }
 
     @Override

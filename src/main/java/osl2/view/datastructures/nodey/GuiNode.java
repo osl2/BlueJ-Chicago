@@ -45,7 +45,7 @@ public abstract class GuiNode<T, C extends Node> extends Draggable implements VN
     }
 
     @Override
-    public GuiNode asGUINode() {
+    public GuiNode asGuiNode() {
         return this;
     }
 }

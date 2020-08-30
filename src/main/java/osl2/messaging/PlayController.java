@@ -11,7 +11,8 @@ public class PlayController {
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     private boolean testModeActive = false;
     private boolean isProgramRunning = false;
-    private long delay = 1000, tm_delay = 0;
+    private long delay = 1000;
+    private long tmDelay = 0;
 
     /**
      * Plays the changes on the datastructures.
@@ -97,26 +98,16 @@ public class PlayController {
         pcs.addPropertyChangeListener(listener);
     }
 
-    /**
-     * Removes a PropertyChangeListener.
-     *
-     * @param listener
-     *         The PropertyChangeListener.
-     */
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        pcs.removePropertyChangeListener(listener);
-    }
-
     public boolean getIsRunning() {
         return isProgramRunning;
     }
 
     public long getDelay() {
-        return testModeActive ? tm_delay : delay;
+        return testModeActive ? tmDelay : delay;
     }
 
     public void activateTestMode(long delay) {
         testModeActive = true;
-        tm_delay = delay;
+        tmDelay = delay;
     }
 }

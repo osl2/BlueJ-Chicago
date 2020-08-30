@@ -16,7 +16,7 @@ public class MapNullPointerGetError<T> implements UserError {
     private final LanguageController languageController;
 
     /**
-     * Creates a new MapNullPointerGetError
+     * Creates a new MapNullPointerGetError.
      *
      * @param key
      *         The key that can't be removed.

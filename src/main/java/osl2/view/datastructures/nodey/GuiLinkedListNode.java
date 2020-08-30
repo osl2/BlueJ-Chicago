@@ -48,7 +48,7 @@ public class GuiLinkedListNode<T> extends GuiNode<T, VBox> implements VLinkedLis
     public void setForward(VLinkedListNodeCommunication<T> node) {
         forwardArrowPane.clear();
         if (node != null) {
-            forwardArrowPane.connect(node.asGUINode());
+            forwardArrowPane.connect(node.asGuiNode());
         }
     }
 
@@ -56,7 +56,7 @@ public class GuiLinkedListNode<T> extends GuiNode<T, VBox> implements VLinkedLis
     public void setBackward(VLinkedListNodeCommunication<T> node) {
         backwardArrowPane.clear();
         if (node != null) {
-            backwardArrowPane.connect(node.asGUINode());
+            backwardArrowPane.connect(node.asGuiNode());
         }
     }
 

@@ -27,15 +27,13 @@ import osl2.view.ui.settings.SettingsController;
 public class EvanstonWindow extends Application implements PropertyChangeListener {
     private static final int WIDTH = 1200;
     private static final int HEIGHT = 900;
-    private static Object WAITER = new Object();
-
+    private static final double VERTICAL_DIVIDER_POSITION = 0;
+    private static Object waiter = new Object();
     private static EvanstonWindow singletonInstance = null;
-    private static Thread APP_THREAD = null;
+    private static Thread appThread = null;
     private final SettingsController settingsController;
     private final PlayController playController;
     private final ScrollPane mainRegionScrollContainer;
-    private final double WINDOW_SIZE_BUFFER = 15;
-    private final double VERTICAL_DIVIDER_POSITION = 0;
     private final MainRegion mainRegion;
     private Stage evanstonStage;
     private Scene scene;
@@ -80,18 +78,18 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
      * Opens the evanston window.
      */
     public static void open() {
-        if (APP_THREAD == null) {
-            APP_THREAD = new Thread(() -> Application.launch(EvanstonWindow.class));
-            APP_THREAD.start();
+        if (appThread == null) {
+            appThread = new Thread(() -> Application.launch(EvanstonWindow.class));
+            appThread.start();
             /*
              * Wait for the application to initialize
              */
-            if (WAITER != null) {
-                synchronized (WAITER) {
+            if (waiter != null) {
+                synchronized (waiter) {
                     try {
-                        WAITER.wait();
+                        waiter.wait();
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        Thread.currentThread().interrupt();
                     }
                 }
             }
@@ -124,8 +122,10 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         Platform.runLater(() -> {
             MirrorController mc = new MirrorController(visualization, mainRegion, sideBar);
             visualization.setMirrorController(mc);
-            InlineRepresentation.registerInlineAction(datastructure, () -> mc.mirrorBtnClicked());
-            if (testModeActive) mc.mirrorBtnClicked();
+            InlineRepresentation.registerInlineAction(datastructure, mc::mirrorBtnClicked);
+            if (testModeActive) {
+                mc.mirrorBtnClicked();
+            }
         });
         return new Broadcaster(visualization);
     }
@@ -163,10 +163,10 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         /*
          * Notify the other threads that we are up and running
          */
-        if (WAITER != null) {
-            synchronized (WAITER) {
-                WAITER.notifyAll();
-                WAITER = null;
+        if (waiter != null) {
+            synchronized (waiter) {
+                waiter.notifyAll();
+                waiter = null;
             }
         }
     }
@@ -206,11 +206,11 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         this.mainRegionScrollContainer.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         this.mainRegionScrollContainer.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        this.mainRegionScrollContainer.setOnMouseEntered((event) -> {
+        this.mainRegionScrollContainer.setOnMouseEntered(event -> {
             this.mainRegionScrollContainer.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
             this.mainRegionScrollContainer.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         });
-        this.mainRegionScrollContainer.setOnMouseExited((event) -> {
+        this.mainRegionScrollContainer.setOnMouseExited(event -> {
             this.mainRegionScrollContainer.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
             this.mainRegionScrollContainer.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         });
@@ -218,8 +218,9 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
         this.mainRegionScrollContainer.fitToWidthProperty();
         this.mainRegionScrollContainer.setContent(mainRegion);
 
-        mainRegion.setMinWidth(WIDTH * (1 - VERTICAL_DIVIDER_POSITION) - WINDOW_SIZE_BUFFER);
-        mainRegion.setMinHeight(HEIGHT - WINDOW_SIZE_BUFFER);
+        double windowSizeBuffer = 15;
+        mainRegion.setMinWidth(WIDTH * (1 - VERTICAL_DIVIDER_POSITION) - windowSizeBuffer);
+        mainRegion.setMinHeight(HEIGHT - windowSizeBuffer);
     }
 
     /**
@@ -364,7 +365,8 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
             alert.setContentText(contentText);
             alert.showAndWait();
         } else {
-            System.err.println("Evanston Error (suppressed GUI dialog due to activated test mode): " + userError.getErrorName() + " / " + userError.getErrorContent());
+            System.err.println("Evanston Error (suppressed GUI dialog due to activated test mode): "
+                    + userError.getErrorName() + " / " + userError.getErrorContent());
         }
     }
 }

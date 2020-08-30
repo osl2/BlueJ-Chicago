@@ -32,7 +32,7 @@ public abstract class NodeyDatastructure<T, C extends VNodeyDatastructureCommuni
      *         the communication
      */
     protected final void registerNodeVisualization(K k) {
-        getBroadcaster().sendWithDelay(b -> b.addGUINode(k));
+        getBroadcaster().sendWithDelay(b -> b.addGuiNode(k));
     }
 
     /**
@@ -66,7 +66,7 @@ public abstract class NodeyDatastructure<T, C extends VNodeyDatastructureCommuni
      */
     public boolean removeNode(N node) {
         node.disconnectAll();
-        getBroadcaster().sendWithDelay(b -> b.removeGUINode(node.getCommunication()));
+        getBroadcaster().sendWithDelay(b -> b.removeGuiNode(node.getCommunication()));
         return true;
     }
 }

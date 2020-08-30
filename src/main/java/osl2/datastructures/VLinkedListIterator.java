@@ -1,16 +1,13 @@
 package osl2.datastructures;
 
 import java.util.ListIterator;
-import osl2.datastructures.nodey.VLinkedList;
 import osl2.datastructures.nodey.VLinkedListNode;
 
 public class VLinkedListIterator<T> implements ListIterator<T> {
-    private final VLinkedList list;
     private int index = 0;
     private VLinkedListNode<T> node;
 
-    public VLinkedListIterator(VLinkedList list, VLinkedListNode<T> head) {
-        this.list = list;
+    public VLinkedListIterator(VLinkedListNode<T> head) {
         this.node = head;
     }
 

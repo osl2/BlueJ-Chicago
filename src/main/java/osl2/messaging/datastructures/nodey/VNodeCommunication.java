@@ -15,7 +15,7 @@ public interface VNodeCommunication<T> extends DatastructureCommunication {
      *
      * @return this as a node
      */
-    GuiNode asGUINode();
+    GuiNode asGuiNode();
 
     /**
      * Sets a specified value.

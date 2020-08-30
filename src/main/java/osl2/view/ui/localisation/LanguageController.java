@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
  * The language controller, which determines the language of the test.
  */
 public class LanguageController {
-    private static LanguageController singeltonLanguageController = null;
+    private static LanguageController singletonLanguageController = null;
     private ResourceBundle messages;
     private Languages language;
 
@@ -15,8 +15,8 @@ public class LanguageController {
      * Creates a new LanguageController.
      */
     private LanguageController() {
-        if (singeltonLanguageController == null) {
-            singeltonLanguageController = this;
+        if (singletonLanguageController == null) {
+            singletonLanguageController = this;
             language = Languages.GERMAN;
             setMessages(language);
         }
@@ -28,12 +28,10 @@ public class LanguageController {
      * @return The language controller.
      */
     public static LanguageController getLanguageController() {
-        if (singeltonLanguageController == null) {
+        if (singletonLanguageController == null) {
             new LanguageController();
-            return singeltonLanguageController;
-        } else {
-            return singeltonLanguageController;
         }
+        return singletonLanguageController;
     }
 
     /**

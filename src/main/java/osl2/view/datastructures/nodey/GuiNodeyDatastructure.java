@@ -37,15 +37,15 @@ public abstract class GuiNodeyDatastructure<T, C extends VNodeCommunication<T>>
     }
 
     @Override
-    public void addGUINode(C node) {
-        node.asGUINode().setArrowOverlay(arrows);
-        floormat.addDraggable(node.asGUINode());
-        node.asGUINode().setLayoutX(rand.nextInt((int) floormat.getMinWidth()));
-        node.asGUINode().setLayoutY(rand.nextInt((int) floormat.getMinHeight()));
+    public void addGuiNode(C node) {
+        node.asGuiNode().setArrowOverlay(arrows);
+        floormat.addDraggable(node.asGuiNode());
+        node.asGuiNode().setLayoutX(rand.nextInt((int) floormat.getMinWidth()));
+        node.asGuiNode().setLayoutY(rand.nextInt((int) floormat.getMinHeight()));
     }
 
     @Override
-    public void removeGUINode(C node) {
-        floormat.removeDraggable(node.asGUINode());
+    public void removeGuiNode(C node) {
+        floormat.removeDraggable(node.asGuiNode());
     }
 }

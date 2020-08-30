@@ -11,7 +11,7 @@ import osl2.view.datastructures.DatastructureVisualization;
  * The visualisation class for a sequential datastructure like map or array. With two rows.
  */
 public abstract class GuiSequential extends DatastructureVisualization<HBox> {
-    private final GUISequentialEntry head;
+    private final GuiSequentialEntry head;
 
     /**
      * Creates a new sequential visualisation.
@@ -24,7 +24,7 @@ public abstract class GuiSequential extends DatastructureVisualization<HBox> {
     protected GuiSequential(String firstRowLabel, String secondRowLabel) {
         super(new HBox());
         getContents().setSpacing(10);
-        head = new GUISequentialEntry(new Label(firstRowLabel), new Label(secondRowLabel));
+        head = new GuiSequentialEntry(new Label(firstRowLabel), new Label(secondRowLabel));
         clearElements();    // This will insert the head
     }
 
@@ -63,9 +63,9 @@ public abstract class GuiSequential extends DatastructureVisualization<HBox> {
      */
     protected void putElement(int i, Node above, Node below) {
         while (getContents().getChildren().size() - 1 <= i) {
-            getContents().getChildren().add(new GUISequentialEntry(above, below));
+            getContents().getChildren().add(new GuiSequentialEntry(above, below));
         }
-        getContents().getChildren().set(i + 1, new GUISequentialEntry(above, below));
+        getContents().getChildren().set(i + 1, new GuiSequentialEntry(above, below));
     }
 
     /**
@@ -83,7 +83,7 @@ public abstract class GuiSequential extends DatastructureVisualization<HBox> {
     /**
      * The Class for a entry in a sequential datastructure.
      */
-    private class GUISequentialEntry extends VBox {
+    private static class GuiSequentialEntry extends VBox {
 
         /**
          * Creates a new entry.
@@ -93,7 +93,7 @@ public abstract class GuiSequential extends DatastructureVisualization<HBox> {
          * @param below
          *         The value for the second row.
          */
-        public GUISequentialEntry(Node above, Node below) {
+        public GuiSequentialEntry(Node above, Node below) {
             setSpacing(5);
             getChildren().add(above);
             getChildren().add(below);

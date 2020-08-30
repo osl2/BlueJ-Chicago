@@ -48,7 +48,7 @@ public class Democlass {
      * For the IntegerArray playing.
      */
     private void setIntegerArray() {
-        integerArray = new VArray<Integer>(5, "IntegerArray");
+        integerArray = new VArray<>(5, "IntegerArray");
         for (int i = 0; i < integerArray.size(); i++) {
             integerArray.setValue(i, i * 2);
         }
@@ -61,7 +61,7 @@ public class Democlass {
      * For the InlineArray playing.
      */
     private void setInlineArray() {
-        inlineArray = new VArray<VArray>(2, "InlineArray");
+        inlineArray = new VArray<>(2, "InlineArray");
         inlineArray.setValue(0, integerArray);
         inlineArray.setValue(1, inlineArray);
     }

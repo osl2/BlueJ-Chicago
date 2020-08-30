@@ -58,15 +58,6 @@ public abstract class VNode<C extends VNodeCommunication, T> {
 
     public abstract void disconnectAll();
 
-    /**
-     * Gets the broadcasters corresponding client.
-     *
-     * @return communication
-     */
-    public C getCorrespondent() {
-        return getBroadcaster().getClient();
-    }
-
     protected abstract C createVisualization();
 
     /**

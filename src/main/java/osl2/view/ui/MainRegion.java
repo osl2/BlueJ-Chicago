@@ -10,7 +10,7 @@ import osl2.view.ui.draggable.Floormat;
  */
 public class MainRegion extends Floormat {
     /**
-     * This List has all Mirrors in it, so that the position for new Mirror can be caluclated.
+     * This List has all Mirrors in it, so that the position for new Mirror can be calculated.
      */
     private final LinkedList<Draggable> draggableLinkedList;
 

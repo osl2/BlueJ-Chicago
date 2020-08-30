@@ -15,8 +15,6 @@ public class MovableWindowBody extends VBox {
     /**
      * Creates a new body.
      *
-     * @param window
-     *         Window to which it belongs.
      * @param title
      *         The title of the head.
      * @param contents

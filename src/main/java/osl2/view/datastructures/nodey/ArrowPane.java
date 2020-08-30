@@ -25,7 +25,9 @@ public class ArrowPane extends Pane {
      *         The overlay.
      */
     public void setOverlay(ArrowOverlay overlay) {
-        if (this.overlay != null) clear();
+        if (this.overlay != null) {
+            clear();
+        }
         this.overlay = overlay;
     }
 
