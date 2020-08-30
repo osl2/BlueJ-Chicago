@@ -166,7 +166,7 @@ public abstract class VLinkedList<T, C extends VLinkedListCommunication<T>>
     @Override
     public ListIterator<T> listIterator(int i) {
         ListIterator<T> it = new VLinkedListIterator<>(this, getHead());
-        while (i-->0) it.next();
+        while (i-- > 0) it.next();
         return it;
     }
 
