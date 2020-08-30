@@ -2,6 +2,7 @@ package osl2.datastructures;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import osl2.Evanston;
 import osl2.datastructures.nodey.VGraphNode;
@@ -13,13 +14,31 @@ public class LoadTest {
 
     public static void main(String[] args) throws InterruptedException {
         Evanston.startForTest(0);
+        List<long[]> times = new ArrayList<>();
 
         for(int i = 0; i < 5; i++) {
-            System.out.println("huge connected graph test: " + firstLoadTest());
-            System.out.println("linked list with graphs in it test: " + secondLoadTest());
-            System.out.println("singly linked list with a lot of elements: " + thirdLoadTest());
-            System.out.println("recursive load test: " + lastLoadTest());
+            times.add(new long[]{
+                    firstLoadTest(),
+                    secondLoadTest(),
+                    thirdLoadTest(),
+                    lastLoadTest()
+            });
         }
+
+        long[] averages = new long[4];
+        for (long[] l : times) {
+            for (int x = 0; x < l.length; x++) {
+                averages[x] += l[x];
+            }
+        }
+        for (int x = 0; x < averages.length; x++) {
+            averages[x] /= times.size();
+        }
+
+        System.out.println("huge connected graph test: " + averages[0]);
+        System.out.println("linked list with graphs in it test: " + averages[1]);
+        System.out.println("singly linked list with a lot of elements: " + averages[2]);
+        System.out.println("recursive load test: " + averages[3]);
 
         System.out.println("Startup time test: " + testStartingTimeOfApplication(NUMBER_OF_ITERATIONS_STARTUP_TEST));
     }
