@@ -55,12 +55,11 @@ public class VGraphTest {
 
     @Test
     void addEdgeSameEdgeTwice() {
-        // TODO(): test fails
-        //VGraphNode nodeE = graph.addNode();
-        //VGraphNode nodeF = graph.addNode();
-        //graph.addEdge(nodeE, nodeF);
-        //Assertions.assertTrue(graph.containsEdge(nodeE, nodeF));
-        //Assertions.assertNull(graph.addEdge(nodeF, nodeE));
+        VGraphNode nodeE = graph.addNode();
+        VGraphNode nodeF = graph.addNode();
+        graph.addEdge(nodeE, nodeF);
+        Assertions.assertTrue(graph.containsEdge(nodeE, nodeF));
+        Assertions.assertFalse(graph.addEdge(nodeE, nodeF));
     }
 
     @Test
