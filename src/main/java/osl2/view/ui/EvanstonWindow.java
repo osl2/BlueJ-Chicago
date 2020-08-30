@@ -99,13 +99,17 @@ public class EvanstonWindow extends Application implements PropertyChangeListene
     }
 
     public static void openForTests() {
-        open();
-        getInstance().activateTestMode();
+        openForTests(100);
     }
 
-    private void activateTestMode() {
+    public static void openForTests(long delay) {
+        open();
+        getInstance().activateTestMode(delay);
+    }
+
+    private void activateTestMode(long delay) {
         this.testModeActive = true;
-        playController.activateTestMode();
+        playController.activateTestMode(delay);
     }
 
     /**

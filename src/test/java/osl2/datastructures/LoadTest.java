@@ -12,7 +12,7 @@ public class LoadTest {
     private final static int NUMBER_OF_SECONDS_STARTUP_TEST = 15;
 
     public static void main(String[] args) throws InterruptedException {
-        Evanston.startForTest();
+        Evanston.startForTest(0);
 
         for(int i = 0; i < 5; i++) {
             System.out.println("huge connected graph test: " + firstLoadTest());

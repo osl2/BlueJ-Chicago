@@ -44,8 +44,8 @@ public class Evanston {
         EvanstonWindow.open();
     }
 
-    public static void startForTest() {
-        EvanstonWindow.openForTests();
+    public static void startForTest(int delay) {
+        EvanstonWindow.openForTests(delay);
     }
 
     /**

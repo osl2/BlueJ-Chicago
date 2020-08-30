@@ -11,7 +11,7 @@ public class PlayController {
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     private boolean testModeActive = false;
     private boolean isProgramRunning = false;
-    private long delay = 1000;
+    private long delay = 1000, tm_delay = 0;
 
     /**
      * Plays the changes on the datastructures.
@@ -112,10 +112,11 @@ public class PlayController {
     }
 
     public long getDelay() {
-        return testModeActive ? 100 : delay;
+        return testModeActive ? tm_delay : delay;
     }
 
-    public void activateTestMode() {
+    public void activateTestMode(long delay) {
         testModeActive = true;
+        tm_delay = delay;
     }
 }
