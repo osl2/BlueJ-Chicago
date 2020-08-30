@@ -38,7 +38,7 @@ public class VTreeTest {
 
     @Test
     void getRootNode() {
-        Assertions.assertTrue(tree.getRootNode().equals(nodeA)); // TODO is this really the best way?
+        Assertions.assertTrue(tree.getRootNode().equals(nodeA));
     }
 
     @Test

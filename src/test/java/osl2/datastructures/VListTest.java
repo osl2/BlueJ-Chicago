@@ -65,12 +65,6 @@ public class VListTest {
     }
 
     @Test
-    void addString() {
-        list.add("3"); // TODO check which error should get raised
-        Assertions.assertTrue(list.contains("3"));
-    }
-
-    @Test
     void remove() {
         list.remove(1);
         Assertions.assertFalse(list.contains(2));
@@ -177,14 +171,14 @@ public class VListTest {
 
     @Test
     void addAtWrongIndex() {
-        // TODO check for exception
-        //list.add(5, 5);
+        list.add(5, 5);
+        Assertions.assertFalse(list.contains(5));
     }
 
     @Test
     void addAtNegativeIndex() {
-        // TODO check for exception
-        //list.add(-5, 5);
+        list.add(-5, 5);
+        Assertions.assertFalse(list.contains(5));
     }
 
     @Test

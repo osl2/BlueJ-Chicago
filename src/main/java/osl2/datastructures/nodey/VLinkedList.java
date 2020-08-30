@@ -338,7 +338,6 @@ public abstract class VLinkedList<T, C extends VLinkedListCommunication<T>>
 
     @Override
     public List<T> subList(int i, int i1) {
-        // TODO: According to the standard, changes in the sublist have to be mapped to this list, too
         List<T> lst = new ArrayList<>();
         int pos = 0;
         VLinkedListNode<T> it = getHead();

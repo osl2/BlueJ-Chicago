@@ -63,13 +63,12 @@ public class PlayspaceTest extends ApplicationTest {
         clickOn(point(playSpace.getPlayAutoButton().getLayoutX(),playSpace.getPlayAutoButton().getLayoutY()));
 
     }
-    //TODO
+
         @Test public void fast_auto_toggle(){
         doubleClickOn(point(playSpace.getPlayAutoButton().getLayoutX(),playSpace.getPlayAutoButton().getLayoutY()));
         Assert.assertTrue(!evanstonWindow.getPlayController().getIsRunning());
     }
 
-    //TODO How to check this ? Use 2 Threads, one creates new Array and sets the Value, second thread clicks on playStep. if both are finished get the setted value
     @Test public void click_on_playStep(){
         thread = new TestThread();
         thread.start();
