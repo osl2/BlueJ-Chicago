@@ -21,7 +21,7 @@ public class MirrorController implements IMirrorController {
      * @param visualization
      *         The visualisation of the Mirror.
      * @param mainRegion
-     *         The Mainregion where the Mirror will be in.
+     *         The MainRegion where the Mirror will be in.
      * @param sideBar
      *         The Sidebar where the MirrorButtons will be in
      */
@@ -110,14 +110,14 @@ public class MirrorController implements IMirrorController {
     }
 
     @Override
-    public void resizeMirrorX(double xOffset) {
+    public void resizeMirrorX(double xoffset) {
         double mirrorWidth = this.mirror.getWidth();
-        this.mirror.setWidth(mirrorWidth + xOffset);
+        this.mirror.setWidth(mirrorWidth + xoffset);
     }
 
     @Override
-    public void resizeMirrorY(double yOffset) {
+    public void resizeMirrorY(double yoffset) {
         double mirrorHeight = this.mirror.getBodyHeight();
-        this.mirror.setBodyHeight(mirrorHeight + yOffset);
+        this.mirror.setBodyHeight(mirrorHeight + yoffset);
     }
 }

@@ -3,21 +3,21 @@ package osl2.view.ui.settings;
 import osl2.view.ui.EvanstonWindow;
 import osl2.view.ui.FontSize;
 import osl2.view.ui.Theme;
-import osl2.view.ui.localisation.LANGUAGES;
 import osl2.view.ui.localisation.LanguageController;
+import osl2.view.ui.localisation.Languages;
 
 /**
- * The Controller for a Settingswindow.
+ * The Controller for a settings window.
  */
 public class SettingsController {
     private final SettingsWindow settingsWindow;
     private final EvanstonWindow evanstonWindow;
 
     /**
-     * Creates a new SettingsController.
+     * Creates a new settings controller.
      *
      * @param evanstonWindow
-     *         The Mainwindow to which the settings belong.
+     *         the main window to which the settings belong
      */
     public SettingsController(EvanstonWindow evanstonWindow) {
         this.evanstonWindow = evanstonWindow;
@@ -25,7 +25,7 @@ public class SettingsController {
     }
 
     /**
-     * Opens the Settingswindow.
+     * Opens the settings window.
      */
     public void openSettingsWindow() {
         settingsWindow.showWindow();
@@ -37,9 +37,9 @@ public class SettingsController {
      * @param language
      *         The new language.
      * @param settingsWindow
-     *         The settingswindow to which it is part of.
+     *         The settings window to which it is part of.
      */
-    public void setLanguage(LANGUAGES language, SettingsWindow settingsWindow) {
+    public void setLanguage(Languages language, SettingsWindow settingsWindow) {
         LanguageController.getLanguageController().setMessages(language);
         settingsWindow.setWithNewLanguage();
     }
@@ -48,7 +48,7 @@ public class SettingsController {
      * Changes the font size in the application.
      *
      * @param fontSize
-     *         - the new {@link FontSize} to be used
+     *         the new {@link FontSize} to be used
      */
     public void setFontSize(FontSize fontSize) {
         this.evanstonWindow.setFontSize(fontSize);
@@ -59,7 +59,7 @@ public class SettingsController {
      * Changes the theme of the application.
      *
      * @param theme
-     *         - the new {@link Theme} to be used
+     *         the new {@link Theme} to be used
      */
     public void setTheme(Theme theme) {
         this.evanstonWindow.setTheme(theme);

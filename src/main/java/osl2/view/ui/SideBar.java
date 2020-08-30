@@ -9,7 +9,7 @@ import osl2.view.ui.mirror.MirrorButton;
 public class SideBar extends ListView<MirrorButton> {
 
     /**
-     * Creates a new Sidebar
+     * Creates a new Sidebar.
      */
     public SideBar() {
         this.getStyleClass().add("sidebar");
@@ -20,7 +20,7 @@ public class SideBar extends ListView<MirrorButton> {
      * Adds a new MirrorButton to the Sidebar.
      *
      * @param mirrorButton
-     *         The MirrorButton wich will be added.
+     *         The MirrorButton which will be added.
      */
     public void addMirrorButton(MirrorButton mirrorButton) {
         mirrorButton.setPrefWidth(this.getWidth());

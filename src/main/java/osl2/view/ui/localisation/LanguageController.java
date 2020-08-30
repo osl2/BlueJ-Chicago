@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 public class LanguageController {
     private static LanguageController singeltonLanguageController = null;
     private ResourceBundle messages;
-    private LANGUAGES language;
+    private Languages language;
 
     /**
      * Creates a new LanguageController.
@@ -17,15 +17,15 @@ public class LanguageController {
     private LanguageController() {
         if (singeltonLanguageController == null) {
             singeltonLanguageController = this;
-            language = LANGUAGES.GERMAN;
+            language = Languages.GERMAN;
             setMessages(language);
         }
     }
 
     /**
-     * Returns the one languagecontroller.
+     * Returns the one language controller.
      *
-     * @return The languagecontroller.
+     * @return The language controller.
      */
     public static LanguageController getLanguageController() {
         if (singeltonLanguageController == null) {
@@ -42,7 +42,7 @@ public class LanguageController {
      * @param language
      *         The language for the messages.
      */
-    public void setMessages(LANGUAGES language) {
+    public void setMessages(Languages language) {
         Locale locale = new Locale(language.getLanguage(), language.getCountry());
         messages = ResourceBundle.getBundle("MessagesBundle", locale);
     }
@@ -51,7 +51,7 @@ public class LanguageController {
      * Returns the message in the language.
      *
      * @param name
-     *         The messagekey.
+     *         The message key.
      * @return The message.
      */
     public String getMessage(String name) {
@@ -66,8 +66,7 @@ public class LanguageController {
      *
      * @return The language.
      */
-    public LANGUAGES getLanguage() {
+    public Languages getLanguage() {
         return this.language;
     }
-
 }

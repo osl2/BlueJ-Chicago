@@ -10,7 +10,6 @@ import osl2.messaging.PlayController;
 import osl2.view.ui.EvanstonWindow;
 
 public class Evanston {
-    private static EvanstonWindow window;
 
     /**
      * Opens the visualization.
@@ -20,7 +19,7 @@ public class Evanston {
      * @return The Broadcaster.
      */
     public static Broadcaster openVisualization(EvanstonDatastructure datastructure) {
-        window = EvanstonWindow.getInstance();
+        EvanstonWindow window = EvanstonWindow.getInstance();
         return window.openVisualization(datastructure);
     }
 
@@ -58,20 +57,19 @@ public class Evanston {
         start();
 
         VDirectedGraph<Integer> graph = new VDirectedGraph<>();
-        VGraphNode node = graph.addNode(1);
-        VGraphNode node2 = graph.addNode(2);
+        VGraphNode<Integer> node = graph.addNode(1);
+        VGraphNode<Integer> node2 = graph.addNode(2);
         node.connect(node2);
         node.connect(node);
         node2.connect(node);
 
-        VDirectedGraph<VDirectedGraph> graph1 = new VDirectedGraph<>();
+        VDirectedGraph<VDirectedGraph<Integer>> graph1 = new VDirectedGraph<>();
         graph1.addNode(graph);
 
-        VTree<Integer> tree = new VTree<Integer>();
+        VTree<Integer> tree = new VTree<>();
         tree.addTreeNode(tree.getRootNode(), 5);
-        VTree<Integer> tree2 = new VTree<Integer>();
+        VTree<Integer> tree2 = new VTree<>();
         VGraphNode<Integer> xnode = tree2.getRootNode();
         tree.addTreeNode(xnode, 6);
-        //Democlass democlass = new Democlass();
     }
 }

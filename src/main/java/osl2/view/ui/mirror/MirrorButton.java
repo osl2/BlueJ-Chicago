@@ -3,7 +3,7 @@ package osl2.view.ui.mirror;
 import javafx.scene.control.Button;
 
 /**
- * The Visual Represantation of a MirrorButton
+ * The Visual Representation of a MirrorButton.
  */
 public class MirrorButton extends Button {
 
@@ -13,9 +13,9 @@ public class MirrorButton extends Button {
     /**
      * The Constructor of the MirrorButton. Here the name and mirrorController field will be set to its values.
      *
-     * @param name,
+     * @param name
      *         this String will be the text of MirrorButton
-     * @param mirrorController,
+     * @param mirrorController
      *         The MirrorController will be linked to the actions of this MirrorButton
      */
     public MirrorButton(String name, IMirrorController mirrorController) {
@@ -28,7 +28,7 @@ public class MirrorButton extends Button {
     }
 
     /**
-     * Sets the style of the mirrorbutton.
+     * Sets the style of the mirror button.
      */
     private void setStyle() {
         this.getStyleClass().add("mirror-button");
@@ -37,7 +37,8 @@ public class MirrorButton extends Button {
     }
 
     /**
-     * This method links the MirrorButton to the mirrorController. Every Action on the MirrorButton will be sent to the mirrorController
+     * This method links the MirrorButton to the mirrorController.
+     * Every Action on the MirrorButton will be sent to the mirrorController
      */
     private void linkButtonToController() {
         this.setOnAction(e -> mirrorController.mirrorBtnClicked());

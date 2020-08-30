@@ -13,7 +13,6 @@ import osl2.view.ui.mirror.IMirrorController;
  * The head of a MovableWindow.
  */
 public class MovableWindowHead extends HBox {
-
     private final HBox buttons;
     private final Pane spacer;
     private ActionButton minMaxButton;
@@ -23,16 +22,15 @@ public class MovableWindowHead extends HBox {
     private Button resizeButton;
     private double mouseDragStartY;
     private double mouseDragStartX;
+    private static final String MOVABLE_WINDOW_HEAD = "movable-window-head";
 
     /**
-     * Creates a new WindowHead
+     * Creates a new WindowHead.
      *
-     * @param window
-     *         The Window to which it belongs.
      * @param title
      *         The title of the head.
      */
-    public MovableWindowHead(MovableWindow window, Node title) {
+    public MovableWindowHead(Node title) {
         setStyle();
 
         spacer = new Pane();
@@ -53,14 +51,14 @@ public class MovableWindowHead extends HBox {
      */
     private void setStyle() {
         this.getStyleClass().add("movable-window");
-        this.getStyleClass().add("movable-window-head");
+        this.getStyleClass().add(MOVABLE_WINDOW_HEAD);
     }
 
     /**
      * This method highlights the head.
      */
     public void highlight() {
-        this.getStyleClass().remove("movable-window-head");
+        this.getStyleClass().remove(MOVABLE_WINDOW_HEAD);
         this.getStyleClass().add("movable-window-head-highlight");
     }
 
@@ -69,7 +67,7 @@ public class MovableWindowHead extends HBox {
      */
     public void unHighlight() {
         this.getStyleClass().remove("movable-window-head-highlight");
-        this.getStyleClass().add("movable-window-head");
+        this.getStyleClass().add(MOVABLE_WINDOW_HEAD);
     }
 
     /**
@@ -184,10 +182,10 @@ public class MovableWindowHead extends HBox {
     /**
      * The Class for the buttons in a MovableWindowHead.
      */
-    class ActionButton extends Button {
+    static class ActionButton extends Button {
 
         /**
-         * Creates a new ActionButton
+         * Creates a new ActionButton.
          *
          * @param text
          *         The text of the Button.
@@ -196,7 +194,7 @@ public class MovableWindowHead extends HBox {
          */
         public ActionButton(String text, Runnable runnable) {
             this.setText(text);
-            setOnMousePressed((event) -> runnable.run());
+            setOnMousePressed(event -> runnable.run());
             this.getStyleClass().add("movable-window-head-button");
         }
     }

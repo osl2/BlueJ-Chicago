@@ -7,7 +7,7 @@ package osl2.view.ui.mirror;
 public interface IMirrorController {
 
     /**
-     * Hide the
+     * Hide the mirror.
      */
     void hideMirror();
 
@@ -17,7 +17,7 @@ public interface IMirrorController {
     void minOrMaxMirror();
 
     /**
-     * Show the #
+     * Handle click of mirror button.
      */
     void mirrorBtnClicked();
 
@@ -33,16 +33,16 @@ public interface IMirrorController {
     /**
      * Resizes the mirrors width by the specified offset.
      *
-     * @param xOffset
+     * @param xoffset
      *         - the specified offset
      */
-    void resizeMirrorX(double xOffset);
+    void resizeMirrorX(double xoffset);
 
     /**
      * Resizes the mirrors height by the specified offset.
      *
-     * @param yOffset
+     * @param yoffset
      *         - the specified offset
      */
-    void resizeMirrorY(double yOffset);
+    void resizeMirrorY(double yoffset);
 }

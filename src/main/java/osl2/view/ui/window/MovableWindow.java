@@ -12,12 +12,20 @@ import osl2.view.ui.mirror.IMirrorController;
 public class MovableWindow extends Draggable {
     private final MovableWindowBody body;
     private final MovableWindowHead head;
-    private final double MIN_BODY_HEIGHT = 50;
-    private final double HEAD_MIN_WIDTH_OFFSET = 20;
     private boolean isHighlighted;
 
+    /**
+     * Creates a new {@link MovableWindow}.
+     *
+     * @param title
+     *         the title of the window
+     * @param contents
+     *         the contents in the movable window
+     * @param controller
+     *         the controller used
+     */
     public MovableWindow(Node title, Node contents, IMirrorController controller) {
-        body = new MovableWindowBody(this, title, contents);
+        body = new MovableWindowBody(title, contents);
         head = body.getHead();
         head.linkBtnToController(controller);
         getChildren().add(body);
@@ -54,20 +62,6 @@ public class MovableWindow extends Draggable {
     }
 
     /**
-     * This method shows the contents of the body of the window.
-     */
-    public void showContents() {
-        body.showContents();
-    }
-
-    /**
-     * This method hides the contents of the body of the window.
-     */
-    public void hideContents() {
-        body.hideContents();
-    }
-
-    /**
      * This method toggles the body of the window..
      */
     public void toggle() {
@@ -82,7 +76,7 @@ public class MovableWindow extends Draggable {
      * This method sets the behaviour, so when its highlighted and clicked, it will be unhighlighted.
      */
     private void setBehaviourHighlight() {
-        setOnMouseClicked((event) -> {
+        setOnMouseClicked(event -> {
             if (isHighlighted) {
                 this.unHighlight();
             }
@@ -112,7 +106,8 @@ public class MovableWindow extends Draggable {
      *         - the new width
      */
     public void setWidth(double width) {
-        if (width > head.getHeadMinWidth() + HEAD_MIN_WIDTH_OFFSET) {
+        double headMinWidthOffset = 20;
+        if (width > head.getHeadMinWidth() + headMinWidthOffset) {
             this.body.setBodyWidth(width);
         }
     }
@@ -133,7 +128,8 @@ public class MovableWindow extends Draggable {
      *         - the new height
      */
     public void setBodyHeight(double height) {
-        if (height < MIN_BODY_HEIGHT) {
+        double minBodyHeight = 50;
+        if (height < minBodyHeight) {
             return;
         }
         this.body.setBodyHeight(height);

@@ -22,8 +22,8 @@ public class MovableWindowBody extends VBox {
      * @param contents
      *         The contents of its body.
      */
-    public MovableWindowBody(MovableWindow window, Node title, Node contents) {
-        this.head = new MovableWindowHead(window, title);
+    public MovableWindowBody(Node title, Node contents) {
+        this.head = new MovableWindowHead(title);
         this.scroll = new ScrollPane(contents);
         setUpScrollPane(contents);
 
@@ -41,11 +41,11 @@ public class MovableWindowBody extends VBox {
     private void setUpScrollPane(Node contents) {
         scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scroll.setOnMouseEntered((event) -> {
+        scroll.setOnMouseEntered(event -> {
             scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
             scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         });
-        scroll.setOnMouseExited((event) -> {
+        scroll.setOnMouseExited(event -> {
             scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
             scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         });

@@ -22,7 +22,6 @@ public class PlaySpace extends Pane {
     private VBox splitLayout;
     private HBox buttonBox;
     private HBox sliderBox;
-    private HBox settingsBox;
 
     /**
      * Sets up the Playspace and all its components.
@@ -127,7 +126,7 @@ public class PlaySpace extends Pane {
      */
     private void setUpSettingBox() {
         setSettingsButton();
-        settingsBox = new HBox();
+        HBox settingsBox = new HBox();
         settingsBox.getChildren().add(settings);
         settingsBox.setAlignment(Pos.CENTER);
         settingsBox.setSpacing(this.getWidth() - this.getWidth() / 1.5);
@@ -146,7 +145,7 @@ public class PlaySpace extends Pane {
      * This method sets the slider for the speed, adds it to the Sliderspace and sets it's action, when slided.
      */
     private void setSlider() {
-        final int MAX = 1000;
+        final int max = 1000;
 
         playSpeedSlider = new Slider();
         playSpeedSlider.setMin(0);
@@ -154,7 +153,9 @@ public class PlaySpace extends Pane {
         playSpeedSlider.setValue(0);
         playSpeedSlider.setShowTickLabels(false);
         playSpeedSlider.setPrefWidth(this.getWidth());
-        playSpeedSlider.valueProperty().addListener((ov, oldVal, newVal) -> Evanston.getPlayController().setProgramDelay((long) (MAX - Math.pow((double) oldVal, 1d / 8) * (MAX - 1))));
+        playSpeedSlider.valueProperty().addListener((ov, oldVal, newVal) ->
+                Evanston.getPlayController().setProgramDelay(
+                        (long) (max - Math.pow((double) oldVal, 1d / 8) * (max - 1))));
         sliderBox.getChildren().add(playSpeedSlider);
     }
 

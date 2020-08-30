@@ -13,20 +13,21 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import osl2.view.ui.FontSize;
 import osl2.view.ui.Theme;
-import osl2.view.ui.localisation.LANGUAGES;
 import osl2.view.ui.localisation.LanguageController;
+import osl2.view.ui.localisation.Languages;
 
 /**
  * The class for the SettingsWindow.
  */
 public class SettingsWindow {
+    private static final String WHITE_TEXT_CSS = "white-Text";
     private final SettingsController settingsController;
     private final LanguageController languageController;
     private final Stage owner;
     private Stage settingStage;
     private boolean isShown;
-    private VBox vBox;
-    private ComboBox<LANGUAGES> languagesComboBox;
+    private VBox vbox;
+    private ComboBox<Languages> languagesComboBox;
     private Scene settingScene;
     private Label setFontLabel;
     private RadioButton fontSmall;
@@ -43,7 +44,7 @@ public class SettingsWindow {
      * @param settingsController
      *         The Controller for this window.
      * @param owner
-     *         The Mainwindow to which this window is the settings window.
+     *         The main window to which this window is the settings window.
      */
     public SettingsWindow(SettingsController settingsController, Stage owner) {
         this.settingsController = settingsController;
@@ -80,15 +81,15 @@ public class SettingsWindow {
      * Sets up the Pane inside the window.
      */
     private void setUpPane() {
-        vBox = new VBox();
-        vBox.setSpacing(10);
-        vBox.getStyleClass().add("settings-background");
+        vbox = new VBox();
+        vbox.setSpacing(10);
+        vbox.getStyleClass().add("settings-background");
     }
 
 
     private void setUpSettingStage() {
         settingStage = new Stage();
-        settingScene = new Scene(vBox, 400, 200);
+        settingScene = new Scene(vbox, 400, 200);
         settingStage.setTitle(LanguageController.getLanguageController().getMessage("SettingsWindowTitle"));
         settingStage.setScene(settingScene);
         settingStage.setOnCloseRequest(e -> hideWindow());
@@ -109,12 +110,12 @@ public class SettingsWindow {
      * Sets up the combobox for the languages.
      */
     private void setUpCombobox() {
-        languagesComboBox = new ComboBox<LANGUAGES>();
-        languagesComboBox.setItems(FXCollections.observableArrayList(LANGUAGES.values()));
+        languagesComboBox = new ComboBox<>();
+        languagesComboBox.setItems(FXCollections.observableArrayList(Languages.values()));
         languagesComboBox.setOnAction(e -> settingsController.setLanguage(languagesComboBox.getValue(), this));
         languagesComboBox.getSelectionModel().select(LanguageController.getLanguageController().getLanguage());
         languagesComboBox.getStyleClass().add("language-selection-box");
-        vBox.getChildren().add(languagesComboBox);
+        vbox.getChildren().add(languagesComboBox);
     }
 
     /**
@@ -130,8 +131,8 @@ public class SettingsWindow {
      */
     private void addFontSizeLabel() {
         setFontLabel = new Label(languageController.getMessage("FontSetting"));
-        setFontLabel.getStyleClass().add("white-text");
-        vBox.getChildren().add(setFontLabel);
+        setFontLabel.getStyleClass().add(WHITE_TEXT_CSS);
+        vbox.getChildren().add(setFontLabel);
     }
 
     /**
@@ -143,27 +144,28 @@ public class SettingsWindow {
         fontSmall = new RadioButton(languageController.getMessage("FontSettingSmall"));
         fontSmall.setToggleGroup(toggleGroup);
         fontSmall.setUserData(FontSize.SMALL);
-        fontSmall.getStyleClass().add("white-text");
+        fontSmall.getStyleClass().add(WHITE_TEXT_CSS);
 
         fontMedium = new RadioButton(languageController.getMessage("FontSettingMedium"));
         fontMedium.setToggleGroup(toggleGroup);
         fontMedium.setUserData(FontSize.MEDIUM);
         fontMedium.setSelected(true);
-        fontMedium.getStyleClass().add("white-text");
+        fontMedium.getStyleClass().add(WHITE_TEXT_CSS);
 
         fontLarge = new RadioButton(languageController.getMessage("FontSettingLarge"));
         fontLarge.setToggleGroup(toggleGroup);
         fontLarge.setUserData(FontSize.LARGE);
-        fontLarge.getStyleClass().add("white-text");
+        fontLarge.getStyleClass().add(WHITE_TEXT_CSS);
 
-        toggleGroup.selectedToggleProperty().addListener(e -> settingsController.setFontSize((FontSize) toggleGroup.getSelectedToggle().getUserData()));
+        toggleGroup.selectedToggleProperty().addListener(e ->
+                settingsController.setFontSize((FontSize) toggleGroup.getSelectedToggle().getUserData()));
 
         HBox radioBtns = new HBox();
         radioBtns.setPadding(new Insets(10));
         radioBtns.setSpacing(10);
         radioBtns.getChildren().addAll(fontSmall, fontMedium, fontLarge);
 
-        vBox.getChildren().add(radioBtns);
+        vbox.getChildren().add(radioBtns);
     }
 
     /**
@@ -179,8 +181,8 @@ public class SettingsWindow {
      */
     private void addThemeLabel() {
         setThemeLabel = new Label(languageController.getMessage("ThemeSetting"));
-        setThemeLabel.getStyleClass().add("white-text");
-        vBox.getChildren().add(setThemeLabel);
+        setThemeLabel.getStyleClass().add(WHITE_TEXT_CSS);
+        vbox.getChildren().add(setThemeLabel);
     }
 
     /**
@@ -192,27 +194,28 @@ public class SettingsWindow {
         themeBright = new RadioButton(languageController.getMessage("ThemeSettingBright"));
         themeBright.setToggleGroup(toggleGroup);
         themeBright.setUserData(Theme.BRIGHT);
-        themeBright.getStyleClass().add("white-text");
+        themeBright.getStyleClass().add(WHITE_TEXT_CSS);
 
         themeDark = new RadioButton(languageController.getMessage("ThemeSettingDark"));
         themeDark.setToggleGroup(toggleGroup);
         themeDark.setUserData(Theme.DARK);
         themeDark.setSelected(true);
-        themeDark.getStyleClass().add("white-text");
+        themeDark.getStyleClass().add(WHITE_TEXT_CSS);
 
         themeColorBlind = new RadioButton(languageController.getMessage("ThemeSettingColorBlindness"));
         themeColorBlind.setToggleGroup(toggleGroup);
         themeColorBlind.setUserData(Theme.COLOR_BLINDNESS);
-        themeColorBlind.getStyleClass().add("white-text");
+        themeColorBlind.getStyleClass().add(WHITE_TEXT_CSS);
 
-        toggleGroup.selectedToggleProperty().addListener(e -> settingsController.setTheme((Theme) toggleGroup.getSelectedToggle().getUserData()));
+        toggleGroup.selectedToggleProperty().addListener(e ->
+                settingsController.setTheme((Theme) toggleGroup.getSelectedToggle().getUserData()));
 
         HBox radioBtns = new HBox();
         radioBtns.setPadding(new Insets(10));
         radioBtns.setSpacing(10);
         radioBtns.getChildren().addAll(themeBright, themeDark, themeColorBlind);
 
-        vBox.getChildren().add(radioBtns);
+        vbox.getChildren().add(radioBtns);
     }
 
     /**
