@@ -1,6 +1,6 @@
-package osl2.messaging.errorHandling.ListErrors;
+package osl2.messaging.error_handling.list_errors;
 
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 /**
@@ -10,7 +10,7 @@ public class ListIndexOutOfBoundsError implements UserError {
     private static final int MIN_INDEX = 0;
 
     private final int userIndex;
-    private final int MAX_INDEX;
+    private final int maxIndex;
     private final String name = "ListIndexOutOfBounds";
     private final LanguageController languageController;
 
@@ -19,16 +19,12 @@ public class ListIndexOutOfBoundsError implements UserError {
      *
      * @param userIndex
      *         The Index the user used.
-     * @param MAX_INDEX
+     * @param maxIndex
      *         The max index for the error.
      */
-    public ListIndexOutOfBoundsError(int userIndex, int MAX_INDEX) {
+    public ListIndexOutOfBoundsError(int userIndex, int maxIndex) {
         this.userIndex = userIndex;
-        if (MAX_INDEX < 0) {
-            this.MAX_INDEX = 0;
-        } else {
-            this.MAX_INDEX = MAX_INDEX;
-        }
+        this.maxIndex = Math.max(maxIndex, 0);
         this.languageController = LanguageController.getLanguageController();
     }
 
@@ -39,8 +35,8 @@ public class ListIndexOutOfBoundsError implements UserError {
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "User") + userIndex +
-                "\n" + languageController.getMessage(this.name + "Index") + "[" + MIN_INDEX + "," + MAX_INDEX + "]";
+        return languageController.getMessage(this.name + "User") + userIndex
+                + "\n" + languageController.getMessage(this.name + "Index") + "[" + MIN_INDEX + "," + maxIndex + "]";
     }
 }
 

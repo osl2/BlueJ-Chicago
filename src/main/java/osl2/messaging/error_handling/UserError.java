@@ -1,4 +1,4 @@
-package osl2.messaging.errorHandling;
+package osl2.messaging.error_handling;
 
 /**
  * The Interface for a UserError.

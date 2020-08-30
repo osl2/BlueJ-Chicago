@@ -12,10 +12,10 @@ import osl2.datastructures.nodey.VEdge;
 import osl2.datastructures.nodey.VGraphNode;
 import osl2.messaging.datastructures.VGraphCommunication;
 import osl2.messaging.datastructures.VGraphNodeCommunication;
-import osl2.messaging.errorHandling.GraphErrors.GraphEdgeExistingError;
-import osl2.messaging.errorHandling.GraphErrors.GraphEdgeNotExistingError;
-import osl2.messaging.errorHandling.GraphErrors.GraphNodeNotExistingError;
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
+import osl2.messaging.error_handling.graph_errors.GraphEdgeExistingError;
+import osl2.messaging.error_handling.graph_errors.GraphEdgeNotExistingError;
+import osl2.messaging.error_handling.graph_errors.GraphNodeNotExistingError;
 import osl2.view.datastructures.DatastructureVisualization;
 import osl2.view.datastructures.GUIGraph;
 
@@ -57,7 +57,7 @@ public abstract class VGraph<T>
 
     @Override
     protected VGraphNode<T> createNode() {
-        VGraphNode<T> node = new VGraphNode(this);
+        VGraphNode<T> node = new VGraphNode<>(this);
         nodeList.add(node);
         size++;
         return node;
@@ -76,19 +76,19 @@ public abstract class VGraph<T>
     @Override
     public boolean addEdge(VGraphNode<T> start, VGraphNode<T> end) {
         if (!(nodeList.contains(start))) {
-            UserError userError = new GraphNodeNotExistingError<VGraphNode<T>>(start);
+            UserError userError = new GraphNodeNotExistingError<>(start);
             getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return false;
         }
 
         if (!nodeList.contains(end)) {
-            UserError userError = new GraphNodeNotExistingError<VGraphNode<T>>(end);
+            UserError userError = new GraphNodeNotExistingError<>(end);
             getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return false;
         }
 
         if (containsEdge(start, end)) {
-            UserError userError = new GraphEdgeExistingError<VGraphNode<T>>(start, end);
+            UserError userError = new GraphEdgeExistingError<>(start, end);
             getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return false;
         }
@@ -108,7 +108,7 @@ public abstract class VGraph<T>
     public boolean removeNode(VGraphNode<T> node) {
         super.removeNode(node);
         if (!nodeList.contains(node)) {
-            UserError userError = new GraphNodeNotExistingError<VGraphNode<T>>(node);
+            UserError userError = new GraphNodeNotExistingError<>(node);
             getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return false;
         }
@@ -123,7 +123,7 @@ public abstract class VGraph<T>
             start.disconnect(end);
             return true;
         }
-        UserError userError = new GraphEdgeNotExistingError<VGraphNode<T>>(start, end);
+        UserError userError = new GraphEdgeNotExistingError<>(start, end);
         getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
         return false;
     }
@@ -131,7 +131,7 @@ public abstract class VGraph<T>
     @Override
     public Collection<VEdge<T, T>> getEdges(VGraphNode<T> node) {
         if (!nodeList.contains(node)) {
-            UserError userError = new GraphNodeNotExistingError<VGraphNode<T>>(node);
+            UserError userError = new GraphNodeNotExistingError<>(node);
             getBroadcaster().sendWithPauseBlock(b -> b.handleError(userError));
             return Collections.emptyList();
         }
@@ -158,7 +158,7 @@ public abstract class VGraph<T>
 
     @Override
     public Collection<VGraphNode<T>> getNodes() {
-        // TODO changes orginal values too? Violation of capsulation?
+        // TODO changes original values too? Violation of encapsulation?
         return nodeList;
     }
 

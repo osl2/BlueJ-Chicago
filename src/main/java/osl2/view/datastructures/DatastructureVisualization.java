@@ -1,9 +1,8 @@
 package osl2.view.datastructures;
 
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import osl2.messaging.datastructures.DatastructureCommunication;
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.ui.EvanstonWindow;
 import osl2.view.ui.localisation.LanguageController;
 import osl2.view.ui.mirror.IMirrorController;

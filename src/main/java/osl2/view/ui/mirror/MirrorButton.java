@@ -55,6 +55,7 @@ public class MirrorButton extends Button {
 
     /**
      * Returns the name of the MirrorButton. For testing.
+     *
      * @return The name of the MirrorButton.
      */
     public String getName() {

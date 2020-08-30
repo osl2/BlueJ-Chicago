@@ -1,12 +1,10 @@
-package osl2.messaging.errorHandling.TreeErrors;
+package osl2.messaging.error_handling.tree_errors;
 
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 public class TreeNotALeafError<T> implements UserError {
-
-
-    private final String name = "TreeNotALeaf";
+    private static final String NAME = "TreeNotALeaf";
     private final LanguageController languageController;
     private final T child;
 
@@ -14,7 +12,7 @@ public class TreeNotALeafError<T> implements UserError {
      * Creates a new TreeNotALeafError.
      *
      * @param child
-     *         The child, thats not a leaf.
+     *         The child, that's not a leaf.
      */
     public TreeNotALeafError(T child) {
         this.languageController = LanguageController.getLanguageController();
@@ -23,12 +21,12 @@ public class TreeNotALeafError<T> implements UserError {
 
     @Override
     public String getErrorName() {
-        return this.name;
+        return NAME;
     }
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "Child") + child.toString() + "\n"
-                + languageController.getMessage(this.name + "NotLeaf");
+        return languageController.getMessage(NAME + "Child") + child.toString() + "\n"
+                + languageController.getMessage(NAME + "NotLeaf");
     }
 }

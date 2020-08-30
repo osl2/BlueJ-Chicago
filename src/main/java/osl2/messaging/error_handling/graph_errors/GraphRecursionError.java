@@ -1,6 +1,6 @@
-package osl2.messaging.errorHandling.GraphErrors;
+package osl2.messaging.error_handling.graph_errors;
 
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 /**
@@ -8,7 +8,7 @@ import osl2.view.ui.localisation.LanguageController;
  */
 public class GraphRecursionError implements UserError {
 
-    private final String name = "GraphRecursion";
+    private static final String NAME = "GraphRecursion";
     private final LanguageController languageController;
 
     /**
@@ -20,11 +20,11 @@ public class GraphRecursionError implements UserError {
 
     @Override
     public String getErrorName() {
-        return this.name;
+        return NAME;
     }
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name);
+        return languageController.getMessage(NAME);
     }
 }

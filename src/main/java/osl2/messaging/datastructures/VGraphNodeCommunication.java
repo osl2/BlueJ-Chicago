@@ -3,10 +3,10 @@ package osl2.messaging.datastructures;
 import osl2.messaging.datastructures.nodey.VNodeCommunication;
 
 /**
- * The interface for the communication between graphnodes.
+ * The interface for the communication between graph nodes.
  *
  * @param <T>
- *         The datatype of the content of the node.
+ *         the datatype of the content of the node
  */
 public interface VGraphNodeCommunication<T> extends VNodeCommunication<T> {
     /**
@@ -26,7 +26,7 @@ public interface VGraphNodeCommunication<T> extends VNodeCommunication<T> {
     void disconnect(VGraphNodeCommunication<T> node);
 
     /**
-     * Removes all conections.
+     * Removes all connections.
      */
     void disconnectAll();
 }

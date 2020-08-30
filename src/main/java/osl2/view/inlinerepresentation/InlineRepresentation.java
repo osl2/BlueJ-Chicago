@@ -3,7 +3,6 @@ package osl2.view.inlinerepresentation;
 import java.util.Map;
 import java.util.WeakHashMap;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 

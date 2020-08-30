@@ -182,6 +182,7 @@ public class PlaySpace extends Pane {
 
     /**
      * Returns the PlayAutoButton. For testing.
+     *
      * @return The PlayAutoButton.
      */
     public Button getPlayAutoButton() {
@@ -190,6 +191,7 @@ public class PlaySpace extends Pane {
 
     /**
      * Returns the PlayStepButton. For testing.
+     *
      * @return The PlayStepButton.
      */
     public Button getPlayStepButton() {
@@ -198,6 +200,7 @@ public class PlaySpace extends Pane {
 
     /**
      * Returns the PlaySpeedSlider. For testing.
+     *
      * @return PlaySpeedSlider
      */
     public Slider getPlaySpeedSlider() {
@@ -206,6 +209,7 @@ public class PlaySpace extends Pane {
 
     /**
      * Returns the ButtonBox. For testing.
+     *
      * @return The ButtonBox.
      */
     public HBox getButtonBox() {

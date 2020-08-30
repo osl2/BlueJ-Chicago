@@ -37,7 +37,7 @@ namespace osl2 {
       }
     }
     namespace errorHandling {
-        class osl2.messaging.errorHandling.ArrayErrors.ArrayIndexOutOfBoundsError {
+        class osl2.messaging.error_handling.array_errors.ArrayIndexOutOfBoundsError {
             {static} - MIN_INDEX : int
             - maxIndex : int
             - name : String
@@ -46,7 +46,7 @@ namespace osl2 {
             + getErrorContent()
             + getErrorName()
         }
-        interface osl2.messaging.errorHandling.UserError {
+        interface osl2.messaging.error_handling.UserError {
             {abstract} + getErrorContent()
             {abstract} + getErrorName()
         }
@@ -75,8 +75,8 @@ namespace osl2 {
 
 osl2.messaging.Broadcaster o-- B : client
 
-osl2.messaging.errorHandling.ArrayErrors.ArrayIndexOutOfBoundsError .up.|> osl2.messaging.errorHandling.UserError
-osl2.messaging.errorHandling.ArrayErrors.ArrayIndexOutOfBoundsError o-- osl2.view.ui.localisation.LanguageController : languageController
+osl2.messaging.error_handling.array_errors.ArrayIndexOutOfBoundsError .up.|> osl2.messaging.error_handling.UserError
+osl2.messaging.error_handling.array_errors.ArrayIndexOutOfBoundsError o-- osl2.view.ui.localisation.LanguageController : languageController
 
 
 @enduml

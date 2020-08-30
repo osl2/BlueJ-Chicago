@@ -1,6 +1,6 @@
-package osl2.messaging.errorHandling.MapErrors;
+package osl2.messaging.error_handling.map_errors;
 
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 /**
@@ -11,7 +11,7 @@ import osl2.view.ui.localisation.LanguageController;
  */
 public class MapKeyExistingError<T> implements UserError {
 
-    private final String name = "MapKeyExisting";
+    private static final String NAME = "MapKeyExisting";
     private final LanguageController languageController;
     private final T key;
 
@@ -28,12 +28,12 @@ public class MapKeyExistingError<T> implements UserError {
 
     @Override
     public String getErrorName() {
-        return this.name;
+        return NAME;
     }
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "Key")
-                + key.toString() + "\n" + languageController.getMessage(this.name + "Add");
+        return languageController.getMessage(NAME + "Key")
+                + key.toString() + "\n" + languageController.getMessage(NAME + "Add");
     }
 }

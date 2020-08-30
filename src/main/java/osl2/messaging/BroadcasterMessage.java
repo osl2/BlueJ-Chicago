@@ -4,7 +4,7 @@ package osl2.messaging;
  * The Interface for a Message.
  *
  * @param <B>
- *         The receivertype.
+ *         The receiver type.
  */
 public interface BroadcasterMessage<B> {
     /**

@@ -1,7 +1,5 @@
 package TestScenarios.TestScenario30;
 
-import osl2.datastructures.Breakpoint;
-
 /**
  * Implementation of test scenario 30 (TS30).
  *

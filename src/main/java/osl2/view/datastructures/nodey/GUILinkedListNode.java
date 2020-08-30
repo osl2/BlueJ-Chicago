@@ -3,7 +3,7 @@ package osl2.view.datastructures.nodey;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import osl2.messaging.datastructures.nodey.VLinkedListNodeCommunication;
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.inlinerepresentation.InlineRepresentation;
 
 /**

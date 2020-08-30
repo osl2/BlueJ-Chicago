@@ -1,6 +1,6 @@
-package osl2.messaging.errorHandling.GraphErrors;
+package osl2.messaging.error_handling.graph_errors;
 
-import osl2.messaging.errorHandling.UserError;
+import osl2.messaging.error_handling.UserError;
 import osl2.view.ui.localisation.LanguageController;
 
 /**
@@ -10,7 +10,7 @@ import osl2.view.ui.localisation.LanguageController;
  *         The type of the node.
  */
 public class GraphNodeNotExistingError<T> implements UserError {
-    private final String name = "GraphNodeNotExisting";
+    private static final String NAME = "GraphNodeNotExisting";
     private final T node;
     private final LanguageController languageController;
 
@@ -27,12 +27,12 @@ public class GraphNodeNotExistingError<T> implements UserError {
 
     @Override
     public String getErrorName() {
-        return this.name;
+        return NAME;
     }
 
     @Override
     public String getErrorContent() {
-        return languageController.getMessage(this.name + "Node")
-                + node.toString() + "\n" + languageController.getMessage(this.name + "Get");
+        return languageController.getMessage(NAME + "Node")
+                + node.toString() + "\n" + languageController.getMessage(NAME + "Get");
     }
 }
