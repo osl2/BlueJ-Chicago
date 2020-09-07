@@ -20,7 +20,7 @@ import osl2.view.ui.localisation.Languages;
  * The class for the SettingsWindow.
  */
 public class SettingsWindow {
-    private static final String WHITE_TEXT_CSS = "white-Text";
+    private static final String WHITE_TEXT_CSS = "white-text";
     private final SettingsController settingsController;
     private final LanguageController languageController;
     private final Stage owner;
